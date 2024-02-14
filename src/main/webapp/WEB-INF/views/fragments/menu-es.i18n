@@ -25,6 +25,11 @@ master.menu.anonymous.favourite-link = Enlace favorito
 master.menu.pabalcber = 30244224Y Alcántara Bernal Pablo
 master.menu.pabalcber.favourite-link = Enlace favorito
 
+# master.menu.maravimaq #######################################################
+
+master.menu.maravimaq = 49126568V Ávila Maqueda María del Mar
+master.menu.maravimaq.favourite-link = Enlace favorito
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
