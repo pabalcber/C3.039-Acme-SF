@@ -8,8 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-master.welcome.title = ¡Bienvenidos!
+master.welcome.title = Bienvenidos a Acme SF
 master.welcome.text = \
-	¡Hola mundo!  Nunca antes ha sido tan sencillo desarrollar un \
-	proyecto y hacerlo funcionar.
+	Aquí en Acme SF te ayudamos a poner en marcha tu proyecto. \
+	Nunca antes ha sido tan fácil gestionar y desarrollar software.
 ﻿

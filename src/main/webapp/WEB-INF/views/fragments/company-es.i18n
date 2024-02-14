@@ -8,11 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-master.company.title = La empresa
+master.company.title = Acme SF, S.A
 master.company.text = \
-	Hello World, Inc. es una empresa ficticia que ofrece un proyecto starter para los \
-	estudiantes de la asignatura Diseño y Pruebas de la titulación de \
-	Ingeniería del Software en la Universidad de Seville. 
+	Acme SF, S.A. es una empresa que se especializa \
+	en ayudar a las organizaciones a comenzar en una variedad de \
+	temas relacionados con la gestión y el desarrollo de proyectos \
+	de software. 
 master.company.name = Acme, Inc.
 master.company.address = 01 Acme Drive, Wondercity, Wonderland
 master.company.phone = +1 000 111 222
