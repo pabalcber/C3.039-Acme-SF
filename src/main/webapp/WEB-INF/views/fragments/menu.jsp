@@ -24,6 +24,9 @@
 		<acme:menu-option code="master.menu.maravimaq" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.pabalcber.favourite-link" action="https://github.com/maravimaq"/>
 		</acme:menu-option>
+				<acme:menu-option code="master.menu.YaoSpain" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.YaoSpain.favourite-link" action="https://github.com/YaoSpain"/>
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>

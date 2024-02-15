@@ -30,6 +30,11 @@ master.menu.pabalcber.favourite-link = Enlace favorito
 master.menu.maravimaq = 49126568V Ávila Maqueda María del Mar
 master.menu.maravimaq.favourite-link = Enlace favorito
 
+# master.menu.YaoSpain #######################################################
+
+master.menu.YaoSpain =  Y3449103Z Jun Yao
+master.menu.YaoSpain.favourite-link = Enlace favorito
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
