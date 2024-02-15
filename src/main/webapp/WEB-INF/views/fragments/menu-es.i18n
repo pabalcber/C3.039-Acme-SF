@@ -30,6 +30,11 @@ master.menu.pabalcber.favourite-link = Enlace favorito
 master.menu.maravimaq = 49126568V Ávila Maqueda María del Mar
 master.menu.maravimaq.favourite-link = Enlace favorito
 
+# master.menu.sheche1 #######################################################
+
+master.menu.sheche1 = sheche1
+master.menu.sheche1.favourite-link = Enlace favorito
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
