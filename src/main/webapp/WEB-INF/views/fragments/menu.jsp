@@ -22,7 +22,7 @@
 			<acme:menu-suboption code="master.menu.pabalcber.favourite-link" action="https://github.com/pabalcber"/>
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.maravimaq" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.pabalcber.favourite-link" action="https://github.com/maravimaq"/>
+			<acme:menu-suboption code="master.menu.maravimaq.favourite-link" action="https://github.com/maravimaq"/>
 		</acme:menu-option>
 <acme:menu-option code="master.menu.sheche1" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.sheche1.favourite-link" action="https://github.com/sheche1"/>
