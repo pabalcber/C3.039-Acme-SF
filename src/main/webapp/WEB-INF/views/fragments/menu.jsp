@@ -27,13 +27,11 @@
 <acme:menu-option code="master.menu.sheche1" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.sheche1.favourite-link" action="https://github.com/sheche1"/>
 		</acme:menu-option>
-<<<<<<< HEAD
+		
 				<acme:menu-option code="master.menu.YaoSpain" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.YaoSpain.favourite-link" action="https://github.com/YaoSpain"/>
 		</acme:menu-option>
-
-=======
->>>>>>> 3b1a3fa7d315b3903520ad34667369ba5a951d50
+		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
