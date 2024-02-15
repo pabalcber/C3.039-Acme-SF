@@ -31,6 +31,9 @@
 				<acme:menu-option code="master.menu.YaoSpain" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.YaoSpain.favourite-link" action="https://github.com/YaoSpain"/>
 		</acme:menu-option>
+		<acme:menu-option code="master.menu.marbarmar16" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.marbarmar16.favourite-link" action="https://github.com/meryknows"/>
+		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
