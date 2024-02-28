@@ -11,6 +11,7 @@ import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,7 +37,7 @@ public class Project extends AbstractEntity {
 	private String				abstractPj;
 	private String				indication;
 	@Range(min = 0)
-	private Double				cost;
+	private Money				cost;
 	@URL
 	private String				optionalLink;
 	//system must reject every project with fatal errors

@@ -36,4 +36,7 @@ public class Risk extends AbstractEntity {
 	private String				description;
 	@URL
 	private String				optionalLink;
+	// Derived attributes -----------------------------------------------------
+	private Double				value				= this.impact * this.probability;
+	// Relationships ----------------------------------------------------------
 }

@@ -8,51 +8,124 @@ import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.entities.projects.Project;
+import acme.entities.userStories.Priority;
+import acme.entities.userStories.UserStory;
 
 public class ManagerDashboard extends AbstractEntity {
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	// Attributes -------------------------------------------------------------
-	private int					mustUserStories;
-	private int					shouldUserStories;
-	private int					couldUserStories;
-	private int					wontUserStories;
 
 
 	// Derived attributes -----------------------------------------------------
 	@Transient
-	public Double averageEstimatedCosts() {
-		double total = .0;
-		for (Project p : this.projects)
-			total = p.getCost() + total;
-		return total / this.projects.size();
+	public int mustUserStories() {
+		int res = 0;
+		for (UserStory us : this.userStories)
+			if (us.getPriority() == Priority.MUST)
+				res++;
+		return res;
 	}
 
 	@Transient
-	public Double deviationEstimatedCosts() {
-		double desv = .0;
-		for (Project p : this.projects)
-			desv = desv + Math.abs(p.getCost() - this.averageEstimatedCosts());
-		return desv / this.projects.size();
+	public int shouldUserStories() {
+		int res = 0;
+		for (UserStory us : this.userStories)
+			if (us.getPriority() == Priority.SHOULD)
+				res++;
+		return res;
 	}
 
 	@Transient
-	public Double minimumEstimatedCosts() {
-		double min = this.projects.get(0).getCost();
+	public int couldUserStories() {
+		int res = 0;
+		for (UserStory us : this.userStories)
+			if (us.getPriority() == Priority.COULD)
+				res++;
+		return res;
+	}
+
+	@Transient
+	public int wontUserStories() {
+		int res = 0;
+		for (UserStory us : this.userStories)
+			if (us.getPriority() == Priority.WONT)
+				res++;
+		return res;
+	}
+
+	@Transient
+	public Double averageEstimatedCost() {
+		double total = 0.;
+		for (UserStory us : this.userStories)
+			total += us.getEstimatedCost();
+		return total / this.userStories.size();
+	}
+
+	@Transient
+	public Double deviationEstimatedCost() {
+		double desv = 0.;
+		Double avr = this.averageEstimatedCost();
+		for (UserStory us : this.userStories)
+			desv += Math.abs(us.getEstimatedCost() - avr);
+		return desv / this.userStories.size();
+	}
+
+	@Transient
+	public Double minimumEstimatedCost() {
+		Double min = this.userStories.get(0).getEstimatedCost();
+		for (UserStory us : this.userStories)
+			if (us.getEstimatedCost() < min)
+				min = us.getEstimatedCost();
+		return min;
+	}
+
+	@Transient
+	public Double maximumEstimatedCost() {
+		Double max = this.userStories.get(0).getEstimatedCost();
+		for (UserStory us : this.userStories)
+			if (us.getEstimatedCost() > max)
+				max = us.getEstimatedCost();
+		return max;
+	}
+
+	@Transient
+	public Money averageProjectCosts() {
+		Money total = new Money();
 		for (Project p : this.projects)
-			if (p.getCost() < min)
+			total.setAmount(p.getCost().getAmount() + total.getAmount());
+		total.setAmount(total.getAmount() / this.projects.size());
+		return total;
+	}
+
+	@Transient
+	public Money deviationProjectCosts() {
+		Money desv = new Money();
+		Money avr = this.averageProjectCosts();
+		for (Project p : this.projects)
+			desv.setAmount(desv.getAmount() + Math.abs(p.getCost().getAmount() - avr.getAmount()));
+		desv.setAmount(desv.getAmount() / this.projects.size());
+		return desv;
+	}
+
+	@Transient
+	public Money minimumProjectCosts() {
+		Money min = this.projects.get(0).getCost();
+		for (Project p : this.projects)
+			if (p.getCost().getAmount() < min.getAmount())
 				min = p.getCost();
 		return min;
 	}
 
 	@Transient
-	public Double maximumEstimatedCosts() {
-		double max = this.projects.get(0).getCost();
+	public Money maximumProjectCosts() {
+		Money max = this.projects.get(0).getCost();
 		for (Project p : this.projects)
-			if (p.getCost() > max)
+			if (p.getCost().getAmount() > max.getAmount())
 				max = p.getCost();
 		return max;
 	}
@@ -61,5 +134,8 @@ public class ManagerDashboard extends AbstractEntity {
 	// Relationships ----------------------------------------------------------
 	@Valid
 	@OneToMany
-	private List<Project> projects;
+	private List<UserStory>	userStories;
+	@Valid
+	@OneToMany
+	private List<Project>	projects;
 }
