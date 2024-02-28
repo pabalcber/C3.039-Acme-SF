@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -17,6 +18,7 @@ import org.hibernate.validator.constraints.Length;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
+import acme.roles.clients.Client;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,7 +33,6 @@ public class Contract extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Length(min = 5, max = 15)
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "El código debe seguir el patrón '[A-Z]{1,3}-[0-9]{3}'")
 	private String				code;
 
@@ -57,13 +58,9 @@ public class Contract extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	/*
-	 * @NotNull
-	 * 
-	 * @Valid
-	 * 
-	 * @ManyToOne(optional = false)
-	 * private Client client;
-	 */
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Client				client;
 
 }

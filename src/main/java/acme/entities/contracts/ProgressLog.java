@@ -35,7 +35,6 @@ public class ProgressLog extends AbstractEntity {
 
 	@Column(unique = true)
 	@NotBlank
-	@Length(min = 5, max = 15)
 	@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}", message = "El recordId debe seguir el patrón 'PG-[A-Z]{1,2}-[0-9]{4}'")
 	private String				recordId;
 
