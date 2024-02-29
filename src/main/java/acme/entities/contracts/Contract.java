@@ -2,10 +2,12 @@
 package acme.entities.contracts;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -18,7 +20,6 @@ import org.hibernate.validator.constraints.Length;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
-import acme.roles.clients.Client;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -56,11 +57,10 @@ public class Contract extends AbstractEntity {
 	@Valid
 	private Money				budget;
 
+	// Derived attributes -----------------------------------------------------
+
 	// Relationships ----------------------------------------------------------
-
+	@OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
 	@NotNull
-	@Valid
-	@ManyToOne(optional = false)
-	private Client				client;
-
+	private List<ProgressLog>	progressLogs;
 }
