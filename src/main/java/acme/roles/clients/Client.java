@@ -1,8 +1,12 @@
 
 package acme.roles.clients;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -10,6 +14,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractRole;
+import acme.entities.contracts.Contract;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,10 +46,11 @@ public class Client extends AbstractRole {
 	@URL
 	private String				furtherInformation;
 
+	// Derived attributes -----------------------------------------------------
+
 	// Relationships ----------------------------------------------------------
-	/*
-	 * @OneToOne
-	 * private ClientDashboard clientDashboard;
-	 */
+
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+	private List<Contract>		contracts;
 
 }
