@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>544</x>
-      <y>304</y>
+      <x>592</x>
+      <y>224</y>
       <w>320</w>
       <h>120</h>
     </coordinates>
@@ -25,8 +25,8 @@ Contract
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>752</x>
-      <y>240</y>
+      <x>800</x>
+      <y>160</y>
       <w>104</w>
       <h>32</h>
     </coordinates>
@@ -39,8 +39,8 @@ be positive</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>784</x>
-      <y>264</y>
+      <x>832</x>
+      <y>184</y>
       <w>24</w>
       <h>56</h>
     </coordinates>
@@ -50,8 +50,8 @@ be positive</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>560</x>
-      <y>216</y>
+      <x>608</x>
+      <y>136</y>
       <w>120</w>
       <h>56</h>
     </coordinates>
@@ -66,8 +66,8 @@ project cost</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
-      <y>264</y>
+      <x>656</x>
+      <y>184</y>
       <w>24</w>
       <h>56</h>
     </coordinates>
@@ -77,8 +77,8 @@ project cost</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
-      <y>480</y>
+      <x>568</x>
+      <y>400</y>
       <w>368</w>
       <h>104</h>
     </coordinates>
@@ -88,7 +88,7 @@ transparency=80
 ProgressLog
 --
 - recordId: String {NotBlank, Unique, Pattern(PG-[A-Z]{1,2}-[0-9]{4}”)}
-- completeness: Double {Positive}
+- completeness: Double {Positive, Max(100)}
 - comment: String {NotBlank, Length(1, 101)}
 - registrationMoment: Date {Past, Temporal(TIMESTAMP)}
 - responsiblePerson: String {NotBlank, Length(1, 76)}</panel_attributes>
@@ -97,8 +97,8 @@ ProgressLog
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>472</y>
+      <x>128</x>
+      <y>392</y>
       <w>368</w>
       <h>160</h>
     </coordinates>
@@ -122,8 +122,8 @@ ClientDashboard
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>304</y>
+      <x>128</x>
+      <y>224</y>
       <w>328</w>
       <h>104</h>
     </coordinates>
@@ -134,7 +134,7 @@ Client
 --
 - identification: String {NotBlank, Unique, Pattern(“CLI-[0-9]{4}”)}
 - companyName: String {NotBlank, Length(1, 76)}
-- type: ClientType {NotBlank}
+- type: ClientType {NotNull}
 - email: String {NotBlank}
 - furtherInformation: String {URL}</panel_attributes>
     <additional_attributes/>
@@ -142,8 +142,8 @@ Client
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>928</x>
-      <y>352</y>
+      <x>976</x>
+      <y>272</y>
       <w>120</w>
       <h>56</h>
     </coordinates>
@@ -156,8 +156,8 @@ Project (Student 1)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>376</y>
+      <x>904</x>
+      <y>296</y>
       <w>88</w>
       <h>32</h>
     </coordinates>
@@ -168,8 +168,8 @@ m2=1..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>344</y>
+      <x>448</x>
+      <y>264</y>
       <w>160</w>
       <h>40</h>
     </coordinates>
@@ -182,8 +182,8 @@ m2=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>216</x>
-      <y>400</y>
+      <x>264</x>
+      <y>320</y>
       <w>88</w>
       <h>88</h>
     </coordinates>
@@ -198,8 +198,8 @@ Belongs to ^
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>152</y>
+      <x>128</x>
+      <y>72</y>
       <w>128</w>
       <h>80</h>
     </coordinates>
@@ -216,8 +216,8 @@ bg=green
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>696</x>
-      <y>416</y>
+      <x>744</x>
+      <y>336</y>
       <w>40</w>
       <h>80</h>
     </coordinates>
