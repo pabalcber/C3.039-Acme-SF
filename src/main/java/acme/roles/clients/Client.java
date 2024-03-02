@@ -3,11 +3,11 @@ package acme.roles.clients;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -35,12 +35,14 @@ public class Client extends AbstractRole {
 
 	@NotBlank
 	@Length(min = 1, max = 76)
+	@Column(unique = true)
 	private String				companyName;
 
-	@NotBlank
+	@NotNull
 	private ClientType			type;
 
 	@NotBlank
+	@Column(unique = true)
 	private String				email;
 
 	@URL
@@ -50,7 +52,7 @@ public class Client extends AbstractRole {
 
 	// Relationships ----------------------------------------------------------
 
-	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+	@OneToMany()
 	private List<Contract>		contracts;
 
 }

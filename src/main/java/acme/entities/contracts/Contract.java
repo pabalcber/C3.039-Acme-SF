@@ -4,7 +4,6 @@ package acme.entities.contracts;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -60,7 +59,6 @@ public class Contract extends AbstractEntity {
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
-	@OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
-	@NotNull
+	@OneToMany()
 	private List<ProgressLog>	progressLogs;
 }
