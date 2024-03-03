@@ -93,14 +93,6 @@ public class ClientDashboard extends AbstractForm {
 		return numContracts > 0 ? totalBudget / numContracts : 0;
 	}
 
-	/*
-	 * Desviacion Estandar= sqrt(sum((xi-x')^2)/n)
-	 * 
-	 * Donde: xi son los valores individuales del presupuesto.
-	 * x' es el promedio del presupuesto.
-	 * n es el número total de valores en el conjunto de datos.
-	 */
-
 	@Transient
 	private Double deviationBudget() {
 		Double avg = this.avgBudget();
