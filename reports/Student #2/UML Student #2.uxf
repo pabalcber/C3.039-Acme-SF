@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>592</x>
+      <y>224</y>
+      <w>320</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>bg=green
+transparency=80
+&lt;&lt;Entity&gt;&gt;
+Contract
+--
+- code: String {NotBlank, Unique, Pattern(“[A-Z]{1,3}-[0-9]{3}”)}
+- instantiationMoment: Date {Past,Temporal(TIMESTAMP)}
+- providerName: String {NotBlank, Length(1, 76)}
+- customerName: String {NotBlank, Length(1, 76)}
+- goals: String {NotBlank, Length(1, 101)}
+- budget: Money</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>800</x>
+      <y>160</y>
+      <w>104</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>bg=red
+transparency=80
+The budget must
+be positive</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>832</x>
+      <y>184</y>
+      <w>24</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>608</x>
+      <y>136</y>
+      <w>120</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>bg=red
+transparency=80
+The budget must be
+less than or equal 
+to de corresponding 
+project cost</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>656</x>
+      <y>184</y>
+      <w>24</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>568</x>
+      <y>400</y>
+      <w>368</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>bg=green
+transparency=80
+&lt;&lt;Entity&gt;&gt;
+ProgressLog
+--
+- recordId: String {NotBlank, Unique, Pattern(PG-[A-Z]{1,2}-[0-9]{4}”)}
+- completeness: Double {Positive, Max(100)}
+- comment: String {NotBlank, Length(1, 101)}
+- registrationMoment: Date {Past, Temporal(TIMESTAMP)}
+- responsiblePerson: String {NotBlank, Length(1, 76)}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>128</x>
+      <y>392</y>
+      <w>368</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>bg=green
+transparency=80
+&lt;&lt;Form&gt;&gt;
+ClientDashboard
+--
+- /clientProgressLogs: List&lt;ProgressLog&gt; {Transient}
+- /totalProgressLogsBelow25Percent: Integer {Transient}
+- /totalProgressLogs25To50Percent: Integer {Transient}
+- /totalProgressLogs50To75Percent: Integer {Transient}
+- /totalProgressLogsAbove75Percent: Integer {Transient}
+- /avgBudget: Double {Transient}
+- /deviationBudget: Double {Transient}
+- /minimumBudget: Money {Transient}
+- /maximumBudget: Money {Transient}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>128</x>
+      <y>224</y>
+      <w>328</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>bg=green
+transparency=80
+&lt;&lt;Role&gt;&gt;
+Client
+--
+- identification: String {NotBlank, Unique, Pattern(“CLI-[0-9]{4}”)}
+- companyName: String {NotBlank, Length(1, 76)}
+- type: ClientType {NotNull}
+- email: String {NotBlank}
+- furtherInformation: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>976</x>
+      <y>272</y>
+      <w>120</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>bg=green
+transparency=80
+&lt;&lt;Entity&gt;&gt;
+Project (Student 1)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>904</x>
+      <y>296</y>
+      <w>88</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
+m2=1..*</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>448</x>
+      <y>264</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1= 1
+m2=0..*
+ Requests &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>320</y>
+      <w>88</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1= 1
+m2= 1
+
+Belongs to ^
+</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>128</x>
+      <y>72</y>
+      <w>128</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>transparency=80
+&lt;&lt;Enum&gt;&gt;
+ClientType
+--
++ Company
++ Individual
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>744</x>
+      <y>336</y>
+      <w>40</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+</diagram>

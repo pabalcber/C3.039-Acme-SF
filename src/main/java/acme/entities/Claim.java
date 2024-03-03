@@ -10,32 +10,38 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import acme.client.data.AbstractEntity;
+
 @Entity
-public class Claim {
+public class Claim extends AbstractEntity {
+
+	// Serialisation identifier -----------------------------------------------
+
+	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
 	@Pattern(regexp = "C-[0-9]{4}")
-	private String	code;
+	private String				code;
 
 	@Past
-	private Date	instantiationMoment;
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@Size(max = 76)
-	private String	heading;
+	private String				heading;
 
 	@NotBlank
 	@Size(max = 101)
-	private String	description;
+	private String				description;
 
 	@NotBlank
 	@Size(max = 101)
-	private String	department;
+	private String				department;
 
 	@Email
-	private String	emailAddress;
+	private String				emailAddress;
 
-	private String	link;
+	private String				link;
 
 
 	// Constructors, Getters and Setters
