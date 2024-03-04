@@ -10,7 +10,12 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 public class Claim {
 
 	@NotBlank
@@ -38,7 +43,9 @@ public class Claim {
 	private String	link;
 
 
-	// Constructors, Getters and Setters
+	public Claim() {
+
+	}
 	// Constructor
 	public Claim(final String code, final Date instantiationMoment, final String heading, final String description, final String department, final String emailAddress, final String link) {
 		this.code = code;
@@ -47,62 +54,6 @@ public class Claim {
 		this.description = description;
 		this.department = department;
 		this.emailAddress = emailAddress;
-		this.link = link;
-	}
-	// Getters and Setters
-	public String getCode() {
-		return this.code;
-	}
-
-	public void setCode(final String code) {
-		this.code = code;
-	}
-
-	public Date getInstantiationMoment() {
-		return this.instantiationMoment;
-	}
-
-	public void setInstantiationMoment(final Date instantiationMoment) {
-		this.instantiationMoment = instantiationMoment;
-	}
-
-	public String getHeading() {
-		return this.heading;
-	}
-
-	public void setHeading(final String heading) {
-		this.heading = heading;
-	}
-
-	public String getDescription() {
-		return this.description;
-	}
-
-	public void setDescription(final String description) {
-		this.description = description;
-	}
-
-	public String getDepartment() {
-		return this.department;
-	}
-
-	public void setDepartment(final String department) {
-		this.department = department;
-	}
-
-	public String getEmailAddress() {
-		return this.emailAddress;
-	}
-
-	public void setEmailAddress(final String emailAddress) {
-		this.emailAddress = emailAddress;
-	}
-
-	public String getLink() {
-		return this.link;
-	}
-
-	public void setLink(final String link) {
 		this.link = link;
 	}
 
