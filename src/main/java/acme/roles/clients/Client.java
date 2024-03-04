@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -30,7 +31,7 @@ public class Client extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "CLI-[0-9]{4}", message = "Identification debe seguir el patrón 'CLI-[0-9]{4}'")
+	@Pattern(regexp = "CLI-\\d{4}", message = "Identification debe seguir el patrón 'CLI-[0-9]{4}'")
 	private String				identification;
 
 	@NotBlank
@@ -43,6 +44,7 @@ public class Client extends AbstractRole {
 
 	@NotBlank
 	@Column(unique = true)
+	@Email
 	private String				email;
 
 	@URL

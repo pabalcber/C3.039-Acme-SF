@@ -1,40 +1,34 @@
 
-package acme.entities.contracts;
+package acme.entities;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Contract extends AbstractEntity {
+public class Notice extends AbstractEntity {
+
 	// Serialisation identifier -----------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
-	@Column(unique = true)
-	@NotBlank
-	@Pattern(regexp = "[A-Z]{1,3}-\\d{3}", message = "El código debe seguir el patrón '[A-Z]{1,3}-[0-9]{3}'")
-	private String				code;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -43,22 +37,21 @@ public class Contract extends AbstractEntity {
 
 	@NotBlank
 	@Length(min = 1, max = 76)
-	private String				providerName;
+	private String				title;
 
 	@NotBlank
 	@Length(min = 1, max = 76)
-	private String				customerName;
+	@Pattern(regexp = "^\\S+-\\S+,\\s+\\S+$", message = "El autor debe tener el formato '<username>-<surname, name>'")
+	private String				author;
 
 	@NotBlank
-	@Length(min = 1, max = 76)
-	private String				goals;
+	@Length(min = 1, max = 101)
+	private String				message;
 
-	@Valid
-	private Money				budget;
+	@Email
+	private String				email;
 
-	// Derived attributes -----------------------------------------------------
+	@URL
+	private String				link;
 
-	// Relationships ----------------------------------------------------------
-	@OneToMany()
-	private List<ProgressLog>	progressLogs;
 }
