@@ -29,11 +29,11 @@ public class Objective extends AbstractEntity {
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@Size(max = 76)
+	@Size(max = 75)
 	private String				title;
 
 	@NotBlank
-	@Size(max = 101)
+	@Size(max = 100)
 	private String				description;
 
 	@NotBlank

@@ -20,22 +20,22 @@ public class Claim extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@Pattern(regexp = "C-[0-9]{4}")
+	@Pattern(regexp = "C-\\d{4}")
 	private String				code;
 
 	@Past
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@Size(max = 76)
+	@Size(max = 75)
 	private String				heading;
 
 	@NotBlank
-	@Size(max = 101)
+	@Size(max = 100)
 	private String				description;
 
 	@NotBlank
-	@Size(max = 101)
+	@Size(max = 100)
 	private String				department;
 
 	@Email
