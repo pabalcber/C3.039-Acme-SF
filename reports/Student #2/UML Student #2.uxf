@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>658</x>
+      <x>434</x>
       <y>322</y>
       <w>322</w>
       <h>112</h>
@@ -27,7 +27,7 @@ Contract
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>812</x>
+      <x>588</x>
       <y>259</y>
       <w>91</w>
       <h>28</h>
@@ -41,7 +41,7 @@ be positive</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
+      <x>616</x>
       <y>280</y>
       <w>21</w>
       <h>56</h>
@@ -52,7 +52,7 @@ be positive</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>693</x>
+      <x>469</x>
       <y>245</y>
       <w>105</w>
       <h>49</h>
@@ -68,7 +68,7 @@ project cost</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>728</x>
+      <x>504</x>
       <y>287</y>
       <w>21</w>
       <h>49</h>
@@ -79,7 +79,7 @@ project cost</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>651</x>
+      <x>427</x>
       <y>490</y>
       <w>357</w>
       <h>91</h>
@@ -90,7 +90,7 @@ transparency=80
 ProgressLog
 --
 + recordId: String {NotBlank, Unique, Pattern(PG-[A-Z]{1,2}-[0-9]{4}”)}
-+ completeness: double {Positive, Max 100.0}
++ completeness: double {Positive, Max 100}
 + comment: String {NotBlank, Length(1, 101)}
 + registrationMoment: Date {Past, Temporal(TIMESTAMP)}
 + responsiblePerson: String {NotBlank, Length(1, 76)}</panel_attributes>
@@ -99,7 +99,7 @@ ProgressLog
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>273</x>
+      <x>49</x>
       <y>448</y>
       <w>322</w>
       <h>119</h>
@@ -113,16 +113,16 @@ ClientDashboard
 + totalProgressLogs25To50Percent: int
 + totalProgressLogs50To75Percent: int
 + totalProgressLogsAbove75Percent: int
-+ avgBudget: Money{NotNull}
-+ deviationBudget: Money{NotNull}
-+ minimumBudget: Money{NotNull}
-+ maximumBudget: Money{NotNull}</panel_attributes>
++ avgBudget: Money
++ deviationBudget: Money
++ minimumBudget: Money
++ maximumBudget: Money</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>224</x>
+      <x>0</x>
       <y>322</y>
       <w>329</w>
       <h>91</h>
@@ -142,7 +142,7 @@ Client
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>798</x>
+      <x>574</x>
       <y>427</y>
       <w>35</w>
       <h>77</h>
@@ -155,7 +155,7 @@ m2=0..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1085</x>
+      <x>861</x>
       <y>364</y>
       <w>105</w>
       <h>49</h>
@@ -169,7 +169,7 @@ Project (Student 1)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>973</x>
+      <x>749</x>
       <y>378</y>
       <w>126</w>
       <h>35</h>
@@ -183,7 +183,7 @@ m2=1..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
+      <x>322</x>
       <y>357</y>
       <w>126</w>
       <h>35</h>
@@ -197,7 +197,7 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
+      <x>112</x>
       <y>196</y>
       <w>112</w>
       <h>70</h>
