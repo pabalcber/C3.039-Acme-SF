@@ -32,6 +32,7 @@ public class Training extends AbstractEntity {
 	@NotBlank
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern 'TS-[A-Z]{1,3}-[0-9]{3}'")
 	@Max(255)
+	@NotNull
 	private String				code;
 
 	@NotNull
