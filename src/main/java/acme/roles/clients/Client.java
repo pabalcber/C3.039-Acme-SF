@@ -3,7 +3,9 @@ package acme.roles.clients;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -25,26 +27,24 @@ public class Client extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "CLI-[0-9]{4}", message = "Identification debe seguir el patrón 'CLI-[0-9]{4}'")
+	@Pattern(regexp = "CLI-//d{4}", message = "Identification debe seguir el patrón 'CLI-[0-9]{4}'")
 	private String				identification;
 
 	@NotBlank
 	@Length(min = 1, max = 76)
 	private String				companyName;
 
-	@NotBlank
+	@NotNull
 	private ClientType			type;
 
 	@NotBlank
+	@Email
 	private String				email;
 
 	@URL
+	@Length(min = 1, max = 255)
 	private String				furtherInformation;
 
 	// Relationships ----------------------------------------------------------
-	/*
-	 * @OneToOne
-	 * private ClientDashboard clientDashboard;
-	 */
 
 }
