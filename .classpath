@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Acme-Framework"/>
 	<classpathentry kind="src" output="target/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -44,10 +45,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry excluding="**/fragments/**" kind="src" path="acme-framework"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Acme-Framework-24.1.0">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
