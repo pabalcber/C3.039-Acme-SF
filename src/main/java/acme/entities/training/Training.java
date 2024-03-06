@@ -58,8 +58,6 @@ public class Training extends AbstractEntity {
 	private String				furtherInformationLink;
 
 	@NotNull
-	@Max(255)
-	@NotBlank
 	private Integer				estimatedTotalTime;
 
 }
