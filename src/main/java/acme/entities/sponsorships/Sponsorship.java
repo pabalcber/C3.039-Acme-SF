@@ -12,7 +12,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,35 +23,34 @@ public class Sponsorship {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long	id;
+	private Long			id;
 
 	@NotBlank
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "Code must match pattern '[A-Z]{1,3}-[0-9]{3}'")
-	private String	code;
+	private String			code;
 
 	@NotNull
-	private Date	moment;
+	private Date			moment;
 
 	@NotNull
-	private Date	duration;
+	private Date			duration;
 
 	@Positive
-	private double	amount;
+	private double			amount;
 
 	@NotBlank
-	@Size(max = 10)
-	private String	sponsorshipType;
+	private SponsorshipType	sponsorshipType;
 
 	@Email
-	private String	contactEmail;
+	private String			contactEmail;
 
-	private String	furtherInformationLink;
+	private String			furtherInformationLink;
 
 
 	public Sponsorship() {
 	}
 
-	public Sponsorship(final String code, final Date moment, final Date duration, final double amount, final String sponsorshipType, final String contactEmail, final String furtherInformationLink) {
+	public Sponsorship(final String code, final Date moment, final Date duration, final double amount, final SponsorshipType sponsorshipType, final String contactEmail, final String furtherInformationLink) {
 		this.code = code;
 		this.moment = moment;
 		this.duration = duration;
