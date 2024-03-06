@@ -42,7 +42,7 @@ public class Training extends AbstractEntity {
 	private String				details;
 
 	@NotBlank
-	private String				difficultyLevel; // You might want to use an enum instead
+	private difficultyLevelType	difficultyLevel;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
@@ -50,9 +50,6 @@ public class Training extends AbstractEntity {
 
 	private String				furtherInformationLink;
 
-	private Integer				estimatedTotalTime; // You might want to use a more suitable data type
+	private Integer				estimatedTotalTime;
 
-	// Relationships ----------------------------------------------------------
-
-	// You can define relationships here if needed
 }

@@ -1,11 +1,12 @@
 
 package acme.entities.training;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface SessionRepository extends CrudRepository<Session, Long> {
 
-	long countByFurtherInformationLinkIsNotNull();
+	@Query("SELECT COUNT(s) FROM Session s WHERE s.furtherInformationLink IS NOT NULL")
+	Long countSessionsWithLink();
+
 }

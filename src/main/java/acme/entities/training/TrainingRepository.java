@@ -1,11 +1,21 @@
 
 package acme.entities.training;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public interface TrainingRepository extends JpaRepository<Training, Long> {
+public interface TrainingRepository extends CrudRepository<Training, Long> {
 
-	long countByUpdateMomentNotNull();
+	@Query("SELECT COUNT(t) FROM Training t WHERE t.updateMoment IS NOT NULL")
+	Long countTrainingModulesWithUpdateMoment();
+
+	@Query("SELECT AVG(t.estimatedTotalTime) FROM Training t")
+	Double averageTrainingModulesTime();
+
+	@Query("SELECT MIN(t.estimatedTotalTime) FROM Training t")
+	Integer minTrainingModulesTime();
+
+	@Query("SELECT MAX(t.estimatedTotalTime) FROM Training t")
+	Integer maxTrainingModulesTime();
+
 }
