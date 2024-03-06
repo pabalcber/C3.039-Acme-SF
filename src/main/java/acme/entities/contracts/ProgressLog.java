@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -35,11 +36,11 @@ public class ProgressLog extends AbstractEntity {
 
 	@Column(unique = true)
 	@NotBlank
-	@Length(min = 5, max = 15)
-	@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}", message = "El recordId debe seguir el patrón 'PG-[A-Z]{1,2}-[0-9]{4}'")
+	@Pattern(regexp = "PG-[A-Z]{1,2}-//d{4}", message = "El recordId debe seguir el patrón 'PG-[A-Z]{1,2}-[0-9]{4}'")
 	private String				recordId;
 
 	@Positive
+	@Max(100)
 	private Double				completeness;
 
 	@NotBlank
@@ -54,9 +55,14 @@ public class ProgressLog extends AbstractEntity {
 	@Length(min = 1, max = 76)
 	private String				responsiblePerson;
 
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
+
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	@OneToMany()
 	private Contract			contract;
+
 }
