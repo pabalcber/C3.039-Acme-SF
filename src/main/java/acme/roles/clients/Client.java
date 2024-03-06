@@ -1,12 +1,9 @@
 
 package acme.roles.clients;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -15,7 +12,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractRole;
-import acme.entities.contracts.Contract;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,6 +40,7 @@ public class Client extends AbstractRole {
 
 	@NotBlank
 	@Email
+	@Column(unique = true)
 	private String				email;
 
 	@URL

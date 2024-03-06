@@ -41,12 +41,13 @@ public class ProgressLog extends AbstractEntity {
 
 	@Positive
 	@Max(100)
-	private Double				completeness;
+	private double				completeness;
 
 	@NotBlank
 	@Length(min = 1, max = 101)
 	private String				comment;
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
 	private Date				registrationMoment;

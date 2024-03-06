@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>434</x>
-      <y>322</y>
+      <y>273</y>
       <w>322</w>
       <h>112</h>
     </coordinates>
@@ -28,7 +28,7 @@ Contract
     <id>UMLNote</id>
     <coordinates>
       <x>588</x>
-      <y>259</y>
+      <y>210</y>
       <w>91</w>
       <h>28</h>
     </coordinates>
@@ -42,7 +42,7 @@ be positive</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>616</x>
-      <y>280</y>
+      <y>231</y>
       <w>21</w>
       <h>56</h>
     </coordinates>
@@ -53,7 +53,7 @@ be positive</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>469</x>
-      <y>245</y>
+      <y>196</y>
       <w>105</w>
       <h>49</h>
     </coordinates>
@@ -69,7 +69,7 @@ project cost</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>504</x>
-      <y>287</y>
+      <y>238</y>
       <w>21</w>
       <h>49</h>
     </coordinates>
@@ -80,7 +80,7 @@ project cost</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>427</x>
-      <y>490</y>
+      <y>441</y>
       <w>357</w>
       <h>91</h>
     </coordinates>
@@ -92,7 +92,7 @@ ProgressLog
 + recordId: String {NotBlank, Unique, Pattern(PG-[A-Z]{1,2}-[0-9]{4}”)}
 + completeness: double {Positive, Max 100}
 + comment: String {NotBlank, Length(1, 101)}
-+ registrationMoment: Date {Past, Temporal(TIMESTAMP)}
++ registrationMoment: Date {NotNull, Past, Temporal(TIMESTAMP)}
 + responsiblePerson: String {NotBlank, Length(1, 76)}</panel_attributes>
     <additional_attributes/>
   </element>
@@ -100,9 +100,9 @@ ProgressLog
     <id>UMLClass</id>
     <coordinates>
       <x>49</x>
-      <y>448</y>
+      <y>399</y>
       <w>322</w>
-      <h>119</h>
+      <h>126</h>
     </coordinates>
     <panel_attributes>bg=green
 transparency=80
@@ -123,7 +123,7 @@ ClientDashboard
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>322</y>
+      <y>273</y>
       <w>329</w>
       <h>91</h>
     </coordinates>
@@ -133,7 +133,7 @@ transparency=80
 Client
 --
 + identification: String {NotBlank, Unique, Pattern(“CLI-[0-9]{4}”)}
-+ companyName: String {NotBlank, Length(1, 76)}
++ companyName: String {NotBlank, Length(1, 76), Unique}
 + type: ClientType {NotNull}
 + email: String {NotBlank, Email, Unique}
 + furtherInformation: String {URL, Length(1,255)}</panel_attributes>
@@ -143,7 +143,7 @@ Client
     <id>Relation</id>
     <coordinates>
       <x>574</x>
-      <y>427</y>
+      <y>378</y>
       <w>35</w>
       <h>77</h>
     </coordinates>
@@ -156,7 +156,7 @@ m2=0..*</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>861</x>
-      <y>364</y>
+      <y>315</y>
       <w>105</w>
       <h>49</h>
     </coordinates>
@@ -170,7 +170,7 @@ Project (Student 1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>749</x>
-      <y>378</y>
+      <y>329</y>
       <w>126</w>
       <h>35</h>
     </coordinates>
@@ -184,7 +184,7 @@ m2=1..*</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>322</x>
-      <y>357</y>
+      <y>308</y>
       <w>126</w>
       <h>35</h>
     </coordinates>
@@ -198,7 +198,7 @@ m2=1
     <id>UMLClass</id>
     <coordinates>
       <x>112</x>
-      <y>196</y>
+      <y>147</y>
       <w>112</w>
       <h>70</h>
     </coordinates>
