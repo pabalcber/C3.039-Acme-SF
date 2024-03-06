@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.Email;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -30,7 +31,7 @@ public class Client extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "CLI-[0-9]{4}", message = "Identification debe seguir el patrón 'CLI-[0-9]{4}'")
+	@Pattern(regexp = "CLI-//d{4}", message = "Identification debe seguir el patrón 'CLI-[0-9]{4}'")
 	private String				identification;
 
 	@NotBlank
@@ -42,17 +43,15 @@ public class Client extends AbstractRole {
 	private ClientType			type;
 
 	@NotBlank
-	@Column(unique = true)
+	@Email
 	private String				email;
 
 	@URL
+	@Length(min = 1, max = 255)
 	private String				furtherInformation;
 
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
-
-	@OneToMany()
-	private List<Contract>		contracts;
 
 }
