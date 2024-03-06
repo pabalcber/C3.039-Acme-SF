@@ -14,7 +14,6 @@ public class ClientDashboard extends AbstractForm {
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
-
 	int							totalProgressLogsBelow25Percent;
 	int							totalProgressLogs25To50Percent;
 	int							totalProgressLogs50To75Percent;
