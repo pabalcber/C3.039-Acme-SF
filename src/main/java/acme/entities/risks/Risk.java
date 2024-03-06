@@ -4,6 +4,7 @@ package acme.entities.risks;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
@@ -37,6 +38,7 @@ public class Risk extends AbstractEntity {
 	@URL
 	private String				optionalLink;
 	// Derived attributes -----------------------------------------------------
+	@Transient
 	private Double				value				= this.impact * this.probability;
 	// Relationships ----------------------------------------------------------
 }
