@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,7 +34,7 @@ public class Contract extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "El código debe seguir el patrón '[A-Z]{1,3}-[0-9]{3}'")
+	@Pattern(regexp = "[A-Z]{1,3}-//d{3}", message = "El código debe seguir el patrón '[A-Z]{1,3}-[0-9]{3}'")
 	private String				code;
 
 	@NotNull
@@ -50,15 +51,20 @@ public class Contract extends AbstractEntity {
 	private String				customerName;
 
 	@NotBlank
-	@Length(min = 1, max = 76)
+	@Length(min = 1, max = 101)
 	private String				goals;
 
 	@Valid
 	private Money				budget;
 
-	// Derived attributes -----------------------------------------------------
+	private boolean				draftMode;
+  
+  // Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
-	@OneToMany()
-	private List<ProgressLog>	progressLogs;
+
+	 @NotNull
+	 @Valid
+	 @ManyToOne(optional = false)
+	 private Client	client;
 }
