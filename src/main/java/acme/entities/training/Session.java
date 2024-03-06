@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -29,7 +30,7 @@ public class Session extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "El código debe seguir el patrón 'TS-[A-Z]{1,3}-[0-9]{3}'")
+	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern 'TS-[A-Z]{1,3}-[0-9]{3}'")
 	private String				code;
 
 	@NotNull
@@ -41,17 +42,24 @@ public class Session extends AbstractEntity {
 	private Date				timePeriodEnd;
 
 	@NotBlank
+	@NotNull
 	@Size(max = 75)
 	private String				location;
 
 	@NotBlank
+	@NotNull
 	@Size(max = 75)
 	private String				instructor;
 
 	@NotBlank
 	@Email
+	@Max(255)
+	@NotNull
 	private String				mandatoryContactEmail;
 
+	@Max(255)
+	@NotNull
+	@NotBlank
 	private String				furtherInformationLink;
 
 	// Relationships ----------------------------------------------------------

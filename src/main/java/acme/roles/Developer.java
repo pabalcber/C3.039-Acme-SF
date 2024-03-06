@@ -35,9 +35,11 @@ public class Developer extends AbstractEntity {
 	private String				skills;
 
 	@Email
+	@NotBlank
 	private String				email;
 
 	@Size(max = 255)
 	@Column(length = 255)
+	@NotBlank
 	private String				furtherInformationLink;
 }

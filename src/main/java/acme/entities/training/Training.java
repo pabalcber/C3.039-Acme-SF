@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -29,7 +30,8 @@ public class Training extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "El código debe seguir el patrón '[A-Z]{1,3}-[0-9]{3}'")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern 'TS-[A-Z]{1,3}-[0-9]{3}'")
+	@Max(255)
 	private String				code;
 
 	@NotNull
@@ -39,17 +41,25 @@ public class Training extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 100)
+	@NotNull
 	private String				details;
 
-	@NotBlank
+	@NotNull
 	private difficultyLevelType	difficultyLevel;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
+	@NotNull
 	private Date				updateMoment;
 
+	@NotNull
+	@Max(255)
+	@NotBlank
 	private String				furtherInformationLink;
 
+	@NotNull
+	@Max(255)
+	@NotBlank
 	private Integer				estimatedTotalTime;
 
 }
