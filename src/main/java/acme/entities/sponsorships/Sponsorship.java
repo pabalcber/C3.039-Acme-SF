@@ -3,66 +3,66 @@ package acme.entities.sponsorships;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 
+import org.hibernate.validator.constraints.Length;
+
+import acme.client.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Sponsorship {
+public class Sponsorship extends AbstractEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long			id;
+	// Serialisation identifier
+	private static final long	serialVersionUID	= 1L;
 
+	// Attributes
+	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "Code must match pattern '[A-Z]{1,3}-[0-9]{3}'")
-	private String			code;
+	@Pattern(regexp = "[A-Z]{1,3}-//d{3}", message = "El código debe seguir el patrón '[A-Z]{1,3}-[0-9]{3}'")
+	private String				code;
 
 	@NotNull
-	private Date			moment;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Past
+	private Date				moment;
 
 	@NotNull
-	private Date			duration;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				duration;
 
 	@Positive
-	private double			amount;
+	private double				amount;
 
-	@NotBlank
-	private SponsorshipType	sponsorshipType;
+	@NotNull
+	private SponsorshipType		type;
 
+	@NotNull
 	@Email
-	private String			contactEmail;
+	private String				contactEmail;
 
-	private String			furtherInformationLink;
+	@NotNull
+	@Length(max = 255)
+	private String				furtherInformationLink;
 
+	// Relationships
+	@NotNull
+	@Valid
+	@ManyToOne
 
-	public Sponsorship() {
-	}
-
-	public Sponsorship(final String code, final Date moment, final Date duration, final double amount, final SponsorshipType sponsorshipType, final String contactEmail, final String furtherInformationLink) {
-		this.code = code;
-		this.moment = moment;
-		this.duration = duration;
-		this.amount = amount;
-		this.sponsorshipType = sponsorshipType;
-		this.contactEmail = contactEmail;
-		this.furtherInformationLink = furtherInformationLink;
-	}
-
-	@Override
-	public String toString() {
-		return "Sponsorship [id=" + this.id + ", code=" + this.code + ", moment=" + this.moment + ", duration=" + this.duration + ", amount=" + this.amount + ", sponsorshipType=" + this.sponsorshipType + ", contactEmail=" + this.contactEmail
-			+ ", furtherInformationLink=" + this.furtherInformationLink + "]";
-	}
+	private Sponsorship			sponsorship;
 }

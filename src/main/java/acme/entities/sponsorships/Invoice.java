@@ -3,69 +3,65 @@ package acme.entities.sponsorships;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 
+import org.hibernate.validator.constraints.Length;
+
+import acme.client.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Invoice {
+public class Invoice extends AbstractEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long	id;
+	// Serialisation identifier
+	private static final long	serialVersionUID	= 1L;
 
+	// Attributes
+	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}", message = "Code must match pattern 'IN-[0-9]{4}-[0-9]{4}'")
-	private String	code;
+	@Pattern(regexp = "PG-[A-Z]{1,2}-//d{4}", message = "El recordId debe seguir el patrón 'PG-[A-Z]{1,2}-[0-9]{4}'")
+	private String				code;
 
 	@NotNull
-	private Date	registrationTime;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Past
+	private Date				registrationTime;
 
 	@NotNull
-	private Date	dueDate;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				dueDate;
 
 	@Positive
-	private int		quantity;
+	@Min(1)
+	private int					quantity;
 
 	@Positive
-	private double	tax;
+	@Min(1)
+	private double				tax;
 
-	private double	totalAmount;
+	private double				totalAmount;
 
-	private String	furtherInformationLink;
+	@NotNull
+	@Length(max = 255)
+	private String				furtherInformationLink;
 
+	// Relationships
+	@OneToMany
+	@Valid
+	private Invoice				invoice;
 
-	public Invoice() {
-	}
-
-	public Invoice(final String code, final Date registrationTime, final Date dueDate, final int quantity, final double tax, final String furtherInformationLink) {
-		this.code = code;
-		this.registrationTime = registrationTime;
-		this.dueDate = dueDate;
-		this.quantity = quantity;
-		this.tax = tax;
-		this.totalAmount = this.calculateTotalAmount(quantity, tax);
-		this.furtherInformationLink = furtherInformationLink;
-	}
-
-	// Method to calculate total amount
-	private double calculateTotalAmount(final int quantity, final double tax) {
-		return quantity + tax;
-	}
-
-	@Override
-	public String toString() {
-		return "Invoice [id=" + this.id + ", code=" + this.code + ", registrationTime=" + this.registrationTime + ", dueDate=" + this.dueDate + ", quantity=" + this.quantity + ", tax=" + this.tax + ", totalAmount=" + this.totalAmount
-			+ ", furtherInformationLink=" + this.furtherInformationLink + "]";
-	}
 }
