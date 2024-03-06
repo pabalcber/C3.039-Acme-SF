@@ -31,8 +31,7 @@ public class Contract extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Length(min = 5, max = 15)
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "El código debe seguir el patrón '[A-Z]{1,3}-[0-9]{3}'")
+	@Pattern(regexp = "[A-Z]{1,3}-//d{3}", message = "El código debe seguir el patrón '[A-Z]{1,3}-[0-9]{3}'")
 	private String				code;
 
 	@NotNull
@@ -55,15 +54,13 @@ public class Contract extends AbstractEntity {
 	@Valid
 	private Money				budget;
 
+	private Boolean				draftMode;
+
 	// Relationships ----------------------------------------------------------
 
-	/*
-	 * @NotNull
-	 * 
-	 * @Valid
-	 * 
-	 * @ManyToOne(optional = false)
-	 * private Client client;
-	 */
+	// @NotNull
+	// @Valid
+	//@ManyToOne(optional = false)
+	// private Client	client;
 
 }
