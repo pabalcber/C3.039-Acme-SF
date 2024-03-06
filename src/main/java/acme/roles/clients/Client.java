@@ -1,31 +1,28 @@
 
-package acme.entities.contracts;
+package acme.roles.clients;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
-import acme.client.data.AbstractEntity;
-import acme.client.data.datatypes.Money;
+import acme.client.data.AbstractRole;
+import acme.entities.contracts.Contract;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Contract extends AbstractEntity {
+public class Client extends AbstractRole {
+
 	// Serialisation identifier -----------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
@@ -33,32 +30,29 @@ public class Contract extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "El código debe seguir el patrón '[A-Z]{1,3}-[0-9]{3}'")
-	private String				code;
+	@Pattern(regexp = "CLI-[0-9]{4}", message = "Identification debe seguir el patrón 'CLI-[0-9]{4}'")
+	private String				identification;
+
+	@NotBlank
+	@Length(min = 1, max = 76)
+	@Column(unique = true)
+	private String				companyName;
 
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	@Past
-	private Date				instantiationMoment;
+	private ClientType			type;
 
 	@NotBlank
-	@Length(min = 1, max = 76)
-	private String				providerName;
+	@Column(unique = true)
+	private String				email;
 
-	@NotBlank
-	@Length(min = 1, max = 76)
-	private String				customerName;
-
-	@NotBlank
-	@Length(min = 1, max = 76)
-	private String				goals;
-
-	@Valid
-	private Money				budget;
+	@URL
+	private String				furtherInformation;
 
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
+
 	@OneToMany()
-	private List<ProgressLog>	progressLogs;
+	private List<Contract>		contracts;
+
 }

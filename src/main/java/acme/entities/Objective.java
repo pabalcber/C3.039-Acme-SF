@@ -9,38 +9,43 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import acme.client.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Objective {
+public class Objective extends AbstractEntity {
 
-	private Integer			id;
+	// Serialisation identifier -----------------------------------------------
+
+	private static final long	serialVersionUID	= 1L;
+
+	// private Integer			id;
 
 	@NotNull
 	@Past
-	private Date			instantiationMoment;
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@Size(max = 76)
-	private String			title;
+	private String				title;
 
 	@NotBlank
 	@Size(max = 101)
-	private String			description;
+	private String				description;
 
 	@NotBlank
-	private PriorityType	priority;
+	private PriorityType		priority;
 
 	@NotBlank
-	private String			status;
+	private String				status;
 
 	@NotNull
-	private Date			duration;
+	private Date				duration;
 
-	private String			furtherInformationLink;
+	private String				furtherInformationLink;
 
 
 	public Objective() {
@@ -56,9 +61,11 @@ public class Objective {
 		this.furtherInformationLink = furtherInformationLink;
 	}
 
-	@Override
-	public String toString() {
-		return "Objective{" + "id=" + this.id + '\'' + ", instantiationMoment=" + this.instantiationMoment + ", title='" + this.title + '\'' + ", description='" + this.description + '\'' + ", priority='" + this.priority + '\'' + ", status='" + this.status
-			+ '\'' + ", duration=" + this.duration + ", furtherInformationLink='" + this.furtherInformationLink + '\'' + '}';
-	}
+	/*
+	 * @Override
+	 * public String toString() {
+	 * return "Objective{" + "id=" + this.id + '\'' + ", instantiationMoment=" + this.instantiationMoment + ", title='" + this.title + '\'' + ", description='" + this.description + '\'' + ", priority='" + this.priority + '\'' + ", status='" + this.status
+	 * + '\'' + ", duration=" + this.duration + ", furtherInformationLink='" + this.furtherInformationLink + '\'' + '}';
+	 * }
+	 */
 }
