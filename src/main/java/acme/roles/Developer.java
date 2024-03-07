@@ -1,11 +1,11 @@
 
 package acme.roles;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -20,26 +20,26 @@ public class Developer extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@Size(max = 75)
-	@Column(length = 75)
+	@NotNull
+	@Max(75)
 	private String				degree;
 
 	@NotBlank
-	@Size(max = 100)
-	@Column(length = 100)
+	@NotNull
+	@Max(100)
 	private String				specialisation;
 
 	@NotBlank
-	@Size(max = 100)
-	@Column(length = 100)
+	@Max(100)
+	@NotNull
 	private String				skills;
 
 	@Email
 	@NotBlank
+	@NotNull
+	@Max(255)
 	private String				email;
 
-	@Size(max = 255)
-	@Column(length = 255)
-	@NotBlank
+	@Max(255)
 	private String				furtherInformationLink;
 }

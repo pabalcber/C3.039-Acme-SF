@@ -12,8 +12,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -32,24 +32,27 @@ public class Session extends AbstractEntity {
 	@NotBlank
 	@Max(255)
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern 'TS-[A-Z]{1,3}-[0-9]{3}'")
+	@NotNull
 	private String				code;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
+	@Past
 	private Date				timePeriodStart;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
+	@Past
 	private Date				timePeriodEnd;
 
 	@NotBlank
 	@NotNull
-	@Size(max = 75)
+	@Max(75)
 	private String				location;
 
 	@NotBlank
 	@NotNull
-	@Size(max = 75)
+	@Max(75)
 	private String				instructor;
 
 	@NotBlank
@@ -59,8 +62,6 @@ public class Session extends AbstractEntity {
 	private String				mandatoryContactEmail;
 
 	@Max(255)
-	@NotNull
-	@NotBlank
 	private String				furtherInformationLink;
 
 	// Relationships ----------------------------------------------------------

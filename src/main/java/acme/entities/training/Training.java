@@ -13,8 +13,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Length;
-
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,7 +39,7 @@ public class Training extends AbstractEntity {
 	private Date				creationMoment;
 
 	@NotBlank
-	@Length(max = 100)
+	@Max(100)
 	@NotNull
 	private String				details;
 
@@ -53,9 +51,7 @@ public class Training extends AbstractEntity {
 	@NotNull
 	private Date				updateMoment;
 
-	@NotNull
 	@Max(255)
-	@NotBlank
 	private String				furtherInformationLink;
 
 	@NotNull
