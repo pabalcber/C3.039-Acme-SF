@@ -39,8 +39,10 @@ public class Project extends AbstractEntity {
 	@NotBlank
 	@Length(max = 100)
 	private String				abstractPj;
+	@NotNull
 	@Length(max = 255)
 	private String				indication;
+	@NotNull
 	@Range(min = 0)
 	private Money				cost;
 	@URL
