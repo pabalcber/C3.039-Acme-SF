@@ -1,11 +1,9 @@
 
 package acme.entities.projects;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -17,7 +15,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
-import acme.entities.userStories.UserStory;
+import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,10 +39,12 @@ public class Project extends AbstractEntity {
 	@NotBlank
 	@Length(max = 100)
 	private String				abstractPj;
+	@Length(max = 255)
 	private String				indication;
 	@Range(min = 0)
 	private Money				cost;
 	@URL
+	@Length(max = 255)
 	private String				optionalLink;
 	//system must reject every project with fatal errors
 
@@ -52,7 +52,7 @@ public class Project extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 	@Valid
-	@OneToMany
+	@ManyToOne
 	@NotNull
-	private List<UserStory>		userStories;
+	private Manager				manager;
 }

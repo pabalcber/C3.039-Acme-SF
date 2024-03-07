@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
@@ -25,17 +26,22 @@ public class Risk extends AbstractEntity {
 	@Column(unique = true)
 	@NotBlank
 	@Pattern(regexp = "R-[0-9]{3}", message = "")
+	@Length(max = 255)
 	private String				reference;
 	@PastOrPresent
+	@NotNull
 	private Date				identificationDate;
 	@Range(min = 0)
+	@NotNull
 	private int					impact;
+	@NotNull
 	@Range(min = 0, max = 1)
 	private Double				probability;
 	@NotBlank
 	@Length(max = 100)
 	private String				description;
 	@URL
+	@Length(max = 255)
 	private String				optionalLink;
 	// Derived attributes -----------------------------------------------------
 	@Transient
