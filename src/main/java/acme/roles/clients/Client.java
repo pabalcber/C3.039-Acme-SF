@@ -27,7 +27,7 @@ public class Client extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "CLI-//d{4}", message = "Identification debe seguir el patrón 'CLI-[0-9]{4}'")
+	@Pattern(regexp = "CLI-[0-9]{4}", message = "Identification debe seguir el patrón 'CLI-[0-9]{4}'")
 	private String				identification;
 
 	@NotBlank
@@ -44,7 +44,7 @@ public class Client extends AbstractRole {
 	private String				email;
 
 	@URL
-	@Length(min = 1, max = 255)
+	@Length(max = 255)
 	private String				furtherInformation;
 
 	// Derived attributes -----------------------------------------------------
