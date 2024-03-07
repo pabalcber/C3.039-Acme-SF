@@ -1,6 +1,7 @@
 
 package acme.entities.dashboards;
 
+import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.Valid;
@@ -9,7 +10,12 @@ import javax.validation.constraints.NotNull;
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
 import acme.roles.Manager;
+import lombok.Getter;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
 public class ManagerDashboard extends AbstractEntity {
 	// Serialisation identifier -----------------------------------------------
 
