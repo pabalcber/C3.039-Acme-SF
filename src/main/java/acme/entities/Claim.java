@@ -10,8 +10,10 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import acme.client.data.AbstractEntity;
+
 @Entity
-public class Claim {
+public class Claim extends AbstractEntity {
 
 	@NotBlank
 	@Pattern(regexp = "C-[0-9]{4}")
