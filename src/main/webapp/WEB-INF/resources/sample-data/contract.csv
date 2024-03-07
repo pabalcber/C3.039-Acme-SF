@@ -1,0 +1,82 @@
+key,code,instantiation-moment,provider-name,customer-name,goals,budget,draft-mode,key:client
+contract-01,ABC-001,2000/01/01 00:00,Provider1,Customer1,Goal1,"EUR 1,437.17",false,client-01
+contract-02,DEF-002,2000/01/01 10:05,Provider2,Customer2,Goal2,"USD 2,749.03",false,client-02
+contract-03,GHI-003,2000/02/17 23:59,Provider3,Customer3,Goal3,"GBP 3,234.42",false,client-03
+contract-04,JKL-004,2000/02/18 00:00,Provider4,Customer4,Goal4,"BGP 4,456.68",false,client-04
+contract-05,MNO-005,2000/07/31 23:30,Provider5,Customer5,Goal5,"THB 5,112.91",false,client-05
+contract-06,PQR-006,2000/07/31 23:59,Provider6,Customer6,Goal6,"CAD 6,258.55",false,client-06
+contract-07,STU-007,2000/08/01 00:00,Provider7,Customer7,Goal7,"EUR 7,056.29",false,client-07
+contract-08,VWX-008,2001/08/01 00:30,Provider8,Customer8,Goal8,"USD 8,903.05",false,client-08
+contract-09,YZA-009,2002/01/09 23:59,Provider9,Customer9,Goal9,"GBP 9,749.70",false,client-09
+contract-10,BCD-010,2004/04/10 18:34,Provider10,Customer10,Goal10,"BGP 10,423.10",false,client-10
+contract-11,EFG-011,2005/09/11 19:26,Provider11,Customer11,Goal11,"THB 11,538.82",false,client-11
+contract-12,HIJ-012,2006/05/12 20:34,Provider12,Customer12,Goal12,"CAD 12,632.47",false,client-12
+contract-13,KLM-013,2022/06/13 21:50,Provider13,Customer13,Goal13,"EUR 13,509.06",true,client-13
+contract-14,NOP-014,2022/07/14 00:00,Provider14,Customer14,Goal14,"USD 14,518.13",true,client-14
+contract-15,QRS-015,2022/07/15 23:59,Provider15,Customer15,Goal15,"GBP 15,776.58",true,client-15
+contract-16,TUV-016,2022/07/16 00:00,Provider16,Customer16,Goal16,"BGP 16,741.73",true,client-16
+contract-17,VWX-017,2022/07/29 23:00,Provider17,Customer17,Goal17,"THB 17,147.24",true,client-17
+contract-18,YZA-018,2022/07/29 23:30,Provider18,Customer18,Goal18,"CAD 18,228.36",false,client-18
+contract-19,BCD-019,2022/07/29 23:59,Provider19,Customer19,Goal19,"EUR 19,449.72",false,client-19
+contract-20,EFG-020,2001/01/20 19:00,Provider20,C,Goal20,"EUR 20,600.51",false,client-20
+contract-21,HIJ-021,2001/02/21 20:00,Provider21,Cu,Goal21,"USD 21,158.88",false,client-21
+contract-22,KLM-022,2001/03/22 21:00,Provider22,Cus,Goal22,"GBP 22,000.61",false,client-22
+contract-23,NOP-023,2002/04/23 22:00,Provider23,Cust,Goal23,"BGP 23,359.31",false,client-23
+contract-24,QRS-024,2002/05/24 23:00,Provider24,Custo,Goal24,"THB 24,358.66",false,client-24
+contract-25,TUV-025,2002/06/25 07:00,Provider25,Custom,Goal25,"CAD 25,516.19",false,client-25
+contract-26,VWX-026,2003/07/26 08:00,Provider26,Custome,Goal26,"EUR 26,489.94",false,client-26
+contract-27,YZA-027,2003/08/27 09:00,Provider27,Customer,Goal27,"USD 27,001.40",false,client-27
+contract-28,BCD-028,2003/09/28 10:00,Provider28,Customer2,Goal28,"GBP 28,771.72",false,client-28
+contract-29,EFG-029,2017/10/29 11:00,Provider29,Loger customer name I,Goal29,"BGP 29,893.02",false,client-29
+contract-30,HIJ-030,2017/11/30 12:00,Provider30,Loger customer name II,Goal30,"THB 30,400.27",false,client-30
+contract-31,KLM-031,2017/12/31 13:00,Provider31,Loger customer name III,Goal31,"CAD 31,805.75",false,client-31
+contract-32,NOP-032,2004/01/01 07:00,Provider32,Loger customer name IV,Goal32,"EUR 32,322.09",false,client-32
+contract-33,QRS-033,2004/02/02 08:00,Provider33,Loger customer name IV,Goal33,"USD 33,679.63",false,client-33
+contract-34,TUV-034,2004/03/03 09:00,Provider34,Medium Longitud Customer Name 1,Goal34,"GBP 34,108.39",false,client-34
+contract-35,EFG-038,2005/07/07 13:00,Provider38,Medium Longitud Customer Name 1,Goal38,"EUR 38,287.76",false,client-35
+contract-36,HIJ-039,2005/08/08 14:00,Provider39,Im trying with a customer name not that long as the next one but still long,Goal39,"EUR 39,265.04",false,client-36
+contract-37,KLM-040,2005/09/09 15:00,Provider40,Im trying with a customer name extremely long to see if itcanhave76caracters,Goal40,"USD 40,460.60",false,client-37
+contract-38,NOP-041,2006/10/10 16:00,P,Customer41,Goal41,"GBP 41,760.26",false,client-38
+contract-39,QRS-042,2006/11/11 17:00,Pr,Customer42,Goal42,"BGP 42,033.52",false,client-39
+contract-40,TUV-043,2006/12/12 18:00,Pro,Customer43,Goal43,"THB 43,852.87",false,client-40
+contract-41,VWX-044,2018/01/13 19:00,Prov,Customer44,Goal44,"EUR 44,339.11",false,client-41
+contract-42,YZA-045,2018/02/14 20:00,Provi,Customer45,Goal45,"EUR 45,096.69",false,client-42
+contract-43,BCD-046,2018/03/15 21:00,Provid,Customer46,Goal46,"USD 46,775.38",false,client-43
+contract-44,EFG-047,2007/04/16 22:00,Provide,Customer47,Goal47,"GBP 47,022.64",false,client-44
+contract-45,HIJ-048,2007/05/17 23:00,Provider,Customer48,Goal48,"BGP 48,072.21",false,client-45
+contract-46,KLM-049,2007/06/18 07:00,Provider4,Customer49,Goal49,"THB 49,944.08",false,client-46
+contract-47,NOP-050,2019/07/19 08:00,Normal Provider Name I,Customer50,Goal50,"CAD 50,619.67", false,client-47
+contract-48,HIJ-057,2019/02/26 08:00,This is a long provider name,Customer57,Goal57,"EUR 57,135.71",true,client-48
+contract-49,KLM-058,2019/03/27 09:00,This is a long provider name but not that much,Customer58,Goal58,"USD 58,647.01",true,client-49
+contract-50,NOP-059,2020/04/28 10:00,Im trying with a provider name not that long as the next one but still long,Customer59,Goal59,"GBP 59,820.48",true,client-50
+contract-51,QRS-060,2020/05/01 11:00,Im trying with a provider name extremely long to see if itcanhave76caracters,Customer60,Goal60,"BGP 60,010.95",true,client-01
+contract-52,TUV-061,2020/06/02 12:00,Provider61,Customer61,G,"THB 61,050.16",true,client-02
+contract-53,VWX-062,2010/07/03 13:00,Provider62,Customer62,Go,"CAD 62,910.35",false,client-03
+contract-54,YZA-063,2010/08/04 14:00,Provider63,Customer63,Goa,"EUR 63,680.83",false,client-04
+contract-55,BCD-064,2010/09/05 15:00,Provider64,Customer64,Goal,"USD 64,200.59",false,client-05
+contract-56,EFG-065,2015/10/06 16:00,Provider65,Customer65,Goal6,"GBP 65,034.15",false,client-06
+contract-57,KLM-067,2015/12/08 18:00,Provider67,Customer67,Short Name,"THB 67,991.44",false,client-07
+contract-58,TUV-070,2015/03/11 21:00,Provider70,Customer70,Normal Goal Name,"USD 70,970.14",false,client-08
+contract-59,KLM-076,2016/09/17 10:00,Provider76,Customer76,This is a long goal name,"EUR 76,030.50",false,client-09
+contract-60,NOP-077,2016/10/18 11:00,Provider77,Customer77,This is a long goal name but not that much,"USD 77,499.96",false,client-10
+contract-61,QRS-078,2016/11/19 12:00,Provider78,Customer78,“I am trying a goal extremely long I need to reach 101 characters max length allowed by restriction“,"GBP 78,307.32",false,client-11
+contract-62,TUV-079,2011/12/20 13:00,Provider79,Customer79,“I am trying a goal extremely long I need to reach 101 characters max length allowed by restriction.“,"BGP 79,842.53",false,client-12
+contract-63,VWX-080,2011/01/21 07:00,Provider80,Customer80,Goal80,"THB 0.00",false,client-13
+contract-64,YZA-081,2011/02/22 08:00,Provider81,Customer81,Goal81,"CAD 0.00",false,client-14
+contract-65,BCD-082,2021/03/23 09:00,Provider82,Customer82,Goal82,"EUR 0.00",true,client-15
+contract-66,EFG-083,2021/04/24 10:00,Provider83,Customer83,Goal83,"USD 0.00",true,client-16
+contract-67,HIJ-084,2021/05/25 11:00,Provider84,Customer84,Goal84,"GBP 0.00",true,client-17
+contract-68,KLM-085,2022/06/26 12:00,Provider85,Customer85,Goal85,"BGP 0.00",true,client-18
+contract-69,NOP-086,2022/01/27 13:00,Provider86,Customer86,Goal86,"THB 0.50",true,client-19
+contract-70,QRS-087,2022/02/28 14:00,Provider87,Customer87,Goal87,"CAD 0.50",true,client-20
+contract-71,TUV-088,2022/03/29 15:00,Provider88,Customer88,Goal88,"EUR 0.50",true,client-21
+contract-72,VWX-089,2022/04/30 16:00,Provider89,Customer89,Goal89,"USD 0.50",true,client-22
+contract-73,YZA-090,2022/05/31 17:00,Provider90,Customer90,Goal90,"GBP 0.50",true,client-23
+contract-74,BCD-091,2022/06/01 18:00,Provider91,Customer91,Goal91,"BGP 0.50",true,client-24
+contract-75,EFG-092,2022/01/02 19:00,Provider92,Customer92,Goal92,"THB 1.00",true,client-25
+contract-76,HIJ-093,2022/02/03 20:00,Provider93,Customer93,Goal93,"CAD 1.00",true,client-26
+contract-77,KLM-094,2022/03/04 21:00,Provider94,Customer94,Goal94,"EUR 1.00",true,client-27
+contract-78,NOP-095,2022/04/05 22:00,Provider95,Customer95,Goal95,"USD 1.00",true,client-28
+contract-79,QRS-096,2022/05/06 23:00,Provider96,Customer96,Goal96,"GBP 1.00",true,client-29
+contract-80,TUV-097,2022/06/07 17:00,Provider97,Customer97,Goal97,"BGP 1.00",true,client-30
+contract-81,VWX-098,2022/01/08 18:00,Provider98,Customer98,Goal98,"THB 1.00",true,client-31
