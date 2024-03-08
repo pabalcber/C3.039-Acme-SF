@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>81</x>
+      <y>45</y>
+      <w>342</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>transparency=80
+&lt;&lt;Entity&gt;&gt;
+Project
+--
+-serialVersionUID: Long
+-code: String {NotBlank, Unique, Pattern(“[A-Z]{3}-[0-9]{4}”)}
+-title: String {NotBlank, Length(0,75)}
+-abstract: String {NotBlank, Length(0,100)}
+-indication: String
+-cost: Money (Min(0))
+-optionalLink: String {URL}
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>279</y>
+      <w>306</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>transparency=80
+&lt;&lt;Entity&gt;&gt;
+UserStory
+--
+-serialVersionUID: Long
+-title: String {NotBlank, Length(0,75)}
+-description: String {NotBlank, Length(0,100)}
+-estimatedCost: Double {Min(0)}
+-acceptanceCriteria: String {NotBlank, Length(0,100)}
+-priority: Priority
+-optionalLink: String {URL}
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>693</x>
+      <y>288</y>
+      <w>270</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>transparency=80
+&lt;&lt;Form&gt;&gt;
+ManagerDashboard
+--
+-/serialVersionUID: Long {Transient}
+-/mustUserStories: int {Transient}
+-/shouldUserStories: int {Transient}
+-/couldUserStories: int {Transient}
+-/wontUserStories: int {Transient}
+-/averageEstimatedCosts: Double {Transient}
+-/deviationEstimatedCosts: Double {Transient}
+-/minimumEstimatedCosts: Double {Transient}
+-/maximumEstimatedCosts: Double {Transient}
+
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>414</x>
+      <y>90</y>
+      <w>333</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+elicited by</panel_attributes>
+    <additional_attributes>10.0;20.0;350.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>468</x>
+      <y>315</y>
+      <w>72</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>transparency=80
+&lt;&lt;Enum&gt;&gt;
+Priority
+--
++MUST
++SHOULD
++COULD
++WONT
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>729</x>
+      <y>45</y>
+      <w>198</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>transparency=80
+&lt;&lt;Role&gt;&gt;
+Manager
+--
+-serialVersionUID: Long
+-mustUserStories: int
+-shouldUserStories: int
+-couldUserStories: int
+-wontUserStories: int
+-averageEstimatedCosts: Double
+-deviationEstimatedCosts: Double
+-minimumEstimatedCosts: Double
+-maximumEstimatedCosts: Double
+
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>477</x>
+      <y>162</y>
+      <w>135</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>bg=red
+transparency=80
+Projects containing
+fatal errors must
+be rejected by 
+the system</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>414</x>
+      <y>180</y>
+      <w>81</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>819</x>
+      <y>207</y>
+      <w>99</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1= 1
+m2= 1
+
+Belongs to ^
+</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>243</x>
+      <y>180</y>
+      <w>135</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-x
+m1=1..n
+m2=1
+aggregates several</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+</diagram>
