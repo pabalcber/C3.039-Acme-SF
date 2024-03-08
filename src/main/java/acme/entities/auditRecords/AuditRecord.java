@@ -30,7 +30,7 @@ public class AuditRecord extends AbstractEntity {
 
 	@NotBlank
 	@Unique
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
 	@NotNull
 	private String				code;
 
