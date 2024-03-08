@@ -3,9 +3,9 @@ package acme.roles;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -23,26 +23,26 @@ public class Developer extends AbstractEntity {
 
 	@NotBlank
 	@NotNull
-	@Max(75)
+	@Size(max = 75)
 	private String				degree;
 
 	@NotBlank
 	@NotNull
-	@Max(100)
+	@Size(max = 100)
 	private String				specialisation;
 
 	@NotBlank
-	@Max(100)
+	@Size(max = 100)
 	@NotNull
 	private String				skills;
 
 	@Email
 	@NotBlank
 	@NotNull
-	@Max(255)
+	@Size(max = 255)
 	private String				email;
 
-	@Max(255)
+	@Size(max = 255)
 	@URL
 	private String				furtherInformationLink;
 }

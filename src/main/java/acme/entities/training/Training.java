@@ -7,11 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -31,7 +31,7 @@ public class Training extends AbstractEntity {
 	@Column(unique = true)
 	@NotBlank
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern 'TS-[A-Z]{1,3}-[0-9]{3}'")
-	@Max(255)
+	@Size(max = 255)
 	@NotNull
 	private String				code;
 
@@ -41,7 +41,7 @@ public class Training extends AbstractEntity {
 	private Date				creationMoment;
 
 	@NotBlank
-	@Max(100)
+	@Size(max = 100)
 	@NotNull
 	private String				details;
 
@@ -53,7 +53,7 @@ public class Training extends AbstractEntity {
 	@NotNull
 	private Date				updateMoment;
 
-	@Max(255)
+	@Size(max = 255)
 	@URL
 	private String				furtherInformationLink;
 

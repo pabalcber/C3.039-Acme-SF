@@ -6,9 +6,9 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -34,7 +34,7 @@ public class DeveloperDashboard extends AbstractEntity {
 	private Integer				totalTrainingSessions;
 
 	@NotNull
-	@Max(255)
+	@Size(max = 255)
 	@NotBlank
 	private String				trainingSessionsLink;
 

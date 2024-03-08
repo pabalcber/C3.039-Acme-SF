@@ -9,11 +9,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -32,7 +32,7 @@ public class Session extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Max(255)
+	@Size(max = 255)
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern 'TS-[A-Z]{1,3}-[0-9]{3}'")
 	@NotNull
 	private String				code;
@@ -49,21 +49,21 @@ public class Session extends AbstractEntity {
 
 	@NotBlank
 	@NotNull
-	@Max(75)
+	@Size(max = 75)
 	private String				location;
 
 	@NotBlank
 	@NotNull
-	@Max(75)
+	@Size(max = 75)
 	private String				instructor;
 
 	@NotBlank
 	@Email
-	@Max(255)
+	@Size(max = 75)
 	@NotNull
 	private String				mandatoryContactEmail;
 
-	@Max(255)
+	@Size(max = 75)
 	@URL
 	private String				furtherInformationLink;
 
