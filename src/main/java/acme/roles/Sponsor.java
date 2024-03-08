@@ -3,7 +3,8 @@ package acme.roles;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
 
 import acme.client.data.AbstractRole;
 import lombok.Getter;
@@ -20,11 +21,11 @@ public class Sponsor extends AbstractRole {
 
 	// Attributes
 	@NotBlank
-	@Size(max = 76)
+	@Length(max = 76)
 	private String				name;
 
 	@NotBlank
-	@Size(max = 101)
+	@Length(max = 101)
 	private String				benefits;
 
 	private String				optionalWebPage;

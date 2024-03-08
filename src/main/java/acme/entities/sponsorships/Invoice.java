@@ -5,7 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -54,6 +54,7 @@ public class Invoice extends AbstractEntity {
 	@PositiveOrZero
 	private double				tax;
 
+	@NotNull
 	private double				totalAmount;
 
 	@Length(max = 255)
@@ -61,8 +62,8 @@ public class Invoice extends AbstractEntity {
 
 	// Relationships
 	@NotNull
-	@OneToMany
 	@Valid
-	private Invoice				invoice;
+	@ManyToOne(optional = false)
+	private Sponsorship			sponsorship;
 
 }

@@ -3,3 +3,8 @@ user-account-consumer-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', 
 user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'mary@acme.com'}",consumer2,consumer2
 user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider', email: 'laurel@acme.com'}",provider1,provider1
 user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
+user-account-Sponsor-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",sponsor1,sponsor1
+user-account-Sponsor-02,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",sponsor2,sponsor2
+user-account-Sponsor-03,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",sponsor3,sponsor3
+user-account-Sponsor-04,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",sponsor4,sponsor4
+user-account-Sponsor-05,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",sponsor5,sponsor5
