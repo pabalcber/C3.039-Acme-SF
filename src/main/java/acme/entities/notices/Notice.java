@@ -58,6 +58,7 @@ public class Notice extends AbstractEntity {
 	private String				email;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	// Derived attributes -----------------------------------------------------
@@ -82,7 +83,7 @@ public class Notice extends AbstractEntity {
 
 	@Valid
 	@ManyToOne(optional = true)
-	private Administrator		admin;
+	private Administrator		administrator;
 
 	@Valid
 	@ManyToOne(optional = true)
