@@ -20,6 +20,7 @@ import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.accounts.Administrator;
 import acme.entities.projects.Project;
 import lombok.Getter;
 import lombok.Setter;
@@ -67,4 +68,9 @@ public class Risk extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Project				project;
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Administrator		admin;
 }
