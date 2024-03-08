@@ -55,3 +55,5 @@ user-account-client-49,true,"UserIdentity{name: 'Client', surname: 'Forty-Nine',
 user-account-client-50,true,"UserIdentity{name: 'Client', surname: 'Fifty', email: 'client50@acme.com'}",client50,client50
 user-account-manager-01,true,"UserIdentity{name: 'Manager', surname: 'M-One', email: 'manager1@acme.com'}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: 'Manager', surname: 'M-Two', email: 'manager2@acme.com'}",manager2,manager2
+user-account-auditor-01,true,"UserIdentity{name: 'Miguel', surname: 'Pol', email: 'miguelPol@acme.com'}",auditor1,auditor1
+user-account-auditor-02,true,"UserIdentity{name: 'Rafa', surname: 'Maya', email: 'rafaMaya@acme.com'}",auditor2,auditor2
