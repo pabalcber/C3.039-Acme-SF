@@ -57,3 +57,5 @@ user-account-manager-01,true,"UserIdentity{name: 'Manager', surname: 'M-One', em
 user-account-manager-02,true,"UserIdentity{name: 'Manager', surname: 'M-Two', email: 'manager2@acme.com'}",manager2,manager2
 user-account-auditor-01,true,"UserIdentity{name: 'Miguel', surname: 'Pol', email: 'miguelPol@acme.com'}",auditor1,auditor1
 user-account-auditor-02,true,"UserIdentity{name: 'Rafa', surname: 'Maya', email: 'rafaMaya@acme.com'}",auditor2,auditor2
+user-account-administrator-02,true,"UserIdentity{name: 'Admin', surname: '1', email: 'admin1@acme.com'}",administrator1,administrator1
+user-account-administrator-03,true,"UserIdentity{name: 'Admin', surname: '2', email: 'admin2@acme.com'}",administrator2,administrator2
