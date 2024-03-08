@@ -1,0 +1,4 @@
+key,code,instantiationMoment,heading,description,department,emailAddress,link,key:project
+claim-01,C-0001,23/09/15 08:30,Introduction to Java Programming,This course provides an introduction to Java programming language.,Technology Department,johndoe@example.com,http://example.com/java_intro,project-01
+claim-02,C-0002,23/10/20 10:00,Advanced Web Development Course,A comprehensive course on advanced web development techniques.,Web Development Department,janedoe@example.com,http://example.com/web_dev_course,project-02
+claim-03,C-0003,23/11/05 14:00,Machine Learning Fundamentals,A beginner-friendly course on machine learning fundamentals.,Data Science Department,alice@example.com,http://example.com/ml_fundamentals,project-03
