@@ -30,7 +30,7 @@ public class Project extends AbstractEntity {
 
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "[A-Z]{3}-[0-9]{4}", message = "")
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{4}$", message = "")
 	private String				code;
 	@NotBlank
 	@Length(max = 75)
