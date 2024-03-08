@@ -1,0 +1,4 @@
+key,instantiationMoment,title,description,priority,status,startDuration,finishDuration,furtherInformationLink,key:project,key:consumer,key:provider,key:client,key:auditor,key:admin,key:manager
+objective-01,2002/09/15 08:30,Complete market research,Conduct comprehensive market research for the new product launch,HIGH,true,2023/11/01 09:00,2023/12/15 17:00,http://example.com/market_research,project-01,null,null,null,null,null,null
+objective-02,2002/09/20 10:00,Implement customer feedback system,Develop and implement a customer feedback system for improving services,MEDIUM,true,2023/09/25 08:00,2023/10/25 17:00,http://example.com/feedback_system,project-01,null,null,null,null,null,null
+objective-03,2003/08/10 14:00,Optimize website performance,Identify and resolve performance bottlenecks on the company website,HIGH,true,2023/08/15 09:00,2023/09/15 17:00,http://example.com/website_performance,project-01,null,null,null,null,null,null

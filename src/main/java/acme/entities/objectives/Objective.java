@@ -42,10 +42,12 @@ public class Objective extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 76)
+	@NotNull
 	private String				title;
 
 	@NotBlank
 	@Length(max = 101)
+	@NotNull
 	private String				description;
 
 	@NotNull
