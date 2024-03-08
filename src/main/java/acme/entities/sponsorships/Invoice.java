@@ -46,19 +46,21 @@ public class Invoice extends AbstractEntity {
 	@Future
 	private Date				dueDate;
 
+	@NotNull
 	@PositiveOrZero
 	private int					quantity;
 
+	@NotNull
 	@PositiveOrZero
 	private double				tax;
 
 	private double				totalAmount;
 
-	@NotNull
 	@Length(max = 255)
 	private String				link;
 
 	// Relationships
+	@NotNull
 	@OneToMany
 	@Valid
 	private Invoice				invoice;

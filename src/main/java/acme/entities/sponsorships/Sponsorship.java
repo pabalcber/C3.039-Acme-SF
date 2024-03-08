@@ -47,18 +47,17 @@ public class Sponsorship extends AbstractEntity {
 	@Future
 	private Date				duration;
 
+	@NotNull
 	@Positive
 	private double				amount;
 
 	@NotNull
 	private SponsorshipType		type;
 
-	@NotNull
 	@Email
 	@Length(max = 255)
 	private String				contactEmail;
 
-	@NotNull
 	@Length(max = 255)
 	private String				link;
 
