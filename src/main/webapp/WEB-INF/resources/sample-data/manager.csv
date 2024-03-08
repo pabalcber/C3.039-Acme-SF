@@ -1,3 +1,3 @@
-key,degree,overview,certificationsList,optionalLink
-manager1,"Ing. Inf. Software","Programador y analista","Certificado de conocimientos avanzados en Java",
-manager2,"Ing. de Telecomunicaciones","Experto en redes","Certificación de Python de nivel alto",
+key,degree,overview,certificationsList,OptionalLink,key:user-account
+manager1,Ing. Inf. Software,Programador y analista,"Cerificado de conocimientos en java, Certificado de Python",,user-account-manager-01
+manager2,Ing. de Telecomunicaciones,Experto en redes,"Certificado de Python nivel alto",,user-account-manager-02

@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
@@ -50,7 +49,7 @@ public class Risk extends AbstractEntity {
 	@Length(max = 255)
 	private String				optionalLink;
 	// Derived attributes -----------------------------------------------------
-	@Transient
-	private Double				value				= this.impact * this.probability;
+	//@Transient
+	//private Double				value				= this.impact * this.probability;
 	// Relationships ----------------------------------------------------------
 }
