@@ -31,9 +31,11 @@ public class Sponsor extends AbstractRole {
 	private String				benefits;
 
 	@URL
+	@Length(max = 255)
 	private String				optionalWebPage;
 
 	@Email
+	@Length(max = 255)
 	private String				optionalEmailContact;
 
 	// Relationships
