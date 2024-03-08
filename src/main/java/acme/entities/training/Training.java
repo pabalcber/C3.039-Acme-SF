@@ -1,20 +1,16 @@
 
-package acme.entities.sponsorships;
+package acme.entities.training;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -26,46 +22,42 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Invoice extends AbstractEntity {
+public class Training extends AbstractEntity {
+	// Serialisation identifier -----------------------------------------------
 
-	// Serialisation identifier
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes
+	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "PG-[A-Z]{1,2}-//d{4}", message = "El recordId debe seguir el patrón 'PG-[A-Z]{1,2}-[0-9]{4}'")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern '[A-Z]{1,3}-[0-9]{3}'")
+	@Length(max = 255)
+	@NotNull
 	private String				code;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	private Date				registrationTime;
+	private Date				creationMoment;
+
+	@NotBlank
+	@Length(max = 100)
+	@NotNull
+	private String				details;
 
 	@NotNull
+	private difficultyLevelType	difficultyLevel;
+
 	@Temporal(TemporalType.TIMESTAMP)
-	@Future
-	private Date				dueDate;
-
+	@Past
 	@NotNull
-	@PositiveOrZero
-	private int					quantity;
+	private Date				updateMoment;
 
-	@NotNull
-	@PositiveOrZero
-	private double				tax;
-
-	@NotNull
-	private double				totalAmount;
-
-	@URL
 	@Length(max = 255)
-	private String				link;
+	@URL
+	private String				furtherInformationLink;
 
-	// Relationships
 	@NotNull
-	@Valid
-	@ManyToOne(optional = false)
-	private Sponsorship			sponsorship;
+	private Integer				estimatedTotalTime;
 
 }
