@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.notices;
 
 import java.util.Date;
 
@@ -10,7 +10,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -36,16 +35,15 @@ public class Notice extends AbstractEntity {
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@Length(min = 1, max = 75)
+	@Length(min = 1, max = 76)
 	private String				title;
 
 	@NotBlank
-	@Length(min = 1, max = 75)
-	@Pattern(regexp = "^\\S+-\\S+,\\s+\\S+$", message = "El autor debe tener el formato '<username>-<surname, name>'")
+	@Length(min = 1, max = 76)
 	private String				author;
 
 	@NotBlank
-	@Length(min = 1, max = 100)
+	@Length(min = 1, max = 101)
 	private String				message;
 
 	@Email
