@@ -18,14 +18,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.client.data.accounts.Administrator;
-import acme.client.data.accounts.Anonymous;
 import acme.entities.projects.Project;
-import acme.roles.Auditor;
-import acme.roles.Consumer;
-import acme.roles.Manager;
-import acme.roles.Provider;
-import acme.roles.clients.Client;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -71,33 +64,5 @@ public class Claim extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Project				project;
-
-	@Valid
-	@ManyToOne(optional = true)
-	private Consumer			consumer;
-
-	@Valid
-	@ManyToOne(optional = true)
-	private Provider			provider;
-
-	@Valid
-	@ManyToOne(optional = true)
-	private Client				client;
-
-	@Valid
-	@ManyToOne(optional = true)
-	private Auditor				auditor;
-
-	@Valid
-	@ManyToOne(optional = true)
-	private Administrator		admin;
-
-	@Valid
-	@ManyToOne(optional = true)
-	private Manager				manager;
-
-	@Valid
-	@ManyToOne(optional = true)
-	private Anonymous			anonymus;
 
 }
