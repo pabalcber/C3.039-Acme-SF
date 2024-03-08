@@ -1,0 +1,18 @@
+key,moment,display-start-moment,display-end-moment,picture,slogan,target
+banner-01,2022/07/29 00:00,2023/08/06 00:00,2024/08/13 00:00,https://ejemplo.com/imagen.jpg, Interesting HOLA!,https://ejemplo.com/offer
+banner-02,2020/02/28 23:59,2023/08/06 00:00,2024/08/13 00:00,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-03,2021/12/31 12:00,2023/08/06 00:00,2024/08/13 00:00,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-04,2022/07/29 23:59,2023/08/06 00:00,2024/08/13 00:00,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-05,2022/07/30 00:00,2023/08/06 00:00,2024/08/13 00:00,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-06,2022/07/29 00:00,2024/02/29 00:00,2024/08/13 00:00,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-07,2022/07/29 23:59,2023/12/31 23:59,2024/08/13 00:00,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-08,2022/07/29 23:59,2024/02/28 23:59,2024/08/13 00:00,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-09,2022/07/29 00:00,2022/07/29 00:00,2024/08/13 00:00,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-10,2022/07/29 00:00,2023/08/06 00:00,2024/02/29 00:00,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-11,2022/07/29 00:00,2023/08/06 00:00,2024/12/31 23:59,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-12,2022/07/29 00:00,2023/08/06 00:00,2023/08/13 00:00,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-13,2022/07/29 00:00,2023/08/06 00:00,2222/07/29 00:00,https://ejemplo.com/imagen.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-14,2022/07/29 00:00,2023/08/06 00:00,2024/08/13 00:00,ftp://example.com/image.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-15,2022/07/29 00:00,2023/08/06 00:00,2024/08/13 00:00,https://example.com/dsadasdsadasdasdasdasdasdasdasmno.jpg, Interesting Slogan!,https://ejemplo.com/offer
+banner-16,2022/07/29 00:00,2023/08/06 00:00,2024/08/13 00:00,ftp://example.com/22/image.jpg,Interesting Slogan!,https://ejemplo.com/offer
+banner-17,2022/07/29 00:00,2023/08/06 00:00,2024/08/13 00:00,http://username@example.com/image.jpg,Interesting Slogan!,https://ejemplo.com/offer
