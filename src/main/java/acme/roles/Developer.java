@@ -7,6 +7,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.URL;
+
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,5 +43,6 @@ public class Developer extends AbstractEntity {
 	private String				email;
 
 	@Max(255)
+	@URL
 	private String				furtherInformationLink;
 }
