@@ -18,13 +18,14 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
+		<!--
 		<acme:menu-option code="master.menu.pabalcber" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.pabalcber.favourite-link" action="https://github.com/pabalcber"/>
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.maravimaq" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.maravimaq.favourite-link" action="https://github.com/maravimaq"/>
 		</acme:menu-option>
-<acme:menu-option code="master.menu.sheche1" access="isAnonymous()">
+		<acme:menu-option code="master.menu.sheche1" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.sheche1.favourite-link" action="https://github.com/sheche1"/>
 		</acme:menu-option>
 		
@@ -34,7 +35,7 @@
 		<acme:menu-option code="master.menu.marbarmar16" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.marbarmar16.favourite-link" action="https://github.com/meryknows"/>
 		</acme:menu-option>
-		
+		-->
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
