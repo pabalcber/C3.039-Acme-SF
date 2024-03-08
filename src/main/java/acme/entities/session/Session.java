@@ -13,8 +13,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -33,7 +33,7 @@ public class Session extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Size(max = 255)
+	@Length(max = 255)
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern 'TS-[A-Z]{1,3}-[0-9]{3}'")
 	@NotNull
 	private String				code;
@@ -50,21 +50,21 @@ public class Session extends AbstractEntity {
 
 	@NotBlank
 	@NotNull
-	@Size(max = 75)
+	@Length(max = 75)
 	private String				location;
 
 	@NotBlank
 	@NotNull
-	@Size(max = 75)
+	@Length(max = 75)
 	private String				instructor;
 
 	@NotBlank
 	@Email
-	@Size(max = 75)
+	@Length(max = 75)
 	@NotNull
 	private String				mandatoryContactEmail;
 
-	@Size(max = 75)
+	@Length(max = 75)
 	@URL
 	private String				furtherInformationLink;
 

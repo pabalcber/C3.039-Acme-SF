@@ -11,8 +11,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -31,7 +31,7 @@ public class Training extends AbstractEntity {
 	@Column(unique = true)
 	@NotBlank
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern 'TS-[A-Z]{1,3}-[0-9]{3}'")
-	@Size(max = 255)
+	@Length(max = 255)
 	@NotNull
 	private String				code;
 
@@ -41,7 +41,7 @@ public class Training extends AbstractEntity {
 	private Date				creationMoment;
 
 	@NotBlank
-	@Size(max = 100)
+	@Length(max = 100)
 	@NotNull
 	private String				details;
 
@@ -53,7 +53,7 @@ public class Training extends AbstractEntity {
 	@NotNull
 	private Date				updateMoment;
 
-	@Size(max = 255)
+	@Length(max = 255)
 	@URL
 	private String				furtherInformationLink;
 
