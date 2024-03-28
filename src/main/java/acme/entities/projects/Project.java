@@ -46,6 +46,8 @@ public class Project extends AbstractEntity {
 	@URL
 	@Length(max = 255)
 	private String				optionalLink;
+
+	private boolean				draftMode;
 	//system must reject every project with fatal errors
 
 	// Derived attributes -----------------------------------------------------
