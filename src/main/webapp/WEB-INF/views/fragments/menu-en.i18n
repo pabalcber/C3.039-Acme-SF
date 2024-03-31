@@ -67,11 +67,16 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.manager = Manager
 master.menu.manager.my-projects = See my projects
+master.menu.manager.my-user-stories = See my user stories
+
+# master.project.list ########################################################
 manager.project.list.button.create = Create project
 manager.project.list.title = My projects
 manager.project.list.label.code = Code
 manager.project.list.label.title = Title
 manager.project.list.label.cost = Cost
+
+# master.project.form ########################################################
 manager.project.form.title = Project form
 manager.project.form.label.code = Code
 manager.project.form.label.title = Title
