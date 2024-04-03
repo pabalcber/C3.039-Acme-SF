@@ -1,6 +1,6 @@
-key,code,title,abstractPj,indication,cost,optionalLink,key:manager
-project-01,ABC-1234,A,A,A,"EUR 0",,manager1
-project-02,ZZZ-9999,estoesunacadenade75caracteres1234567890123456789012345678901234567890123456,Z,Z,"EUR 99",,manager2
-project-03,FKJ-7806,Titulo,Abstracto,Esto es una cadena de 255 caracteres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,"EUR 777",,manager2
-project-04,XJY-5555,Title,Esto es una cadena de 100 caracteres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,Indicacion,"EUR 6",,manager1
-project-05,LLL-0000,T,A,I,"EUR 47",http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,manager1
+key,code,title,abstractPj,fatalErrors,cost,optionalLink,key:manager
+project-01,ABC-1234,A,A,false,EUR 0,,manager1
+project-02,ZZZ-9999,estoesunacadenade75caracteres1234567890123456789012345678901234567890123456,Z,false,EUR 99,,manager2
+project-03,FKJ-7806,Titulo,Abstracto,false,EUR 777,,manager2
+project-04,XJY-5555,Title,Esto es una cadena de 100 caracteres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,false,EUR 6,,manager1
+project-05,LLL-0000,T,A,true,EUR 47,http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,manager1
