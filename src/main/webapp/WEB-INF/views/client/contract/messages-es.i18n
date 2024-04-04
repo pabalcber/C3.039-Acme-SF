@@ -26,3 +26,7 @@ client.contract.form.button.update = Actualizar
 client.contract.form.button.delete = Eliminar
 client.contract.form.button.publish = Publicar
 client.contract.form.button.create = Crear
+
+client.contract.form.error.duplicated = El código ya está en uso
+client.contract.form.error.negative-budget = El presupuesto debe ser positivo
+client.contract.form.error.budget-exceeds-project-cost =  El presupuesto no puede superior al coste del proyecto

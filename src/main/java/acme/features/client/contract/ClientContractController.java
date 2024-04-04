@@ -24,10 +24,9 @@ public class ClientContractController extends AbstractController<Client, Contrac
 	@Autowired
 	private ClientContractCreateService	createService;
 
-	/*
-	 * @Autowired
-	 * private ClientContractUpdateService updateService;
-	 */
+	@Autowired
+	private ClientContractUpdateService	updateService;
+
 	@Autowired
 	private ClientContractDeleteService	deleteService;
 	/*
@@ -43,7 +42,7 @@ public class ClientContractController extends AbstractController<Client, Contrac
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
-		//super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
 
 		//super.addCustomCommand("publish", "update", this.publishService);

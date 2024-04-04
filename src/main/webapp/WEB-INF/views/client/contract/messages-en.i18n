@@ -26,6 +26,6 @@ client.contract.form.button.delete = Delete
 client.contract.form.button.publish = Publish
 client.contract.form.button.create = Create
 
-client.contract.form.error.duplicated = This reference is taken
+client.contract.form.error.duplicated = This code is taken
 client.contract.form.error.negative-budget = The budget must be positive
 client.contract.form.error.budget-exceeds-project-cost =  The budget cannot be higher than the project's cost
