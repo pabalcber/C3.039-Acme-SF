@@ -1,9 +1,19 @@
 # messages-en.i18n
 client.contract.list.title = Contracts' List
 
+client.contract.form.title = Contract
+
 client.contract.list.label.code = Code
 client.contract.list.label.providerName = Provider
 client.contract.list.label.customerName = Customer
 client.contract.list.label.budget = Budget
+
+client.contract.form.label.code = Code:
+client.contract.form.label.instantiationMoment = Instantiation Moment:
+client.contract.form.label.providerName = Provider:
+client.contract.form.label.customerName = Customer:
+client.contract.form.label.goals = Goals:
+client.contract.form.label.budget = Budget:
+client.contract.form.label.draftMode = Is it in Draft Mode?:
 
 client.contract.list.button.create = Create
