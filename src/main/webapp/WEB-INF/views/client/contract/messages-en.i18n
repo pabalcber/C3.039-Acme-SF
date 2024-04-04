@@ -7,8 +7,10 @@ client.contract.list.label.code = Code
 client.contract.list.label.providerName = Provider
 client.contract.list.label.customerName = Customer
 client.contract.list.label.budget = Budget
+client.contract.list.label.project = Project
 
 client.contract.form.label.code = Code:
+client.contract.form.label.project = Project:
 client.contract.form.label.instantiationMoment = Instantiation Moment:
 client.contract.form.label.providerName = Provider:
 client.contract.form.label.customerName = Customer:
@@ -17,3 +19,13 @@ client.contract.form.label.budget = Budget:
 client.contract.form.label.draftMode = Is it in Draft Mode?:
 
 client.contract.list.button.create = Create
+
+client.contract.form.button.progress-log = Progress Logs
+client.contract.form.button.update = Update
+client.contract.form.button.delete = Delete
+client.contract.form.button.publish = Publish
+client.contract.form.button.create = Create
+
+client.contract.form.error.duplicated = This reference is taken
+client.contract.form.error.negative-budget = The budget must be positive
+client.contract.form.error.budget-exceeds-project-cost =  The budget cannot be higher than the project's cost
