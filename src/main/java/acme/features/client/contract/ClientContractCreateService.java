@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
@@ -68,13 +69,20 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
-
-			super.state(object.getBudget().getAmount() >= 0, "budget", "client.contract.form.error.negative-budget");
-
+			Money budget = object.getBudget();
 			Project project = object.getProject();
 
-			if (project != null && object.getBudget().getAmount() > project.getCost().getAmount())
-				super.state(false, "budget", "client.contract.form.error.budget-exceeds-project-cost");
+			super.state(budget.getAmount() >= 0, "budget", "client.contract.form.error.negative-budget");
+
+			if (project != null) {
+				Money projectCost = project.getCost();
+
+				if (!budget.getCurrency().equals(projectCost.getCurrency()))
+					super.state(false, "budget", "client.contract.form.error.different-currency");
+
+				if (budget.getAmount() > projectCost.getAmount())
+					super.state(false, "budget", "client.contract.form.error.budget-exceeds-project-cost");
+			}
 		}
 	}
 
