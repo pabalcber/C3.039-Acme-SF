@@ -1,0 +1,9 @@
+# messages-en.i18n
+client.contract.list.title = Contracts' List
+
+client.contract.list.label.code = Code
+client.contract.list.label.providerName = Provider
+client.contract.list.label.customerName = Customer
+client.contract.list.label.budget = Budget
+
+client.contract.list.button.create = Create
