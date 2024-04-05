@@ -36,7 +36,7 @@ public interface ClientContractRepository extends AbstractRepository {
 	@Query("select pl from ProgressLog pl where pl.contract.id = :id")
 	Collection<ProgressLog> findManyProgressLogsByJobId(int id);
 
-	@Query("SELECT SUM(c.budget.amount) FROM Contract c WHERE c.project.id = :id AND c.draftMode = true")
-	Double combinedBudgetByContractId(int id);
+	@Query("SELECT SUM(c.budget.amount) FROM Contract c WHERE c.project.id = :id AND c.draftMode = false")
+	Double combinedBudgetByContract(int id);
 
 }

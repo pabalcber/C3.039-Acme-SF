@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
@@ -75,15 +76,27 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
-			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-budget");
-		{
-			Double combinedBudget;
-
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			Money budget = object.getBudget();
 			Project project = object.getProject();
 
-			combinedBudget = this.repository.combinedBudgetByContractId(object.getId());
-			super.state(combinedBudget != null && combinedBudget > project.getCost().getAmount(), "*", "client.contract.form.error.bad-combined-budget");
+			super.state(budget.getAmount() >= 0, "budget", "client.contract.form.error.negative-budget");
+
+			if (project != null) {
+				Money projectCost = project.getCost();
+
+				if (!budget.getCurrency().equals(projectCost.getCurrency()))
+					super.state(false, "budget", "client.contract.form.error.different-currency");
+
+				if (budget.getAmount() > projectCost.getAmount())
+					super.state(false, "budget", "client.contract.form.error.budget-exceeds-project-cost");
+
+				Double existingCombinedBudget = this.repository.combinedBudgetByContract(project.getId());
+				double totalCombinedBudget = (existingCombinedBudget != null ? existingCombinedBudget : 0.0) + budget.getAmount();
+				double projectTotalCost = projectCost.getAmount();
+
+				super.state(totalCombinedBudget <= projectTotalCost, "*", "client.contract.form.error.bad-combined-budget");
+			}
 		}
 	}
 
