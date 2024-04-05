@@ -15,6 +15,9 @@ master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
 
+# master.menu.published-contracts #######################################################
+master.menu.published-contracts = Contratos
+
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anónimo
@@ -69,6 +72,7 @@ master.menu.consumer.favourite-link = Enlace favorito
 
 master.menu.client = Cliente
 master.menu.client.my-contracts = Mis Contratos
+master.menu.client.published-contracts = Contratos Publicados
 
 # master.menu.user-account ####################################################
 
