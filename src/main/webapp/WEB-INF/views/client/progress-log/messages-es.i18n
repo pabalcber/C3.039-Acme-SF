@@ -8,4 +8,11 @@ client.progressLog.list.label.recordId = Nombre
 client.progressLog.list.label.responsiblePerson = Responsable
 client.progressLog.list.label.completeness = Completitud
 
+client.progressLog.form.label.recordId = Nombre:
+client.progressLog.form.label.completeness = Completitud:	
+client.progressLog.form.label.comment = Commentario:
+client.progressLog.form.label.registrationMoment = Registro:
+client.progressLog.form.label.responsiblePerson = Responsable:
+client.progressLog.form.label.contract = Contrato:
+
 client.contract.list.button.create = Create
