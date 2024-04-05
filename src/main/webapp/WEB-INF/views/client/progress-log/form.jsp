@@ -13,9 +13,9 @@
 	<acme:input-textbox code="client.progressLog.form.label.contract" path="contract"/>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') }">
 			<acme:submit code="client.progressLog.form.button.update" action="/client/progressLog/update"/>
-			<acme:submit code="client.duty.form.button.delete" action="/client/progressLog/delete"/>
+			<acme:submit code="client.progressLog.form.button.delete" action="/client/progress-log/delete"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="client.progressLog.form.button.create" action="/client/progress-log/create?masterId=${masterId}"/>
