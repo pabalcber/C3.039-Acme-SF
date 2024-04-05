@@ -14,5 +14,8 @@ client.progressLog.form.label.registrationMoment = Registration Moment:
 client.progressLog.form.label.responsiblePerson = Responsible:
 client.progressLog.form.label.contract = Contact:
 
+client.progressLog.form.error.duplicated = This record is taken
 
 client.progressLog.list.button.create = Create
+
+client.progressLog.form.button.create = Create
