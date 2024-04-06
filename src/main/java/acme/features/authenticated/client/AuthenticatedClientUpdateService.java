@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Authenticated;
 import acme.client.data.accounts.Principal;
-import acme.client.data.accounts.UserAccount;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
@@ -15,8 +14,7 @@ import acme.roles.clients.Client;
 import acme.roles.clients.ClientType;
 
 @Service
-public class AuthenticatedClientCreateService extends AbstractService<Authenticated, Client> {
-
+public class AuthenticatedClientUpdateService extends AbstractService<Authenticated, Client> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -35,18 +33,10 @@ public class AuthenticatedClientCreateService extends AbstractService<Authentica
 		Client object;
 		Principal principal;
 		int userAccountId;
-		UserAccount userAccount;
 
 		principal = super.getRequest().getPrincipal();
 		userAccountId = principal.getAccountId();
-		userAccount = this.repository.findOneUserAccountById(userAccountId);
-
-		object = new Client();
-		object.setIdentification("");
-		object.setCompanyName("");
-		object.setEmail("");
-		object.setType(ClientType.INDIVIDUAL);
-		object.setUserAccount(userAccount);
+		object = this.repository.findOneClientByUserAccountId(userAccountId);
 
 		super.getBuffer().addData(object);
 	}
@@ -61,12 +51,6 @@ public class AuthenticatedClientCreateService extends AbstractService<Authentica
 	@Override
 	public void validate(final Client object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("identification")) {
-			Client existing;
-
-			existing = this.repository.findClientByIdentification(object.getIdentification());
-			super.state(existing == null, "identification", "authenticated.client.form.error.duplicated");
-		}
 	}
 
 	@Override
@@ -96,5 +80,4 @@ public class AuthenticatedClientCreateService extends AbstractService<Authentica
 		if (super.getRequest().getMethod().equals("POST"))
 			PrincipalHelper.handleUpdate();
 	}
-
 }
