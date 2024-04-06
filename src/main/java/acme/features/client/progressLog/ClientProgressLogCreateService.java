@@ -1,7 +1,6 @@
 
 package acme.features.client.progressLog;
 
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +42,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 		ProgressLog object;
 		int masterId;
 		Contract contract;
-		Date moment = MomentHelper.deltaFromBaseMoment(-22, ChronoUnit.YEARS);
+		Date moment = MomentHelper.getCurrentMoment();
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findOneContractById(masterId);
@@ -81,6 +80,9 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	public void perform(final ProgressLog object) {
 		assert object != null;
 
+		Date moment;
+		moment = MomentHelper.getCurrentMoment();
+		object.setRegistrationMoment(moment);
 		this.repository.save(object);
 	}
 

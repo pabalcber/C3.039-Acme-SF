@@ -101,7 +101,6 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		moment = MomentHelper.getCurrentMoment();
 		object.setInstantiationMoment(moment);
 		this.repository.save(object);
-		this.repository.save(object);
 	}
 
 	@Override
