@@ -11,13 +11,13 @@ client.contract.list.label.customerName = Cliente
 client.contract.list.label.budget = Presupuesto
 client.contract.list.label.project = Proyecto
 
-client.contract.form.label.code = Código:
-client.contract.form.label.instantiationMoment = Fecha de Creación:
-client.contract.form.label.providerName = Proveedor:
-client.contract.form.label.customerName = Cliente:
-client.contract.form.label.goals = Metas:
-client.contract.form.label.budget = Presupuesto:
-client.contract.form.label.draftMode = ¿Borrador?: 
+client.contract.form.label.code = Código
+client.contract.form.label.instantiationMoment = Fecha de Creación
+client.contract.form.label.providerName = Proveedor
+client.contract.form.label.customerName = Cliente
+client.contract.form.label.goals = Metas
+client.contract.form.label.budget = Presupuesto
+client.contract.form.label.draftMode = ¿Borrador? 
 
 client.contract.list.button.create = Crear
 
