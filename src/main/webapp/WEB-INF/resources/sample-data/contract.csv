@@ -48,7 +48,7 @@ contract-46,KLM-049,2007/06/18 07:00,Provider4,Customer49,Goal49,"THB 49,944.08"
 contract-47,NOP-050,2019/07/19 08:00,Normal Provider Name I,Customer50,Goal50,"CAD 50,619.67",false,client-47,project-04
 contract-48,HIJ-057,2019/02/26 08:00,This is a long provider name,Customer57,Goal57,"EUR 57,135.71",true,client-48,project-03
 contract-49,KLM-058,2019/03/27 09:00,This is a long provider name but not that much,Customer58,Goal58,"USD 58,647.01",true,client-49,project-02
-contract-50,NOP-059,2020/04/28 10:00,Im trying with a provider name not that long as the next one but still long,Customer59,Goal59,"GBP 59,820.48",true,client-50,project-03
+contract-50,NOP-059,2020/04/28 10:00,Im trying with a provider name not that long as the next one but still long,Customer59,Goal59,"GBP 59,820.48",true,client-01,project-03
 contract-51,QRS-060,2020/05/01 11:00,Im trying with a provider name extremely long to see if itcanhave76caracters,Customer60,Goal60,"BGP 60,010.95",true,client-01,project-03
 contract-52,TUV-061,2020/06/02 12:00,Provider61,Customer61,G,"THB 61,050.16",true,client-01,project-03
 contract-53,VWX-062,2010/07/03 13:00,Provider62,Customer62,Go,"CAD 62,910.35",false,client-01,project-04
@@ -59,8 +59,8 @@ contract-57,KLM-067,2015/12/08 18:00,Provider67,Customer67,Short Name,"THB 67,99
 contract-58,TUV-070,2015/03/11 21:00,Provider70,Customer70,Normal Goal Name,"USD 70,970.14",false,client-01,project-04
 contract-59,KLM-076,2016/09/17 10:00,Provider76,Customer76,This is a long goal name,"EUR 76,030.50",false,client-01,project-03
 contract-60,NOP-077,2016/10/18 11:00,Provider77,Customer77,This is a long goal name but not that much,"USD 77,499.96",false,client-01,project-02
-contract-61,QRS-078,2016/11/19 12:00,Provider78,Customer78,“I am trying a goal extremely long I need to reach 101 characters max length allowed by restriction“,"GBP 78,307.32",false,client-11,project-04
-contract-62,TUV-079,2011/12/20 13:00,Provider79,Customer79,“I am trying a goal extremely long I need to reach 101 characters max length allowed by restriction.“,"BGP 79,842.53",false,client-12,project-03
+contract-61,QRS-078,2016/11/19 12:00,Provider78,Customer78,“I am trying a goal extremely long I need to reach 101 characters max length allowed by restriction“,"GBP 78,307.32",false,client-01,project-04
+contract-62,TUV-079,2011/12/20 13:00,Provider79,Customer79,“I am trying a goal extremely long I need to reach 101 characters max length allowed by restriction.“,"BGP 79,842.53",false,client-01,project-03
 contract-63,VWX-080,2011/01/21 07:00,Provider80,Customer80,Goal80,THB 0.00,false,client-01,project-02
 contract-64,YZA-081,2011/02/22 08:00,Provider81,Customer81,Goal81,CAD 0.00,false,client-01,project-04
 contract-65,BCD-082,2021/03/23 09:00,Provider82,Customer82,Goal82,EUR 0.00,true,client-01,project-03
@@ -79,4 +79,4 @@ contract-77,KLM-094,2022/03/04 21:00,Provider94,Customer94,Goal94,EUR 1.00,true,
 contract-78,NOP-095,2022/04/05 22:00,Provider95,Customer95,Goal95,USD 1.00,true,client-01,project-02
 contract-79,QRS-096,2022/05/06 23:00,Provider96,Customer96,Goal96,GBP 1.00,true,client-01,project-04
 contract-80,TUV-097,2022/06/07 17:00,Provider97,Customer97,Goal97,BGP 1.00,true,client-01,project-03
-contract-81,VWX-098,2022/01/08 18:00,Provider98,Customer98,Goal98,THB 1.00,true,client-31,project-02
+contract-81,VWX-098,2022/01/08 18:00,Provider98,Customer98,Goal98,THB 1.00,true,client-01,project-02

@@ -2,12 +2,14 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
@@ -34,9 +36,13 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	public void load() {
 		Contract object;
 		Client client;
+		Date moment;
+
+		moment = MomentHelper.getCurrentMoment();
 
 		client = this.repository.findClientById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new Contract();
+		object.setInstantiationMoment(moment);
 		object.setDraftMode(true);
 		object.setClient(client);
 
@@ -90,6 +96,10 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	public void perform(final Contract object) {
 		assert object != null;
 
+		Date moment;
+
+		moment = MomentHelper.getCurrentMoment();
+		object.setInstantiationMoment(moment);
 		this.repository.save(object);
 	}
 

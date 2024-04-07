@@ -9,14 +9,14 @@ client.contract.list.label.customerName = Customer
 client.contract.list.label.budget = Budget
 client.contract.list.label.project = Project
 
-client.contract.form.label.code = Code:
-client.contract.form.label.project = Project:
-client.contract.form.label.instantiationMoment = Instantiation Moment:
-client.contract.form.label.providerName = Provider:
-client.contract.form.label.customerName = Customer:
-client.contract.form.label.goals = Goals:
-client.contract.form.label.budget = Budget:
-client.contract.form.label.draftMode = Is it in Draft Mode?:
+client.contract.form.label.code = Code
+client.contract.form.label.project = Project
+client.contract.form.label.instantiationMoment = Instantiation Moment
+client.contract.form.label.providerName = Provider
+client.contract.form.label.customerName = Customer
+client.contract.form.label.goals = Goals
+client.contract.form.label.budget = Budget
+client.contract.form.label.draftMode = Is it a Draft?
 
 client.contract.list.button.create = Create
 
