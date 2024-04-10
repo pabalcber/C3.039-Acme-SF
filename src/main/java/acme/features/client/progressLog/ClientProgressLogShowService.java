@@ -58,7 +58,6 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 		dataset.put("masterId", object.getContract().getId());
 		dataset.put("draftMode", object.getContract().isDraftMode());
 		dataset.put("contract", object.getContract().getCode());
-		dataset.put("responsiblePerson", client);
 
 		super.getResponse().addData(dataset);
 	}
