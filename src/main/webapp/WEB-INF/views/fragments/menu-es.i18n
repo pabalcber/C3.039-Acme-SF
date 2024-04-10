@@ -15,8 +15,10 @@ master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
 
-# master.menu.published-contracts #######################################################
-master.menu.published-contracts = Contratos
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Autentificado
+master.menu.authenticated.contract.list = Ver Contratos Publicados
 
 # master.menu.anonymous #######################################################
 
