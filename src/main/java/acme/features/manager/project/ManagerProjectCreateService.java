@@ -36,21 +36,12 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		super.getBuffer().addData(object);
 	}
 
-	/*
-	 * @Override
-	 * public void bind(final Project object) {
-	 * assert object != null;
-	 * 
-	 * int contractorId;
-	 * Company contractor;
-	 * 
-	 * contractorId = super.getRequest().getData("contractor", int.class);
-	 * contractor = this.repository.findOneContractorById(contractorId);
-	 * 
-	 * super.bind(object, "reference", "title", "deadline", "salary", "score", "moreInfo", "description");
-	 * object.setContractor(contractor);
-	 * }
-	 */
+	@Override
+	public void bind(final Project object) {
+		assert object != null;
+
+		super.bind(object, "code", "title", "abstractPj", "fatalErrors", "cost", "optionalLink");
+	}
 
 	@Override
 	public void validate(final Project object) {
@@ -64,7 +55,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
-			super.state(object.getCost().getAmount() >= 0, "cost", "manager.project.form.error.negative-cost");
+			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
 	}
 
 	@Override
@@ -80,8 +71,8 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractPj", "indication", "cost", "optionalLink", "draftMode");
-		dataset.put("managerId", object.getManager().getId());
+		dataset = super.unbind(object, "code", "title", "abstractPj", "fatalErrors", "cost", "optionalLink", "draftMode");
+		dataset.put("manager", object.getManager());
 		super.getResponse().addData(dataset);
 	}
 }
