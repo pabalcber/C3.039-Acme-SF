@@ -1,6 +1,7 @@
 
 package acme.features.client.contract;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,6 +99,11 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	public void perform(final Contract object) {
 		assert object != null;
 
+		Client client;
+
+		client = this.repository.findClientById(super.getRequest().getPrincipal().getActiveRoleId());
+
+		object.setCustomerName(client.getIdentification());
 		this.repository.save(object);
 	}
 
@@ -109,14 +115,22 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
+		int id;
+		Project project;
+		Client client;
 
 		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsByClientId(clientId);
+		client = this.repository.findClientById(clientId);
+		id = super.getRequest().getData("id", int.class);
+		project = this.repository.findContractById(id).getProject();
+		projects = new ArrayList<>();
+		projects.add(project);
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+		dataset.put("customerName", client.getIdentification());
 
 		super.getResponse().addData(dataset);
 	}

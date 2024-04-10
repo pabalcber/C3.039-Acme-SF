@@ -39,12 +39,13 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		Date moment;
 
 		moment = MomentHelper.getCurrentMoment();
-
 		client = this.repository.findClientById(super.getRequest().getPrincipal().getActiveRoleId());
+
 		object = new Contract();
 		object.setInstantiationMoment(moment);
 		object.setDraftMode(true);
 		object.setClient(client);
+		object.setCustomerName(client.getIdentification());
 
 		super.getBuffer().addData(object);
 	}
@@ -74,22 +75,24 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 			super.state(existing == null, "code", "client.contract.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget")) {
-			Money budget = object.getBudget();
-			Project project = object.getProject();
+		if (!super.getBuffer().getErrors().hasErrors("budget"))
+			if (object.getBudget() != null) {
+				Money budget = object.getBudget();
+				Project project = object.getProject();
 
-			super.state(budget.getAmount() >= 0, "budget", "client.contract.form.error.negative-budget");
+				super.state(budget.getAmount() >= 0, "budget", "client.contract.form.error.negative-budget");
 
-			if (project != null) {
-				Money projectCost = project.getCost();
+				if (project != null) {
+					Money projectCost = project.getCost();
 
-				if (!budget.getCurrency().equals(projectCost.getCurrency()))
-					super.state(false, "budget", "client.contract.form.error.different-currency");
+					if (!budget.getCurrency().equals(projectCost.getCurrency()))
+						super.state(false, "budget", "client.contract.form.error.different-currency");
 
-				if (budget.getAmount() > projectCost.getAmount())
-					super.state(false, "budget", "client.contract.form.error.budget-exceeds-project-cost");
-			}
-		}
+					if (budget.getAmount() > projectCost.getAmount())
+						super.state(false, "budget", "client.contract.form.error.budget-exceeds-project-cost");
+				}
+			} else
+				super.state(false, "budget", "client.contract.form.error.budget-cannot-be-null");
 	}
 
 	@Override
@@ -97,9 +100,13 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		assert object != null;
 
 		Date moment;
+		Client client;
 
+		client = this.repository.findClientById(super.getRequest().getPrincipal().getActiveRoleId());
 		moment = MomentHelper.getCurrentMoment();
+
 		object.setInstantiationMoment(moment);
+		object.setCustomerName(client.getIdentification());
 		this.repository.save(object);
 	}
 

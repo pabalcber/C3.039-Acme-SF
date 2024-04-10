@@ -5,8 +5,8 @@ client.progress-log.list.title = Lista de Registro de Progreso
 client.progress-log.form.title = Registro de Progreso
 
 client.progressLog.list.label.recordId = Nombre
-client.progressLog.list.label.responsiblePerson = Responsable
 client.progressLog.list.label.completeness = Completitud
+client.progressLog.list.label.registrationMoment = Registro
 
 client.progressLog.form.label.recordId = Nombre
 client.progressLog.form.label.completeness = Completitud
