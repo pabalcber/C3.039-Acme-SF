@@ -61,6 +61,9 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	public void perform(final ProgressLog object) {
 		assert object != null;
 
+		Client client = object.getContract().getClient();
+
+		object.setResponsiblePerson(client.getIdentification());
 		this.repository.save(object);
 	}
 

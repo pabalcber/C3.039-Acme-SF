@@ -43,6 +43,7 @@ public class AuthenticatedProgressLogShowService extends AbstractService<Authent
 		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "contract");
 		dataset.put("masterId", object.getContract().getId());
 		dataset.put("draftMode", object.getContract().isDraftMode());
+		dataset.put("contract", object.getContract().getCode());
 
 		super.getResponse().addData(dataset);
 	}
