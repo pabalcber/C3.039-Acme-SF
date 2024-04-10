@@ -1,23 +1,23 @@
 
-package acme.features.client.contract;
+package acme.features.authenticated.contract;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.contracts.Contract;
-import acme.roles.clients.Client;
 
 @Service
-public class ClientContractListService extends AbstractService<Client, Contract> {
+public class AuthenticatedContractListAllService extends AbstractService<Authenticated, Contract> {
 
 	// Internal State ---------------------------------------------------------------------------------------------------------------------------------------
 
 	@Autowired
-	private ClientContractRepository repository;
+	private AuthenticatedContractRepository repository;
 
 	// AbstractService interface ----------------------------------------------------------------------------------------------------------------------------
 
@@ -30,10 +30,8 @@ public class ClientContractListService extends AbstractService<Client, Contract>
 	@Override
 	public void load() {
 		Collection<Contract> objects;
-		int clientId;
 
-		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		objects = this.repository.findManyContractsByClientId(clientId);
+		objects = this.repository.findAllPublishedContracts();
 
 		super.getBuffer().addData(objects);
 	}
@@ -45,7 +43,6 @@ public class ClientContractListService extends AbstractService<Client, Contract>
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "providerName", "customerName", "budget", "project");
-		dataset.put("project", object.getProject().getCode());
 
 		super.getResponse().addData(dataset);
 	}

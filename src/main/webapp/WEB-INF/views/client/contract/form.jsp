@@ -5,8 +5,8 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="client.contract.form.label.code" path="code"/>
-	<acme:input-textbox code="client.contract.form.label.project" path="project"/>	
+	<acme:input-textbox code="client.contract.form.label.code" path="code"/>	
+	<acme:input-select code="client.contract.form.label.project" path="project" choices="${projects}"/>
 	<acme:input-moment code="client.contract.form.label.instantiationMoment" path="instantiationMoment"/>
 	<acme:input-textbox code="client.contract.form.label.providerName" path="providerName"/>
 	<acme:input-textbox code="client.contract.form.label.customerName" path="customerName"/>
@@ -16,7 +16,7 @@
 
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode == false}">
-			<acme:button code="client.contract.form.button.progress-log" action="/contract/progress-log/list?masterId=${id}"/>			
+			<acme:button code="client.contract.form.button.progress-log" action="/client/progress-log/list?masterId=${id}"/>			
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:button code="client.contract.form.button.progress-log" action="/client/progress-log/list?masterId=${id}"/>

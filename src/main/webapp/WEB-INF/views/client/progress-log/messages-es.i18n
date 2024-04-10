@@ -1,0 +1,24 @@
+# messages-es.i18n
+
+client.progress-log.list.title = Lista de Registro de Progreso
+
+client.progress-log.form.title = Registro de Progreso
+
+client.progressLog.list.label.recordId = Nombre
+client.progressLog.list.label.completeness = Completitud
+client.progressLog.list.label.registrationMoment = Registro
+
+client.progressLog.form.label.recordId = Nombre
+client.progressLog.form.label.completeness = Completitud
+client.progressLog.form.label.comment = Commentario
+client.progressLog.form.label.registrationMoment = Registro
+client.progressLog.form.label.responsiblePerson = Responsable
+client.progressLog.form.label.contract = Contrato
+
+client.progressLog.form.error.duplicated = Este nombre ya está siendo usado
+
+client.contract.list.button.create = Crear
+
+client.contract.list.button.create = Crear
+client.progressLog.form.button.delete = Eliminar
+client.progressLog.form.button.update = Actualizar
