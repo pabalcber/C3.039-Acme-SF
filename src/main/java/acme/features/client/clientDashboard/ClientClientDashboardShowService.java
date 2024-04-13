@@ -1,5 +1,5 @@
 
-package acme.features.client.dashboard;
+package acme.features.client.clientDashboard;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,16 +10,15 @@ import acme.forms.ClientDashboard;
 import acme.roles.clients.Client;
 
 @Service
-public class ClientDashboardShowService extends AbstractService<Client, ClientDashboard> {
+public class ClientClientDashboardShowService extends AbstractService<Client, ClientDashboard> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientDashboardRepository repository;
+	private ClientClientDashboardRepository repository;
+
 
 	// AbstractService interface ----------------------------------------------
-
-
 	@Override
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
@@ -34,8 +33,8 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		int totalProgressLogsAbove75Percent;
 
 		totalProgressLogsBelow25Percent = this.repository.totalProgressLogsBelow25Percent();
-		totalProgressLogs25To50Percent = this.repository.totalProgressLogs25To50Percent();
-		totalProgressLogs50To75Percent = this.repository.totalProgressLogs50To75Percent();
+		totalProgressLogs25To50Percent = this.repository.totalProgressLogs25to50Percent();
+		totalProgressLogs50To75Percent = this.repository.totalProgressLogs50to75Percent();
 		totalProgressLogsAbove75Percent = this.repository.totalProgressLogsAbove75Percent();
 
 		dashboard = new ClientDashboard();
@@ -52,8 +51,7 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		Dataset dataset;
 
 		dataset = super.unbind(object, //
-			"totalProgressLogsBelow25Percent", "totalProgressLogs25To50Percent", // 
-			"totalProgressLogs50To75Percent", "totalProgressLogsAbove75Percent");
+			"totalProgressLogsBelow25Percent", "totalProgressLogs25To50Percent", "totalProgressLogs50To75Percent", "totalProgressLogsAbove75Percent");
 
 		super.getResponse().addData(dataset);
 	}

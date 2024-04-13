@@ -1,5 +1,5 @@
 
-package acme.features.client.dashboard;
+package acme.features.client.clientDashboard;
 
 import javax.annotation.PostConstruct;
 
@@ -11,12 +11,12 @@ import acme.forms.ClientDashboard;
 import acme.roles.clients.Client;
 
 @Controller
-public class ClientDashboardController extends AbstractController<Client, ClientDashboard> {
+public class ClientClientDashboardController extends AbstractController<Client, ClientDashboard> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientDashboardShowService showService;
+	private ClientClientDashboardShowService showService;
 
 	// Constructors -----------------------------------------------------------
 

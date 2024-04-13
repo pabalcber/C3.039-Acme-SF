@@ -1,0 +1,11 @@
+# messages-en.i18n
+#
+client.client-dashboard.form.title = Client Dashboard
+
+client.client-dashboard.form.title.progress-logs-indicators = Progress Logs Indicators
+client.client-dashboard.form.title.contracts-budgets = Budget Indicators
+
+client.client-dashboard.form.label.total-progress-logs-below-25-percent = Progress Logs with Completeness Below 25%
+client.client-dashboard.form.label.total-progress-logs-25-to-50-percent = Progress Logs with Completeness Between 25% and 50%
+client.client-dashboard.form.label.total-progress-logs-50-to-75-percent = Progress Logs with Completeness Between 50% and 75%
+client.client-dashboard.form.label.total-progress-logs-above-75-percent = Progress Logs with Completeness Above 75%

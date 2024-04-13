@@ -1,9 +1,0 @@
-# messages-en.i18n
-client.dashboard.form.title = Panel de indicadores de Cliente
-
-client.dashboard.form.title.general-indicators = Progress Logs' Completennes
-
-client.dashboard.form.label.total-progress-logs-below-25-percent =  Below 25%
-client.dashboard.form.label.total-progress-logs-25-to-50-percent =  From 25% To 50%
-client.dashboard.form.label.total-progress-logs-50-to-75-percent = From 50% To 75%
-client.dashboard.form.label.total-progress-logs-above-75-percent = Above 75%

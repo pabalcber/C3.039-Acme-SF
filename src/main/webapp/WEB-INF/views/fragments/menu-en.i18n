@@ -71,7 +71,7 @@ master.menu.consumer.favourite-link = Favourite link
 master.menu.client = Client
 master.menu.client.my-contracts = My Contracts
 master.menu.client.published-contracts = Published Contracts
-master.menu.client.dashboard = Dashboard
+master.menu.client.client-dashboard = Client Dashboard
 
 # master.menu.user-account ####################################################
 
