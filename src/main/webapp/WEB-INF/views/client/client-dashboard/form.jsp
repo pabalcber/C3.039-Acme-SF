@@ -54,6 +54,111 @@
 	</tr>
 </table>
 
+<h2>
+	<acme:message code="client.client-dashboard.form.title.contracts-budgets"/>
+</h2>
+<table class="table table-sm">
+	<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.avg-budget-eur"/>
+		</th>
+		<td>
+			<acme:print value="${avgBudgetEUR}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.avg-budget-gbp"/>
+		</th>
+		<td>
+			<acme:print value="${avgBudgetGBP}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.avg-budget-usd"/>
+		</th>
+		<td>
+			<acme:print value="${avgBudgetUSD}"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.dev-budget-eur"/>
+		</th>
+		<td>
+			<acme:print value="${deviationBudgetEUR}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.dev-budget-gbp"/>
+		</th>
+		<td>
+			<acme:print value="${deviationBudgetGBP}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.dev-budget-usd"/>
+		</th>
+		<td>
+			<acme:print value="${deviationBudgetUSD}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.min-budget-eur"/>
+		</th>
+		<td>
+			<acme:print value="${minimumBudgetEUR}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.min-budget-gbp"/>
+		</th>
+		<td>
+			<acme:print value="${minimumBudgetGBP}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.min-budget-usd"/>
+		</th>
+		<td>
+			<acme:print value="${minimumBudgetUSD}"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.max-budget-eur"/>
+		</th>
+		<td>
+			<acme:print value="${maximumBudgetEUR}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.max-budget-gbp"/>
+		</th>
+		<td>
+			<acme:print value="${maximumBudgetGBP}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="client.client-dashboard.form.label.max-budget-usd"/>
+		</th>
+		<td>
+			<acme:print value="${maximumBudgetUSD}"/>
+		</td>
+	</tr>
+	
+</table>
+
+
 <div>
 	<canvas id="canvas"></canvas>
 </div>

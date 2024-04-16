@@ -34,7 +34,7 @@ public class Contract extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "El código debe seguir el patrón '[A-Z]{1,3}-[0-9]{3}'")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
 	@NotNull
