@@ -1,0 +1,24 @@
+# messages-es.i18n
+#
+client.client-dashboard.form.title = Panel de Indicadores de Clientes
+
+client.client-dashboard.form.title.progress-logs-indicators = Indicadores de los Registros de Progreso
+client.client-dashboard.form.title.contracts-budgets = Indicadores del Presupuesto de los Contratos
+
+client.client-dashboard.form.label.total-progress-logs-below-25-percent = Registros de Progreso con menos del 25% de Completitud
+client.client-dashboard.form.label.total-progress-logs-25-to-50-percent = Registros de Progreso con una Completitud entre el 25% y el 50%
+client.client-dashboard.form.label.total-progress-logs-50-to-75-percent = Registros de Progreso con una Completitud entre el 50% y el 75%
+client.client-dashboard.form.label.total-progress-logs-above-75-percent = Registros de Progreso con más del 75% de Completitud
+
+client.client-dashboard.form.label.avg-budget-eur = Media de los Presupuestos en EUR de los Conntratos
+client.client-dashboard.form.label.avg-budget-gbp = Media de los Presupuestos en GBP de los Conntratos
+client.client-dashboard.form.label.avg-budget-usd = Media de los Presupuestos en USD de los Conntratos
+client.client-dashboard.form.label.dev-budget-eur = Desviación de los Presupuestos en EUR de los Conntratos
+client.client-dashboard.form.label.dev-budget-gbp = Desviación de los Presupuestos en GBP de los Conntratos
+client.client-dashboard.form.label.dev-budget-usd = Desviación de los Presupuestos en USD de los Conntratos
+client.client-dashboard.form.label.min-budget-eur = Presupuesto Mínimo de los Contratos en EUR
+client.client-dashboard.form.label.min-budget-gbp = Presupuesto Mínimo de los Contratos en GBP
+client.client-dashboard.form.label.min-budget-usd = Presupuesto Mínimo de los Contratos en USD
+client.client-dashboard.form.label.max-budget-eur = Presupuesto Máximo de los Contratos en EUR
+client.client-dashboard.form.label.max-budget-gbp = Presupuesto Máximo de los Contratos en GBP
+client.client-dashboard.form.label.max-budget-usd = Presupuesto Máximo de los Contratos en USD

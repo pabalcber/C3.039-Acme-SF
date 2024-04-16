@@ -27,12 +27,11 @@ public class Client extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "CLI-[0-9]{4}", message = "Identification debe seguir el patrón 'CLI-[0-9]{4}'")
+	@Pattern(regexp = "CLI-[0-9]{4}", message = "CLI-[0-9]{4}")
 	private String				identification;
 
 	@NotBlank
 	@Length(min = 1, max = 76)
-	@Column(unique = true)
 	private String				companyName;
 
 	@NotNull

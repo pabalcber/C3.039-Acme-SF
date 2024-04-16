@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>434</x>
-      <y>266</y>
+      <x>476</x>
+      <y>140</y>
       <w>322</w>
       <h>112</h>
     </coordinates>
@@ -27,8 +27,8 @@ Contract
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>588</x>
-      <y>203</y>
+      <x>630</x>
+      <y>77</y>
       <w>91</w>
       <h>28</h>
     </coordinates>
@@ -41,8 +41,8 @@ be positive</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>616</x>
-      <y>224</y>
+      <x>658</x>
+      <y>98</y>
       <w>21</w>
       <h>56</h>
     </coordinates>
@@ -52,8 +52,8 @@ be positive</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>469</x>
-      <y>189</y>
+      <x>511</x>
+      <y>63</y>
       <w>105</w>
       <h>49</h>
     </coordinates>
@@ -68,8 +68,8 @@ project cost</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
-      <y>231</y>
+      <x>546</x>
+      <y>105</y>
       <w>21</w>
       <h>49</h>
     </coordinates>
@@ -79,8 +79,8 @@ project cost</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>427</x>
-      <y>434</y>
+      <x>469</x>
+      <y>308</y>
       <w>357</w>
       <h>91</h>
     </coordinates>
@@ -99,10 +99,10 @@ ProgressLog
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>49</x>
-      <y>392</y>
+      <x>91</x>
+      <y>266</y>
       <w>322</w>
-      <h>126</h>
+      <h>217</h>
     </coordinates>
     <panel_attributes>bg=green
 transparency=80
@@ -113,17 +113,25 @@ ClientDashboard
 + totalProgressLogs25To50Percent: int
 + totalProgressLogs50To75Percent: int
 + totalProgressLogsAbove75Percent: int
-+ avgBudget: Money
-+ deviationBudget: Money
-+ minimumBudget: Money
-+ maximumBudget: Money</panel_attributes>
++ avgBudgetEUR: Money
++ avgBudgetGBP: Money
++ avgBudgetUSD: Money
++ deviationBudgetEUR: Money
++ deviationBudgetGBP: Money
++ deviationBudgetUSD: Money
++ minimumBudgetEUR: Money
++ minimumBudgetGBP: Money
++ minimumBudgetUSD: Money
++ maximumBudgetEUR: Money
++ maximumBudgetGBP: Money
++ maximumBudgetUSD: Money</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>266</y>
+      <x>42</x>
+      <y>140</y>
       <w>329</w>
       <h>91</h>
     </coordinates>
@@ -142,8 +150,8 @@ Client
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>574</x>
-      <y>371</y>
+      <x>616</x>
+      <y>245</y>
       <w>35</w>
       <h>77</h>
     </coordinates>
@@ -155,8 +163,8 @@ m2=0..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>861</x>
-      <y>308</y>
+      <x>903</x>
+      <y>182</y>
       <w>105</w>
       <h>49</h>
     </coordinates>
@@ -169,8 +177,8 @@ Project (Student 1)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>749</x>
-      <y>322</y>
+      <x>791</x>
+      <y>196</y>
       <w>126</w>
       <h>35</h>
     </coordinates>
@@ -183,8 +191,8 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>322</x>
-      <y>301</y>
+      <x>364</x>
+      <y>175</y>
       <w>126</w>
       <h>35</h>
     </coordinates>
@@ -197,8 +205,8 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>112</x>
-      <y>140</y>
+      <x>154</x>
+      <y>14</y>
       <w>112</w>
       <h>70</h>
     </coordinates>
@@ -211,5 +219,31 @@ ClientType
 bg=green
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>735</x>
+      <y>63</y>
+      <w>119</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=red
+transparency=80
+The budget must 
+have the same currency 
+as project cost</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>763</x>
+      <y>105</y>
+      <w>21</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
