@@ -11,13 +11,13 @@ client.contract.list.label.customerName = Cliente
 client.contract.list.label.budget = Presupuesto
 client.contract.list.label.project = Proyecto
 
-client.contract.form.label.code = Código:
-client.contract.form.label.instantiationMoment = Fecha de Creación:
-client.contract.form.label.providerName = Proveedor:
-client.contract.form.label.customerName = Cliente:
-client.contract.form.label.goals = Metas:
-client.contract.form.label.budget = Presupuesto:
-client.contract.form.label.draftMode = ¿Borrador?: 
+client.contract.form.label.code = Código
+client.contract.form.label.instantiationMoment = Fecha de Creación
+client.contract.form.label.providerName = Proveedor
+client.contract.form.label.customerName = Cliente
+client.contract.form.label.goals = Metas
+client.contract.form.label.budget = Presupuesto
+client.contract.form.label.draftMode = ¿Borrador? 
 
 client.contract.list.button.create = Crear
 
@@ -32,3 +32,4 @@ client.contract.form.error.negative-budget = El presupuesto debe ser positivo
 client.contract.form.error.budget-exceeds-project-cost =  El presupuesto no puede superior al coste del proyecto
 client.contract.form.error.different-currency = El presupuesto no puede tener un tipo de moneda diferente a la del coste del presupuesto
 client.contract.form.error.bad-combined-budget = El presupuesto combinado de este contrato y de todos los contratos publicados para este proyecto no puede superar el costo del proyecto
+client.contract.form.error.budget-cannot-be-null = No puedes crear un contrato sin presupuesto

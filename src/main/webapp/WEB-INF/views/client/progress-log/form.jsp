@@ -6,14 +6,14 @@
 
 <acme:form>
 	<acme:input-textbox code="client.progressLog.form.label.recordId" path="recordId"/>
-	<acme:input-textbox code="client.progressLog.form.label.completeness" path="completeness"/>	
-	<acme:input-textbox code="client.progressLog.form.label.comment" path="comment"/>
-	<acme:input-textarea code="client.progressLog.form.label.registrationMoment" path="registrationMoment"/>
-	<acme:input-url code="client.progressLog.form.label.responsiblePerson" path="responsiblePerson"/>
+	<acme:input-double code="client.progressLog.form.label.completeness" path="completeness"/>	
+	<acme:input-textarea code="client.progressLog.form.label.comment" path="comment"/>
+	<acme:input-moment code="client.progressLog.form.label.registrationMoment" path="registrationMoment"/>
+	<acme:input-textbox code="client.progressLog.form.label.responsiblePerson" path="responsiblePerson"/>
 	<acme:input-textbox code="client.progressLog.form.label.contract" path="contract"/>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') }">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')  && draftMode == true }">
 			<acme:submit code="client.progressLog.form.button.update" action="/client/progress-log/update"/>
 			<acme:submit code="client.progressLog.form.button.delete" action="/client/progress-log/delete"/>
 		</jstl:when>
