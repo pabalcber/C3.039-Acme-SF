@@ -20,9 +20,12 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientContractRepository repository;
+	private ClientContractRepository	repository;
 
 	// AbstractService interface ----------------------------------------------
+
+	private static String				budget			= "budget";
+	private static String				invalidObject	= "Invalid object: ";
 
 
 	@Override
@@ -53,7 +56,8 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void bind(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
 
 		int projectId;
 		Project project;
@@ -61,13 +65,14 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractPublishService.budget);
 		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Contract existing;
@@ -76,23 +81,23 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget")) {
-			Money budget = object.getBudget();
+		if (!super.getBuffer().getErrors().hasErrors(ClientContractPublishService.budget)) {
+			Money budgt = object.getBudget();
 			Project project = object.getProject();
 
-			super.state(budget.getAmount() >= 0, "budget", "client.contract.form.error.negative-budget");
+			super.state(budgt.getAmount() >= 0, ClientContractPublishService.budget, "client.contract.form.error.negative-budget");
 
 			if (project != null) {
 				Money projectCost = project.getCost();
 
-				if (!budget.getCurrency().equals(projectCost.getCurrency()))
-					super.state(false, "budget", "client.contract.form.error.different-currency");
+				if (!budgt.getCurrency().equals(projectCost.getCurrency()))
+					super.state(false, ClientContractPublishService.budget, "client.contract.form.error.different-currency");
 
-				if (budget.getAmount() > projectCost.getAmount())
-					super.state(false, "budget", "client.contract.form.error.budget-exceeds-project-cost");
+				if (budgt.getAmount() > projectCost.getAmount())
+					super.state(false, ClientContractPublishService.budget, "client.contract.form.error.budget-exceeds-project-cost");
 
 				Double existingCombinedBudget = this.repository.combinedBudgetByContract(project.getId());
-				double totalCombinedBudget = (existingCombinedBudget != null ? existingCombinedBudget : 0.0) + budget.getAmount();
+				double totalCombinedBudget = (existingCombinedBudget != null ? existingCombinedBudget : 0.0) + budgt.getAmount();
 				double projectTotalCost = projectCost.getAmount();
 
 				super.state(totalCombinedBudget <= projectTotalCost, "*", "client.contract.form.error.bad-combined-budget");
@@ -102,7 +107,8 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void perform(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
 
 		object.setDraftMode(false);
 		this.repository.save(object);
@@ -110,7 +116,8 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void unbind(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
 
 		int clientId;
 		Collection<Project> projects;
@@ -121,7 +128,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		projects = this.repository.findManyProjectsByClientId(clientId);
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractPublishService.budget, "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

@@ -38,7 +38,8 @@ public class AuthenticatedContractListAllService extends AbstractService<Authent
 
 	@Override
 	public void unbind(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException("Invalid object: " + object);
 
 		Dataset dataset;
 

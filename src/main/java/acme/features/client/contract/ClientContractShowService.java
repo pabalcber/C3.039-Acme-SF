@@ -32,7 +32,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		Contract contract;
 		contractId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findContractById(contractId);
-		status = super.getRequest().getPrincipal().hasRole(contract.getClient()) || contract != null && !contract.isDraftMode();
+		status = contract != null ? super.getRequest().getPrincipal().hasRole(contract.getClient()) || !contract.isDraftMode() : false;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -49,7 +49,9 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 
 	@Override
 	public void unbind(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException("Invalid object: " + object);
+
 		SelectChoices choices;
 		Project project;
 		Collection<Project> projects;
