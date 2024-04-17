@@ -70,9 +70,12 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 		if (object == null)
 			throw new IllegalArgumentException(ClientProgressLogUpdateService.invalidObject + object);
 
+		int id = super.getRequest().getData("id", int.class);
+		ProgressLog pl = this.repository.findOneProgressLogById(id);
 		Client client = object.getContract().getClient();
 
 		object.setResponsiblePerson(client.getIdentification());
+		object.setRecordId(pl.getRecordId());
 		this.repository.save(object);
 	}
 
