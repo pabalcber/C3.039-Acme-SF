@@ -7,14 +7,14 @@ authenticated.contract.form.title = Contrato
 authenticated.contract.list.label.code = Código
 authenticated.contract.form.label.project = Proyecto
 authenticated.contract.list.label.providerName = Proveedor
-authenticated.contract.list.label.customerName = authenticatede
+authenticated.contract.list.label.customerName = Cliente
 authenticated.contract.list.label.budget = Presupuesto
 authenticated.contract.list.label.project = Proyecto
 
 authenticated.contract.form.label.code = Código
 authenticated.contract.form.label.instantiationMoment = Fecha de Creación
 authenticated.contract.form.label.providerName = Proveedor
-authenticated.contract.form.label.customerName = authenticatede
+authenticated.contract.form.label.customerName = Cliente
 authenticated.contract.form.label.goals = Metas
 authenticated.contract.form.label.budget = Presupuesto
 authenticated.contract.form.label.draftMode = ¿Borrador? 
