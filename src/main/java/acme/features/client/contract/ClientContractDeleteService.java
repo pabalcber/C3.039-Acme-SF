@@ -20,9 +20,11 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientContractRepository repository;
+	private ClientContractRepository	repository;
 
 	// AbstractService interface ----------------------------------------------
+
+	private static String				invalidObject	= "Invalid object: ";
 
 
 	@Override
@@ -53,7 +55,8 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 
 	@Override
 	public void bind(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
 
 		int projectId;
 		Project project;
@@ -67,12 +70,14 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 
 	@Override
 	public void validate(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
 	}
 
 	@Override
 	public void perform(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
 
 		Collection<ProgressLog> progressLogs;
 
@@ -83,7 +88,8 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 
 	@Override
 	public void unbind(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
 
 		int clientId;
 		Collection<Project> projects;

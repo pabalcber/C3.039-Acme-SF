@@ -1,5 +1,5 @@
 
-package acme.features.client.progressLog;
+package acme.features.client.progresslog;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,14 +11,14 @@ import acme.entities.contracts.ProgressLog;
 import acme.roles.clients.Client;
 
 @Service
-public class ClientProgressLogUpdateService extends AbstractService<Client, ProgressLog> {
+public class ClientProgressLogShowService extends AbstractService<Client, ProgressLog> {
 
-	// Internal state ---------------------------------------------------------
+	// Internal State ---------------------------------------------------------------------------------------------------------------------------------------
 
 	@Autowired
 	private ClientProgressLogRepository repository;
 
-	// AbstractService interface ----------------------------------------------
+	// AbstractService interface ----------------------------------------------------------------------------------------------------------------------------
 
 
 	@Override
@@ -29,7 +29,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 		progressLogId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findOneContractByProgressLogId(progressLogId);
-		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
+		status = contract != null && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -46,38 +46,17 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	}
 
 	@Override
-	public void bind(final ProgressLog object) {
-		assert object != null;
-
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
-	}
-
-	@Override
-	public void validate(final ProgressLog object) {
-		assert object != null;
-	}
-
-	@Override
-	public void perform(final ProgressLog object) {
-		assert object != null;
-
-		Client client = object.getContract().getClient();
-
-		object.setResponsiblePerson(client.getIdentification());
-		this.repository.save(object);
-	}
-
-	@Override
 	public void unbind(final ProgressLog object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException("Invalid object: " + object);
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "contract");
 		dataset.put("masterId", object.getContract().getId());
 		dataset.put("draftMode", object.getContract().isDraftMode());
 		dataset.put("contract", object.getContract().getCode());
-		dataset.put("responsiblePerson", object.getContract().getClient().getIdentification());
-	}
 
+		super.getResponse().addData(dataset);
+	}
 }

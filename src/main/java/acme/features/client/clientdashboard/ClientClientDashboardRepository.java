@@ -1,5 +1,5 @@
 
-package acme.features.client.clientDashboard;
+package acme.features.client.clientdashboard;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

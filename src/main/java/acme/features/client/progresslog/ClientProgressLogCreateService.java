@@ -1,5 +1,5 @@
 
-package acme.features.client.progressLog;
+package acme.features.client.progresslog;
 
 import java.util.Date;
 
@@ -19,9 +19,14 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientProgressLogRepository repository;
+	private ClientProgressLogRepository	repository;
 
 	// AbstractService interface ----------------------------------------------
+
+	private static String				responsiblePerson	= "responsiblePerson";
+	private static String				recordId			= "recordId";
+	private static String				id					= "masterId";
+	private static String				invalidObject		= "Invalid object: ";
 
 
 	@Override
@@ -30,7 +35,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 		int masterId;
 		Contract contract;
 
-		masterId = super.getRequest().getData("masterId", int.class);
+		masterId = super.getRequest().getData(ClientProgressLogCreateService.id, int.class);
 		contract = this.repository.findOneContractById(masterId);
 		status = contract != null && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
 
@@ -46,7 +51,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		Date moment = MomentHelper.getCurrentMoment();
 
-		masterId = super.getRequest().getData("masterId", int.class);
+		masterId = super.getRequest().getData(ClientProgressLogCreateService.id, int.class);
 		contract = this.repository.findOneContractById(masterId);
 		client = contract.getClient().getIdentification();
 
@@ -63,32 +68,36 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void bind(final ProgressLog object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
 
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "contract");
+		super.bind(object, ClientProgressLogCreateService.recordId, "completeness", "comment", "registrationMoment", ClientProgressLogCreateService.responsiblePerson, "contract");
 	}
 
 	@Override
 	public void validate(final ProgressLog object) {
-		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
+		if (object == null)
+			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
+
+		if (!super.getBuffer().getErrors().hasErrors(ClientProgressLogCreateService.recordId)) {
 			ProgressLog existing;
 
 			existing = this.repository.findOneProgressLogByRecordId(object.getRecordId());
-			super.state(existing == null, "recordId", "client.progressLog.form.error.duplicated");
+			super.state(existing == null, ClientProgressLogCreateService.recordId, "client.progressLog.form.error.duplicated");
 		}
 	}
 
 	@Override
 	public void perform(final ProgressLog object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
 
 		Contract contract;
 		String client;
 		Date moment;
 		int masterId;
 
-		masterId = super.getRequest().getData("masterId", int.class);
+		masterId = super.getRequest().getData(ClientProgressLogCreateService.id, int.class);
 		moment = MomentHelper.getCurrentMoment();
 		contract = this.repository.findOneContractById(masterId);
 		client = contract.getClient().getIdentification();
@@ -100,22 +109,23 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
 
 		Contract contract;
 		String client;
 		int masterId;
 
-		masterId = super.getRequest().getData("masterId", int.class);
+		masterId = super.getRequest().getData(ClientProgressLogCreateService.id, int.class);
 		contract = this.repository.findOneContractById(masterId);
 		client = contract.getClient().getIdentification();
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "contract");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset = super.unbind(object, ClientProgressLogCreateService.recordId, "completeness", "comment", "registrationMoment", ClientProgressLogCreateService.responsiblePerson, "contract");
+		dataset.put(ClientProgressLogCreateService.id, super.getRequest().getData(ClientProgressLogCreateService.id, int.class));
 		dataset.put("draftMode", object.getContract().isDraftMode());
-		dataset.put("responsiblePerson", client);
+		dataset.put(ClientProgressLogCreateService.responsiblePerson, client);
 
 		super.getResponse().addData(dataset);
 	}
