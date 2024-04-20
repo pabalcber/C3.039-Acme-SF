@@ -10,23 +10,24 @@ import acme.entities.projects.Project;
 import acme.roles.Manager;
 
 @Service
-public class ManagerProjectUpdateService extends AbstractService<Manager, Project> {
+public class ManagerProjectPublishService extends AbstractService<Manager, Project> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private ManagerProjectRepository repository;
 
-
 	// AbstractService interface ----------------------------------------------
+
+
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
-		Manager manager;
+		int projectId;
 		Project project;
+		Manager manager;
 
-		masterId = super.getRequest().getData("id", int.class);
-		project = this.repository.findOneProjectById(masterId);
+		projectId = super.getRequest().getData("id", int.class);
+		project = this.repository.findOneProjectById(projectId);
 		manager = project == null ? null : project.getManager();
 		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
@@ -64,12 +65,23 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
 			super.state(object.getCost().getAmount() >= 0, "cost", "manager.project.form.error.negative-cost");
+
+		if (!super.getBuffer().getErrors().hasErrors("fatalErrors"))
+			super.state(!object.isFatalErrors(), "fatalErrors", "manager.project.form.error.cant-publish-fatal-errors-project");
+
+		{
+			int amountUserStories;
+
+			amountUserStories = this.repository.computeUserStoriesByProjectId(object.getId());
+			super.state(amountUserStories <= 0, "*", "manager.project.form.error.no-user-story-in-project");
+		}
 	}
 
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
 
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
