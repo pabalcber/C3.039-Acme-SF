@@ -13,13 +13,13 @@
 
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode == false}">
-			<acme:button code="manager.project.form.button.projects" action="/manager/project/list?masterId=${id}"/>	
-			<acme:button code="manager.project.form.button.update" action="/manager/project/update"/>
-			<acme:button code="manager.project.form.button.delete" action="/manager/project/delete"/>			
+			<acme:button code="manager.project.form.button.projects" action="/manager/project/list?masterId=${id}"/>
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">
-			<acme:submit code="manager.project.form.button.update" action="/employer/job/update"/>
-			<acme:submit code="manager.project.form.button.delete" action="/employer/job/delete"/>
+			<acme:button code="manager.project.form.button.projects" action="/manager/project/list?masterId=${id}"/>
+			<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>
+			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
+			<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
