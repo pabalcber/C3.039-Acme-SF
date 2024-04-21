@@ -52,6 +52,7 @@ master.menu.marbarmar16.favourite-link = Favourite link
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
+master.menu.administrator.banner.list-all = List all banners
 master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
