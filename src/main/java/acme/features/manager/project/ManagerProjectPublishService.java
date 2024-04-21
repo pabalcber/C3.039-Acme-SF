@@ -73,7 +73,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 			int amountUserStories;
 
 			amountUserStories = this.repository.computeUserStoriesByProjectId(object.getId());
-			super.state(amountUserStories <= 0, "*", "manager.project.form.error.no-user-story-in-project");
+			super.state(amountUserStories > 0, "*", "manager.project.form.error.no-user-story-in-project");
 		}
 	}
 
