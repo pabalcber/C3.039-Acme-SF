@@ -22,10 +22,18 @@ public class ManagerDashboard extends AbstractForm {
 	Double						deviationEstimatedCost;
 	Double						minimumEstimatedCost;
 	Double						maximumEstimatedCost;
-	Money						averageProjectCosts;
-	Money						deviationProjectCosts;
-	Money						minimumProjectCosts;
-	Money						maximumProjectCosts;
+	Money						averageProjectCostsEUR;
+	Money						averageProjectCostsGBP;
+	Money						averageProjectCostsUSD;
+	Money						deviationProjectCostsEUR;
+	Money						deviationProjectCostsGBP;
+	Money						deviationProjectCostsUSD;
+	Money						minimumProjectCostsEUR;
+	Money						minimumProjectCostsGBP;
+	Money						minimumProjectCostsUSD;
+	Money						maximumProjectCostsEUR;
+	Money						maximumProjectCostsGBP;
+	Money						maximumProjectCostsUSD;
 
 	// Derived attributes -----------------------------------------------------
 
