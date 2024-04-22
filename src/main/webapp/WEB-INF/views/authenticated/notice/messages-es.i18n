@@ -9,7 +9,8 @@ authenticated.notice.form.label.author = Author:
 authenticated.notice.form.label.message = Mensaje:
 authenticated.notice.form.label.email = Correo:
 authenticated.notice.form.label.link = Link:
-
+authenticated.notice.form.label.confirmation = Confirma que la noticia es correcta
+authenticated.notice.form.error.bad-author-format = El autor debe tener el formato: username - apellido, nombre
 
 authenticated.notice.form.button.create = Crear
 

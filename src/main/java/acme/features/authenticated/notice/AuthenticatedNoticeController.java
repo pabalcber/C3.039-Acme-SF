@@ -21,13 +21,16 @@ public class AuthenticatedNoticeController extends AbstractController<Authentica
 	@Autowired
 	private AuthenticatedNoticeShowService			showService;
 
+	@Autowired
+	private AuthenticatedNoticeCreateService		createService;
+
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("show", this.showService);
-		//super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("create", this.createService);
 		super.addCustomCommand("list-recent", "list", this.listRecentService);
 	}
 
