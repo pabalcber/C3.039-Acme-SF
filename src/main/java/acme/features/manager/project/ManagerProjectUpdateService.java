@@ -21,13 +21,15 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	@Override
 	public void authorise() {
 		boolean status;
-		int projectId;
+		int masterId;
 		Manager manager;
 		Project project;
-		projectId = super.getRequest().getData("id", int.class);
-		project = this.repository.findOneProjectById(projectId);
+
+		masterId = super.getRequest().getData("id", int.class);
+		project = this.repository.findOneProjectById(masterId);
 		manager = project == null ? null : project.getManager();
-		status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.isDraftMode();
+		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -42,21 +44,12 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		super.getBuffer().addData(object);
 	}
 
-	/*
-	 * @Override
-	 * public void bind(final Project object) {
-	 * assert object != null;
-	 * 
-	 * int contractorId;
-	 * Company contractor;
-	 * 
-	 * contractorId = super.getRequest().getData("contractor", int.class);
-	 * contractor = this.repository.findOneContractorById(contractorId);
-	 * 
-	 * super.bind(object, "reference", "title", "deadline", "salary", "score", "moreInfo", "description");
-	 * object.setContractor(contractor);
-	 * }
-	 */
+	@Override
+	public void bind(final Project object) {
+		assert object != null;
+
+		super.bind(object, "code", "title", "abstractPj", "fatalErrors", "cost", "optionalLink");
+	}
 
 	@Override
 	public void validate(final Project object) {
@@ -66,7 +59,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 			Project existing;
 
 			existing = this.repository.findOneProjectByCode(object.getCode());
-			super.state(existing == null, "code", "manager.project.form.error.duplicated");
+			super.state(existing == null || existing.equals(object), "code", "manager.project.form.error.duplicated");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
@@ -86,7 +79,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractPj", "indication", "cost", "optionalLink", "draftMode");
+		dataset = super.unbind(object, "code", "title", "abstractPj", "fatalErrors", "cost", "optionalLink", "draftMode");
 		dataset.put("managerId", object.getManager().getId());
 		super.getResponse().addData(dataset);
 	}
