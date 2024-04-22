@@ -1,0 +1,2 @@
+key,code,startPeriod,endPeriod,mark,link,key:code-audit,key:auditor,draftMode
+audit-record-01,ABC-123,"2021/10/08 12:00","2021/10/08 16:00","A_PLUS",http://example.com/audit-001,code-audit-01,auditor-01,false

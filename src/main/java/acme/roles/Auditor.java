@@ -19,15 +19,15 @@ public class Auditor extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	private String				firm;
 
 	@NotBlank
-	@Length(max = 26)
+	@Length(max = 25)
 	private String				professionalID;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	private String				certifications;
 
 	@URL
