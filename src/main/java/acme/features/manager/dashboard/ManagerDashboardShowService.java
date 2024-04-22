@@ -69,8 +69,6 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		minimumEstimatedCost = this.repository.minimumEstimatedCost(managerId);
 		maximumEstimatedCost = this.repository.maximumEstimatedCost(managerId);
 
-		//Map<String, Double> cambiar el trato de moneda así
-
 		averageProjectCostsEUR = this.createMoney("EUR", this.repository.averageProjectCostsEUR(managerId));
 		averageProjectCostsGBP = this.createMoney("GBP", this.repository.averageProjectCostsGBP(managerId));
 		averageProjectCostsUSD = this.createMoney("USD", this.repository.averageProjectCostsUSD(managerId));
