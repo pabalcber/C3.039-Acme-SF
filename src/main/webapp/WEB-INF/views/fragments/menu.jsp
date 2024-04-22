@@ -57,7 +57,8 @@
 			<acme:menu-suboption code="master.menu.manager.my-projects" action="/manager/project/list"/>
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.manager.my-user-stories" action="/manager/user-story/list"/>
-			<acme:menu-separator/>	
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.manager.dashboard" action="/manager/manager-dashboard/show"/>	
 		</acme:menu-option>
 	</acme:menu-left>
 
