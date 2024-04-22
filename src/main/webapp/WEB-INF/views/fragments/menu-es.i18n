@@ -8,17 +8,23 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-﻿# master.menu #################################################################
+# master.menu #################################################################
 
 master.menu.home = Inicio
 master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
 
+# master.menu.any #######################################################
+
+master.menu.any = Cualquiera
+master.menu.any.claims = Reclamaciones
+
 # master.menu.authenticated #######################################################
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.contract.list = Ver Contratos Publicados
+master.menu.authenticated.training.list = Lista de Módulos de Formación
 
 # master.menu.anonymous #######################################################
 
@@ -34,7 +40,6 @@ master.menu.pabalcber.favourite-link = Enlace favorito
 
 master.menu.maravimaq = 49126568V Ávila Maqueda María del Mar
 master.menu.maravimaq.favourite-link = Enlace favorito
-
 
 # master.menu.YaoSpain #######################################################
 
@@ -69,6 +74,17 @@ master.menu.provider.favourite-link = Enlace favorito
 
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
+
+# master.menu.developer ##########################################################
+
+master.menu.developer = Desarrollador
+master.menu.developer.trainingModules = Módulos de entrenamiento
+master.menu.developer.trainingSession = Sesiones de entrenamiento
+master.menu.developer.dashboard = Panel de control
+
+master.menu.manager.projects = Proyectos
+master.menu.manager.user-stories = Historias de usuario
+master.menu.manager.dashboard = Panel de Registros
 
 # master.menu.client ########################################################
 

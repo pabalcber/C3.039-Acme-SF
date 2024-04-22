@@ -5,8 +5,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -16,48 +19,62 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.projects.Project;
+import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Training extends AbstractEntity {
+public class TrainingModule extends AbstractEntity {
 	// Serialisation identifier -----------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
+
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern '[A-Z]{1,3}-[0-9]{3}'")
-	@Length(max = 255)
-	@NotNull
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern XXX-XXX.")
 	private String				code;
 
+	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
 	private Date				creationMoment;
 
 	@NotBlank
 	@Length(max = 100)
-	@NotNull
 	private String				details;
 
 	@NotNull
 	private difficultyLevelType	difficultyLevel;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	@NotNull
-	private Date				updateMoment;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				updatedMoment;
 
-	@Length(max = 255)
 	@URL
-	private String				furtherInformationLink;
+	private String				optionalLink;
 
 	@NotNull
-	private Integer				estimatedTotalTime;
+	@Min(0)
+	private Double				totalTime;
+
+	@NotNull
+	private Boolean				draftMode;
+
+	// Relationships ----------------------------------------------------------
+
+	@ManyToOne
+	@NotNull
+	@Valid
+	private Project				project;
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Developer			developer;
 
 }
