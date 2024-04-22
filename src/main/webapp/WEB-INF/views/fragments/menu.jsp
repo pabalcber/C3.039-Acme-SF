@@ -20,10 +20,14 @@
 	<acme:menu-left>
 
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.notice.list-recent" action="/authenticated/notice/list-recent"/>			
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.contract.list" action="/authenticated/contract/list-all"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
+			<acme:menu-suboption code="master.menu.administrator.banner.list-all" action="/administrator/banner/list-all"/>			
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>

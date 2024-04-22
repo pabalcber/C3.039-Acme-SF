@@ -72,9 +72,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 		int id = super.getRequest().getData("id", int.class);
 		ProgressLog pl = this.repository.findOneProgressLogById(id);
-		Client client = object.getContract().getClient();
 
-		object.setResponsiblePerson(client.getIdentification());
 		object.setRecordId(pl.getRecordId());
 		this.repository.save(object);
 	}
@@ -91,7 +89,6 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 		dataset.put("masterId", object.getContract().getId());
 		dataset.put("draftMode", object.getContract().isDraftMode());
 		dataset.put("contract", object.getContract().getCode());
-		dataset.put(ClientProgressLogUpdateService.responsiblePerson, object.getContract().getClient().getIdentification());
 	}
 
 }

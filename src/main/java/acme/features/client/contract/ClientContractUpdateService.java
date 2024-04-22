@@ -99,15 +99,12 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		if (object == null)
 			throw new IllegalArgumentException(ClientContractUpdateService.invalidObject + object);
 
-		Client client;
 		Contract contract;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
 		contract = this.repository.findContractById(id);
-		client = this.repository.findClientById(super.getRequest().getPrincipal().getActiveRoleId());
 
-		object.setCustomerName(client.getIdentification());
 		object.setCode(contract.getCode());
 		this.repository.save(object);
 	}

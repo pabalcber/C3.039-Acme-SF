@@ -47,7 +47,6 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		object.setInstantiationMoment(moment);
 		object.setDraftMode(true);
 		object.setClient(client);
-		object.setCustomerName(client.getIdentification());
 
 		super.getBuffer().addData(object);
 	}
@@ -86,13 +85,11 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
 
 		Date moment;
-		Client client;
 
-		client = this.repository.findClientById(super.getRequest().getPrincipal().getActiveRoleId());
 		moment = MomentHelper.getCurrentMoment();
 
 		object.setInstantiationMoment(moment);
-		object.setCustomerName(client.getIdentification());
+
 		this.repository.save(object);
 	}
 
@@ -101,13 +98,11 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		if (object == null)
 			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
 
-		int clientId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
 
-		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsByClientId(clientId);
+		projects = this.repository.findManyProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractCreateService.budget, "draftMode");

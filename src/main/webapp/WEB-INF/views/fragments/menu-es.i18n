@@ -24,7 +24,11 @@ master.menu.any.claims = Reclamaciones
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.contract.list = Ver Contratos Publicados
+<<<<<<< HEAD
 master.menu.authenticated.training.list = Lista de Módulos de Formación
+=======
+master.menu.authenticated.notice.list-recent =Ver Noticias Recientes
+>>>>>>> 4d3cb24236ce2b8c4b89de4d339dfb440a7020e0
 
 # master.menu.anonymous #######################################################
 
@@ -59,6 +63,7 @@ master.menu.marbarmar16.favourite-link = Enlace favorito
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
+master.menu.administrator.banner.list-all = Ver todos los banners
 master.menu.administrator.dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
