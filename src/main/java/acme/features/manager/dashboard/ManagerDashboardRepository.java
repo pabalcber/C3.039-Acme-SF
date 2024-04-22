@@ -5,21 +5,22 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.userStories.Priority;
 
 @Repository
 public interface ManagerDashboardRepository extends AbstractRepository {
 
-	@Query("select count(u) from UserStory u where u.priority = 'MUST' and u.project.manager.id = :managerId")
-	int mustUserStories(int managerId);
+	@Query("select count(u) from UserStory u where u.priority = :priority and u.project.manager.id = :managerId")
+	int priorityUserStories(int managerId, Priority priority);
 
-	@Query("select count(u) from UserStory u where u.priority = 'SHOULD' and u.project.manager.id = :managerId")
-	int shouldUserStories(int managerId);
-
-	@Query("select count(u) from UserStory u where u.priority = 'COULD' and u.project.manager.id = :managerId")
-	int couldUserStories(int managerId);
-
-	@Query("select count(u) from UserStory u where u.priority = 'WONT' and u.project.manager.id = :managerId")
-	int wontUserStories(int managerId);
+	//	@Query("select count(u) from UserStory u where u.priority = 'SHOULD' and u.project.manager.id = :managerId")
+	//	int shouldUserStories(int managerId);
+	//
+	//	@Query("select count(u) from UserStory u where u.priority = 'COULD' and u.project.manager.id = :managerId")
+	//	int couldUserStories(int managerId);
+	//
+	//	@Query("select count(u) from UserStory u where u.priority = 'WONT' and u.project.manager.id = :managerId")
+	//	int wontUserStories(int managerId);
 
 	@Query("select avg(u.estimatedCost) from UserStory u where u.project.manager.id = :managerId")
 	Double averageEstimatedCost(int managerId);

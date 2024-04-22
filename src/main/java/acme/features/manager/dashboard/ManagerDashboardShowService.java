@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.userStories.Priority;
 import acme.forms.ManagerDashboard;
 import acme.roles.Manager;
 
@@ -58,15 +59,17 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		Money maximumProjectCostsGBP;
 		Money maximumProjectCostsUSD;
 
-		mustUserStories = this.repository.mustUserStories(managerId);
-		shouldUserStories = this.repository.shouldUserStories(managerId);
-		couldUserStories = this.repository.couldUserStories(managerId);
-		wontUserStories = this.repository.wontUserStories(managerId);
+		mustUserStories = this.repository.priorityUserStories(managerId, Priority.MUST);
+		shouldUserStories = this.repository.priorityUserStories(managerId, Priority.SHOULD);
+		couldUserStories = this.repository.priorityUserStories(managerId, Priority.COULD);
+		wontUserStories = this.repository.priorityUserStories(managerId, Priority.WONT);
 
 		averageEstimatedCost = this.repository.averageEstimatedCost(managerId);
 		deviationEstimatedCost = this.repository.deviationEstimatedCost(managerId);
 		minimumEstimatedCost = this.repository.minimumEstimatedCost(managerId);
 		maximumEstimatedCost = this.repository.maximumEstimatedCost(managerId);
+
+		//Map<String, Double> cambiar el trato de moneda así
 
 		averageProjectCostsEUR = this.createMoney("EUR", this.repository.averageProjectCostsEUR(managerId));
 		averageProjectCostsGBP = this.createMoney("GBP", this.repository.averageProjectCostsGBP(managerId));
