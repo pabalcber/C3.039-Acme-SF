@@ -19,6 +19,7 @@ master.menu.sign-out = Salir
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.contract.list = Ver Contratos Publicados
+master.menu.authenticated.notice.list-recent =Ver Noticias Recientes
 
 # master.menu.anonymous #######################################################
 
