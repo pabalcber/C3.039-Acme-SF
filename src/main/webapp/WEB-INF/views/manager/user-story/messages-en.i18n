@@ -1,3 +1,5 @@
+manager.user-story.list.title = User stories
+
 manager.userStory.list.label.title = Title
 manager.userStory.list.label.estimatedCost = Estimated Cost
 manager.userStory.list.label.priority = Priority

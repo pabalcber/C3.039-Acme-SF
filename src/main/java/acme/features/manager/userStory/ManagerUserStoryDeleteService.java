@@ -22,15 +22,16 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	@Override
 	public void authorise() {
 		boolean status;
-		int userStoryId;
+		int masterId;
 		Project project;
 		UserStory userStory;
 		Manager manager;
-		userStoryId = super.getRequest().getData("id", int.class);
-		userStory = this.repository.findOneUserStoryById(userStoryId);
+
+		masterId = super.getRequest().getData("id", int.class);
+		userStory = this.repository.findOneUserStoryById(masterId);
 		project = userStory == null ? null : userStory.getProject();
 		manager = project == null ? null : project.getManager();
-		status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.isDraftMode();
+		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 		super.getResponse().setAuthorised(status);
 	}
 
