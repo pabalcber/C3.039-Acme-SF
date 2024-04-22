@@ -4,7 +4,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <h2>
-	<acme:message code="manager.dashboard.form.title.general-indicators"/>
+	<acme:message code="manager.dashboard.form.title.user-stories-indicators"/>
 </h2>
 
 <table class="table table-sm">
@@ -64,7 +64,15 @@
 		<td>
 			<acme:print value="${maximumEstimatedCost}"/>
 		</td>
-	</tr><tr>
+	</tr>
+</table>
+
+<h2>
+	<acme:message code="manager.dashboard.form.title.project-indicators"/>
+</h2>
+
+<table class="table table-sm">	
+	<tr>
 		<th scope="row">
 			<acme:message code="manager.dashboard.form.label.average-project-cost-eur"/>
 		</th>
@@ -150,9 +158,6 @@
 	</tr>
 </table>
 
-<h2>
-	<acme:message code="manager.dashboard.form.title.application-statuses"/>
-</h2>
 
 <div>
 	<canvas id="canvas"></canvas>

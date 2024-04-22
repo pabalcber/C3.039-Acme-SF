@@ -1,1 +1,19 @@
 # messages-es.i18n
+
+manager.manager-dashboard.form.title = Mi Dashboard
+
+manager.dashboard.form.title.user-stories-indicators = Indicadores de historias de usuario
+manager.dashboard.form.label.must-user-stories = Historias de usuario "MUST"
+manager.dashboard.form.label.should-user-stories = Historias de usuario "SHOULD"
+manager.dashboard.form.label.could-user-stories	= Historias de usuario "COULD"
+manager.dashboard.form.label.wont-user-stories = Historias de usuario "WONT"
+manager.dashboard.form.label.average-estimated-cost = Media de coste estimado
+manager.dashboard.form.label.deviation-estimated-cost = Desviación de coste estimado
+manager.dashboard.form.label.minimum-estimated-cost	= Mínimo coste estimado
+manager.dashboard.form.label.maximum-estimated-cost	= Máximo coste estimado
+
+manager.dashboard.form.title.project-indicators = Indicadores de proyectos
+manager.dashboard.form.label.average-project-cost = Coste medio de proyecto
+manager.dashboard.form.label.deviation-project-cost = Desviación de proyecto
+manager.dashboard.form.label.minimum-project-cost = Mínimo coste de proyecto
+manager.dashboard.form.label.maximum-project-cost = Máximo coste de proyecto
