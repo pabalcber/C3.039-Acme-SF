@@ -71,92 +71,41 @@
 	<acme:message code="manager.dashboard.form.title.project-indicators"/>
 </h2>
 
-<table class="table table-sm">	
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.average-project-cost-eur"/>
-		</th>
-		<td>
-			<acme:print value="${averageProjectCostsEUR}"/>
-		</td>
-	</tr><tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.average-project-cost-gbp"/>
-		</th>
-		<td>
-			<acme:print value="${averageProjectCostsGBP}"/>
-		</td>
-	</tr><tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.average-project-cost-usd"/>
-		</th>
-		<td>
-			<acme:print value="${averageProjectCostsUSD}"/>
-		</td>
-	</tr><tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.deviation-project-cost-eur"/>
-		</th>
-		<td>
-			<acme:print value="${deviationProjectCostsEUR}"/>
-		</td>
-	</tr><tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.deviation-project-cost-gbp"/>
-		</th>
-		<td>
-			<acme:print value="${deviationProjectCostsGBP}"/>
-		</td>
-	</tr><tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.deviation-project-cost-usd"/>
-		</th>
-		<td>
-			<acme:print value="${deviationProjectCostsUSD}"/>
-		</td>
-	</tr><tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.minimum-project-cost-eur"/>
-		</th>
-		<td>
-			<acme:print value="${minimumProjectCostsEUR}"/>
-		</td>
-	</tr><tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.minimum-project-cost-gbp"/>
-		</th>
-		<td>
-			<acme:print value="${minimumProjectCostsGBP}"/>
-		</td>
-	</tr><tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.minimum-project-cost-usd"/>
-		</th>
-		<td>
-			<acme:print value="${minimumProjectCostsUSD}"/>
-		</td><tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.maximum-project-cost-eur"/>
-		</th>
-		<td>
-			<acme:print value="${maximumProjectCostsEUR}"/>
-		</td>
-	</tr><tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.maximum-project-cost-gbp"/>
-		</th>
-		<td>
-			<acme:print value="${maximumProjectCostsGBP}"/>
-		</td>
-	</tr><tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.maximum-project-cost-usd"/>
-		</th>
-		<td>
-			<acme:print value="${maximumProjectCostsUSD}"/>
-		</td>
-	</tr>
+<table class="table">
+    <thead>
+        <tr>
+            <th><acme:message code="manager.dashboard.form.label.currency"/></th>
+            <th><acme:message code="manager.dashboard.form.label.average-project-cost"/></th>
+            <th><acme:message code="manager.dashboard.form.label.deviation-project-cost"/></th>
+            <th><acme:message code="manager.dashboard.form.label.minimum-project-cost"/></th>
+            <th><acme:message code="manager.dashboard.form.label.maximum-project-cost"/></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>EUR</td>
+            <td><acme:print value="${averageProjectCosts['EUR']}"/></td>
+            <td><acme:print value="${deviationProjectCosts['EUR']}"/></td>
+            <td><acme:print value="${minimumProjectCosts['EUR']}"/></td>
+            <td><acme:print value="${maximumProjectCosts['EUR']}"/></td>
+        </tr>
+        <tr>
+            <td>GBP</td>
+            <td><acme:print value="${averageProjectCosts['GBP']}"/></td>
+            <td><acme:print value="${deviationProjectCosts['GBP']}"/></td>
+            <td><acme:print value="${minimumProjectCosts['GBP']}"/></td>
+            <td><acme:print value="${maximumProjectCosts['GBP']}"/></td>
+        </tr>
+        <tr>
+            <td>USD</td>
+            <td><acme:print value="${averageProjectCosts['USD']}"/></td>
+            <td><acme:print value="${deviationProjectCosts['USD']}"/></td>
+            <td><acme:print value="${minimumProjectCosts['USD']}"/></td>
+            <td><acme:print value="${maximumProjectCosts['USD']}"/></td>
+        </tr>
+    </tbody>
 </table>
+
 
 
 <div>

@@ -1,10 +1,12 @@
 
 package acme.features.manager.dashboard;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.userStories.Priority;
@@ -43,21 +45,10 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		Double minimumEstimatedCost;
 		Double maximumEstimatedCost;
 
-		Money averageProjectCostsEUR;
-		Money averageProjectCostsGBP;
-		Money averageProjectCostsUSD;
-
-		Money deviationProjectCostsEUR;
-		Money deviationProjectCostsGBP;
-		Money deviationProjectCostsUSD;
-
-		Money minimumProjectCostsEUR;
-		Money minimumProjectCostsGBP;
-		Money minimumProjectCostsUSD;
-
-		Money maximumProjectCostsEUR;
-		Money maximumProjectCostsGBP;
-		Money maximumProjectCostsUSD;
+		Map<String, Double> averageProjectCosts = new HashMap<>();
+		Map<String, Double> deviationProjectCosts = new HashMap<>();
+		Map<String, Double> minimumProjectCosts = new HashMap<>();
+		Map<String, Double> maximumProjectCosts = new HashMap<>();
 
 		mustUserStories = this.repository.priorityUserStories(managerId, Priority.MUST);
 		shouldUserStories = this.repository.priorityUserStories(managerId, Priority.SHOULD);
@@ -69,21 +60,21 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		minimumEstimatedCost = this.repository.minimumEstimatedCost(managerId);
 		maximumEstimatedCost = this.repository.maximumEstimatedCost(managerId);
 
-		averageProjectCostsEUR = this.createMoney("EUR", this.repository.averageProjectCostsEUR(managerId));
-		averageProjectCostsGBP = this.createMoney("GBP", this.repository.averageProjectCostsGBP(managerId));
-		averageProjectCostsUSD = this.createMoney("USD", this.repository.averageProjectCostsUSD(managerId));
+		averageProjectCosts.put("EUR", this.repository.averageProjectCosts("EUR", managerId));
+		averageProjectCosts.put("GBP", this.repository.averageProjectCosts("GBP", managerId));
+		averageProjectCosts.put("USD", this.repository.averageProjectCosts("USD", managerId));
 
-		deviationProjectCostsEUR = this.createMoney("EUR", this.repository.deviationProjectCostsEUR(managerId));
-		deviationProjectCostsGBP = this.createMoney("GBP", this.repository.deviationProjectCostsGBP(managerId));
-		deviationProjectCostsUSD = this.createMoney("USD", this.repository.deviationProjectCostsUSD(managerId));
+		deviationProjectCosts.put("EUR", this.repository.deviationProjectCosts("EUR", managerId));
+		deviationProjectCosts.put("GBP", this.repository.deviationProjectCosts("GBP", managerId));
+		deviationProjectCosts.put("USD", this.repository.deviationProjectCosts("USD", managerId));
 
-		minimumProjectCostsEUR = this.createMoney("EUR", this.repository.minimumProjectCostsEUR(managerId));
-		minimumProjectCostsGBP = this.createMoney("GBP", this.repository.minimumProjectCostsGBP(managerId));
-		minimumProjectCostsUSD = this.createMoney("USD", this.repository.minimumProjectCostsUSD(managerId));
+		minimumProjectCosts.put("EUR", this.repository.minimumProjectCosts("EUR", managerId));
+		minimumProjectCosts.put("GBP", this.repository.minimumProjectCosts("GBP", managerId));
+		minimumProjectCosts.put("USD", this.repository.minimumProjectCosts("USD", managerId));
 
-		maximumProjectCostsEUR = this.createMoney("EUR", this.repository.maximumProjectCostsEUR(managerId));
-		maximumProjectCostsGBP = this.createMoney("GBP", this.repository.maximumProjectCostsGBP(managerId));
-		maximumProjectCostsUSD = this.createMoney("USD", this.repository.maximumProjectCostsUSD(managerId));
+		maximumProjectCosts.put("EUR", this.repository.maximumProjectCosts("EUR", managerId));
+		maximumProjectCosts.put("GBP", this.repository.maximumProjectCosts("GBP", managerId));
+		maximumProjectCosts.put("USD", this.repository.maximumProjectCosts("USD", managerId));
 
 		dashboard = new ManagerDashboard();
 		dashboard.setMustUserStories(mustUserStories);
@@ -96,21 +87,10 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		dashboard.setMinimumEstimatedCost(minimumEstimatedCost);
 		dashboard.setMaximumEstimatedCost(maximumEstimatedCost);
 
-		dashboard.setAverageProjectCostsEUR(averageProjectCostsEUR);
-		dashboard.setAverageProjectCostsGBP(averageProjectCostsGBP);
-		dashboard.setAverageProjectCostsUSD(averageProjectCostsUSD);
-
-		dashboard.setDeviationProjectCostsEUR(deviationProjectCostsEUR);
-		dashboard.setDeviationProjectCostsGBP(deviationProjectCostsGBP);
-		dashboard.setDeviationProjectCostsUSD(deviationProjectCostsUSD);
-
-		dashboard.setMinimumProjectCostsEUR(minimumProjectCostsEUR);
-		dashboard.setMinimumProjectCostsGBP(minimumProjectCostsGBP);
-		dashboard.setMinimumProjectCostsUSD(minimumProjectCostsUSD);
-
-		dashboard.setMaximumProjectCostsEUR(maximumProjectCostsEUR);
-		dashboard.setMaximumProjectCostsGBP(maximumProjectCostsGBP);
-		dashboard.setMaximumProjectCostsUSD(maximumProjectCostsUSD);
+		dashboard.setAverageProjectCosts(averageProjectCosts);
+		dashboard.setDeviationProjectCosts(deviationProjectCosts);
+		dashboard.setMinimumProjectCosts(minimumProjectCosts);
+		dashboard.setMaximumProjectCosts(maximumProjectCosts);
 
 		super.getBuffer().addData(dashboard);
 	}
@@ -124,24 +104,10 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 			"couldUserStories", "wontUserStories", //
 			"averageEstimatedCost", "deviationEstimatedCost", //
 			"minimumEstimatedCost", "maximumEstimatedCost", //
-			"averageProjectCostsEUR", "averageProjectCostsGBP", //
-			"averageProjectCostsUSD", "deviationProjectCostsEUR", //
-			"deviationProjectCostsGBP", "deviationProjectCostsUSD", //
-			"minimumProjectCostsEUR", "minimumProjectCostsGBP", //
-			"minimumProjectCostsUSD", "maximumProjectCostsEUR", //
-			"maximumProjectCostsGBP", "maximumProjectCostsUSD");
+			"averageProjectCosts", "deviationProjectCosts", //
+			"minimumProjectCosts", "maximumProjectCosts");
 
 		super.getResponse().addData(dataset);
-	}
-
-	private Money createMoney(final String currency, final Double amount) {
-		Money money = new Money();
-		if (amount == null)
-			money.setAmount(0.0);
-		else
-			money.setAmount(amount);
-		money.setCurrency(currency);
-		return money;
 	}
 
 }
