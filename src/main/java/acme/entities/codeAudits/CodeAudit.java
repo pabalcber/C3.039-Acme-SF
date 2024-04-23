@@ -2,6 +2,9 @@
 package acme.entities.codeAudits;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -66,6 +69,23 @@ public class CodeAudit extends AbstractEntity {
 	protected String Mark() {
 		//The mark is the mode of the marks of its associated codeRecords
 		return null;
+	}
+
+	public String Mark(final List<String> lista) {
+		Map<String, Integer> frecuencia = new HashMap<>();
+
+		for (String str : lista)
+			frecuencia.put(str, frecuencia.getOrDefault(str, 0) + 1);
+
+		String moda = null;
+		int maxFrecuencia = 0;
+		for (Map.Entry<String, Integer> entry : frecuencia.entrySet())
+			if (entry.getValue() > maxFrecuencia) {
+				moda = entry.getKey();
+				maxFrecuencia = entry.getValue();
+			}
+
+		return moda;
 	}
 
 	// Relationships ----------------------------------------------------------
