@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -64,12 +63,6 @@ public class CodeAudit extends AbstractEntity {
 
 	// Derived attributes -----------------------------------------------------
 
-
-	@Transient
-	protected String Mark() {
-		//The mark is the mode of the marks of its associated codeRecords
-		return null;
-	}
 
 	public String Mark(final List<String> lista) {
 		Map<String, Integer> frecuencia = new HashMap<>();

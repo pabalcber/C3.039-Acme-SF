@@ -47,8 +47,8 @@ public class AuditRecord extends AbstractEntity {
 	@NotNull
 	private Date				endPeriod;
 
-	@NotNull
-	private Marks				mark;
+	@Pattern(regexp = "A\\+|A|B|C|F|F-")
+	private String				mark;
 
 	@URL
 	private String				link;
