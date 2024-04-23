@@ -1,5 +1,5 @@
 
-package acme.features.client.progressLog;
+package acme.features.client.progresslog;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import acme.entities.contracts.ProgressLog;
 import acme.roles.clients.Client;
 
 @Service
-public class ClientProgressLogUpdateService extends AbstractService<Client, ProgressLog> {
+public class ClientProgressLogDeleteService extends AbstractService<Client, ProgressLog> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -45,36 +45,44 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 		super.getBuffer().addData(object);
 	}
 
+
+	private static String invalidObject = "Invalid object: ";
+
+
 	@Override
 	public void bind(final ProgressLog object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
 
 		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 	}
 
 	@Override
 	public void validate(final ProgressLog object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
 	}
 
 	@Override
 	public void perform(final ProgressLog object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
 
-		this.repository.save(object);
+		this.repository.delete(object);
 	}
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
 
 		Dataset dataset;
 
 		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 		dataset.put("masterId", object.getContract().getId());
 		dataset.put("draftMode", object.getContract().isDraftMode());
-		dataset.put("contract", object.getContract().getCode());
-		dataset.put("responsiblePerson", object.getContract().getClient().getIdentification());
+
+		super.getResponse().addData(dataset);
 	}
 
 }

@@ -1,0 +1,25 @@
+# messages-es.i18n
+#
+administrator.banner.form.title = Detalles Del Banner
+administrator.banner.list.title = Lista de Banners
+
+administrator.banner.form.label.target = Objetivo:
+administrator.banner.form.label.slogan = Eslogan:
+administrator.banner.form.label.picture = Imagen:
+administrator.banner.form.label.moment = Momento de Creación:
+administrator.banner.form.label.displayStartMoment = Inicio del Periodo de Visualización:
+administrator.banner.form.label.displayEndMoment = Fin del Periodo de Visualización:
+administrator.banner.form.label.confirmation = Confirme que el banner es correcto
+administrator.banner.form.button.create = Crear
+
+administrator.banner.form.button.update = Actualizar
+administrator.banner.form.button.delete = Eliminar
+
+administrator.banner.list.label.moment = Momento de Creación
+administrator.banner.list.label.slogan = Eslogan
+administrator.banner.list.label.target = Objetivo
+
+administrator.banner.list.button.create = Crear
+
+administrator.banner.form.error.display-duration-must-be-at-least-one-week = La duración debe ser de al menos una semana
+administrator.banner.form.error.start-display-must-be-after-moment = No puedes hacer que el periodo de visualización empiece antes o al mismo tiempo que su creación

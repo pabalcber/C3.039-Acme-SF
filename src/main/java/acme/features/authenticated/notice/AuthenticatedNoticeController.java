@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.progressLog;
+package acme.features.authenticated.notice;
 
 import javax.annotation.PostConstruct;
 
@@ -8,26 +8,30 @@ import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
 import acme.client.data.accounts.Authenticated;
-import acme.entities.contracts.ProgressLog;
+import acme.entities.notices.Notice;
 
 @Controller
-public class AuthenticatedProgressLogController extends AbstractController<Authenticated, ProgressLog> {
+public class AuthenticatedNoticeController extends AbstractController<Authenticated, Notice> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedProgressLogListService	listService;
+	private AuthenticatedNoticeListRecentService	listRecentService;
 
 	@Autowired
-	private AuthenticatedProgressLogShowService	showService;
+	private AuthenticatedNoticeShowService			showService;
+
+	@Autowired
+	private AuthenticatedNoticeCreateService		createService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
+		super.addCustomCommand("list-recent", "list", this.listRecentService);
 	}
 
 }

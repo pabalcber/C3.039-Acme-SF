@@ -1,5 +1,5 @@
 
-package acme.features.client.progressLog;
+package acme.features.client.progresslog;
 
 import java.util.Collection;
 
@@ -18,9 +18,11 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 	// Internal State ---------------------------------------------------------------------------------------------------------------------------------------
 
 	@Autowired
-	private ClientProgressLogRepository repository;
+	private ClientProgressLogRepository	repository;
 
 	// AbstractService interface ----------------------------------------------------------------------------------------------------------------------------
+
+	private static String				id	= "masterId";
 
 
 	@Override
@@ -29,7 +31,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 		int masterId;
 		Contract contract;
 
-		masterId = super.getRequest().getData("masterId", int.class);
+		masterId = super.getRequest().getData(ClientProgressLogListService.id, int.class);
 		contract = this.repository.findOneContractById(masterId);
 		status = contract != null && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
 
@@ -41,7 +43,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 		Collection<ProgressLog> objects;
 		int masterId;
 
-		masterId = super.getRequest().getData("masterId", int.class);
+		masterId = super.getRequest().getData(ClientProgressLogListService.id, int.class);
 		objects = this.repository.findManyProgressLogsByMasterId(masterId);
 
 		super.getBuffer().addData(objects);
@@ -49,7 +51,8 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException("Invalid object: " + object);
 
 		Dataset dataset;
 
@@ -60,17 +63,18 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 	@Override
 	public void unbind(final Collection<ProgressLog> objects) {
-		assert objects != null;
+		if (objects == null)
+			throw new IllegalArgumentException("Invalid object: " + objects);
 
 		int masterId;
 		Contract contract;
 		final boolean showCreate;
 
-		masterId = super.getRequest().getData("masterId", int.class);
+		masterId = super.getRequest().getData(ClientProgressLogListService.id, int.class);
 		contract = this.repository.findOneContractById(masterId);
 		showCreate = contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
-		super.getResponse().addGlobal("masterId", masterId);
+		super.getResponse().addGlobal(ClientProgressLogListService.id, masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 

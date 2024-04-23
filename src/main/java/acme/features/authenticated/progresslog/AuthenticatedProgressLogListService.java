@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.progressLog;
+package acme.features.authenticated.progresslog;
 
 import java.util.Collection;
 
@@ -40,7 +40,8 @@ public class AuthenticatedProgressLogListService extends AbstractService<Authent
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException("Invalid object: " + object);
 
 		Dataset dataset;
 

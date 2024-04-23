@@ -19,6 +19,7 @@ master.menu.sign-out = Sign out
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.contract.list = Published Contracts List
+master.menu.authenticated.notice.list-recent = Recent Notices
 
 # master.menu.anonymous #######################################################
 
@@ -52,6 +53,7 @@ master.menu.marbarmar16.favourite-link = Favourite link
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
+master.menu.administrator.banner.list-all = List all banners
 master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
@@ -73,6 +75,7 @@ master.menu.consumer.favourite-link = Favourite link
 master.menu.client = Client
 master.menu.client.my-contracts = My Contracts
 master.menu.client.published-contracts = Published Contracts
+master.menu.client.client-dashboard = Client Dashboard
 
 # master.menu.user-account ####################################################
 

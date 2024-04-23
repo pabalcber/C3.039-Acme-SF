@@ -19,6 +19,7 @@ master.menu.sign-out = Salir
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.contract.list = Ver Contratos Publicados
+master.menu.authenticated.notice.list-recent =Ver Noticias Recientes
 
 # master.menu.anonymous #######################################################
 
@@ -54,6 +55,7 @@ master.menu.marbarmar16.favourite-link = Enlace favorito
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
+master.menu.administrator.banner.list-all = Ver todos los banners
 master.menu.administrator.dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
@@ -75,6 +77,7 @@ master.menu.consumer.favourite-link = Enlace favorito
 master.menu.client = Cliente
 master.menu.client.my-contracts = Mis Contratos
 master.menu.client.published-contracts = Contratos Publicados
+master.menu.client.client-dashboard = Panel de Indicadores de Clientes
 
 # master.menu.user-account ####################################################
 

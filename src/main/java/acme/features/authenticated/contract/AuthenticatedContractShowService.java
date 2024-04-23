@@ -1,13 +1,18 @@
 
 package acme.features.authenticated.contract;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
+import acme.entities.projects.Project;
 
 @Service
 public class AuthenticatedContractShowService extends AbstractService<Authenticated, Contract> {
@@ -38,12 +43,25 @@ public class AuthenticatedContractShowService extends AbstractService<Authentica
 
 	@Override
 	public void unbind(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException("Invalid object: " + object);
+
+		SelectChoices choices;
+		Project project;
+		Collection<Project> projects;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		project = this.repository.findContractById(id).getProject();
+		projects = new ArrayList<>();
+		projects.add(project);
+		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "providerName", "customerName", "budget", "project");
-
+		dataset = super.unbind(object, "code", "project", "client", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
+		dataset.put("masterId", object.getClient().getId());
+		dataset.put("projects", choices);
 		super.getResponse().addData(dataset);
 	}
 
