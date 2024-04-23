@@ -12,6 +12,7 @@ manager.dashboard.form.label.deviation-estimated-cost = Desviación de coste est
 manager.dashboard.form.label.minimum-estimated-cost	= Mínimo coste estimado
 manager.dashboard.form.label.maximum-estimated-cost	= Máximo coste estimado
 
+manager.dashboard.form.label.currency = Divisa
 manager.dashboard.form.title.project-indicators = Indicadores de proyectos
 manager.dashboard.form.label.average-project-cost = Coste medio de proyecto
 manager.dashboard.form.label.deviation-project-cost = Desviación de proyecto

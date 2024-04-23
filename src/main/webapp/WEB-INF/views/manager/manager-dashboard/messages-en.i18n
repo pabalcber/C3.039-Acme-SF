@@ -13,6 +13,8 @@ manager.dashboard.form.label.minimum-estimated-cost	= Minimum estimated cost
 manager.dashboard.form.label.maximum-estimated-cost	= Maximum estimated cost
 
 manager.dashboard.form.title.project-indicators = Project indicators
+
+manager.dashboard.form.label.currency = Currency
 manager.dashboard.form.label.average-project-cost = Average project cost
 manager.dashboard.form.label.deviation-project-cost = Deviation project cost
 manager.dashboard.form.label.minimum-project-cost = Minimum project cost
