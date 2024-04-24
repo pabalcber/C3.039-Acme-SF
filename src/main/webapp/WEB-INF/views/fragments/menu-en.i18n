@@ -25,11 +25,6 @@ master.menu.any.training-modules = List training modules
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.contract.list = Published Contracts List
-<<<<<<< HEAD
-master.menu.authenticated.published-modules = Training Modules published
-=======
-master.menu.authenticated.training.list = Training Modules
->>>>>>> 04fef69f419ad2a4f6f5e0b0a0c30bfe321f07eb
 master.menu.authenticated.notice.list-recent = Recent Notices
 
 # master.menu.anonymous #######################################################
@@ -82,9 +77,11 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
-<<<<<<< HEAD
 # master.menu.developer ###################################################
-=======
+master.menu.developer = Developer
+master.menu.developer.training-module.list = List Your Training Modules
+master.menu.developer.dashboard = Developer Dashboard
+
 # master.menu.manager ########################################################
 
 master.menu.manager = Manager
@@ -96,13 +93,6 @@ master.menu.manager.dashboard = See my dashboard
 
 master.menu.any = Principal
 master.menu.any.projects = Published projects
-
-# master.menu.developer ##########################################################
-
->>>>>>> 04fef69f419ad2a4f6f5e0b0a0c30bfe321f07eb
-master.menu.developer = Developer
-master.menu.developer.training-module.list = Training Modules
-master.menu.developer.dashboard = Developer Dashboard
 
 # master.menu.client ########################################################
 
@@ -119,12 +109,9 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
-<<<<<<< HEAD
 master.menu.user-account.developer = Developer data
 master.menu.user-account.become-developer = Become a developer
-=======
 master.menu.user-account.become-manager = Become a manager
 master.menu.user-account.manager = My manager profile
->>>>>>> 04fef69f419ad2a4f6f5e0b0a0c30bfe321f07eb
 master.menu.user-account.client = Client data
 master.menu.user-account.become-client = Become a client

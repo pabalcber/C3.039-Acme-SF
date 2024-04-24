@@ -25,11 +25,6 @@ master.menu.any.training-modules =Módulos de entrenamiento
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.contract.list = Ver Contratos Publicados
-<<<<<<< HEAD
-master.menu.authenticated.published-modules = Ver los módulos de entrenamiento publicados
-=======
-master.menu.authenticated.training.list = Lista de Módulos de Formación
->>>>>>> 04fef69f419ad2a4f6f5e0b0a0c30bfe321f07eb
 master.menu.authenticated.notice.list-recent =Ver Noticias Recientes
 
 # master.menu.anonymous #######################################################
@@ -82,9 +77,6 @@ master.menu.provider.favourite-link = Enlace favorito
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
-<<<<<<< HEAD
-# master.menu.developer ###################################################
-=======
 # master.menu.manager ########################################################
 
 master.menu.manager = Manager
@@ -99,7 +91,6 @@ master.menu.any.projects = Proyectos publicados
 
 # master.menu.developer ##########################################################
 
->>>>>>> 04fef69f419ad2a4f6f5e0b0a0c30bfe321f07eb
 master.menu.developer = Desarrollador
 master.menu.developer.training-module.list = Listar tus módulos de entrenamiento
 master.menu.developer.dashboard = Dashboard de desarrollador
@@ -120,12 +111,9 @@ master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
-<<<<<<< HEAD
 master.menu.user-account.developer = Datos de desarrollador
 master.menu.user-account.become-developer = Hazte desasrrollador
-=======
 master.menu.user-account.become-manager = Hazte manager
 master.menu.user-account.manager = Mi perfil de manager
->>>>>>> 04fef69f419ad2a4f6f5e0b0a0c30bfe321f07eb
 master.menu.user-account.client = Datos de cliente
 master.menu.user-account.become-client = Hazte cliente
