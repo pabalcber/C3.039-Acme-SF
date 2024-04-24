@@ -64,3 +64,11 @@ user-account-Sponsor-02,true,"UserIdentity{name: 'Sponsor2', surname: '2', email
 user-account-Sponsor-03,true,"UserIdentity{name: 'Sponsor3', surname: '3', email: 'peter3@acme.com'}",sponsor3,sponsor3
 user-account-Sponsor-04,true,"UserIdentity{name: 'Sponsor4', surname: '4', email: 'peter4@acme.com'}",sponsor4,sponsor4
 user-account-Sponsor-05,true,"UserIdentity{name: 'Sponsor5', surname: '5', email: 'peter5@acme.com'}",sponsor5,sponsor5
+user-account-developer-01,true,"UserIdentity{name: 'Developer', surname: 'developer1', email: 'developer1@acme.com'}",developer1,developer1
+user-account-developer-02,true,"UserIdentity{name: 'Developer', surname: 'developer2', email: 'developer2@acme.com'}",developer2,developer2
+user-account-developer-03,true,"UserIdentity{name: 'Developer', surname: 'developer3', email: 'developer3@acme.com'}",developer3,developer3
+user-account-developer-04,true,"UserIdentity{name: 'Developer', surname: 'developer4', email: 'developer4@acme.com'}",developer4,developer4
+user-account-developer-05,true,"UserIdentity{name: 'Developer', surname: 'developer5', email: 'developer5@acme.com'}",developer5,developer5
+user-account-developer-06,true,"UserIdentity{name: 'Developer', surname: 'developer6', email: 'developer6@acme.com'}",developer6,developer6
+user-account-developer-07,true,"UserIdentity{name: 'Developer', surname: 'developer7', email: 'developer7@acme.com'}",developer7,developer7
+user-account-developer-08,true,"UserIdentity{name: 'Developer', surname: 'developer8', email: 'developer8@acme.com'}",developer8,developer8

@@ -8,12 +8,24 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-﻿# master.menu #################################################################
+# master.menu #################################################################
 
 master.menu.home = Inicio
 master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
+
+# master.menu.any #######################################################
+
+master.menu.any = Cualquiera
+master.menu.any.claims = Reclamaciones
+
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Autentificado
+master.menu.authenticated.contract.list = Ver Contratos Publicados
+master.menu.authenticated.training.list = Lista de Módulos de Formación
+master.menu.authenticated.notice.list-recent =Ver Noticias Recientes
 
 # master.menu.anonymous #######################################################
 
@@ -29,7 +41,6 @@ master.menu.pabalcber.favourite-link = Enlace favorito
 
 master.menu.maravimaq = 49126568V Ávila Maqueda María del Mar
 master.menu.maravimaq.favourite-link = Enlace favorito
-
 
 # master.menu.YaoSpain #######################################################
 
@@ -49,6 +60,7 @@ master.menu.marbarmar16.favourite-link = Enlace favorito
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
+master.menu.administrator.banner.list-all = Ver todos los banners
 master.menu.administrator.dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
@@ -77,6 +89,24 @@ master.menu.manager.dashboard = Ver mi dashboard
 master.menu.any = Principal
 master.menu.any.projects = Proyectos publicados
 
+# master.menu.developer ##########################################################
+
+master.menu.developer = Desarrollador
+master.menu.developer.trainingModules = Módulos de entrenamiento
+master.menu.developer.trainingSession = Sesiones de entrenamiento
+master.menu.developer.dashboard = Panel de control
+
+master.menu.manager.projects = Proyectos
+master.menu.manager.user-stories = Historias de usuario
+master.menu.manager.dashboard = Panel de Registros
+
+# master.menu.client ########################################################
+
+master.menu.client = Cliente
+master.menu.client.my-contracts = Mis Contratos
+master.menu.client.published-contracts = Contratos Publicados
+master.menu.client.client-dashboard = Panel de Indicadores de Clientes
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
@@ -87,3 +117,5 @@ master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.become-manager = Hazte manager
 master.menu.user-account.manager = Mi perfil de manager
+master.menu.user-account.client = Datos de cliente
+master.menu.user-account.become-client = Hazte cliente

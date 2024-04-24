@@ -1,0 +1,26 @@
+# messages-en.i18n
+#
+
+administrator.banner.form.title = Banner form
+administrator.banner.list.title = Listing of banners
+
+administrator.banner.form.label.target = Target:
+administrator.banner.form.label.slogan = Slogan:
+administrator.banner.form.label.picture = Picture:
+administrator.banner.form.label.moment = Creation Moment:
+administrator.banner.form.label.displayStartMoment = Start Display At:
+administrator.banner.form.label.displayEndMoment = End Display At:
+administrator.banner.form.label.confirmation = Confirm that the banner is correct
+
+administrator.banner.form.button.create = Create
+administrator.banner.form.button.update = Update
+administrator.banner.form.button.delete = Delete
+
+administrator.banner.list.label.moment = Creation Moment
+administrator.banner.list.label.slogan = Slogan
+administrator.banner.list.label.target = Target
+
+administrator.banner.list.button.create = Create
+
+administrator.banner.form.error.display-duration-must-be-at-least-one-week = Duration must be at least one week
+administrator.banner.form.error.start-display-must-be-after-moment = Can't display the banner before or at the same time it's created 

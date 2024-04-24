@@ -18,25 +18,16 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
-		<!--
-		<acme:menu-option code="master.menu.pabalcber" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.pabalcber.favourite-link" action="https://github.com/pabalcber"/>
+
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.notice.list-recent" action="/authenticated/notice/list-recent"/>			
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.contract.list" action="/authenticated/contract/list-all"/>
 		</acme:menu-option>
-		<acme:menu-option code="master.menu.maravimaq" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.maravimaq.favourite-link" action="https://github.com/maravimaq"/>
-		</acme:menu-option>
-		<acme:menu-option code="master.menu.sheche1" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.sheche1.favourite-link" action="https://github.com/sheche1"/>
-		</acme:menu-option>
-		
-				<acme:menu-option code="master.menu.YaoSpain" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.YaoSpain.favourite-link" action="https://github.com/YaoSpain"/>
-		</acme:menu-option>
-		<acme:menu-option code="master.menu.marbarmar16" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.marbarmar16.favourite-link" action="https://github.com/meryknows"/>
-		</acme:menu-option>
-		-->
+
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
+			<acme:menu-suboption code="master.menu.administrator.banner.list-all" action="/administrator/banner/list-all"/>			
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>
@@ -47,13 +38,33 @@
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
 			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
+			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
+			
+		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.any">
+      <acme:menu-suboption code="master.menu.any.projects" action="/any/project/list"/>	
+			<acme:menu-suboption code="master.menu.any.claims" action="/any/claim/list"/>
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">			
+		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
+			<acme:menu-suboption code="master.menu.developer.trainingModules" action="/developer/training-module/list"/>
+			<acme:menu-suboption code="master.menu.developer.trainingSession" action="/developer/training-session/list"/>
+			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-dashboard/show"/>
+		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
+			<acme:menu-suboption code="master.menu.client.my-contracts" action="/client/contract/list"/>
+			<acme:menu-suboption code="master.menu.client.published-contracts" action="/client/contract/list-all"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.client.client-dashboard" action="/client/client-dashboard/show"/>
+		</acme:menu-option>
+    
+    <acme:menu-option code="master.menu.manager" access="hasRole('Manager')">			
 			<acme:menu-suboption code="master.menu.manager.my-projects" action="/manager/project/list"/>
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.manager.my-user-stories" action="/manager/user-story/list"/>
@@ -61,9 +72,6 @@
 			<acme:menu-suboption code="master.menu.manager.dashboard" action="/manager/manager-dashboard/show"/>	
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.any" access="hasRole('Any')">			
-			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list"/>	
-		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>
@@ -78,9 +86,10 @@
 			<acme:menu-suboption code="master.menu.user-account.consumer" action="/authenticated/consumer/update" access="hasRole('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/manager/create" access="!hasRole('Manager')"/>
 			<acme:menu-suboption code="master.menu.user-account.manager" action="/authenticated/manager/update" access="hasRole('Manager')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-client" action="/authenticated/client/create" access="!hasRole('Client')"/>
+			<acme:menu-suboption code="master.menu.user-account.client" action="/authenticated/client/update" access="hasRole('Client')"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out" action="/authenticated/system/sign-out" access="isAuthenticated()"/>
 	</acme:menu-right>
 </acme:menu-bar>
-

@@ -1,4 +1,0 @@
-key,code,creationMoment,details,difficultyLevel,updateMoment,furtherInformationLink,estimatedTotalTime
-training-01,ABC-001,23/09/15 08:30,Introduction to Java Programming,BASIC,23/09/16 10:00,http://example.com/java_intro,120
-training-02,XYZ-002,23/10/20 10:00,Advanced Web Development Course,ADVANCED,23/10/25 12:30,http://example.com/web_dev_course,180
-training-03,DEF-003,23/11/05 14:00,Machine Learning Fundamentals,INTERMEDIATE,23/11/10 09:00,http://example.com/ml_fundamentals,150

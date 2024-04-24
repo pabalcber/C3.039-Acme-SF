@@ -15,6 +15,18 @@ master.menu.sign-up = Sign up
 master.menu.sign-in = Sign in
 master.menu.sign-out = Sign out
 
+# master.menu.any #######################################################
+
+master.menu.any = Any
+master.menu.any.claims = Claims
+
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.contract.list = Published Contracts List
+master.menu.authenticated.training.list = Training Modules
+master.menu.authenticated.notice.list-recent = Recent Notices
+
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
@@ -29,6 +41,7 @@ master.menu.pabalcber.favourite-link = Favourite link
 
 master.menu.maravimaq = 49126568V Ávila Maqueda María del Mar
 master.menu.maravimaq.favourite-link = Favourite link
+
 # master.menu.YaoSpain #######################################################
 
 master.menu.YaoSpain =  Y3449103Z Jun Yao 
@@ -47,6 +60,7 @@ master.menu.marbarmar16.favourite-link = Favourite link
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
+master.menu.administrator.banner.list-all = List all banners
 master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
@@ -75,6 +89,20 @@ master.menu.manager.dashboard = See my dashboard
 master.menu.any = Principal
 master.menu.any.projects = Published projects
 
+# master.menu.developer ##########################################################
+
+master.menu.developer = Developer
+master.menu.developer.trainingModules = Training modules
+master.menu.developer.trainingSession = Training sessions
+master.menu.developer.dashboard = Dashboard
+
+# master.menu.client ########################################################
+
+master.menu.client = Client
+master.menu.client.my-contracts = My Contracts
+master.menu.client.published-contracts = Published Contracts
+master.menu.client.client-dashboard = Client Dashboard
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -85,3 +113,5 @@ master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.become-manager = Become a manager
 master.menu.user-account.manager = My manager profile
+master.menu.user-account.client = Client data
+master.menu.user-account.become-client = Become a client
