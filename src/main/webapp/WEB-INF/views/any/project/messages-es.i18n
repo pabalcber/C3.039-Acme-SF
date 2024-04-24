@@ -1,0 +1,19 @@
+# messages-es.i18n
+
+any.project.list.title = Proyectos publicados
+
+any.project.form.title = Proyecto publicado
+
+any.project.list.label.code = Código
+any.project.list.label.title = Título
+any.project.list.label.cost = Coste
+any.project.list.label.manager = Manager
+
+any.project.form.label.manager = Manager
+any.project.form.label.code = Código
+any.project.form.label.title = Título
+any.project.form.label.abstractPj = Abstract
+any.project.form.label.fatalErrors = Errores fatales
+any.project.form.label.cost = Coste
+any.project.form.label.optionalLink = Link
+any.project.form.button.projects = Proyectos
