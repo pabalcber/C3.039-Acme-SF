@@ -60,6 +60,10 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.manager.dashboard" action="/manager/manager-dashboard/show"/>	
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.any" access="hasRole('Any')">			
+			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list"/>	
+		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>
