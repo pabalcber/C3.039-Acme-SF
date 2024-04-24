@@ -47,7 +47,7 @@ public class AnyProjectShowService extends AbstractService<Any, Project> {
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "title", "abstractPj", "fatalErrors", "cost", "optionalLink", "draftMode");
-		dataset.put("masterId", object.getManager().getId());
+
 		super.getResponse().addData(dataset);
 	}
 }

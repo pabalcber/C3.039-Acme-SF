@@ -39,8 +39,13 @@ public class AnyProjectListService extends AbstractService<Any, Project> {
 		assert object != null;
 
 		Dataset dataset;
+		String manager;
 
-		dataset = super.unbind(object, "code", "title", "cost", "manager");
+		dataset = super.unbind(object, "code", "title", "cost");
+		manager = String.format(//
+			"%s", //
+			object.getManager().getIdentity().getFullName());
+		dataset.put("manager", manager);
 
 		super.getResponse().addData(dataset);
 	}

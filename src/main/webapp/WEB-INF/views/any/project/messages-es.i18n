@@ -9,7 +9,6 @@ any.project.list.label.title = Título
 any.project.list.label.cost = Coste
 any.project.list.label.manager = Manager
 
-any.project.form.label.manager = Manager
 any.project.form.label.code = Código
 any.project.form.label.title = Título
 any.project.form.label.abstractPj = Abstract

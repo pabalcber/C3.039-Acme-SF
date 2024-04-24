@@ -4,7 +4,6 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form> 
-	<acme:input-textbox code="any.project.form.label.manager" path="manager"/>
 	<acme:input-textbox code="any.project.form.label.code" path="code"/>
 	<acme:input-textbox code="any.project.form.label.title" path="title"/>
 	<acme:input-textbox code="any.project.form.label.abstractPj" path="abstractPj"/>
