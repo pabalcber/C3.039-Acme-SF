@@ -1,5 +1,5 @@
 
-package acme.features.developer.TrainingModule;
+package acme.features.developer.trainingModule;
 
 import java.util.Collection;
 
@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.training.TrainingModule;
+import acme.entities.trainingModule.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleListAllService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingModuleListService extends AbstractService<Developer, TrainingModule> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -24,9 +24,7 @@ public class DeveloperTrainingModuleListAllService extends AbstractService<Devel
 
 	@Override
 	public void authorise() {
-		final boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Developer.class);
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -35,7 +33,8 @@ public class DeveloperTrainingModuleListAllService extends AbstractService<Devel
 		int developerId;
 
 		developerId = super.getRequest().getPrincipal().getActiveRoleId();
-		objects = this.repository.findManyByDeveloperId(developerId);
+
+		objects = this.repository.findTrainingModulesByDeveloperId(developerId);
 
 		super.getBuffer().addData(objects);
 	}
@@ -46,8 +45,9 @@ public class DeveloperTrainingModuleListAllService extends AbstractService<Devel
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "updatedMoment", "optionalLink", "totalTime", "draftMode", "difficultyLevel", "project");
-		dataset.put("trainingModuleId", object.getId());
+		dataset = super.unbind(object, "code", "creationMoment", "updateMoment", "difficulty", "details", "totalTime", "link", "published", "project");
+
 		super.getResponse().addData(dataset);
 	}
+
 }

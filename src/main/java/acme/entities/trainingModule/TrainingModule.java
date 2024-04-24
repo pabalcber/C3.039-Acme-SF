@@ -1,5 +1,5 @@
 
-package acme.entities.training;
+package acme.entities.trainingModule;
 
 import java.util.Date;
 
@@ -36,11 +36,11 @@ public class TrainingModule extends AbstractEntity {
 
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must follow the pattern XXX-XXX.")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
 	private String				code;
 
-	@Past
 	@NotNull
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				creationMoment;
 
@@ -48,33 +48,32 @@ public class TrainingModule extends AbstractEntity {
 	@Length(max = 100)
 	private String				details;
 
-	@NotNull
-	private difficultyLevelType	difficultyLevel;
-
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				updatedMoment;
+	private Date				updateMoment;
+
+	@NotNull
+	private DifficultyLevel		difficulty;
 
 	@URL
-	private String				optionalLink;
+	private String				link;
 
-	@NotNull
-	@Min(0)
-	private Double				totalTime;
+	@Min(1)
+	private int					totalTime;
 
-	@NotNull
-	private Boolean				draftMode;
+	private boolean				published;
+
+	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
 
-	@ManyToOne
-	@NotNull
-	@Valid
-	private Project				project;
-
-	@NotNull
-	@Valid
 	@ManyToOne(optional = false)
+	@Valid
+	@NotNull
 	private Developer			developer;
 
+	@ManyToOne(optional = false)
+	@Valid
+	@NotNull
+	private Project				project;
 }

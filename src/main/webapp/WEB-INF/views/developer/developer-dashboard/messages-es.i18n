@@ -1,11 +1,11 @@
+developer.developer-dashboard.form.title = Tablero de desarrollador
 
-###################################################################
+developer.dashboard.form.title.general-indicators = Indicadores generales de los módulos de entrenamiento
 
-developer.developer-dashboard.form.title = Estadísticas de Desarrollador
-developer.dashboard.label.totalTrainingModules = Número total de módulos de trenamiento
-developer.dashboard.label.totalTrainingSessions = Número total de sesiones de entrenamiento
-developer.dashboard.label.averageTimeTrainingModule = Tiempo promedio de módulos de entrenamiento
-developer.dashboard.label.deviationTimeTrainingModule = Desviación de tiempo de módulos de entrenamiento
-developer.dashboard.label.maxTimeTrainingModule = Tiempo máximo de módulos de entrenamiento
-developer.dashboard.label.minTimeTrainingModule = Tiempo mínimo de módulos de entrenamiento
+developer.dashboard.form.label.total-training-modules-with-update-moment = Número total de módulos de entrenamiento con fecha de actualización
+developer.dashboard.form.label.total-training-sessions-with-link = Número total de sesiones de entrenamiento con link
 
+developer.dashboard.form.label.training-modules-average-time = Media de tiempo de los módulos de entrenamiento 
+developer.dashboard.form.label.training-modules-deviation-time = Desviación de tiempo de los módulos de entrenamiento
+developer.dashboard.form.label.training-modules-maximum-time = Máximo tiempo de los módulos de entrenamiento
+developer.dashboard.form.label.training-modules-minimum-time = Mínimo tiempo de los módulos de entrenamiento

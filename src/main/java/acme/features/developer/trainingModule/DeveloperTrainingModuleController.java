@@ -1,5 +1,5 @@
 
-package acme.features.developer.TrainingSession;
+package acme.features.developer.trainingModule;
 
 import javax.annotation.PostConstruct;
 
@@ -7,37 +7,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.session.TrainingSession;
+import acme.entities.trainingModule.TrainingModule;
 import acme.roles.Developer;
 
 @Controller
-public class DeveloperTrainingSessionController extends AbstractController<Developer, TrainingSession> {
+public class DeveloperTrainingModuleController extends AbstractController<Developer, TrainingModule> {
 
 	// Internal state ---------------------------------------------------------
+	@Autowired
+	private DeveloperTrainingModuleListService	listService;
 
 	@Autowired
-	private DeveloperTrainingSessionListAllService		listService;
+	private DeveloperTrainingModuleShowService	showService;
 
 	@Autowired
-	private DeveloperTrainingSessionShowService		showService;
+	DeveloperTrainingModuleCreateService		createService;
 
 	@Autowired
-	private DeveloperTrainingSessionCreateService	createService;
+	DeveloperTrainingModuleUpdateService		updateService;
 
 	@Autowired
-	private DeveloperTrainingSessionUpdateService	updateService;
+	DeveloperTrainingModuleDeleteService		deleteService;
 
 	@Autowired
-	private DeveloperTrainingSessionDeleteService	deleteService;
+	DeveloperTrainingModulePublishService		publishService;
 
-	@Autowired
-	private DeveloperTrainingSessionPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
-
-
 	@PostConstruct
-	private void initialise() {
+	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
@@ -45,5 +43,4 @@ public class DeveloperTrainingSessionController extends AbstractController<Devel
 		super.addBasicCommand("delete", this.deleteService);
 		super.addCustomCommand("publish", "update", this.publishService);
 	}
-
 }

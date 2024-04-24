@@ -1,5 +1,5 @@
 
-package acme.entities.session;
+package acme.entities.trainingModule;
 
 import java.util.Date;
 
@@ -18,7 +18,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.training.TrainingModule;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,18 +31,18 @@ public class TrainingSession extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	@NotBlank
-	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "The reference must follow the pattern TS-XXX-XXX.")
 	@Column(unique = true)
+	@NotBlank
+	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				startDate;
+	private Date				periodStart;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				endDate;
+	private Date				periodEnd;
 
 	@NotBlank
 	@Length(max = 75)
@@ -58,16 +57,17 @@ public class TrainingSession extends AbstractEntity {
 	private String				contactEmail;
 
 	@URL
-	private String				optionalLink;
+	private String				link;
 
-	@NotNull
-	private Boolean				draftMode;
+	private boolean				published;
+
+	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
 
+	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
 	private TrainingModule		trainingModule;
 
 }

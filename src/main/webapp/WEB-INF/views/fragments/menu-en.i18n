@@ -19,16 +19,14 @@ master.menu.sign-out = Sign out
 
 master.menu.any = Any
 master.menu.any.claims = Claims
+master.menu.any.training-modules = List training modules
 
 # master.menu.authenticated #######################################################
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.contract.list = Published Contracts List
-<<<<<<< HEAD
-master.menu.authenticated.training.list = Training Modules
-=======
+master.menu.authenticated.published-modules = Training Modules published
 master.menu.authenticated.notice.list-recent = Recent Notices
->>>>>>> 4d3cb24236ce2b8c4b89de4d339dfb440a7020e0
 
 # master.menu.anonymous #######################################################
 
@@ -80,12 +78,10 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
-# master.menu.developer ##########################################################
-
+# master.menu.developer ###################################################
 master.menu.developer = Developer
-master.menu.developer.trainingModules = Training modules
-master.menu.developer.trainingSession = Training sessions
-master.menu.developer.dashboard = Dashboard
+master.menu.developer.training-module.list = Training Modules
+master.menu.developer.dashboard = Developer Dashboard
 
 # master.menu.client ########################################################
 
@@ -102,5 +98,7 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.developer = Developer data
+master.menu.user-account.become-developer = Become a developer
 master.menu.user-account.client = Client data
 master.menu.user-account.become-client = Become a client
