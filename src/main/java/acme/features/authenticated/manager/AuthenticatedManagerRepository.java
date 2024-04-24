@@ -17,4 +17,7 @@ public interface AuthenticatedManagerRepository extends AbstractRepository {
 	@Query("select m from Manager m where m.id=:id")
 	Manager findManagerByIdentification(String id);
 
+	@Query("select m from Manager m where m.userAccount.id=:userAccountId")
+	Manager findOneManagerByUserAccountId(int userAccountId);
+
 }
