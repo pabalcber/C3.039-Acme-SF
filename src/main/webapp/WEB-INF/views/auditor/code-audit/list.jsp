@@ -13,3 +13,6 @@
 		
 		
 </acme:list>
+
+<acme:button code="auditor.codeAudit.list.button.create" action="/auditor/code-audit/create"/>
+	

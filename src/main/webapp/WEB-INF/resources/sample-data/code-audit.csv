@@ -1,3 +1,4 @@
 key,code,execution,type,correctiveActions,link,key:project,key:auditor,draftMode
 code-audit-01,ABC-123,"2021/10/08 12:00",STATIC,"Enhance user authentication",http://example.com/code-audits-004,project-01,auditor-01,true
 code-audit-02,ATD-964,"2021/10/12 12:00",STATIC,"Optimize database queries",http://example.com/code-audits-005,project-02,auditor-02,false
+code-audit-03,AAC-123,"2021/10/07 12:00",DYNAMIC,"Enhance user authentication",http://example.com/code-audits-004,project-01,auditor-01,false
