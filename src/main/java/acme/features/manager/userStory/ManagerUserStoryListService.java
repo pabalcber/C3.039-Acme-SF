@@ -42,7 +42,7 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "priority", "project");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "priority");
 
 		super.getResponse().addData(dataset);
 	}

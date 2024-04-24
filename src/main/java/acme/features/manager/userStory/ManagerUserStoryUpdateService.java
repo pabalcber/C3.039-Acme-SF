@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.projectUserStories.ProjectUserStory;
 import acme.entities.projects.Project;
 import acme.entities.userStories.Priority;
 import acme.entities.userStories.UserStory;
@@ -26,16 +27,15 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
-		Project project;
+		int userStoryId;
 		UserStory userStory;
-		Manager manager;
+		ProjectUserStory project;
 
-		masterId = super.getRequest().getData("id", int.class);
-		userStory = this.repository.findOneUserStoryById(masterId);
-		project = userStory == null ? null : userStory.getProject();
-		manager = project == null ? null : project.getManager();
-		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+		userStoryId = super.getRequest().getData("id", int.class);
+		userStory = this.repository.findOneUserStoryById(userStoryId);
+		project = this.repository.findOneProjectUserStoryById(userStoryId);
+
+		status = super.getRequest().getPrincipal().hasRole(project.getProject().getManager()) || userStory != null && !userStory.isDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -55,13 +55,13 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		assert object != null;
 
 		int projectId;
-		Project project;
+		ProjectUserStory project;
 
 		projectId = super.getRequest().getData("project", int.class);
-		project = this.repository.findOneProjectById(projectId);
+		project = this.repository.findOneProjectUserStoryById(projectId);
 
 		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "optionalLink");
-		object.setProject(project);
+		project.setUserStory(object);
 	}
 
 	@Override
@@ -88,10 +88,17 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		SelectChoices projectChoices;
 		SelectChoices priorityChoices;
 		Dataset dataset;
+		ProjectUserStory project;
 
-		managerId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsByManagerId(managerId);
-		projectChoices = SelectChoices.from(projects, "title", object.getProject());
+		if (!object.isDraftMode())
+			projects = this.repository.findAllProjects();
+		else {
+			managerId = super.getRequest().getPrincipal().getActiveRoleId();
+			projects = this.repository.findManyProjectsByManagerId(managerId);
+		}
+
+		project = this.repository.findOneProjectUserStoryById(object.getId());
+		projectChoices = SelectChoices.from(projects, "title", project.getProject());
 		priorityChoices = SelectChoices.from(Priority.class, object.getPriority());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "optionalLink", "draftMode");

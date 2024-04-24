@@ -26,9 +26,9 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select p from Project p where p.code = :code")
 	Project findOneProjectByCode(String code);
 
-	@Query("select u from UserStory u where u.project.id = :id")
+	@Query("select pus from ProjectUserStory pus where pus.project.id = :id")
 	Collection<UserStory> findManyUserStoriesByProjectId(int id);
 
-	@Query("select count(u) from UserStory u where u.project.id = :id")
+	@Query("select count(pus.userStory) from ProjectUserStory pus where pus.project.id = :id")
 	int computeUserStoriesByProjectId(int id);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.projectUserStories.ProjectUserStory;
 import acme.entities.projects.Project;
 import acme.entities.userStories.Priority;
 import acme.entities.userStories.UserStory;
@@ -28,9 +29,13 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 		boolean status;
 		int userStoryId;
 		UserStory userStory;
+		ProjectUserStory project;
+
 		userStoryId = super.getRequest().getData("id", int.class);
 		userStory = this.repository.findOneUserStoryById(userStoryId);
-		status = super.getRequest().getPrincipal().hasRole(userStory.getProject().getManager()) || userStory != null && !userStory.isDraftMode();
+		project = this.repository.findOneProjectUserStoryById(userStoryId);
+
+		status = super.getRequest().getPrincipal().hasRole(project.getProject().getManager()) || userStory != null && !userStory.isDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -54,6 +59,7 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 		SelectChoices projectChoices;
 		SelectChoices priorityChoices;
 		Dataset dataset;
+		ProjectUserStory project;
 
 		if (!object.isDraftMode())
 			projects = this.repository.findAllProjects();
@@ -61,7 +67,9 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 			managerId = super.getRequest().getPrincipal().getActiveRoleId();
 			projects = this.repository.findManyProjectsByManagerId(managerId);
 		}
-		projectChoices = SelectChoices.from(projects, "title", object.getProject());
+
+		project = this.repository.findOneProjectUserStoryById(object.getId());
+		projectChoices = SelectChoices.from(projects, "title", project.getProject());
 		priorityChoices = SelectChoices.from(Priority.class, object.getPriority());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "optionalLink", "draftMode");

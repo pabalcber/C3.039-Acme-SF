@@ -1,6 +1,7 @@
-key,title,description,estimatedCost,acceptanceCriteria,priority,optionalLink,draftMode,key:project
-user-story1,T,D,0,A,MUST,,false,project-01
-user-story2,estoesunacadenade75caracteres1234567890123456789012345678901234567890123456,Desc,3.2,Acepta,SHOULD,,false,project-01
-user-story3,Historia de Usuario3,D,4.8,Esto es una cadena de 100 caracteres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,WONT,,false,project-02
-user-story4,Historia de usuario numero 4,Es la 4,99999.999,Estar preparado para realizarla,COULD,http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,false,project-03
-user-story5,DraftModeFalse,This User Story should not count for the dashboard,402.77,Not redacted yet,WONT,,true,project-01
+key,title,description,estimatedCost,acceptanceCriteria,priority,optionalLink,draftMode
+user-story1,T,D,0,A,MUST,,false
+user-story2,estoesunacadenade75caracteres1234567890123456789012345678901234567890123456,Desc,3.2,Acepta,SHOULD,,false
+user-story3,Historia de Usuario3,D,4.8,Esto es una cadena de 100 caracteres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,WONT,,false
+user-story4,Historia de usuario numero 4,Es la 4,99999.999,Estar preparado para realizarla,COULD,http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,false
+user-story5,DraftModeFalse,This User Story should not count for the dashboard,402.77,Not redacted yet,WONT,,true
+user-story6,Hist P4,si,0.33,Not redacted yet,COULD,,false

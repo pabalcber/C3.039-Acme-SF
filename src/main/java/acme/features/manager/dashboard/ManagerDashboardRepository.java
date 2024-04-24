@@ -10,19 +10,19 @@ import acme.entities.userStories.Priority;
 @Repository
 public interface ManagerDashboardRepository extends AbstractRepository {
 
-	@Query("select count(u) from UserStory u where u.priority = :priority and u.project.manager.id = :managerId and u.draftMode=false")
+	@Query("select count(pus.userStory) from ProjectUserStory pus where pus.userStory.priority = :priority and pus.project.manager.id = :managerId and pus.userStory.draftMode=false")
 	int priorityUserStories(int managerId, Priority priority);
 
-	@Query("select avg(u.estimatedCost) from UserStory u where u.project.manager.id = :managerId and u.draftMode=false")
+	@Query("select avg(pus.userStory.estimatedCost) from ProjectUserStory pus where pus.project.manager.id = :managerId and pus.userStory.draftMode=false")
 	Double averageEstimatedCost(int managerId);
 
-	@Query("select stddev(u.estimatedCost) from UserStory u where u.project.manager.id = :managerId and u.draftMode=false")
+	@Query("select stddev(pus.userStory.estimatedCost) from ProjectUserStory pus where pus.project.manager.id = :managerId and pus.userStory.draftMode=false")
 	Double deviationEstimatedCost(int managerId);
 
-	@Query("select min(u.estimatedCost) from UserStory u where u.project.manager.id = :managerId and u.draftMode=false")
+	@Query("select min(pus.userStory.estimatedCost) from ProjectUserStory pus where pus.project.manager.id = :managerId and pus.userStory.draftMode=false")
 	Double minimumEstimatedCost(int managerId);
 
-	@Query("select max(u.estimatedCost) from UserStory u where u.project.manager.id = :managerId and u.draftMode=false")
+	@Query("select max(pus.userStory.estimatedCost) from ProjectUserStory pus where pus.project.manager.id = :managerId and pus.userStory.draftMode=false")
 	Double maximumEstimatedCost(int managerId);
 
 	@Query("select avg(p.cost.amount) from Project p where p.cost.currency = :currency and p.manager.id = :managerId and p.draftMode=false")

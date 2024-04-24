@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.projectUserStories.ProjectUserStory;
 import acme.entities.projects.Project;
 import acme.entities.userStories.Priority;
 import acme.entities.userStories.UserStory;
@@ -31,12 +32,12 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	@Override
 	public void load() {
 		UserStory object;
-		Project project;
+		ProjectUserStory project;
 
-		project = this.repository.findOneProjectById(super.getRequest().getPrincipal().getActiveRoleId());
+		project = this.repository.findOneProjectUserStoryById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new UserStory();
 		object.setDraftMode(true);
-		object.setProject(project);
+		project.setUserStory(object);
 
 		super.getBuffer().addData(object);
 	}
@@ -45,14 +46,14 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	public void bind(final UserStory object) {
 		assert object != null;
 
-		int projectId;
-		Project project;
+		int pusId;
+		ProjectUserStory pus;
 
-		projectId = super.getRequest().getData("project", int.class);
-		project = this.repository.findOneProjectById(projectId);
+		pusId = super.getRequest().getData("projectUserStory", int.class);
+		pus = this.repository.findOneProjectUserStoryById(pusId);
 
 		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "optionalLink");
-		object.setProject(project);
+		pus.setUserStory(object);
 	}
 
 	@Override
@@ -79,10 +80,17 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		SelectChoices projectChoices;
 		SelectChoices priorityChoices;
 		Dataset dataset;
+		ProjectUserStory project;
 
-		managerId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsByManagerId(managerId);
-		projectChoices = SelectChoices.from(projects, "title", object.getProject());
+		if (!object.isDraftMode())
+			projects = this.repository.findAllProjects();
+		else {
+			managerId = super.getRequest().getPrincipal().getActiveRoleId();
+			projects = this.repository.findManyProjectsByManagerId(managerId);
+		}
+
+		project = this.repository.findOneProjectUserStoryById(object.getId());
+		projectChoices = SelectChoices.from(projects, "title", project.getProject());
 		priorityChoices = SelectChoices.from(Priority.class, object.getPriority());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "optionalLink", "draftMode");
