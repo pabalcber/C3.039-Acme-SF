@@ -39,14 +39,15 @@ public class Project extends AbstractEntity {
 	@NotBlank
 	@Length(max = 100)
 	private String				abstractPj;
-	@NotNull
-	@Length(max = 255)
-	private String				indication;
+
+	private boolean				fatalErrors;
 	@NotNull
 	private Money				cost;
 	@URL
 	@Length(max = 255)
 	private String				optionalLink;
+
+	private boolean				draftMode;
 	//system must reject every project with fatal errors
 
 	// Derived attributes -----------------------------------------------------
