@@ -14,7 +14,7 @@ auditor.auditRecord.list.button.create = Create
 
 auditor.auditRecord.form.label.code = Code:
 auditor.auditRecord.form.label.startPeriod = StartPeriod:
-auditor.auditRecord.form.label.finishPeriod = FinishPeriod:
+auditor.auditRecord.form.label.endPeriod = EndPeriod:
 auditor.auditRecord.form.label.mark = Mark:
 auditor.auditRecord.form.label.codeAudit = CodeAudit:
 auditor.auditRecord.form.label.draftMode = DraftMode:

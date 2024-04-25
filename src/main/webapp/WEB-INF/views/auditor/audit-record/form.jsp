@@ -6,7 +6,7 @@
 <acme:form>
 		<acme:input-textbox code="auditor.auditRecord.form.label.code" path="code"/>
 		<acme:input-textbox code="auditor.auditRecord.form.label.startPeriod" path="startPeriod"/>
-		<acme:input-textbox code="auditor.auditRecord.form.label.finishPeriod" path="finishPeriod"/>
+		<acme:input-textbox code="auditor.auditRecord.form.label.endPeriod" path="endPeriod"/>
 		<acme:input-textbox code="auditor.auditRecord.form.label.score" path="score"/>
 		<acme:input-textbox code="auditor.auditRecord.form.label.link" path="link"/>
 		<acme:input-textbox code="auditor.auditRecord.form.label.draftMode" path="draftMode"/>

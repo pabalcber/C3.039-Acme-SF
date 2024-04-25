@@ -13,7 +13,7 @@ auditor.auditRecord.list.button.create = Crear
 
 auditor.auditRecord.form.label.code = Codigo:
 auditor.auditRecord.form.label.startPeriod = Fecha Inicio:
-auditor.auditRecord.form.label.finishPeriod = Fecha Final:
+auditor.auditRecord.form.label.endPeriod = Fecha Final:
 auditor.auditRecord.form.label.mark = Puntuacion:
 auditor.auditRecord.form.label.codeAudit = Auditoria de Codigo:
 auditor.auditRecord.form.label.draftMode = Modo Borrador:
