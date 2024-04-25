@@ -11,8 +11,6 @@
 		<acme:list-column code="auditor.codeAudit.list.label.auditor" path="auditor"/>
 		<acme:list-column code="auditor.codeAudit.list.label.Mark" path="Mark"/>
 		
-		
 </acme:list>
 
-<acme:button code="auditor.codeAudit.list.button.create" action="/auditor/code-audit/create"/>
-	
+	<acme:button code="auditor.codeAudit.list.button.create" action="/auditor/code-audit/create"/>

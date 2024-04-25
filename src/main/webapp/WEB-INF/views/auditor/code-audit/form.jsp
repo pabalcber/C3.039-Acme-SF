@@ -10,7 +10,11 @@
 		<acme:input-textbox code="auditor.codeAudit.form.label.correctiveActions" path="correctiveActions"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.link" path="link"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.project" path="project"/>
+		<acme:input-textbox code="auditor.codeAudit.form.label.Mark" path="Mark"/>
 		<acme:input-textbox code="auditor.codeAudit.form.label.draftMode" path="draftMode"/>
+		
+		
+		
 		
 		
 		<jstl:choose>
