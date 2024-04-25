@@ -61,7 +61,8 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		project = this.repository.findOneProjectUserStoryById(projectId);
 
 		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "optionalLink");
-		project.setUserStory(object);
+		if (project != null)
+			project.setUserStory(object);
 	}
 
 	@Override
