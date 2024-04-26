@@ -1,23 +1,11 @@
-key,code,instantiationMoment,heading,description,department,emailAddress,link,key:project
-claim-01,C-0001,2000/01/01 00:00,Introduction to Java Programming,This course provides an introduction to Java programming language.,Technology Department,johndoe@example.com,http://example.com/java_intro,project-01
-claim-02,C-0002,2000/01/01 00:01,Advanced Web Development Course,A comprehensive course on advanced web development techniques.,Web Development Department,janedoe@example.com,http://example.com/web_dev_course,project-02
-claim-03,C-0003,2022/07/29 23:30,Machine Learning Fundamentals,A beginner-friendly course on machine learning fundamentals.,Data Science Department,alice@example.com,http://example.com/ml_fundamentals,project-03
-claim-04,C-0004,2022/07/29 23:59,Introduction to Java Programming,This course provides an introduction to Java programming language.,Technology Department,johndoe@example.com,http://example.com/java_intro,project-01
-claim-05,C-0005,2013/10/20 10:00,A,A comprehensive course on advanced web development techniques.,Web Development Department,janedoe@example.com,http://example.com/web_dev_course,project-02
-claim-06,C-0006,2013/11/05 14:00,Ma,A beginner-friendly course on machine learning fundamentals.,Data Science Department,alice@example.com,http://example.com/ml_fundamentals,project-03
-claim-07,C-0007,2000/01/01 00:00,I'm writing a long heading to prove the restriction works just fine!!!!!!!!!,This course provides an introduction to Java programming language.,Technology Department,johndoe@example.com,http://example.com/java_intro,project-01
-claim-08,C-0008,2000/01/01 00:01,I'm writing a long heading to prove the restriction works just fine!!!!!!!!,A comprehensive course on advanced web development techniques.,Web Development Department,janedoe@example.com,http://example.com/web_dev_course,project-02
-claim-09,C-0009,2022/07/29 23:30,Machine Learning Fundamentals,A,Data Science Department,alice@example.com,http://example.com/ml_fundamentals,project-03
-claim-10,C-0010,2022/07/29 23:59,Introduction to Java Programming,Th,Technology Department,johndoe@example.com,http://example.com/java_intro,project-04
-claim-11,C-0011,2000/01/01 00:00,Introduction to Java Programming,I'm writing a description long to prove the restriction works just fine so I have to reach 101 chars!,Technology Department,johndoe@example.com,http://example.com/java_intro,project-01
-claim-12,C-0012,2000/01/01 00:01,Advanced Web Development Course,I'm writing a description long to prove the restriction works just fine so I have to reach 101 chars,Web Development Department,janedoe@example.com,http://example.com/web_dev_course,project-02
-claim-13,C-0013,2022/07/29 23:30,Machine Learning Fundamentals,A beginner-friendly course on machine learning fundamentals.,I'm writing a departament long to prove the restriction works just fine so I have to reach 101 chars!,alice@example.com,http://example.com/ml_fundamentals,project-03
-claim-14,C-0014,2022/07/29 23:59,Introduction to Java Programming,This course provides an introduction to Java programming language.,I'm writing a departament long to prove the restriction works just fine so I have to reach 100 chars,johndoe@example.com,http://example.com/java_intro,project-01
-claim-15,C-0015,2000/01/01 00:00,Introduction to Java Programming,This course provides an introduction to Java programming language.,T,johndoe@example.com,http://example.com/java_intro,project-01
-claim-16,C-0016,2000/01/01 00:01,Advanced Web Development Course,A comprehensive course on advanced web development techniques.,We,janedoe@example.com,http://example.com/web_dev_course,project-02
-claim-17,C-0017,2000/01/01 00:00,Introduction to Java Programming,This course provides an introduction to Java programming language.,Technology Department,j@example.com,http://example.com/java_intro,project-01
-claim-18,C-0018,2000/01/01 00:01,Advanced Web Development Course,A comprehensive course on advanced web development techniques.,Web Development Department,ja@example.com,http://example.com/web_dev_course,project-02
-claim-19,C-0019,2000/01/01 00:00,Introduction to Java Programming,This course provides an introduction to Java programming language.,Technology Department,johndoe@example.com,http://e.com,project-01
-claim-20,C-0020,2000/01/01 00:01,Advanced Web Development Course,A comprehensive course on advanced web development techniques.,Web Development Department,janedoe@example.com,http://ex.com,project-02
-claim-22,C-0022,2022/07/29 23:30,Machine Learning Fundamentals,A beginner-friendly course on machine learning fundamentals.,Data Science Department,alice@example.com,http://examplexrthj6ust65ju6sjusg6jeggtruhjtse46htrsyuhj46tuyuhryjnryuhj4egrhsw3rhcxgyhunjyuiktiukmgtfdresswasedrtfyjhbvgcfdertyuklkjhgftyuioiplkjhgytfresdfgtyyyyyyyujhgtfredfgyttrdfghjiuytrfedwefrgtyuijuyhtrwertyjuykikjuhygtrfeertyhgfddfgtrdederrgtdf.com,project-03
-claim-23,C-0023,2022/07/29 23:59,Introduction to Java Programming,This course provides an introduction to Java programming language.,Technology Department,johndoe@example.com,http://examplexrthj6ust65ju6sjusg6jeggtruhjtse46htrsyuhj46tuyuhryjnryuhj4egrhsw3rhcxgyhunjyuiktiukmgtfdresswasedrtfyjhbvgcfdertyuklkjhgftyuioiplkjhgytfresdfgtyyyyyyyujhgtfredfgyttrdfghjiuytrfedwefrgtyuijuyhtrwertyjuykikjuhygtrfeertyhgfddfgtrdederrgtd.com,project-01
+key,code,instantiation,heading,description,departament,email,link
+claim-01,C-7777,2022/06/03 11:00,This is a heading.,This a description.,This is a departament,claim1@example.com,https://www.example.com
+claim-02,C-8888,2022/06/03 12:00,标题示例,描述示例,部门示例,,null
+claim-03,C-9999,2022/06/05 00:00,Заголовок пример,Описание пример,Отдел пример,claim3@example.com,
+claim-04,C-1010,2020/05/06 00:00,Heading Example,Description Example,Department Example,null,null
+claim-05,C-1122,2021/06/07 00:00,مثال على العنوان,مثال على الوصف,قسم المثال,,
+claim-06,C-1212,2021/07/08 00:00,例の見出し,例の説明,例の部門,claim6@example.com,https://www.example6.com
+claim-07,C-1313,2020/08/09 00:00,Example Heading,Example Description,Example Department,null,https://www.example7.com
+claim-08,C-1414,2020/09/10 00:00,헤딩 예시,설명 예시,부서 예시,,null
+claim-09,C-1515,2020/10/11 00:00,Encabezado Ejemplo,Descripción Ejemplo,Departamento Ejemplo,claim9@example.com,
+claim-10,C-1616,2020/11/12 00:00,Título Exemplo,Descrição Exemplo,Departamento Exemplo,null,https://www.example10.com

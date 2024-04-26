@@ -12,7 +12,7 @@ import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.projects.Project;
+import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,11 +43,13 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 255)
 	private String				optionalLink;
 
+	private boolean				draftMode;
+
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
 	@Valid
 	@ManyToOne
 	@NotNull
-	private Project				project;
+	private Manager				manager;
 }

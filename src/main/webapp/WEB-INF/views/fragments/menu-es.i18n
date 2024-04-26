@@ -8,12 +8,26 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-﻿# master.menu #################################################################
+# master.menu #################################################################
 
 master.menu.home = Inicio
 master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
+
+# master.menu.any #######################################################
+
+master.menu.any = Cualquiera
+master.menu.any.claims = Reclamaciones
+master.menu.any.training-modules =Módulos de entrenamiento
+
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Autentificado
+master.menu.authenticated.contract.list = Ver Contratos Publicados
+master.menu.authenticated.notice.list-recent = Noticias Recientes
+master.menu.authenticated.objective.list = Objetivos
+master.menu.authenticated.risk.list = Riesgos
 
 # master.menu.anonymous #######################################################
 
@@ -29,7 +43,6 @@ master.menu.pabalcber.favourite-link = Enlace favorito
 
 master.menu.maravimaq = 49126568V Ávila Maqueda María del Mar
 master.menu.maravimaq.favourite-link = Enlace favorito
-
 
 # master.menu.YaoSpain #######################################################
 
@@ -49,11 +62,13 @@ master.menu.marbarmar16.favourite-link = Enlace favorito
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
+master.menu.administrator.banner.list-all = Ver todos los banners
 master.menu.administrator.dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
+master.menu.administrator.banner.list = Lista de carteles
 
 # master.menu.provider ########################################################
 
@@ -65,6 +80,32 @@ master.menu.provider.favourite-link = Enlace favorito
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
+# master.menu.manager ########################################################
+
+master.menu.manager = Manager
+master.menu.manager.my-projects = Ver mis proyectos
+master.menu.manager.my-user-stories = Ver mis historias de usuario
+master.menu.manager.dashboard = Ver mi dashboard
+
+# master.menu.any ####################################################
+
+master.menu.any = Principal
+master.menu.any.projects = Proyectos publicados
+
+# master.menu.developer ##########################################################
+
+master.menu.developer = Desarrollador
+master.menu.developer.training-module.list = Listar tus módulos de entrenamiento
+master.menu.developer.dashboard = Dashboard de desarrollador
+
+
+# master.menu.client ########################################################
+
+master.menu.client = Cliente
+master.menu.client.my-contracts = Mis Contratos
+master.menu.client.published-contracts = Contratos Publicados
+master.menu.client.client-dashboard = Panel de Indicadores de Clientes
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
@@ -73,3 +114,9 @@ master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.developer = Datos de desarrollador
+master.menu.user-account.become-developer = Hazte desasrrollador
+master.menu.user-account.become-manager = Hazte manager
+master.menu.user-account.manager = Mi perfil de manager
+master.menu.user-account.client = Datos de cliente
+master.menu.user-account.become-client = Hazte cliente

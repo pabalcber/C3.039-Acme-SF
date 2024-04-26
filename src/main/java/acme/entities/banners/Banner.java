@@ -8,7 +8,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -29,34 +29,29 @@ public class Banner extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@PastOrPresent
+	@Past
 	@NotNull
-	private Date				moment;
+	private Date				instantiationMoment;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				displayStartMoment;
+	private Date				bannerStartTime;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				displayEndMoment;
+	private Date				bannerEndTime;
 
-	@NotBlank
 	@URL
-	@Length(max = 255)
+	@NotBlank
 	private String				picture;
 
 	@NotBlank
 	@Length(max = 75)
 	private String				slogan;
 
-	@NotBlank
 	@URL
-	@Length(max = 255)
-	private String				target;
-
-	// Derived attributes -----------------------------------------------------
+	@NotBlank
+	private String				link;
 
 	// Relationships ----------------------------------------------------------
-
 }
