@@ -41,6 +41,8 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>			
 			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.risk.list" action="/authenticated/risk/list"/>			
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.contract.list" action="/authenticated/contract/list-all"/>
 		</acme:menu-option>
 		

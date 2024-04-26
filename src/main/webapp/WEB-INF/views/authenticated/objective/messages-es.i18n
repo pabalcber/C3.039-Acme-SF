@@ -1,5 +1,6 @@
 # messages-es.i18n
 authenticated.objective.form.title = Detalles de Objetivos
+authenticated.objectives.list.title = Lista de Objetivos
 
 authenticated.objective.form.label.title = Título:
 authenticated.objective.form.label.priority = Prioridad:

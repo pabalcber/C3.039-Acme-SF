@@ -20,7 +20,8 @@ master.menu.sign-out = Sign out
 master.menu.authenticated = Authenticated
 master.menu.authenticated.contract.list = Published Contracts List
 master.menu.authenticated.notice.list-recent = Recent Notices
-master.menu.authenticated.notice.objective = Objectives
+master.menu.authenticated.objective.list = Objectives
+master.menu.authenticated.risk.list = Risks
 
 # master.menu.anonymous #######################################################
 

@@ -1,5 +1,6 @@
 # messages-es.i18n
 authenticated.notice.form.title = Detalles de Noticias
+authenticated.notice.list.title = Lista de Noticias
 
 authenticated.notice.form.label.title = Título:
 authenticated.notice.form.label.author = Autor:
