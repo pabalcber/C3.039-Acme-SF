@@ -8,18 +8,20 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
-import javax.validation.constraints.Future;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
+import acme.roles.Sponsor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,44 +30,69 @@ import lombok.Setter;
 @Setter
 public class Invoice extends AbstractEntity {
 
-	// Serialisation identifier
+	// Serialisation identifier -----------------------------------------------
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes
-	@Column(unique = true)
+	// Attributes -------------------------------------------------------------
+
 	@NotBlank
-	@Pattern(regexp = "PG-[A-Z]{1,2}-//d{4}", message = "El recordId debe seguir el patrón 'PG-[A-Z]{1,2}-[0-9]{4}'")
+	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}")
+	@Column(unique = true)
 	private String				code;
 
+	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
 	private Date				registrationTime;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Future
 	private Date				dueDate;
 
 	@NotNull
-	@PositiveOrZero
-	private int					quantity;
+	private Money				quantity;
 
-	@NotNull
-	@PositiveOrZero
-	private double				tax;
-
-	@NotNull
-	private double				totalAmount;
+	@DecimalMin(value = "0.00")
+	@DecimalMax(value = "1.00")
+	private Double				tax;
 
 	@URL
-	@Length(max = 255)
 	private String				link;
 
-	// Relationships
+	private boolean				draftMode;
+
+	// Derived Attributes -------------------------------------------------------------
+
+	/*
+	 * @Transient
+	 * public Double totalAmount() {
+	 * return this.quantity.getAmount() + this.tax * this.quantity.getAmount();
+	 * }
+	 */
+
+
+	@Transient
+	public Money totalAmount() {
+		Double amount;
+		if (this.tax == null)
+			amount = this.quantity.getAmount();
+		else
+			amount = this.quantity.getAmount() + this.tax * this.quantity.getAmount();
+
+		Money value = new Money();
+		value.setAmount(amount);
+		value.setCurrency(this.quantity.getCurrency());
+		return value;
+	}
+
+
+	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
-	private Sponsorship			sponsorship;
+	private Sponsorship	sponsorship;
 
+	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
+	private Sponsor		sponsor;
 }

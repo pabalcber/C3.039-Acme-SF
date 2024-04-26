@@ -86,6 +86,10 @@ master.menu.developer = Developer
 master.menu.developer.trainingModules = Training modules
 master.menu.developer.trainingSession = Training sessions
 master.menu.developer.dashboard = Dashboard
+# master.menu.sponsor ###################################################
+master.menu.sponsor = Sponsor
+master.menu.sponsor.sponsorship.list = List Your Sponsorships
+master.menu.sponsor.dashboard = Sponsor dashboard
 
 # master.menu.client ########################################################
 
@@ -104,3 +108,5 @@ master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.client = Client data
 master.menu.user-account.become-client = Become a client
+master.menu.user-account.sponsor = Sponsor data
+master.menu.user-account.become-sponsor = Become a sponsor

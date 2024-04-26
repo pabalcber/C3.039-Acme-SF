@@ -6,12 +6,12 @@
 
 
 <acme:form>
-	<acme:input-integer code="developer.dashboard.label.totalTrainingModules" path="totalTrainingModules" placeholder=""/>
-	<acme:input-integer code="developer.dashboard.label.totalTrainingSessions" path="totalTrainingSessions" placeholder=""/>
+	<acme:input-integer code="sponsor.dashboard.label.totalTrainingModules" path="totalTrainingModules" placeholder=""/>
+	<acme:input-integer code="sponsor.dashboard.label.totalTrainingSessions" path="totalTrainingSessions" placeholder=""/>
 		
-	<acme:input-double code="developer.dashboard.label.averageTimeTrainingModule" path="averageTimeTrainingModule" placeholder=""/>
-	<acme:input-double code="developer.dashboard.label.deviationTimeTrainingModule" path="deviationTimeTrainingModule" placeholder=""/>
-	<acme:input-double code="developer.dashboard.label.maxTimeTrainingModule" path="maxTimeTrainingModule" placeholder=""/>
-	<acme:input-double code="developer.dashboard.label.minTimeTrainingModule" path="minTimeTrainingModule" placeholder=""/>
+	<acme:input-double code="sponsor.dashboard.label.averageTimeTrainingModule" path="averageTimeTrainingModule" placeholder=""/>
+	<acme:input-double code="sponsor.dashboard.label.deviationTimeTrainingModule" path="deviationTimeTrainingModule" placeholder=""/>
+	<acme:input-double code="sponsor.dashboard.label.maxTimeTrainingModule" path="maxTimeTrainingModule" placeholder=""/>
+	<acme:input-double code="sponsor.dashboard.label.minTimeTrainingModule" path="minTimeTrainingModule" placeholder=""/>
 
 </acme:form>
