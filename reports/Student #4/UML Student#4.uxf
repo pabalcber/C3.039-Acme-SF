@@ -37,7 +37,7 @@ Invoice
 - dueDate: Date {NotNull,Future,Temporal(TIMESTAMP)}
 - quantity: String {PositiveOrZero}
 - tax: String {PositiveOrZero}
-- totalAmount: String {NotNull}
+- totalAmount: Money {NotNull}
 - link: String {NotNull,Max(255)}</panel_attributes>
     <additional_attributes/>
   </element>
@@ -74,16 +74,16 @@ bg=green
 &lt;&lt;Form&gt;&gt;
 SponsorDashboardService
 --
--totalInvoicesWithTaxLessThanOrEqual: long 
--totalSponsorshipsWithLink: long 
--averageAmountOfSponsorships: double 
--standardDeviationAmountOfSponsorships: double 
--minimumAmountOfSponsorships: Double 
--maximumAmountOfSponsorships: Double 
--averageQuantityOfInvoices: double 
--standardDeviationQuantityOfInvoices: double 
--minimumQuantityOfInvoices:int
--maximumQuantityOfInvoices:int
+-totalNumberOfInvoices: long 
+-totalNumberOfSponsorshipsWithLink: long 
+-sponsorshipsAverageAmount: double 
+-sponsorshipsDeviationAmount: double 
+-sponsorshipsMinimumAmount: Double 
+-sponsorshipsMaximumAmount: Double 
+-invoicesAverageQuantity: double 
+-invoicesDeviationQuantity: double 
+-invoicesMinimumQuantity:int
+-invoicesMaximumQuantity:int
 
 bg=GREEN
 fg=BLACK</panel_attributes>
@@ -95,7 +95,7 @@ fg=BLACK</panel_attributes>
       <x>0</x>
       <y>170</y>
       <w>510</w>
-      <h>170</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes>bg=green
 transparency=80
@@ -104,10 +104,11 @@ Sponsorship
 --
 - code: String {NotBlank,NotNull,Max(255),Unique, Pattern(“[A-Z]{1,3}-[0-9]{3}”)}
 - moment: Date {NotNull,Past,Temporal(TIMESTAMP)}
-- duration: String {NotNull,Future,Temporal(TIMESTAMP)}
-- amount: Double {Positive}
+- durationStartTime: String {NotNull,Future,Temporal(TIMESTAMP)}
+- durationEndTime:String {NotNull,Future,Temporal(TIMESTAMP)}
+- amount: Money {Positive}
 - type: SponsorshipType {NotNull}
-- contactEmail: String {Email,Length(max = 255)}
+- Email: String {Email,Length(max = 255)}
 - Link: Integer {Length(max = 255)}</panel_attributes>
     <additional_attributes/>
   </element>
@@ -157,14 +158,14 @@ is related to</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>220</x>
-      <y>330</y>
+      <y>350</y>
       <w>130</w>
-      <h>140</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
 m2=1
 is sponsored by</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

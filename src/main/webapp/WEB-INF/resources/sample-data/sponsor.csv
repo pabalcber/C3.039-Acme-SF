@@ -1,6 +1,6 @@
-key,key:userAccount,name,benefits,optionalWebPage,optionalEmailContact
-Sponsor-01,user-account-Sponsor-01,Antonio,Benefits for Sponsor 1,http://www.sponsor1.com,sponsor1@example.com
-Sponsor-02,user-account-Sponsor-02,Juan,Benefits for Sponsor 2,http://www.sponsor2.com,sponsor2@example.com
-Sponsor-03,user-account-Sponsor-03,María,Benefits for Sponsor 3,http://www.sponsor3.com,sponsor3@example.com
-Sponsor-04,user-account-Sponsor-04,Ana,Benefits for Sponsor 4,http://www.sponsor4.com,sponsor4@example.com
-Sponsor-05,user-account-Sponsor-05,Carlos,Benefits for Sponsor 5,http://www.sponsor5.com,sponsor5@example.com
+key,name,benefits,web-page,email,key:user-account
+sponsor-01,Sponsor 1,Exclusive product discounts,https://www.sponsor1.com,null,user-account-sponsor-01
+sponsor-02,Sponsor 2,Priority access to events,https://www.sponsor2.com,sponsor2@sponsor2.com,user-account-sponsor-02
+sponsor-03,Sponsor 3,Advertisement opportunities,https://www.sponsor3.com,sponsor3@sponsor3.com,user-account-sponsor-03
+sponsor-04,Sponsor 4,Networking opportunities,https://www.sponsor4.com,sponsor4@sponsor4.com,user-account-sponsor-04
+sponsor-05,A,Branding on event materials,https://www.sponsor5.com,null,user-account-sponsor-05
