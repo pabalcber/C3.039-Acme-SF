@@ -43,7 +43,6 @@ public class Project extends AbstractEntity {
 
 	private boolean				hasFatalError;
 
-
 	private String				abstractPj;
 
 	private boolean				fatalErrors;
@@ -60,9 +59,7 @@ public class Project extends AbstractEntity {
 	@Length(max = 255)
 	private String				optionalLink;
 
-	private boolean				draftMode;
 	//system must reject every project with fatal errors
-
 
 	// Relations -------------------------------------------------------------
 
