@@ -113,16 +113,18 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 
 		Collection<UserStory> projectUserStories;
 		SelectChoices choices;
+		int projectId;
 
-		projectUserStories = this.repository.findUserStoriesOfProjectId(object.getProject().getId());
+		projectId = super.getRequest().getData("masterId", int.class);
+		projectUserStories = this.repository.findUserStoriesOfProjectId(projectId);
 		choices = SelectChoices.from(projectUserStories, "title", object.getUserStory());
 
 		Dataset dataset;
 
 		dataset = super.unbind(object, "project");
 		dataset.put("masterId", object.getProject().getId());
-		dataset.put("lecture", choices.getSelected().getKey());
-		dataset.put("userStory", choices);
+		dataset.put("userStory", choices.getSelected().getKey());
+		dataset.put("userStories", choices);
 		super.getResponse().addData(dataset);
 	}
 }
