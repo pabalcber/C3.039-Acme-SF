@@ -1,0 +1,21 @@
+# messages-en.i18n
+
+manager.manager-dashboard.form.title = My Dashboard
+
+manager.dashboard.form.title.user-stories-indicators = User stories indicators
+manager.dashboard.form.label.must-user-stories = "MUST" User stories
+manager.dashboard.form.label.should-user-stories = "SHOULD" User stories
+manager.dashboard.form.label.could-user-stories	= "COULD" User stories
+manager.dashboard.form.label.wont-user-stories = "WONT" User stories
+manager.dashboard.form.label.average-estimated-cost = Average estimated cost
+manager.dashboard.form.label.deviation-estimated-cost = Deviation estimated cost
+manager.dashboard.form.label.minimum-estimated-cost	= Minimum estimated cost
+manager.dashboard.form.label.maximum-estimated-cost	= Maximum estimated cost
+
+manager.dashboard.form.title.project-indicators = Project indicators
+
+manager.dashboard.form.label.currency = Currency
+manager.dashboard.form.label.average-project-cost = Average project cost
+manager.dashboard.form.label.deviation-project-cost = Deviation project cost
+manager.dashboard.form.label.minimum-project-cost = Minimum project cost
+manager.dashboard.form.label.maximum-project-cost = Maximum project cost

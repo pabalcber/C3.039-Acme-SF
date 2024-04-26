@@ -26,15 +26,7 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int masterId;
-		Banner banner;
-
-		masterId = super.getRequest().getData("id", int.class);
-		banner = this.repository.findOneBannerById(masterId);
-		status = banner != null;
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -45,6 +37,10 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneBannerById(id);
 
+		Date instantiationMoment;
+		instantiationMoment = MomentHelper.getCurrentMoment();
+		object.setInstantiationMoment(instantiationMoment);
+
 		super.getBuffer().addData(object);
 	}
 
@@ -52,48 +48,55 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 	public void bind(final Banner object) {
 		assert object != null;
 
-		super.bind(object, "target", "moment", "slogan", "picture", "displayStartMoment", "displayEndMoment");
+		super.bind(object, "bannerStartTime", "bannerEndTime", "picture", "slogan", "link");
+		Date instantiationMoment;
+		Date currentMoment;
+
+		currentMoment = MomentHelper.getCurrentMoment();
+		instantiationMoment = new Date(currentMoment.getTime() - 1000);
+		object.setInstantiationMoment(instantiationMoment);
 	}
 
 	@Override
 	public void validate(final Banner object) {
 		assert object != null;
 
-		boolean confirmation;
+		if (!super.getBuffer().getErrors().hasErrors("bannerStartTime") && object.getBannerStartTime() != null) {
+			Date bannerStartTime;
+			Date instantiationMoment;
+			bannerStartTime = object.getBannerStartTime();
+			instantiationMoment = object.getInstantiationMoment();
 
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
-
-		if (object.getDisplayStartMoment() != null && object.getMoment() != null) {
-			boolean isDisplayStartMomentAfterMoment = MomentHelper.isAfter(object.getDisplayStartMoment(), object.getMoment());
-			super.state(isDisplayStartMomentAfterMoment, "displayStartMoment", "administrator.banner.form.error.start-display-must-be-after-moment");
+			if (bannerStartTime != null && instantiationMoment != null)
+				super.state(bannerStartTime.after(instantiationMoment), "bannerStartTime", "administrator.banner.form.error.banner-start-time");
 		}
 
-		if (object.getDisplayStartMoment() != null && object.getDisplayEndMoment() != null) {
+		if (!super.getBuffer().getErrors().hasErrors("bannerEndTime") && object.getBannerEndTime() != null) {
+			Date bannerStartTime;
+			Date bannerEndTime;
 
-			Date oneWeekLater = MomentHelper.deltaFromMoment(object.getDisplayStartMoment(), 1, ChronoUnit.WEEKS);
+			bannerStartTime = object.getBannerStartTime();
+			bannerEndTime = object.getBannerEndTime();
 
-			boolean isDisplayEndMomentAtLeastOneWeekLater = MomentHelper.isAfterOrEqual(object.getDisplayEndMoment(), oneWeekLater);
-			super.state(isDisplayEndMomentAtLeastOneWeekLater, "displayEndMoment", "administrator.banner.form.error.display-duration-must-be-at-least-one-week");
+			if (bannerStartTime != null && bannerEndTime != null)
+				super.state(MomentHelper.isLongEnough(bannerStartTime, bannerEndTime, 1, ChronoUnit.WEEKS) && bannerEndTime.after(bannerStartTime), "bannerEndTime", "administrator.banner.form.error.banner-end-time");
 		}
 	}
 
 	@Override
 	public void perform(final Banner object) {
 		assert object != null;
-
 		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final Banner object) {
 		assert object != null;
-
 		Dataset dataset;
-
-		dataset = super.unbind(object, "target", "moment", "slogan", "picture", "displayStartMoment", "displayEndMoment");
-		dataset.put("confirmation", false);
+		dataset = super.unbind(object, "bannerStartTime", "bannerEndTime", "picture", "slogan", "link");
+		dataset.put("instantiationMoment", MomentHelper.getCurrentMoment());
 
 		super.getResponse().addData(dataset);
 	}
+
 }

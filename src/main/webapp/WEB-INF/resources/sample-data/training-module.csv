@@ -1,3 +1,4 @@
+
 key,code,creation-moment,details,difficulty-level,updated-moment,optional-link,total-time,key:project,key:developer,draft-mode
 training-module-01,LJS-303,2022/03/30 18:00,This is a detail,INTERMEDIATE,2022/03/31 18:00,https://www.example.com,30,project-01,developer-01,false
 training-module-02,ARG-304,2022/04/01 12:30,这是细节,ADVANCED,null,https://www.example.com,25,project-02,developer-02,true
@@ -5,3 +6,36 @@ training-module-03,BSR-305,2022/04/05 15:45,تفاصيل معينة,BASIC,2022/0
 training-module-04,IJS-306,2022/04/10 09:15,th1s-is*a&d3t4il,INTERMEDIATE,2022/04/11 09:15,https://www.example.com,35,project-04,developer-02,true
 training-module-05,SJP-307,2022/04/15 21:00,这是另一种细节,ADVANCED,2022/04/16 21:00,https://www.example.com,28,project-05,developer-01,true
 training-module-06,BJS-308,2022/04/20 14:20,تفاصيل معقدة,BASIC,null,https://www.example.com,45,project-06,developer-02,true
+
+key,code,creation-moment,difficulty,details,update-moment,link,total-time,published,key:developer,key:project
+training-module-01,A-001,2021/07/30 00:00,INTERMEDIATE,detalles,2022/07/30 00:00,https://123.com/,33,true,developer-01,project-01
+training-module-02,A-000,2021/07/30 00:00,INTERMEDIATE,detalles,2022/07/30 00:00,https://123.com/,4,true,developer-01,project-01
+training-module-03,AB-777,2021/07/30 00:00,INTERMEDIATE,detalles,2022/07/30 00:00,https://123.com/,2,true,developer-01,project-01
+training-module-04,ABC-420,2021/07/30 00:00,INTERMEDIATE,detalles,2022/07/30 00:00,https://123.com/,5,true,developer-01,project-01
+training-module-05,A-005,1970/01/01 00:00,INTERMEDIATE,detalles,2022/07/30 00:00,https://123.com/,2,true,developer-01,project-01
+training-module-06,A-006,1970/02/15 00:00,INTERMEDIATE,detalles,2022/07/30 00:00,https://shengchen.com/,2,true,developer-01,project-01
+training-module-07,A-007,2000/07/09 00:00,INTERMEDIATE,细节,2022/07/30 00:00,https://shengchen.com/,6,true,developer-01,project-01
+training-module-08,A-008,2022/06/22 00:00,INTERMEDIATE,细节,2022/07/30 00:00,https://123.com/,2,true,developer-01,project-01
+training-module-09,A-009,2022/07/09 00:00,INTERMEDIATE,细节,2022/07/30 00:00,https://shengchen.com/,2,true,developer-01,project-01
+training-module-10,A-010,2021/07/30 00:00,INTERMEDIATE,细节,2022/07/30 00:00,https://shengchen.com/,7,true,developer-01,project-01
+training-module-11,A-011,2021/07/30 00:00,BASIC,hola,2022/07/30 00:00,https://shengchen.com/,2,true,developer-01,project-01
+training-module-12,A-012,2021/07/30 00:00,BASIC,Training module focused on shoulder mobility,2022/07/30 00:00,https://123.com/,2,true,developer-01,project-01
+training-module-13,A-013,2021/07/30 00:00,BASIC,看到这条消息的人发大财,2022/07/30 00:00,https://shengchen.com/,8,true,developer-01,project-01
+training-module-14,A-014,2021/07/30 00:00,BASIC,看到这条消息的人发大财,2022/07/30 00:00,https://shengchen.com/,2,true,developer-01,project-01
+training-module-15,A-015,2021/07/30 00:00,BASIC,detailssssssssssssssssssss,2022/07/30 00:00,https://shengchen.com/,2,true,developer-01,project-01
+training-module-16,A-016,2021/07/30 00:00,BASIC,detailssssssssssssssssssss,,https://shengchen.com/,2,true,developer-01,project-01
+training-module-17,A-017,1970/01/01 00:00,BASIC,detailssssssssssssssssssss,1970/01/01 00:01,https://shengchen.com/,8,true,developer-01,project-01
+training-module-18,A-018,1970/02/15 00:00,BASIC,detailssssssssssssssssssss,1970/02/15 00:01,https://123.com/,2,true,developer-01,project-01
+training-module-19,A-019,2000/07/09 00:00,BASIC,Random details,2000/07/09 00:01,https://shengchen.com/,2,true,developer-01,project-01
+training-module-20,A-020,2022/06/22 00:00,ADVANCED,detailssssssssssssssssssss,2022/06/22 00:01,https://shengchen.com/,2,true,developer-01,project-01
+training-module-21,A-021,2022/07/09 00:00,ADVANCED,Random details,2022/07/09 00:01,https://shengchen.com/,2,true,developer-01,project-01
+training-module-22,A-022,2021/07/30 00:00,ADVANCED,detailssssssssssssssssssss,2022/07/30 00:00,,8,true,developer-01,project-01
+training-module-23,A-023,2021/07/30 00:00,ADVANCED,Random details,2022/07/30 00:00,https://123.com/,1,true,developer-01,project-01
+training-module-24,A-024,2021/07/30 00:00,ADVANCED,Random details,2022/07/30 00:00,https://shengchen.com/,9,true,developer-01,project-01
+training-module-25,A-025,2021/07/30 00:00,ADVANCED,detailssssssssssssssssssss,2022/07/30 00:00,https://123.com/,4,true,developer-01,project-01
+training-module-26,A-026,2021/07/30 00:00,ADVANCED,Random details,2022/07/30 00:00,https://shengchen.com/,69,true,developer-01,project-01
+training-module-27,A-027,2021/07/30 00:00,ADVANCED,Random details,2022/07/30 00:00,https://123.com/,234,true,developer-01,project-01
+training-module-28,A-028,2021/07/30 00:00,INTERMEDIATE,detailssssssssssssssssssss,2022/07/30 00:00,https://shengchen.com/,2,true,developer-01,project-01
+training-module-29,A-029,2021/07/30 00:00,INTERMEDIATE,Random details,2022/07/30 00:00,https://shengchen.com/,2,true,developer-01,project-02
+training-module-33,A-033,2021/07/30 00:00,INTERMEDIATE,Random details,2022/07/30 00:00,https://shengchen.com/,2,false,developer-01,project-01
+

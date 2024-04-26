@@ -1,34 +1,23 @@
 
 package acme.features.developer.dashboard;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 
+@Repository
 public interface DeveloperDashboardRepository extends AbstractRepository {
 
-	//Total Number of Training Modules
-	@Query("SELECT count(tm) FROM TrainingModule tm WHERE tm.updatedMoment IS NOT NULL AND tm.developer.id = ?1")
-	Integer totalNumberOfTrainingModules(int developerId);
+	@Query("SELECT tm.totalTime FROM TrainingModule tm WHERE tm.developer.id = :developerId AND tm.published = true")
+	Collection<Integer> findTrainingModuleTotalTimesByDeveloperId(int developerId);
 
-	//Total Number of Training Sessions
-	@Query("SELECT count(ts) FROM TrainingSession ts WHERE ts.optionalLink IS NOT NULL AND ts.trainingModule.developer.id = ?1")
-	Integer totalNumberOfTrainingSessions(int developerId);
+	@Query("SELECT COUNT(tm) FROM TrainingModule tm WHERE tm.updateMoment IS NOT NULL AND tm.developer.id = :developerId AND tm.published = true")
+	int countTrainingModulesWithUpdateMomentByDeveloperId(int developerId);
 
-	//Average Time of the Training Modules
-	@Query("SELECT AVG(tm.totalTime) FROM TrainingModule tm WHERE tm.developer.id = ?1")
-	Double averageTimeTrainingModule(int developerId);
-
-	//Deviation Time of the Training Modules
-	@Query("SELECT STDDEV(tm.totalTime) FROM TrainingModule tm WHERE tm.developer.id = ?1")
-	Double deviationTimeTrainingModule(int developerId);
-
-	//Minimum Time of the Training Modules
-	@Query("SELECT MIN(tm.totalTime) FROM TrainingModule tm WHERE tm.developer.id = ?1")
-	Double minTimeTrainingModule(int developerId);
-
-	//Maximum Time of the Training Modules
-	@Query("SELECT MAX(tm.totalTime) FROM TrainingModule tm WHERE tm.developer.id = ?1")
-	Double maxTimeTrainingModule(int developerId);
+	@Query("SELECT COUNT(ts) FROM TrainingSession ts WHERE ts.link IS NOT NULL AND ts.trainingModule.developer.id = :developerId AND ts.published = true")
+	int countTrainingSessionsWithLinkByDeveloperId(int developerId);
 
 }

@@ -22,15 +22,7 @@ public class AdministratorBannerDeleteService extends AbstractService<Administra
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int masterId;
-		Banner banner;
-
-		masterId = super.getRequest().getData("id", int.class);
-		banner = this.repository.findOneBannerById(masterId);
-		status = banner != null;
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -40,7 +32,6 @@ public class AdministratorBannerDeleteService extends AbstractService<Administra
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneBannerById(id);
-
 		super.getBuffer().addData(object);
 	}
 
@@ -48,7 +39,7 @@ public class AdministratorBannerDeleteService extends AbstractService<Administra
 	public void bind(final Banner object) {
 		assert object != null;
 
-		super.bind(object, "reference", "title", "deadline", "salary", "score", "moreInfo", "description");
+		super.bind(object, "instantiationMoment", "bannerStartTime", "bannerEndTime", "picture", "slogan", "link");
 	}
 
 	@Override
@@ -59,18 +50,14 @@ public class AdministratorBannerDeleteService extends AbstractService<Administra
 	@Override
 	public void perform(final Banner object) {
 		assert object != null;
-
 		this.repository.delete(object);
 	}
 
 	@Override
 	public void unbind(final Banner object) {
 		assert object != null;
-
 		Dataset dataset;
-
-		dataset = super.unbind(object, "target", "moment", "slogan", "picture", "displayStartMoment", "displayEndMoment");
-
+		dataset = super.unbind(object, "instantiationMoment", "bannerStartTime", "bannerEndTime", "picture", "slogan", "link");
 		super.getResponse().addData(dataset);
 	}
 
