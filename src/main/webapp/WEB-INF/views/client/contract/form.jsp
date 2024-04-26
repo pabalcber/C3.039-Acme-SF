@@ -5,7 +5,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="client.contract.form.label.code" path="code"/>	
+	<acme:input-textbox code="client.contract.form.label.code" path="code" placeholder = "AAA-000"/>	
 	<acme:input-select code="client.contract.form.label.project" path="project" choices="${projects}"/>
 	<acme:input-moment code="client.contract.form.label.instantiationMoment" path="instantiationMoment"/>
 	<acme:input-textbox code="client.contract.form.label.providerName" path="providerName"/>

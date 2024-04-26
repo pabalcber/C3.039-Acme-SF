@@ -43,11 +43,13 @@
 		<acme:menu-option code="master.menu.any">
       		<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list"/>	
 			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.any.claims" action="/any/claim/list"/>	
-			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.authenticated.notice.list-recent" action="/authenticated/notice/list-recent"/>			
-			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.any.claims" action="/any/claim/list"/>				
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.contract.list" action="/authenticated/contract/list-all"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.notice.list-recent" action="/authenticated/notice/list-recent"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">

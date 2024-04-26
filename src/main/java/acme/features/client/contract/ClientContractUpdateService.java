@@ -61,14 +61,8 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		if (object == null)
 			throw new IllegalArgumentException(ClientContractUpdateService.invalidObject + object);
 
-		int projectId;
-		Project project;
-
-		projectId = super.getRequest().getData("project", int.class);
-		project = this.repository.findOneProjectById(projectId);
-
 		super.bind(object, "code", "instantiationMoment", "providerName", ClientContractUpdateService.customerName, "goals", ClientContractUpdateService.budget);
-		object.setProject(project);
+
 	}
 
 	@Override
@@ -132,7 +126,6 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", ClientContractUpdateService.customerName, "goals", ClientContractUpdateService.budget, "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
-		dataset.put("projects", choices);
 		dataset.put(ClientContractUpdateService.customerName, client.getIdentification());
 
 		super.getResponse().addData(dataset);
