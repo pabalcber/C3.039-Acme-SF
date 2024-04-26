@@ -80,17 +80,15 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
-# master.menu.developer ###################################################
-master.menu.developer = Developer
 
-master.menu.developer.trainingModules = Training modules
-master.menu.developer.trainingSession = Training sessions
-master.menu.developer.dashboard = Dashboard
+
 # master.menu.sponsor ###################################################
 master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsorship.list = List Your Sponsorships
 master.menu.sponsor.dashboard = Sponsor dashboard
 
+# master.menu.developer ###################################################
+master.menu.developer = Developer
 master.menu.developer.training-module.list = List Your Training Modules
 master.menu.developer.dashboard = Developer Dashboard
 

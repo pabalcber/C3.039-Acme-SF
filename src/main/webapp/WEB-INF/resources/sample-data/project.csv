@@ -1,29 +1,7 @@
-
-key,code,title,abstractText,hasFatalError,cost,link,draftMode,key:manager
-project-01,AAA-1234,A,A,0,USD 232400.00,,false,manager-01
-project-02,BBB-2256,B,A,0,GBP 100000.00,,false,manager-01
-project-03,CCC-3635,C,A,0,EUR 100000.00,,false,manager-01
-project-04,DDD-4314,D,A,0,EUR 100000.00,,false,manager-01
-project-05,EEE-1234,E,A,0,EUR 100000.00,,false,manager-01
-project-06,FFF-6844,F,A,0,USD 100000.00,,false,manager-01
-project-07,GGG-3649,G,A,0,EUR 100000.00,,false,manager-01
-project-08,HHH-6945,H,A,0,EUR 100000.00,,false,manager-01
-project-09,III-3245,I,A,0,EUR 100000.00,,false,manager-02
-project-10,JJJ-6941,J,A,1,GBP 150000.00,,false,manager-02
-project-11,KKK-3245,K,A,0,EUR 100000.00,,false,manager-02
-project-12,KKK-3654,L,A,0,USD 100000.00,,false,manager-02
-project-13,LLL-3320,M,A,0,GBP 200000.00,http://yao.link,false,manager-02
-project-14,ABC-3652,N,A,0,EUR 300000.00,http://sheng.link,false,manager-02
-project-15,EDF-3612,A,A,0,GBP 400000.00,http://zheng.link,false,manager-02
-project-16,ZZZ-3691,A,A,0,EUR 500000.00,http://lin.link,false,manager-02
-project-17,EEE-6515,A,A,0,EUR 600000.00,http://optionalASDFAFADFS.link,false,manager-02
-project-18,GGG-3222,A,A,0,USD 700000.00,http://optional.link,false,manager-02
-
 key,code,title,abstractPj,fatalErrors,cost,optionalLink,draftMode,key:manager
-project-01,ABC-1234,A,A,false,EUR 0,,false,manager1
-project-02,ZZZ-9999,estoesunacadenade75caracteres1234567890123456789012345678901234567890123456,Z,false,EUR 99,,false,manager2
-project-03,FKJ-7806,Titulo,Abstracto,false,EUR 777,,false,manager2
-project-04,XJY-5555,Title,Esto es una cadena de 100 caracteres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,false,EUR 6,,false,manager1
-project-05,LLL-0000,T,A,true,EUR 47,http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,true,manager1
-project-06,LRL-0010,T,A,false,"EUR 999,999,842.99",http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,false,manager1
-
+project-01,ABC-1234,A,A,false,EUR 0,,false,manager-01
+project-02,ZZZ-9999,estoesunacadenade75caracteres1234567890123456789012345678901234567890123456,Z,false,EUR 99,,false,manager-02
+project-03,FKJ-7806,Titulo,Abstracto,false,EUR 777,,false,manager-02
+project-04,XJY-5555,Title,Esto es una cadena de 100 caracteres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,false,EUR 6,,false,manager-01
+project-05,LLL-0000,T,A,true,EUR 47,http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,true,manager-01
+project-06,LRL-0010,T,A,false,"EUR 999,999,842.99",http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,false,manager-01
