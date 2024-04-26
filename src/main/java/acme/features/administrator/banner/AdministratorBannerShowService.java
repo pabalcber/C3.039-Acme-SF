@@ -41,10 +41,7 @@ public class AdministratorBannerShowService extends AbstractService<Administrato
 		assert object != null;
 
 		Dataset dataset;
-
-		dataset = super.unbind(object, "target", "moment", "slogan", "picture", "displayStartMoment", "displayEndMoment");
-		dataset.put("confirmation", false);
-
+		dataset = super.unbind(object, "instantiationMoment", "bannerStartTime", "bannerEndTime", "picture", "slogan", "link");
 		super.getResponse().addData(dataset);
 	}
 

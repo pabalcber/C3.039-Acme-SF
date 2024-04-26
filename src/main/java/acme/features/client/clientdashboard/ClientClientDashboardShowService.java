@@ -87,7 +87,10 @@ public class ClientClientDashboardShowService extends AbstractService<Client, Cl
 
 	private Money createMoney(final String currency, final Double amount) {
 		Money money = new Money();
-		money.setAmount(amount);
+		if (amount == null)
+			money.setAmount(0.0);
+		else
+			money.setAmount(amount);
 		money.setCurrency(currency);
 		return money;
 	}

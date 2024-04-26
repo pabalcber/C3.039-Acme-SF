@@ -1,6 +1,0 @@
-key,code,timePeriodStart,timePeriodEnd,location,instructor,mandatoryContactEmail,furtherInformationLink,key:trainingModule
-session-01,TS-ABC-001,2013/09/15 08:30,2013/09/15 10:30,Room 101,John Doe,johndoe@example.com,http://example.com/session_info,training-01
-session-02,TS-XYZ-002,2013/10/20 10:00,2013/10/20 12:00,Conference Room A,Jane Smith,janesmith@example.com,http://example.com/session_info,training-01
-session-03,TS-DEF-003,2013/11/05 14:00,2013/11/05 16:00,Training Room B,Michael Johnson,michaeljohnson@example.com,http://example.com/session_info,training-02
-session-04,TS-PQR-004,2013/12/10 09:00,2013/12/10 11:00,Studio C,Amy Brown,amybrown@example.com,http://example.com/session_info,training-01
-session-05,TS-UVW-005,2014/01/15 13:00,2014/01/15 15:00,Boardroom D,David Wilson,davidwilson@example.com,http://example.com/session_info,training-03

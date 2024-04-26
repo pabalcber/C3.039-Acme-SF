@@ -1,0 +1,8 @@
+# messages-es.i18n
+authenticated.client.form.label.degree = Grado
+authenticated.client.form.label.overview = Descripción general
+authenticated.client.form.label.certificationsList = Lista de certificaciones
+authenticated.client.form.label.optionalLink = Link
+authenticated.manager.form.button.create = Crear manager
+authenticated.manager.form.button.update = Actualizar manager
+authenticated.manager.form.title = Mi perfil de manager

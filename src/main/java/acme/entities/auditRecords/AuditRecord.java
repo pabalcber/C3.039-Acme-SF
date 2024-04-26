@@ -4,6 +4,7 @@ package acme.entities.auditRecords;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -15,6 +16,8 @@ import org.checkerframework.common.aliasing.qual.Unique;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.codeAudits.CodeAudit;
+import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,14 +37,45 @@ public class AuditRecord extends AbstractEntity {
 	@NotNull
 	private String				code;
 
-	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				period;
-
 	@NotNull
-	private Marks				mark;
+	private Date				startPeriod;
+
+	@Past
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	private Date				endPeriod;
+
+	@Pattern(regexp = "A\\+|A|B|C|F|F-")
+	private String				mark;
 
 	@URL
 	private String				link;
+
+	protected boolean			draftMode;
+
+	// Derived attributes -----------------------------------------------------
+
+
+	public boolean validatePeriod() {
+		boolean res = true;
+		if (this.startPeriod != null && this.endPeriod != null) {
+			long differenceInHours = (this.endPeriod.getTime() - this.startPeriod.getTime()) / 3600;
+			if (differenceInHours < 1)
+				res = false;
+		}
+		return res;
+	}
+
+	// Relationships ----------------------------------------------------------
+
+
+	@ManyToOne
+	protected CodeAudit	codeAudit;
+
+	@NotNull
+	@ManyToOne(optional = false)
+	protected Auditor	auditor;
+
 }

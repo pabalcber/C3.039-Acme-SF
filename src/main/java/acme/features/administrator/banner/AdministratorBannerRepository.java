@@ -12,10 +12,9 @@ import acme.entities.banners.Banner;
 @Repository
 public interface AdministratorBannerRepository extends AbstractRepository {
 
-	@Query("select b from Banner b")
-	Collection<Banner> findAllBanners();
-
 	@Query("select b from Banner b where b.id = :id")
 	Banner findOneBannerById(int id);
 
+	@Query("select b from Banner b")
+	Collection<Banner> findAllBanners();
 }

@@ -32,21 +32,14 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	@Override
 	public void load() {
 		Banner object;
-		Date moment;
-		Date startDisplay;
-		Date endDisplay;
+		Date instantiationMoment;
+		Date currentMoment;
 
-		moment = MomentHelper.getCurrentMoment();
-		startDisplay = MomentHelper.deltaFromMoment(moment, 1, ChronoUnit.DAYS);
-		endDisplay = MomentHelper.deltaFromMoment(startDisplay, 1, ChronoUnit.WEEKS);
+		currentMoment = MomentHelper.getCurrentMoment();
+		instantiationMoment = new Date(currentMoment.getTime() - 1000);
 
 		object = new Banner();
-		object.setTarget("");
-		object.setMoment(moment);
-		object.setSlogan("");
-		object.setPicture("");
-		object.setDisplayStartMoment(startDisplay);
-		object.setDisplayEndMoment(endDisplay);
+		object.setInstantiationMoment(instantiationMoment);
 
 		super.getBuffer().addData(object);
 	}
@@ -55,29 +48,31 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	public void bind(final Banner object) {
 		assert object != null;
 
-		super.bind(object, "target", "moment", "slogan", "picture", "displayStartMoment", "displayEndMoment");
+		super.bind(object, "bannerStartTime", "bannerEndTime", "picture", "slogan", "link");
 	}
 
 	@Override
 	public void validate(final Banner object) {
 		assert object != null;
 
-		boolean confirmation;
+		if (!super.getBuffer().getErrors().hasErrors("bannerStartTime") && object.getBannerStartTime() != null) {
+			Date bannerStartTime;
+			Date instantiationMoment;
+			bannerStartTime = object.getBannerStartTime();
+			instantiationMoment = object.getInstantiationMoment();
 
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
-
-		if (object.getDisplayStartMoment() != null && object.getMoment() != null) {
-			boolean isDisplayStartMomentAfterMoment = MomentHelper.isAfter(object.getDisplayStartMoment(), object.getMoment());
-			super.state(isDisplayStartMomentAfterMoment, "displayStartMoment", "administrator.banner.form.error.start-display-must-be-after-moment");
+			super.state(bannerStartTime.after(instantiationMoment), "bannerStartTime", "administrator.banner.form.error.banner-start-time");
 		}
 
-		if (object.getDisplayStartMoment() != null && object.getDisplayEndMoment() != null) {
+		if (!super.getBuffer().getErrors().hasErrors("bannerEndTime") && object.getBannerEndTime() != null) {
+			Date bannerStartTime;
+			Date bannerEndTime;
 
-			Date oneWeekLater = MomentHelper.deltaFromMoment(object.getDisplayStartMoment(), 1, ChronoUnit.WEEKS);
+			bannerStartTime = object.getBannerStartTime();
+			bannerEndTime = object.getBannerEndTime();
 
-			boolean isDisplayEndMomentAtLeastOneWeekLater = MomentHelper.isAfterOrEqual(object.getDisplayEndMoment(), oneWeekLater);
-			super.state(isDisplayEndMomentAtLeastOneWeekLater, "displayEndMoment", "administrator.banner.form.error.display-duration-must-be-at-least-one-week");
+			if (bannerStartTime != null && bannerEndTime != null)
+				super.state(MomentHelper.isLongEnough(bannerStartTime, bannerEndTime, 1, ChronoUnit.WEEKS) && bannerEndTime.after(bannerStartTime), "bannerEndTime", "administrator.banner.form.error.banner-end-time");
 		}
 	}
 
@@ -85,10 +80,6 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	public void perform(final Banner object) {
 		assert object != null;
 
-		Date moment;
-
-		moment = MomentHelper.getCurrentMoment();
-		object.setMoment(moment);
 		this.repository.save(object);
 	}
 
@@ -98,9 +89,9 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "target", "moment", "slogan", "picture", "displayStartMoment", "displayEndMoment");
-		dataset.put("confirmation", false);
+		dataset = super.unbind(object, "instantiationMoment", "bannerStartTime", "bannerEndTime", "picture", "slogan", "link");
 
 		super.getResponse().addData(dataset);
 	}
+
 }
