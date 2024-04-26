@@ -39,6 +39,8 @@
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.notice.list-recent" action="/authenticated/notice/list-recent"/>			
 			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>			
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.contract.list" action="/authenticated/contract/list-all"/>
 		</acme:menu-option>
 		
