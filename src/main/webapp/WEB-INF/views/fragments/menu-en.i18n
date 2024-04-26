@@ -82,6 +82,15 @@ master.menu.consumer.favourite-link = Favourite link
 
 # master.menu.developer ###################################################
 master.menu.developer = Developer
+
+master.menu.developer.trainingModules = Training modules
+master.menu.developer.trainingSession = Training sessions
+master.menu.developer.dashboard = Dashboard
+# master.menu.sponsor ###################################################
+master.menu.sponsor = Sponsor
+master.menu.sponsor.sponsorship.list = List Your Sponsorships
+master.menu.sponsor.dashboard = Sponsor dashboard
+
 master.menu.developer.training-module.list = List Your Training Modules
 master.menu.developer.dashboard = Developer Dashboard
 
@@ -96,6 +105,7 @@ master.menu.manager.dashboard = See my dashboard
 
 master.menu.any = Principal
 master.menu.any.projects = Published projects
+
 
 # master.menu.client ########################################################
 
@@ -118,3 +128,5 @@ master.menu.user-account.become-manager = Become a manager
 master.menu.user-account.manager = My manager profile
 master.menu.user-account.client = Client data
 master.menu.user-account.become-client = Become a client
+master.menu.user-account.sponsor = Sponsor data
+master.menu.user-account.become-sponsor = Become a sponsor

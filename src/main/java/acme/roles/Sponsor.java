@@ -1,3 +1,14 @@
+/*
+ * Consumer.java
+ *
+ * Copyright (C) 2012-2024 Rafael Corchuelo.
+ *
+ * In keeping with the traditional purpose of furthering education and research, it is
+ * the policy of the copyright owner to permit non-commercial use and redistribution of
+ * this software. It has been tested carefully, but it is not guaranteed for any particular
+ * purposes. The copyright owner does not offer any warranties or representations, nor do
+ * they accept any liabilities with respect to them.
+ */
 
 package acme.roles;
 
@@ -21,23 +32,24 @@ public class Sponsor extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes
+	// Attributes -------------------------------------------------------------
+
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	private String				name;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	private String				benefits;
 
 	@URL
-	@Length(max = 255)
-	private String				optionalWebPage;
+	private String				webPage;
 
 	@Email
-	@Length(max = 255)
-	private String				optionalEmailContact;
+	private String				email;
 
-	// Relationships
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
 
 }
