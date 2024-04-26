@@ -18,8 +18,37 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
-
-		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">		
+		<!--
+		<acme:menu-option code="master.menu.pabalcber" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.pabalcber.favourite-link" action="https://github.com/pabalcber"/>
+		</acme:menu-option>
+		<acme:menu-option code="master.menu.maravimaq" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.maravimaq.favourite-link" action="https://github.com/maravimaq"/>
+		</acme:menu-option>
+		<acme:menu-option code="master.menu.sheche1" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.sheche1.favourite-link" action="https://github.com/sheche1"/>
+		</acme:menu-option>
+		
+				<acme:menu-option code="master.menu.YaoSpain" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.YaoSpain.favourite-link" action="https://github.com/YaoSpain"/>
+		</acme:menu-option>
+		<acme:menu-option code="master.menu.marbarmar16" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.marbarmar16.favourite-link" action="https://github.com/meryknows"/>
+		</acme:menu-option>
+		-->
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.notice.list-recent" action="/authenticated/notice/list-recent"/>			
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>			
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.risk.list" action="/authenticated/risk/list"/>			
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.contract.list" action="/authenticated/contract/list-all"/>
+		</acme:menu-option>
+		
+		
+		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
+			<acme:menu-suboption code="master.menu.administrator.banner.list-all" action="/administrator/banner/list-all"/>			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
