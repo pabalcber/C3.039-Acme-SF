@@ -2,20 +2,34 @@
 package acme.forms;
 
 import acme.client.data.AbstractForm;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class AuditorDashboard extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
 
-	static final long	serialVersionUID	= 1L;
-
+	private static final long	serialVersionUID	= 1L;
 	// Attributes -------------------------------------------------------------
 
-	Double				totalCodeAuditsStatic;
-	Double				totalCodeAuditsDynamic;
-	Double				averageCodeAuditsPeriodLenght;
-	Double				deviationCodeAuditsPeriodLenght;
-	Double				minimumCodeAuditsPeriodLenght;
-	Double				maximumCodeAuditsPeriodLenght;
+	int							totalNumberOfCodeAuditsStatic;
+	int							totalNumberOfCodeAuditsDynamic;
+
+	Double						averageNumberOfAuditRecords;
+	Integer						minimunNumberOfAuditRecords;
+	Integer						maximunNumberOfAuditRecords;
+	Double						deviationOfAuditRecords;
+
+	Long						avegageTimeOfThePeriodlength;
+	Long						deviationTimeOfThePeriodlength;
+	Long						minimunTimeOfThePeriodlength;
+	Long						maximumTimeOfThePeriodlength;
+	// TODO Auto-generated method stub
+
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
 
 }
