@@ -106,6 +106,11 @@ master.menu.client.my-contracts = Mis Contratos
 master.menu.client.published-contracts = Contratos Publicados
 master.menu.client.client-dashboard = Panel de Indicadores de Clientes
 
+# master.menu.sponsor ###################################################
+master.menu.sponsor = Patrocinador
+master.menu.sponsor.sponsorship.list = Listar tus patrocinios
+master.menu.sponsor.dashboard = Panel de indicadores del patrocinador
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
@@ -120,3 +125,5 @@ master.menu.user-account.become-manager = Hazte manager
 master.menu.user-account.manager = Mi perfil de manager
 master.menu.user-account.client = Datos de cliente
 master.menu.user-account.become-client = Hazte cliente
+master.menu.user-account.sponsor = Datos de patrocinador
+master.menu.user-account.become-sponsor = Hazte patrocinador

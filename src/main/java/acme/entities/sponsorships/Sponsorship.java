@@ -10,18 +10,17 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.entities.projects.Project;
+import acme.roles.Sponsor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,44 +29,52 @@ import lombok.Setter;
 @Setter
 public class Sponsorship extends AbstractEntity {
 
-	// Serialisation identifier
+	// Serialisation identifier -----------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes
-	@Column(unique = true)
+	// Attributes -------------------------------------------------------------
+
 	@NotBlank
-	@Pattern(regexp = "[A-Z]{1,3}-//d{3}", message = "El código debe seguir el patrón '[A-Z]{1,3}-[0-9]{3}'")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
+	@Column(unique = true)
 	private String				code;
 
+	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
 	private Date				moment;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Future
-	private Date				duration;
+	private Date				durationStartTime;
 
 	@NotNull
-	@Positive
-	private double				amount;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				durationEndTime;
+
+	@NotNull
+	private Money				amount;
 
 	@NotNull
 	private SponsorshipType		type;
 
 	@Email
-	@Length(max = 255)
-	private String				contactEmail;
+	private String				email;
 
 	@URL
-	@Length(max = 255)
 	private String				link;
 
-	// Relationships
+	private boolean				draftMode;
+
+	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
 	private Project				project;
+
+	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
+	private Sponsor				sponsor;
 
 }
