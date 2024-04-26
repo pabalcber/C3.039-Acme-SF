@@ -1,6 +1,8 @@
 
 package acme.features.administrator.banner;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +12,7 @@ import acme.client.services.AbstractService;
 import acme.entities.banners.Banner;
 
 @Service
-public class AdministratorBannerDeleteService extends AbstractService<Administrator, Banner> {
+public class AdministratorBannerListService extends AbstractService<Administrator, Banner> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -27,37 +29,20 @@ public class AdministratorBannerDeleteService extends AbstractService<Administra
 
 	@Override
 	public void load() {
-		Banner object;
-		int id;
+		Collection<Banner> objects;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneBannerById(id);
-		super.getBuffer().addData(object);
-	}
+		objects = this.repository.findAllBanners();
 
-	@Override
-	public void bind(final Banner object) {
-		assert object != null;
-
-		super.bind(object, "instantiationMoment", "bannerStartTime", "bannerEndTime", "picture", "slogan", "link");
-	}
-
-	@Override
-	public void validate(final Banner object) {
-		assert object != null;
-	}
-
-	@Override
-	public void perform(final Banner object) {
-		assert object != null;
-		this.repository.delete(object);
+		super.getBuffer().addData(objects);
 	}
 
 	@Override
 	public void unbind(final Banner object) {
 		assert object != null;
+
 		Dataset dataset;
 		dataset = super.unbind(object, "instantiationMoment", "bannerStartTime", "bannerEndTime", "picture", "slogan", "link");
+
 		super.getResponse().addData(dataset);
 	}
 
