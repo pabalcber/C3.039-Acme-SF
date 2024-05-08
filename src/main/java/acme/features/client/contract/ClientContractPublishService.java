@@ -71,36 +71,34 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void validate(final Contract object) {
+
 		if (object == null)
 			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Contract existing;
+		Money budgt = object.getBudget();
+		Project project = object.getProject();
+		Money projectCost = project.getCost();
 
-			existing = this.repository.findOneContractByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
-		}
+		Double existingCombinedBudget = this.repository.combinedBudgetByContract(project.getId());
+		double totalCombinedBudget = (existingCombinedBudget != null ? existingCombinedBudget : 0.0) + budgt.getAmount();
+		double projectTotalCost = projectCost.getAmount();
+
+		super.state(totalCombinedBudget <= projectTotalCost, "*", "client.contract.form.error.bad-combined-budget");
+
+		if (!super.getBuffer().getErrors().hasErrors("budget"))
+			super.state(totalCombinedBudget <= projectTotalCost, "*", "client.contract.form.error.bad-combined-budget");
 
 		if (!super.getBuffer().getErrors().hasErrors(ClientContractPublishService.budget)) {
-			Money budgt = object.getBudget();
-			Project project = object.getProject();
 
 			super.state(budgt.getAmount() >= 0, ClientContractPublishService.budget, "client.contract.form.error.negative-budget");
 
 			if (project != null) {
-				Money projectCost = project.getCost();
 
 				if (!budgt.getCurrency().equals(projectCost.getCurrency()))
 					super.state(false, ClientContractPublishService.budget, "client.contract.form.error.different-currency");
 
 				if (budgt.getAmount() > projectCost.getAmount())
 					super.state(false, ClientContractPublishService.budget, "client.contract.form.error.budget-exceeds-project-cost");
-
-				Double existingCombinedBudget = this.repository.combinedBudgetByContract(project.getId());
-				double totalCombinedBudget = (existingCombinedBudget != null ? existingCombinedBudget : 0.0) + budgt.getAmount();
-				double projectTotalCost = projectCost.getAmount();
-
-				super.state(totalCombinedBudget <= projectTotalCost, "*", "client.contract.form.error.bad-combined-budget");
 			}
 		}
 	}

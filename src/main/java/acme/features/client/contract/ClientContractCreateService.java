@@ -3,6 +3,7 @@ package acme.features.client.contract;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,12 +63,15 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 		int projectId;
 		Project project;
+		Date moment;
 
+		moment = MomentHelper.getCurrentMoment();
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractCreateService.budget);
+		super.bind(object, "code", "providerName", "customerName", "goals", ClientContractCreateService.budget);
 		object.setProject(project);
+		object.setInstantiationMoment(moment);
 	}
 
 	@Override
@@ -75,6 +79,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		if (object == null)
 			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
 
+		this.validateCurrency(object);
 		this.validateUniqueCode(object);
 		this.validateBudget(object);
 	}
@@ -105,7 +110,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		projects = this.repository.findManyProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractCreateService.budget, "draftMode");
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", ClientContractCreateService.budget, "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
@@ -118,6 +123,16 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Contract existing = this.repository.findOneContractByCode(object.getCode());
 			super.state(existing == null, "code", "client.contract.form.error.duplicated");
+		}
+	}
+
+	private void validateCurrency(final Contract object) {
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			Money b = object.getBudget();
+			Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
+
+			if (!validCurrencies.contains(b.getCurrency()))
+				super.state(false, "budget", "client.contract.form.error.invalid-currency");
 		}
 	}
 

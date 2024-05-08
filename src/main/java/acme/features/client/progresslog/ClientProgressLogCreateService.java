@@ -55,7 +55,6 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		object = new ProgressLog();
 		object.setRecordId("");
-		object.setCompleteness(0.1);
 		object.setComment("");
 		object.setRegistrationMoment(moment);
 		object.setResponsiblePerson("");
@@ -66,10 +65,12 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void bind(final ProgressLog object) {
+		Date moment = MomentHelper.getCurrentMoment();
 		if (object == null)
 			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
 
-		super.bind(object, ClientProgressLogCreateService.recordId, "completeness", "comment", "registrationMoment", ClientProgressLogCreateService.responsiblePerson);
+		super.bind(object, ClientProgressLogCreateService.recordId, "completeness", "comment", ClientProgressLogCreateService.responsiblePerson);
+		object.setRegistrationMoment(moment);
 	}
 
 	@Override
@@ -106,7 +107,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, ClientProgressLogCreateService.recordId, "completeness", "comment", "registrationMoment", ClientProgressLogCreateService.responsiblePerson);
+		dataset = super.unbind(object, ClientProgressLogCreateService.recordId, "completeness", "comment", ClientProgressLogCreateService.responsiblePerson);
 		dataset.put(ClientProgressLogCreateService.id, super.getRequest().getData(ClientProgressLogCreateService.id, int.class));
 		dataset.put("draftMode", object.getContract().isDraftMode());
 		dataset.put("contract", object.getContract().getCode());

@@ -56,7 +56,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 		if (object == null)
 			throw new IllegalArgumentException(ClientProgressLogUpdateService.invalidObject + object);
 
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", ClientProgressLogUpdateService.responsiblePerson);
+		super.bind(object, "recordId", "completeness", "comment", ClientProgressLogUpdateService.responsiblePerson);
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", ClientProgressLogUpdateService.responsiblePerson);
+		dataset = super.unbind(object, "recordId", "completeness", "comment", ClientProgressLogUpdateService.responsiblePerson);
 		dataset.put("masterId", object.getContract().getId());
 		dataset.put("draftMode", object.getContract().isDraftMode());
 		dataset.put("contract", object.getContract().getCode());

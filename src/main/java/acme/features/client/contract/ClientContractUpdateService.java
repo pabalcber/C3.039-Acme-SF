@@ -3,6 +3,7 @@ package acme.features.client.contract;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,7 +62,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		if (object == null)
 			throw new IllegalArgumentException(ClientContractUpdateService.invalidObject + object);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", ClientContractUpdateService.customerName, "goals", ClientContractUpdateService.budget);
+		super.bind(object, "code", "providerName", ClientContractUpdateService.customerName, "goals", ClientContractUpdateService.budget);
 
 	}
 
@@ -69,6 +70,8 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	public void validate(final Contract object) {
 		if (object == null)
 			throw new IllegalArgumentException(ClientContractUpdateService.invalidObject + object);
+
+		this.validateCurrency(object);
 
 		if (!super.getBuffer().getErrors().hasErrors(ClientContractUpdateService.budget)) {
 			Money budgt = object.getBudget();
@@ -103,6 +106,16 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		this.repository.save(object);
 	}
 
+	private void validateCurrency(final Contract object) {
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			Money b = object.getBudget();
+			Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
+
+			if (!validCurrencies.contains(b.getCurrency()))
+				super.state(false, "budget", "client.contract.form.error.invalid-currency");
+		}
+	}
+
 	@Override
 	public void unbind(final Contract object) {
 		if (object == null)
@@ -124,7 +137,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		projects.add(project);
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", ClientContractUpdateService.customerName, "goals", ClientContractUpdateService.budget, "draftMode");
+		dataset = super.unbind(object, "code", "providerName", ClientContractUpdateService.customerName, "goals", ClientContractUpdateService.budget, "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put(ClientContractUpdateService.customerName, client.getIdentification());
 

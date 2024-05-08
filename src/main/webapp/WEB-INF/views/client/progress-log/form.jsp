@@ -6,9 +6,8 @@
 
 <acme:form>
 	<acme:input-textbox code="client.progressLog.form.label.recordId" path="recordId" placeholder = "PG-AA-0000"/>
-	<acme:input-double code="client.progressLog.form.label.completeness" path="completeness"/>	
+	<acme:input-double code="client.progressLog.form.label.completeness" path="completeness" placeholder = "0.1"/>	
 	<acme:input-textarea code="client.progressLog.form.label.comment" path="comment"/>
-	<acme:input-moment code="client.progressLog.form.label.registrationMoment" path="registrationMoment"/>
 	<acme:input-textbox code="client.progressLog.form.label.responsiblePerson" path="responsiblePerson"/>
 	<acme:input-textbox code="client.progressLog.form.label.contract" path="contract"/>
 	

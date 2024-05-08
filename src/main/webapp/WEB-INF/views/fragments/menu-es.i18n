@@ -20,6 +20,7 @@ master.menu.sign-out = Salir
 master.menu.any = Cualquiera
 master.menu.any.claims = Reclamaciones
 master.menu.any.training-modules =Módulos de entrenamiento
+master.menu.any.contract.list = Contratos Publicados
 
 # master.menu.authenticated #######################################################
 
