@@ -17,8 +17,8 @@ client.progressLog.form.label.contract = Contrato
 
 client.progressLog.form.error.duplicated = Este nombre ya está siendo usado
 
-client.contract.list.button.create = Crear
+client.progressLog.list.button.create = Crear
 
-client.contract.list.button.create = Crear
+client.progressLog.form.button.create = Crear
 client.progressLog.form.button.delete = Eliminar
 client.progressLog.form.button.update = Actualizar

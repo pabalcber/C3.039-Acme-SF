@@ -7,8 +7,8 @@ progress-log-05,PG-E-0005,09.7,Just started,2000/02/18 10:23,David Lee,contract-
 progress-log-06,PG-F-0006,11.8,Just started,2000/02/19 11:30,Chris Taylor,contract-01
 progress-log-07,PG-G-0007,14.0,Just started,2000/02/20 16:01,Ava Garcia,contract-01
 progress-log-08,PG-H-0008,17.3,Just started,2000/07/31 23:39,Elijah Moore,contract-05
-progress-log-09,PG-I-0009,22.2,Just started,2000/07/31 23:59,Emily Adams,contract-06
-progress-log-10,PG-J-0010,24.9,Just started,2000/08/01 00:22,Lucas Rodriguez,contract-07
+progress-log-09,PG-I-0009,25.2,Just started,2000/07/31 23:59,Emily Adams,contract-01
+progress-log-10,PG-J-0010,25.9,Just started,2000/08/01 00:22,Lucas Rodriguez,contract-07
 progress-log-11,PG-K-0011,25.0,Steady progress,2001/08/11 18:08,Jane Smith,contract-08
 progress-log-12,PG-L-0012,25.1,Steady progress,2002/01/30 07:03,John Doe,contract-09
 progress-log-13,PG-M-0013,28.5,Steady progress,2004/04/16 11:21,David Lee,contract-10
@@ -32,7 +32,7 @@ progress-log-31,PG-D-0031,64.5,Progressing nicely,2017/11/25 16:00,Jane Smith,co
 progress-log-32,PG-E-0032,66.7,Progressing nicely,2017/12/29 11:20,Mia Miller,contract-30
 progress-log-33,PG-F-0033,68.0,Progressing nicely,2017/12/31 23:59,David Lee,contract-31
 progress-log-34,PG-G-0034,69.2,Progressing nicely,2018/01/01 00:00,John Doe,contract-01
-progress-log-35,PG-H-0035,70.8,Progressing nicely,2018/01/01 00:01,John Doe,contract-01
+progress-log-35,PG-H-0035,79.8,Progressing nicely,2018/01/01 00:01,John Doe,contract-01
 progress-log-36,PG-I-0036,72.4,Progressing nicely,2004/01/15 15:22,Chris Taylor,contract-32
 progress-log-37,PG-J-0037,73.6,Progressing nicely,2004/02/28 23:59,Lucas Rodriguez,contract-33
 progress-log-38,PG-K-0038,74.9,Progressing nicely,2004/03/29 19:02,John Doe,contract-34

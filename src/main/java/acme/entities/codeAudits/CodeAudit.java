@@ -2,10 +2,15 @@
 package acme.entities.codeAudits;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -16,7 +21,8 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.auditRecords.Marks;
+import acme.entities.projects.Project;
+import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,11 +55,42 @@ public class CodeAudit extends AbstractEntity {
 	@Length(max = 101)
 	private String				correctiveActions;
 
-	@NotNull
-	private Marks				mark;
-
 	@URL
 	@Length(max = 255)
 	private String				link;
+
+	private boolean				draftMode;
+
+	// Derived attributes -----------------------------------------------------
+
+
+	public String Mark(final List<String> lista) {
+		Map<String, Integer> frecuencia = new HashMap<>();
+
+		for (String str : lista)
+			frecuencia.put(str, frecuencia.getOrDefault(str, 0) + 1);
+
+		String moda = null;
+		int maxFrecuencia = 0;
+		for (Map.Entry<String, Integer> entry : frecuencia.entrySet())
+			if (entry.getValue() > maxFrecuencia) {
+				moda = entry.getKey();
+				maxFrecuencia = entry.getValue();
+			}
+
+		return moda;
+	}
+
+	// Relationships ----------------------------------------------------------
+
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Project		project;
+
+	@NotNull
+	@ManyToOne(optional = false)
+	protected Auditor	auditor;
 
 }

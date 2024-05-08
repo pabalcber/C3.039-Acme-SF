@@ -43,7 +43,9 @@ public class AuthenticatedContractShowService extends AbstractService<Authentica
 
 	@Override
 	public void unbind(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException("Invalid object: " + object);
+
 		SelectChoices choices;
 		Project project;
 		Collection<Project> projects;
@@ -56,8 +58,6 @@ public class AuthenticatedContractShowService extends AbstractService<Authentica
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		Dataset dataset;
-
-		dataset = super.unbind(object, "code", "providerName", "customerName", "budget", "project");
 
 		dataset = super.unbind(object, "code", "project", "client", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
 		dataset.put("masterId", object.getClient().getId());

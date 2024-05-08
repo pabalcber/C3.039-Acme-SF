@@ -18,10 +18,18 @@ public class ClientDashboard extends AbstractForm {
 	int							totalProgressLogs25To50Percent;
 	int							totalProgressLogs50To75Percent;
 	int							totalProgressLogsAbove75Percent;
-	Money						avgBudget;
-	Money						deviationBudget;
-	Money						minimumBudget;
-	Money						maximumBudget;
+	Money						avgBudgetEUR;
+	Money						avgBudgetGBP;
+	Money						avgBudgetUSD;
+	Money						deviationBudgetEUR;
+	Money						deviationBudgetGBP;
+	Money						deviationBudgetUSD;
+	Money						minimumBudgetEUR;
+	Money						minimumBudgetGBP;
+	Money						minimumBudgetUSD;
+	Money						maximumBudgetEUR;
+	Money						maximumBudgetGBP;
+	Money						maximumBudgetUSD;
 
 	// Derived attributes -----------------------------------------------------
 

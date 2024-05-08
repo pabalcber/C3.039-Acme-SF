@@ -22,9 +22,11 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientContractRepository repository;
+	private ClientContractRepository	repository;
 
 	// AbstractService interface ----------------------------------------------
+
+	private static String				budget	= "budget";
 
 
 	@Override
@@ -45,14 +47,18 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		object.setInstantiationMoment(moment);
 		object.setDraftMode(true);
 		object.setClient(client);
-		object.setCustomerName(client.getIdentification());
 
 		super.getBuffer().addData(object);
 	}
 
+
+	private static String invalidObject = "Invalid object: ";
+
+
 	@Override
 	public void bind(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
 
 		int projectId;
 		Project project;
@@ -60,74 +66,83 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractCreateService.budget);
 		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Contract existing;
-
-			existing = this.repository.findOneContractByCode(object.getCode());
-			super.state(existing == null, "code", "client.contract.form.error.duplicated");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
-			if (object.getBudget() != null) {
-				Money budget = object.getBudget();
-				Project project = object.getProject();
-
-				super.state(budget.getAmount() >= 0, "budget", "client.contract.form.error.negative-budget");
-
-				if (project != null) {
-					Money projectCost = project.getCost();
-
-					if (!budget.getCurrency().equals(projectCost.getCurrency()))
-						super.state(false, "budget", "client.contract.form.error.different-currency");
-
-					if (budget.getAmount() > projectCost.getAmount())
-						super.state(false, "budget", "client.contract.form.error.budget-exceeds-project-cost");
-				}
-			} else
-				super.state(false, "budget", "client.contract.form.error.budget-cannot-be-null");
+		this.validateUniqueCode(object);
+		this.validateBudget(object);
 	}
 
 	@Override
 	public void perform(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
 
 		Date moment;
-		Client client;
 
-		client = this.repository.findClientById(super.getRequest().getPrincipal().getActiveRoleId());
 		moment = MomentHelper.getCurrentMoment();
 
 		object.setInstantiationMoment(moment);
-		object.setCustomerName(client.getIdentification());
+
 		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
 
-		int clientId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
 
-		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsByClientId(clientId);
+		projects = this.repository.findManyProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractCreateService.budget, "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
 		super.getResponse().addData(dataset);
+	}
+
+	// Ancillary methods ------------------------------------------------------
+
+	private void validateUniqueCode(final Contract object) {
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Contract existing = this.repository.findOneContractByCode(object.getCode());
+			super.state(existing == null, "code", "client.contract.form.error.duplicated");
+		}
+	}
+
+	private void validateBudget(final Contract object) {
+		if (!super.getBuffer().getErrors().hasErrors(ClientContractCreateService.budget)) {
+			Money b = object.getBudget();
+			Project project = object.getProject();
+
+			if (b == null) {
+				super.state(false, ClientContractCreateService.budget, "client.contract.form.error.budget-cannot-be-null");
+				return;
+			}
+
+			super.state(b.getAmount() >= 0, ClientContractCreateService.budget, "client.contract.form.error.negative-budget");
+
+			if (project != null) {
+				Money projectCost = project.getCost();
+
+				if (!b.getCurrency().equals(projectCost.getCurrency()))
+					super.state(false, ClientContractCreateService.budget, "client.contract.form.error.different-currency");
+
+				if (b.getAmount() > projectCost.getAmount())
+					super.state(false, ClientContractCreateService.budget, "client.contract.form.error.budget-exceeds-project-cost");
+			}
+		}
 	}
 
 }
