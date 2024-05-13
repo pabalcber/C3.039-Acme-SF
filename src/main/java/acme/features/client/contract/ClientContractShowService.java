@@ -30,10 +30,21 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		boolean status;
 		int contractId;
 		Contract contract;
+		int accountId;
+		int authClientId;
+		int contractClientId;
+		Boolean isMyContract;
+
 		contractId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findContractById(contractId);
+
+		accountId = super.getRequest().getPrincipal().getAccountId();
+		authClientId = this.repository.findClientByAccountId(accountId).getId();
+		contractClientId = contract.getClient().getId();
+		isMyContract = authClientId == contractClientId;
+
 		status = contract != null ? super.getRequest().getPrincipal().hasRole(contract.getClient()) || !contract.isDraftMode() : false;
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(status && isMyContract);
 	}
 
 	@Override

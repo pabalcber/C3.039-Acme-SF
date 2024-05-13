@@ -2,6 +2,7 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -101,6 +102,8 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 					super.state(false, ClientContractPublishService.budget, "client.contract.form.error.budget-exceeds-project-cost");
 			}
 		}
+
+		this.validateCurrency(object);
 	}
 
 	@Override
@@ -131,6 +134,18 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		dataset.put("projects", choices);
 
 		super.getResponse().addData(dataset);
+	}
+
+	// Ancillary methods ------------------------------------------------------
+
+	private void validateCurrency(final Contract object) {
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			Money b = object.getBudget();
+			Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
+
+			if (!validCurrencies.contains(b.getCurrency()))
+				super.state(false, "budget", "client.contract.form.error.invalid-currency");
+		}
 	}
 
 }

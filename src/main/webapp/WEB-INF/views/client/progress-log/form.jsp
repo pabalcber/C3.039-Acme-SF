@@ -9,7 +9,7 @@
 	<acme:input-double code="client.progressLog.form.label.completeness" path="completeness" placeholder = "0.1"/>	
 	<acme:input-textarea code="client.progressLog.form.label.comment" path="comment"/>
 	<acme:input-textbox code="client.progressLog.form.label.responsiblePerson" path="responsiblePerson"/>
-	<acme:input-textbox code="client.progressLog.form.label.contract" path="contract"/>
+	<acme:input-textbox code="client.progressLog.form.label.contract" path="contract" readonly = "true"/>
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')  && draftMode == true }">
