@@ -26,6 +26,7 @@ client.contract.form.button.delete = Delete
 client.contract.form.button.publish = Publish
 client.contract.form.button.create = Create
 
+client.contract.form.error.non-pblished-project = This project is not published 
 client.contract.form.error.invalid-currency = This currency doesn't exist or is not supported in our page
 client.contract.form.error.duplicated = This code is taken
 client.contract.form.error.negative-budget = The budget must be positive

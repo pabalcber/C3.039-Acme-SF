@@ -35,11 +35,13 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		int contractId;
 		Contract contract;
 		Client client;
+		Project project;
 
 		contractId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findContractById(contractId);
 		client = contract == null ? null : contract.getClient();
-		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client);
+		project = contract.getProject();
+		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client) && !project.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -85,6 +87,9 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		double projectTotalCost = projectCost.getAmount();
 
 		super.state(totalCombinedBudget <= projectTotalCost, "*", "client.contract.form.error.bad-combined-budget");
+
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(!project.isDraftMode(), "project", "client.contract.form.error.non-pblished-project");
 
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
 			super.state(totalCombinedBudget <= projectTotalCost, "*", "client.contract.form.error.bad-combined-budget");

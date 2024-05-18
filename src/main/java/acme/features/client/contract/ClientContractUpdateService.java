@@ -37,11 +37,13 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		int masterId;
 		Contract contract;
 		Client client;
+		Project project;
 
 		masterId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findContractById(masterId);
+		project = contract.getProject();
 		client = contract == null ? null : contract.getClient();
-		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client);
+		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client) && !project.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -88,6 +90,11 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 				if (budgt.getAmount() > projectCost.getAmount())
 					super.state(false, ClientContractUpdateService.budget, "client.contract.form.error.budget-exceeds-project-cost");
 			}
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Project project = object.getProject();
+			super.state(!project.isDraftMode(), "project", "client.contract.form.error.non-pblished-project");
 		}
 	}
 

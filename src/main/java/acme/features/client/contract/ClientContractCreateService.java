@@ -79,6 +79,11 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		if (object == null)
 			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
 
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Project project = object.getProject();
+			super.state(!project.isDraftMode(), "project", "client.contract.form.error.non-pblished-project");
+		}
+
 		this.validateCurrency(object);
 		this.validateUniqueCode(object);
 		this.validateBudget(object);
