@@ -68,7 +68,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractPublishService.budget);
+		super.bind(object, "code", "providerName", "customerName", "goals", ClientContractPublishService.budget);
 		object.setProject(project);
 	}
 
@@ -98,14 +98,12 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 			super.state(budgt.getAmount() >= 0, ClientContractPublishService.budget, "client.contract.form.error.negative-budget");
 
-			if (project != null) {
+			if (!budgt.getCurrency().equals(projectCost.getCurrency()))
+				super.state(false, ClientContractPublishService.budget, "client.contract.form.error.different-currency");
 
-				if (!budgt.getCurrency().equals(projectCost.getCurrency()))
-					super.state(false, ClientContractPublishService.budget, "client.contract.form.error.different-currency");
+			if (budgt.getAmount() > projectCost.getAmount())
+				super.state(false, ClientContractPublishService.budget, "client.contract.form.error.budget-exceeds-project-cost");
 
-				if (budgt.getAmount() > projectCost.getAmount())
-					super.state(false, ClientContractPublishService.budget, "client.contract.form.error.budget-exceeds-project-cost");
-			}
 		}
 
 		this.validateCurrency(object);
@@ -134,7 +132,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		projects = this.repository.findManyProjectsByClientId(clientId);
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractPublishService.budget, "draftMode");
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", ClientContractPublishService.budget, "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
@@ -146,10 +144,12 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	private void validateCurrency(final Contract object) {
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			Money b = object.getBudget();
+			Project project = object.getProject();
 			Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
 
-			if (!validCurrencies.contains(b.getCurrency()))
-				super.state(false, "budget", "client.contract.form.error.invalid-currency");
+			if (project != null)
+				if (!validCurrencies.contains(b.getCurrency()))
+					super.state(false, "budget", "client.contract.form.error.invalid-currency");
 		}
 	}
 

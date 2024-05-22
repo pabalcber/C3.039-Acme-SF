@@ -33,7 +33,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 		masterId = super.getRequest().getData(ClientProgressLogListService.id, int.class);
 		contract = this.repository.findOneContractById(masterId);
-		status = contract != null && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
+		status = super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -72,7 +72,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 		masterId = super.getRequest().getData(ClientProgressLogListService.id, int.class);
 		contract = this.repository.findOneContractById(masterId);
-		showCreate = contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
+		showCreate = contract.isDraftMode();
 
 		super.getResponse().addGlobal(ClientProgressLogListService.id, masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);

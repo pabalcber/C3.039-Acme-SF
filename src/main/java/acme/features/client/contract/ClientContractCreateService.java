@@ -83,8 +83,6 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 			Project project = object.getProject();
 			super.state(!project.isDraftMode(), "project", "client.contract.form.error.non-pblished-project");
 		}
-
-		this.validateCurrency(object);
 		this.validateUniqueCode(object);
 		this.validateBudget(object);
 	}
@@ -131,20 +129,11 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		}
 	}
 
-	private void validateCurrency(final Contract object) {
-		if (!super.getBuffer().getErrors().hasErrors("budget")) {
-			Money b = object.getBudget();
-			Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
-
-			if (!validCurrencies.contains(b.getCurrency()))
-				super.state(false, "budget", "client.contract.form.error.invalid-currency");
-		}
-	}
-
 	private void validateBudget(final Contract object) {
 		if (!super.getBuffer().getErrors().hasErrors(ClientContractCreateService.budget)) {
 			Money b = object.getBudget();
 			Project project = object.getProject();
+			Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
 
 			if (b == null) {
 				super.state(false, ClientContractCreateService.budget, "client.contract.form.error.budget-cannot-be-null");
@@ -155,6 +144,8 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 			if (project != null) {
 				Money projectCost = project.getCost();
+				if (!validCurrencies.contains(b.getCurrency()))
+					super.state(false, "budget", "client.contract.form.error.invalid-currency");
 
 				if (!b.getCurrency().equals(projectCost.getCurrency()))
 					super.state(false, ClientContractCreateService.budget, "client.contract.form.error.different-currency");

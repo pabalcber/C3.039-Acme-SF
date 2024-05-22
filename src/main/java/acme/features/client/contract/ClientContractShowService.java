@@ -43,7 +43,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		contractClientId = contract.getClient().getId();
 		isMyContract = authClientId == contractClientId;
 
-		status = contract != null ? super.getRequest().getPrincipal().hasRole(contract.getClient()) || !contract.isDraftMode() : false;
+		status = super.getRequest().getPrincipal().hasRole(contract.getClient()) || !contract.isDraftMode();
 		super.getResponse().setAuthorised(status && isMyContract);
 	}
 

@@ -116,10 +116,12 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	private void validateCurrency(final Contract object) {
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			Money b = object.getBudget();
+			Project project = object.getProject();
 			Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
 
-			if (!validCurrencies.contains(b.getCurrency()))
-				super.state(false, "budget", "client.contract.form.error.invalid-currency");
+			if (project != null)
+				if (!validCurrencies.contains(b.getCurrency()))
+					super.state(false, "budget", "client.contract.form.error.invalid-currency");
 		}
 	}
 
