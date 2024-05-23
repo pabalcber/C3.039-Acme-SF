@@ -1,20 +1,20 @@
 key,identification,companyName,type,email,furtherInformation,key:user-account
-client-01,CLI-0001,C,COMPANY,companyA@example.com,http://www.companyA.com,user-account-client-01
-client-02,CLI-0002,Co,COMPANY,companyB@example.com,http://www.companyB.com,user-account-client-02
-client-03,CLI-0003,Com,COMPANY,companyC@example.com,http://www.companyC.com,user-account-client-03
-client-04,CLI-0004,Comp,COMPANY,companyD@example.com,http://www.companyD.com,user-account-client-04
-client-05,CLI-0005,Compa,COMPANY,companyE@example.com,http://www.companyE.com,user-account-client-05
-client-06,CLI-0006,Compan,COMPANY,companyF@example.com,http://www.companyF.com,user-account-client-06
-client-07,CLI-0007,Company,COMPANY,companyG@example.com,http://www.companyG.com,user-account-client-07
-client-08,CLI-0008,A medium length company name,COMPANY,companyH@example.com,http://www.companyH.com,user-account-client-08
-client-09,CLI-0009,Here is a less long company name just below the max of 76 characters to try,COMPANY,companyI@example.com,http://www.companyI.com,user-account-client-09
-client-10,CLI-0010,Im trying with a company name extremely long to see if it canhave76caracters,COMPANY,companyJ@example.com,http://www.companyJ.com,user-account-client-10
-client-11,CLI-0011,Company K,INDIVIDUAL,companyK@example.com,http://www.companyK.com,user-account-client-11
-client-12,CLI-0012,Company L,COMPANY,companyL@example.com,http://www.companyL.com,user-account-client-12
-client-13,CLI-0013,Company M,INDIVIDUAL,companyM@example.com,http://www.companyM.com,user-account-client-13
-client-14,CLI-0014,Company N,COMPANY,companyN@example.com,http://www.companyN.com,user-account-client-14
-client-15,CLI-0015,Company O,INDIVIDUAL,companyO@example.com,http://www.companyO.com,user-account-client-15
-client-16,CLI-0016,Company P,COMPANY,companyP@example.com,http://www.companyP.com,user-account-client-16
+client-01,CLI-0001,C,COMPANY,companyA@example.com,ftp://,user-account-client-01
+client-02,CLI-0002,Co,COMPANY,companyB@example.com,ftp://a,user-account-client-02
+client-03,CLI-0003,Com,COMPANY,companyC@example.com,ftp://a.b,user-account-client-03
+client-04,CLI-0004,Comp,COMPANY,companyD@example.com,http://www.lorem-ipsum.org/dolor/sit/amet/consecteur/adipisicing/elit.com,user-account-client-04
+client-05,CLI-0005,Compa,COMPANY,companyE@example.com,http://www.lorem-ipsum.org,user-account-client-05
+client-06,CLI-0006,Compan,COMPANY,companyF@example.com,http://www.lorem-ipsum.org/dolor/sit.html,user-account-client-06
+client-07,CLI-0007,Company,COMPANY,companyG@example.com,http://www.lorem-ipsum.org/dolor/sit.html#dolor,user-account-client-07
+client-08,CLI-0008,A medium length company name,COMPANY,companyH@example.com,http://www.lorem-ipsum.org?a=1&b=2,user-account-client-08
+client-09,CLI-0009,Here is a less long company name just below the max of 76 characters to try,COMPANY,companyI@example.com,http://www.lorem-ipsum.org?,user-account-client-09
+client-10,CLI-0010,Im trying with a company name extremely long to see if it canhave76caracters,COMPANY,companyJ@example.com,http://www.lorem-ipsum.org?a,user-account-client-10
+client-11,CLI-0011,Company K,INDIVIDUAL,companyK@example.com,http://www.lorem-ipsum.org?a&b,user-account-client-11
+client-12,CLI-0012,Company L,COMPANY,companyL@example.com,http://www.lorem-ipsum.org/,user-account-client-12
+client-13,CLI-0013,Company M,INDIVIDUAL,companyM@example.com,http://www.lorem-ipsum.org/a,user-account-client-13
+client-14,CLI-0014,Company N,COMPANY,companyN@example.com,http://www.lorem-ipsum.org/a/b,user-account-client-14
+client-15,CLI-0015,Company O,INDIVIDUAL,companyO@example.com,http://www.lorem-ipsum.org/a/b?,user-account-client-15
+client-16,CLI-0016,Company P,COMPANY,companyP@example.com,http://www.lorem-ipsum.org/a/b?a&b,user-account-client-16
 client-17,CLI-0017,Company Q,INDIVIDUAL,companyQ@example.com,http://www.companyQ.com,user-account-client-17
 client-18,CLI-0018,Company R,COMPANY,companyR@example.com,http://www.companyR.com,user-account-client-18
 client-19,CLI-0019,Company S,INDIVIDUAL,companyS@example.com,http://www.companyS.com,user-account-client-19
@@ -41,11 +41,11 @@ client-39,CLI-0039,Company MM,INDIVIDUAL,companyMM@example.com,http://www.compan
 client-40,CLI-0040,Company NN,INDIVIDUAL,companyNN@example.com,http://www.companyNN.com,user-account-client-40
 client-41,CLI-0041,Company OO,COMPANY,companyOO@example.com,null,user-account-client-41
 client-42,CLI-0042,Company PP,COMPANY,companyPP@example.com,null,user-account-client-42
-client-43,CLI-0043,Company QQ,COMPANY,companyQQ@example.com,http://www.companyQQ.com,user-account-client-43
-client-44,CLI-0044,Company RR,COMPANY,companyRR@example.com,http://www.companyRR.com,user-account-client-44
-client-45,CLI-0045,Company SS,COMPANY,companySS@example.com,http://www.companySS.com,user-account-client-45
-client-46,CLI-0046,Company TT,COMPANY,companyTT@example.com,http://www.companyTT.com,user-account-client-46
-client-47,CLI-0047,Company UU,COMPANY,companyUU@example.com,http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,user-account-client-47
-client-48,CLI-0048,Company VV,COMPANY,companyVV@example.com,http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,user-account-client-48
+client-43,CLI-0043,Company QQ,COMPANY,companyQQ@example.c,http://www.companyQQ.com,user-account-client-43
+client-44,CLI-0044,Company RR,COMPANY,companyRR@example.es,http://www.companyRR.com,user-account-client-44
+client-45,CLI-0045,Company SS,COMPANY,c@ex.com,http://www.companySS.com,user-account-client-45
+client-46,CLI-0046,Company TT,COMPANY,c@e.com,http://www.companyTT.com,user-account-client-46
+client-47,CLI-0047,Company UU,COMPANY,ca@example.com,http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,user-account-client-47
+client-48,CLI-0048,Company VV,COMPANY,c@example.com,http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,user-account-client-48
 client-49,CLI-0049,Company WW,COMPANY,companyWW@example.com,,user-account-client-49
 client-50,CLI-0050,Company XX,COMPANY,companyXX@example.com,,user-account-client-50
