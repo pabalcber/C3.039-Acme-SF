@@ -15,8 +15,8 @@ client-13,CLI-0013,Company M,INDIVIDUAL,companyM@example.com,http://www.lorem-ip
 client-14,CLI-0014,Company N,COMPANY,companyN@example.com,http://www.lorem-ipsum.org/a/b,user-account-client-14
 client-15,CLI-0015,Company O,INDIVIDUAL,companyO@example.com,http://www.lorem-ipsum.org/a/b?,user-account-client-15
 client-16,CLI-0016,Company P,COMPANY,companyP@example.com,http://www.lorem-ipsum.org/a/b?a&b,user-account-client-16
-client-17,CLI-0017,Company Q,INDIVIDUAL,companyQ@example.com,http://www.companyQ.com,user-account-client-17
-client-18,CLI-0018,Company R,COMPANY,companyR@example.com,http://www.companyR.com,user-account-client-18
+client-17,CLI-0017,Company Q,INDIVIDUAL,companyQ@example.com,http://a,user-account-client-17
+client-18,CLI-0018,Company R,COMPANY,companyR@example.com,http://a.b,user-account-client-18
 client-19,CLI-0019,Company S,INDIVIDUAL,companyS@example.com,http://www.companyS.com,user-account-client-19
 client-20,CLI-0020,Company T,COMPANY,companyT@example.com,http://www.companyT.com,user-account-client-20
 client-21,CLI-0021,Company U,INDIVIDUAL,companyU@example.com,,user-account-client-21
