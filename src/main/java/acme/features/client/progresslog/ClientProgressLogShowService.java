@@ -39,7 +39,7 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 		authClientId = this.repository.findClientByAccountId(accountId).getId();
 		isMyContract = authClientId == clientContractId;
 
-		status = (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
+		status = !contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status && isMyContract);
 	}
@@ -57,8 +57,7 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException("Invalid object: " + object);
+		assert object != null;
 
 		Dataset dataset;
 

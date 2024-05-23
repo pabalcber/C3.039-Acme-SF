@@ -58,8 +58,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void bind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
+		assert object != null;
 
 		int projectId;
 		Project project;
@@ -76,8 +75,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void validate(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
+		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project project = object.getProject();
@@ -89,8 +87,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void perform(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
+		assert object != null;
 
 		Date moment;
 
@@ -103,8 +100,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
+		assert object != null;
 
 		Collection<Project> projects;
 		SelectChoices choices;

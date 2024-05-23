@@ -61,30 +61,26 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 
 	@Override
 	public void bind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
+		assert object != null;
 
 		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 	}
 
 	@Override
 	public void validate(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
+		assert object != null;
 	}
 
 	@Override
 	public void perform(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
+		assert object != null;
 
 		this.repository.delete(object);
 	}
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
+		assert object != null;
 
 		Dataset dataset;
 

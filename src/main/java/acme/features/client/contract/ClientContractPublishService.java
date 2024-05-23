@@ -25,8 +25,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	// AbstractService interface ----------------------------------------------
 
-	private static String				budget			= "budget";
-	private static String				invalidObject	= "Invalid object: ";
+	private static String				budget	= "budget";
 
 
 	@Override
@@ -59,8 +58,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void bind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
+		assert object != null;
 
 		int projectId;
 		Project project;
@@ -74,9 +72,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void validate(final Contract object) {
-
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
+		assert object != null;
 
 		Money budgt = object.getBudget();
 		Project project = object.getProject();
@@ -111,8 +107,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void perform(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
+		assert object != null;
 
 		object.setDraftMode(false);
 		this.repository.save(object);
@@ -120,8 +115,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
+		assert object != null;
 
 		int clientId;
 		Collection<Project> projects;

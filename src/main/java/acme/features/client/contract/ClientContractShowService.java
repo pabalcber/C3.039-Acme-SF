@@ -60,8 +60,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException("Invalid object: " + object);
+		assert object != null;
 
 		SelectChoices choices;
 		Project project;

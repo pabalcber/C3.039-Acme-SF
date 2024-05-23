@@ -51,8 +51,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException("Invalid object: " + object);
+		assert object != null;
 
 		Dataset dataset;
 
@@ -63,8 +62,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 	@Override
 	public void unbind(final Collection<ProgressLog> objects) {
-		if (objects == null)
-			throw new IllegalArgumentException("Invalid object: " + objects);
+		assert objects != null;
 
 		int masterId;
 		Contract contract;

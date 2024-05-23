@@ -63,22 +63,19 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 	@Override
 	public void bind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogUpdateService.invalidObject + object);
+		assert object != null;
 
 		super.bind(object, "recordId", "completeness", "comment", ClientProgressLogUpdateService.responsiblePerson);
 	}
 
 	@Override
 	public void validate(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogUpdateService.invalidObject + object);
+		assert object != null;
 	}
 
 	@Override
 	public void perform(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogUpdateService.invalidObject + object);
+		assert object != null;
 
 		int id = super.getRequest().getData("id", int.class);
 		ProgressLog pl = this.repository.findOneProgressLogById(id);
@@ -90,8 +87,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	@Override
 	public void unbind(final ProgressLog object) {
 
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogUpdateService.invalidObject + object);
+		assert object != null;
 
 		Dataset dataset;
 

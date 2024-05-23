@@ -40,8 +40,7 @@ public class AuthenticatedProgressLogListService extends AbstractService<Authent
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException("Invalid object: " + object);
+		assert object != null;
 
 		Dataset dataset;
 

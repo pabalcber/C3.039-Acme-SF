@@ -55,8 +55,7 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 
 	@Override
 	public void bind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
+		assert object != null;
 
 		int projectId;
 		Project project;
@@ -70,14 +69,12 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 
 	@Override
 	public void validate(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
+		assert object != null;
 	}
 
 	@Override
 	public void perform(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
+		assert object != null;
 
 		Collection<ProgressLog> progressLogs;
 
@@ -88,8 +85,7 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
+		assert object != null;
 
 		int clientId;
 		Collection<Project> projects;

@@ -38,8 +38,7 @@ public class AnyContractListAllService extends AbstractService<Any, Contract> {
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException("Invalid object: " + object);
+		assert object != null;
 
 		Dataset dataset;
 

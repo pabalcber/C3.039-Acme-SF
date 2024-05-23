@@ -61,8 +61,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void bind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractUpdateService.invalidObject + object);
+		assert object != null;
 
 		super.bind(object, "code", "providerName", ClientContractUpdateService.customerName, "goals", ClientContractUpdateService.budget);
 
@@ -70,8 +69,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void validate(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractUpdateService.invalidObject + object);
+		assert object != null;
 
 		this.validateCurrency(object);
 
@@ -100,8 +98,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void perform(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractUpdateService.invalidObject + object);
+		assert object != null;
 
 		Contract contract;
 		int id;
@@ -127,8 +124,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractUpdateService.invalidObject + object);
+		assert object != null;
 
 		int clientId;
 		Collection<Project> projects;

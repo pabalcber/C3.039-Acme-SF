@@ -37,7 +37,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		masterId = super.getRequest().getData(ClientProgressLogCreateService.id, int.class);
 		contract = this.repository.findOneContractById(masterId);
-		status =(!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
+		status = !contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -66,8 +66,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	@Override
 	public void bind(final ProgressLog object) {
 		Date moment = MomentHelper.getCurrentMoment();
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
+		assert object != null;
 
 		super.bind(object, ClientProgressLogCreateService.recordId, "completeness", "comment", ClientProgressLogCreateService.responsiblePerson);
 		object.setRegistrationMoment(moment);
@@ -75,8 +74,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void validate(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
+		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors(ClientProgressLogCreateService.recordId)) {
 			ProgressLog existing;
@@ -88,8 +86,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void perform(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
+		assert object != null;
 
 		Date moment;
 
@@ -102,8 +99,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
+		assert object != null;
 
 		Dataset dataset;
 
