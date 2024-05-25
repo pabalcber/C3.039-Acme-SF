@@ -38,9 +38,9 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 		contractId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findContractById(contractId);
-		client = contract == null ? null : contract.getClient();
+		client = contract.getClient();
 		project = contract.getProject();
-		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client) && !project.isDraftMode();
+		status = contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client) && !project.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -78,36 +78,41 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		Project project = object.getProject();
 		Money projectCost = project.getCost();
 
-		Double existingCombinedBudget = this.repository.combinedBudgetByContract(project.getId());
-		double totalCombinedBudget = (existingCombinedBudget != null ? existingCombinedBudget : 0.0) + budgt.getAmount();
-		double projectTotalCost = projectCost.getAmount();
-
-		super.state(totalCombinedBudget <= projectTotalCost, "*", "client.contract.form.error.bad-combined-budget");
-
-		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(!project.isDraftMode(), "project", "client.contract.form.error.non-pblished-project");
-
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
-			super.state(totalCombinedBudget <= projectTotalCost, "*", "client.contract.form.error.bad-combined-budget");
+			if (budgt == null)
+				super.state(false, "budget", "client.contract.form.error.budget-cannot-be-null");
+			else {
+				Double existingCombinedBudget = this.repository.combinedBudgetByContract(project.getId());
+				double totalCombinedBudget = (existingCombinedBudget != null ? existingCombinedBudget : 0.0) + budgt.getAmount();
+				double projectTotalCost = projectCost.getAmount();
 
-		if (!super.getBuffer().getErrors().hasErrors(ClientContractPublishService.budget)) {
+				super.state(totalCombinedBudget <= projectTotalCost, "*", "client.contract.form.error.bad-combined-budget");
+				this.validateCurrency(object);
+				if (!super.getBuffer().getErrors().hasErrors(ClientContractPublishService.budget)) {
 
-			super.state(budgt.getAmount() >= 0, ClientContractPublishService.budget, "client.contract.form.error.negative-budget");
+					super.state(budgt.getAmount() >= 0, ClientContractPublishService.budget, "client.contract.form.error.negative-budget");
 
-			if (!budgt.getCurrency().equals(projectCost.getCurrency()))
-				super.state(false, ClientContractPublishService.budget, "client.contract.form.error.different-currency");
+					if (!budgt.getCurrency().equals(projectCost.getCurrency()))
+						super.state(false, ClientContractPublishService.budget, "client.contract.form.error.different-currency");
 
-			if (budgt.getAmount() > projectCost.getAmount())
-				super.state(false, ClientContractPublishService.budget, "client.contract.form.error.budget-exceeds-project-cost");
+					if (budgt.getAmount() > projectCost.getAmount())
+						super.state(false, ClientContractPublishService.budget, "client.contract.form.error.budget-exceeds-project-cost");
 
-		}
-
-		this.validateCurrency(object);
+				}
+			}
 	}
 
 	@Override
 	public void perform(final Contract object) {
 		assert object != null;
+
+		Contract contract;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		contract = this.repository.findContractById(id);
+
+		object.setCode(contract.getCode());
 
 		object.setDraftMode(false);
 		this.repository.save(object);
@@ -136,15 +141,10 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	// Ancillary methods ------------------------------------------------------
 
 	private void validateCurrency(final Contract object) {
-		if (!super.getBuffer().getErrors().hasErrors("budget")) {
-			Money b = object.getBudget();
-			Project project = object.getProject();
-			Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
-
-			if (project != null)
-				if (!validCurrencies.contains(b.getCurrency()))
-					super.state(false, "budget", "client.contract.form.error.invalid-currency");
-		}
+		Money b = object.getBudget();
+		Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
+		if (!validCurrencies.contains(b.getCurrency()))
+			super.state(false, "budget", "client.contract.form.error.invalid-currency");
 	}
 
 }

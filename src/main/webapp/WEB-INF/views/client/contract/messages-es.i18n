@@ -35,3 +35,4 @@ client.contract.form.error.budget-exceeds-project-cost =  El presupuesto no pued
 client.contract.form.error.different-currency = El presupuesto no puede tener un tipo de moneda diferente a la del coste del presupuesto
 client.contract.form.error.bad-combined-budget = El presupuesto combinado de este contrato y de todos los contratos publicados para este proyecto no puede superar el costo del proyecto
 client.contract.form.error.budget-cannot-be-null = No puedes crear un contrato sin presupuesto
+client.contract.form.error.null-project = El proyecto no puede ser nulo

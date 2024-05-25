@@ -1,7 +1,6 @@
 
 package acme.features.client.contract;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
@@ -28,7 +27,6 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 	private static String				budget			= "budget";
 	private static String				customerName	= "customerName";
-	private static String				invalidObject	= "Invalid object: ";
 
 
 	@Override
@@ -42,8 +40,8 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		masterId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findContractById(masterId);
 		project = contract.getProject();
-		client = contract == null ? null : contract.getClient();
-		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client) && !project.isDraftMode();
+		client = contract.getClient();
+		status = contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client) && !project.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -63,7 +61,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	public void bind(final Contract object) {
 		assert object != null;
 
-		super.bind(object, "code", "providerName", ClientContractUpdateService.customerName, "goals", ClientContractUpdateService.budget);
+		super.bind(object, "code", "providerName", ClientContractUpdateService.customerName, "goals", ClientContractUpdateService.budget, "project");
 
 	}
 
@@ -77,22 +75,23 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 			Money budgt = object.getBudget();
 			Project project = object.getProject();
 
-			super.state(budgt.getAmount() >= 0, ClientContractUpdateService.budget, "client.contract.form.error.negative-budget");
+			if (budgt == null)
+				super.state(false, ClientContractUpdateService.budget, "client.contract.form.error.budget-cannot-be-null");
+			else {
 
-			if (project != null) {
-				Money projectCost = project.getCost();
+				super.state(budgt.getAmount() >= 0, ClientContractUpdateService.budget, "client.contract.form.error.negative-budget");
 
-				if (!budgt.getCurrency().equals(projectCost.getCurrency()))
-					super.state(false, ClientContractUpdateService.budget, "client.contract.form.error.different-currency");
+				if (project != null) {
+					Money projectCost = project.getCost();
 
-				if (budgt.getAmount() > projectCost.getAmount())
-					super.state(false, ClientContractUpdateService.budget, "client.contract.form.error.budget-exceeds-project-cost");
+					if (!budgt.getCurrency().equals(projectCost.getCurrency()))
+						super.state(false, ClientContractUpdateService.budget, "client.contract.form.error.different-currency");
+
+					if (budgt.getAmount() > projectCost.getAmount())
+						super.state(false, ClientContractUpdateService.budget, "client.contract.form.error.budget-exceeds-project-cost");
+				}
 			}
-		}
 
-		if (!super.getBuffer().getErrors().hasErrors("project")) {
-			Project project = object.getProject();
-			super.state(!project.isDraftMode(), "project", "client.contract.form.error.non-pblished-project");
 		}
 	}
 
@@ -107,18 +106,17 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		contract = this.repository.findContractById(id);
 
 		object.setCode(contract.getCode());
+		object.setProject(contract.getProject());
 		this.repository.save(object);
 	}
 
 	private void validateCurrency(final Contract object) {
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			Money b = object.getBudget();
-			Project project = object.getProject();
 			Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
 
-			if (project != null)
-				if (!validCurrencies.contains(b.getCurrency()))
-					super.state(false, "budget", "client.contract.form.error.invalid-currency");
+			if (b != null && !validCurrencies.contains(b.getCurrency()))
+				super.state(false, "budget", "client.contract.form.error.invalid-currency");
 		}
 	}
 
@@ -130,21 +128,14 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
-		int id;
-		Project project;
-		Client client;
 
 		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		client = this.repository.findClientById(clientId);
-		id = super.getRequest().getData("id", int.class);
-		project = this.repository.findContractById(id).getProject();
-		projects = new ArrayList<>();
-		projects.add(project);
+		projects = this.repository.findManyProjectsByClientId(clientId);
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "providerName", ClientContractUpdateService.customerName, "goals", ClientContractUpdateService.budget, "draftMode");
-		dataset.put("project", choices.getSelected().getKey());
-		dataset.put(ClientContractUpdateService.customerName, client.getIdentification());
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", ClientContractUpdateService.customerName, "goals", ClientContractUpdateService.budget, "draftMode");
+		dataset.put("project", choices.getSelected().getLabel());
+		dataset.put("projects", choices);
 
 		super.getResponse().addData(dataset);
 	}
