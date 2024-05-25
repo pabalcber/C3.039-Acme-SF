@@ -26,12 +26,22 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 		boolean status;
 		int progressLogId;
 		Contract contract;
+		int clientContractId;
+		int authClientId;
+		Boolean isMyContract;
+		int accountId;
 
 		progressLogId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findOneContractByProgressLogId(progressLogId);
-		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
-		super.getResponse().setAuthorised(status);
+		clientContractId = contract.getClient().getId();
+		accountId = super.getRequest().getPrincipal().getAccountId();
+		authClientId = this.repository.findClientByAccountId(accountId).getId();
+		isMyContract = authClientId == clientContractId;
+
+		status = contract.isDraftMode();
+
+		super.getResponse().setAuthorised(status && isMyContract);
 	}
 
 	@Override
@@ -51,30 +61,26 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 
 	@Override
 	public void bind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
+		assert object != null;
 
 		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 	}
 
 	@Override
 	public void validate(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
+		assert object != null;
 	}
 
 	@Override
 	public void perform(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
+		assert object != null;
 
 		this.repository.delete(object);
 	}
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogDeleteService.invalidObject + object);
+		assert object != null;
 
 		Dataset dataset;
 

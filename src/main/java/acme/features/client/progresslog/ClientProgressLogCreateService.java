@@ -37,7 +37,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		masterId = super.getRequest().getData(ClientProgressLogCreateService.id, int.class);
 		contract = this.repository.findOneContractById(masterId);
-		status = contract != null && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
+		status = !contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,7 +55,6 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		object = new ProgressLog();
 		object.setRecordId("");
-		object.setCompleteness(0.1);
 		object.setComment("");
 		object.setRegistrationMoment(moment);
 		object.setResponsiblePerson("");
@@ -66,16 +65,16 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void bind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
+		Date moment = MomentHelper.getCurrentMoment();
+		assert object != null;
 
-		super.bind(object, ClientProgressLogCreateService.recordId, "completeness", "comment", "registrationMoment", ClientProgressLogCreateService.responsiblePerson);
+		super.bind(object, ClientProgressLogCreateService.recordId, "completeness", "comment", ClientProgressLogCreateService.responsiblePerson);
+		object.setRegistrationMoment(moment);
 	}
 
 	@Override
 	public void validate(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
+		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors(ClientProgressLogCreateService.recordId)) {
 			ProgressLog existing;
@@ -87,8 +86,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void perform(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
+		assert object != null;
 
 		Date moment;
 
@@ -101,12 +99,11 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientProgressLogCreateService.invalidObject + object);
+		assert object != null;
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, ClientProgressLogCreateService.recordId, "completeness", "comment", "registrationMoment", ClientProgressLogCreateService.responsiblePerson);
+		dataset = super.unbind(object, ClientProgressLogCreateService.recordId, "completeness", "comment", ClientProgressLogCreateService.responsiblePerson);
 		dataset.put(ClientProgressLogCreateService.id, super.getRequest().getData(ClientProgressLogCreateService.id, int.class));
 		dataset.put("draftMode", object.getContract().isDraftMode());
 		dataset.put("contract", object.getContract().getCode());

@@ -26,12 +26,20 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 		boolean status;
 		int progressLogId;
 		Contract contract;
+		int clientContractId;
+		int authClientId;
+		Boolean isMyContract;
+		int accountId;
 
 		progressLogId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findOneContractByProgressLogId(progressLogId);
-		status = contract != null && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
 
-		super.getResponse().setAuthorised(status);
+		clientContractId = contract.getClient().getId();
+		accountId = super.getRequest().getPrincipal().getAccountId();
+		authClientId = this.repository.findClientByAccountId(accountId).getId();
+		isMyContract = authClientId == clientContractId;
+
+		super.getResponse().setAuthorised(isMyContract);
 	}
 
 	@Override
@@ -47,8 +55,7 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 
 	@Override
 	public void unbind(final ProgressLog object) {
-		if (object == null)
-			throw new IllegalArgumentException("Invalid object: " + object);
+		assert object != null;
 
 		Dataset dataset;
 

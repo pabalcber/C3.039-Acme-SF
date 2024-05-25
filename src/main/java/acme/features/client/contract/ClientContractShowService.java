@@ -30,10 +30,21 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		boolean status;
 		int contractId;
 		Contract contract;
+		int accountId;
+		int authClientId;
+		int contractClientId;
+		Boolean isMyContract;
+
 		contractId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findContractById(contractId);
-		status = contract != null ? super.getRequest().getPrincipal().hasRole(contract.getClient()) || !contract.isDraftMode() : false;
-		super.getResponse().setAuthorised(status);
+
+		accountId = super.getRequest().getPrincipal().getAccountId();
+		authClientId = this.repository.findClientByAccountId(accountId).getId();
+		contractClientId = contract.getClient().getId();
+		isMyContract = authClientId == contractClientId;
+
+		status = super.getRequest().getPrincipal().hasRole(contract.getClient()) || !contract.isDraftMode();
+		super.getResponse().setAuthorised(status && isMyContract);
 	}
 
 	@Override
@@ -49,8 +60,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException("Invalid object: " + object);
+		assert object != null;
 
 		SelectChoices choices;
 		Project project;
@@ -68,6 +78,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		dataset = super.unbind(object, "code", "project", "client", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
 		dataset.put("masterId", object.getClient().getId());
 		dataset.put("projects", choices);
+		dataset.put("project", project.getCode());
 		super.getResponse().addData(dataset);
 	}
 

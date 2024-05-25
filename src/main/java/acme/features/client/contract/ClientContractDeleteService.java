@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
 import acme.entities.contracts.ProgressLog;
 import acme.entities.projects.Project;
@@ -36,8 +35,8 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 
 		masterId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findContractById(masterId);
-		client = contract == null ? null : contract.getClient();
-		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client);
+		client = contract.getClient();
+		status = contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,8 +54,7 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 
 	@Override
 	public void bind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
+		assert object != null;
 
 		int projectId;
 		Project project;
@@ -70,14 +68,12 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 
 	@Override
 	public void validate(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
+		assert object != null;
 	}
 
 	@Override
 	public void perform(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
+		assert object != null;
 
 		Collection<ProgressLog> progressLogs;
 
@@ -88,21 +84,11 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractDeleteService.invalidObject + object);
+		assert object != null;
 
-		int clientId;
-		Collection<Project> projects;
-		SelectChoices choices;
 		Dataset dataset;
 
-		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsByClientId(clientId);
-		choices = SelectChoices.from(projects, "code", object.getProject());
-
 		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
-		dataset.put("project", choices.getSelected().getKey());
-		dataset.put("projects", choices);
 
 		super.getResponse().addData(dataset);
 	}

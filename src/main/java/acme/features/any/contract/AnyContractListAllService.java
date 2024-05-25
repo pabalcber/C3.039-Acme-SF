@@ -1,23 +1,23 @@
 
-package acme.features.client.contract;
+package acme.features.any.contract;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.contracts.Contract;
-import acme.roles.clients.Client;
 
 @Service
-public class ClientContractListAllService extends AbstractService<Client, Contract> {
+public class AnyContractListAllService extends AbstractService<Any, Contract> {
 
 	// Internal State ---------------------------------------------------------------------------------------------------------------------------------------
 
 	@Autowired
-	private ClientContractRepository repository;
+	private AnyContractRepository repository;
 
 	// AbstractService interface ----------------------------------------------------------------------------------------------------------------------------
 
@@ -38,12 +38,12 @@ public class ClientContractListAllService extends AbstractService<Client, Contra
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException("Invalid object: " + object);
+		assert object != null;
 
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "providerName", "customerName", "budget", "project");
+		dataset.put("project", object.getProject().getCode());
 
 		super.getResponse().addData(dataset);
 	}

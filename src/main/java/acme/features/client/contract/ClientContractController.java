@@ -33,9 +33,6 @@ public class ClientContractController extends AbstractController<Client, Contrac
 	@Autowired
 	private ClientContractPublishService	publishService;
 
-	@Autowired
-	private ClientContractListAllService	listAllService;
-
 	// Constructors -----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -48,6 +45,5 @@ public class ClientContractController extends AbstractController<Client, Contrac
 		super.addBasicCommand("delete", this.deleteService);
 
 		super.addCustomCommand("publish", "update", this.publishService);
-		super.addCustomCommand("list-all", "list", this.listAllService);
 	}
 }

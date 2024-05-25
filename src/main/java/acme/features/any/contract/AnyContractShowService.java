@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.contract;
+package acme.features.any.contract;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,7 +7,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
+import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
@@ -15,19 +15,25 @@ import acme.entities.contracts.Contract;
 import acme.entities.projects.Project;
 
 @Service
-public class AuthenticatedContractShowService extends AbstractService<Authenticated, Contract> {
+public class AnyContractShowService extends AbstractService<Any, Contract> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedContractRepository repository;
+	private AnyContractRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Contract object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findContractById(id);
+		Boolean showDetails = !object.isDraftMode();
+		super.getResponse().setAuthorised(showDetails);
 	}
 
 	@Override
@@ -43,8 +49,7 @@ public class AuthenticatedContractShowService extends AbstractService<Authentica
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException("Invalid object: " + object);
+		assert object != null;
 
 		SelectChoices choices;
 		Project project;

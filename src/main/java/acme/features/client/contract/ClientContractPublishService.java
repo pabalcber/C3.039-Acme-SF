@@ -2,6 +2,7 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	// AbstractService interface ----------------------------------------------
 
-	private static String				budget			= "budget";
-	private static String				invalidObject	= "Invalid object: ";
+	private static String				budget	= "budget";
 
 
 	@Override
@@ -34,11 +34,13 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		int contractId;
 		Contract contract;
 		Client client;
+		Project project;
 
 		contractId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findContractById(contractId);
-		client = contract == null ? null : contract.getClient();
-		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client);
+		client = contract.getClient();
+		project = contract.getProject();
+		status = contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -56,8 +58,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void bind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
+		assert object != null;
 
 		int projectId;
 		Project project;
@@ -65,50 +66,53 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractPublishService.budget);
+		super.bind(object, "code", "providerName", "customerName", "goals", ClientContractPublishService.budget);
 		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
+		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Contract existing;
+		Money budgt = object.getBudget();
+		Project project = object.getProject();
+		Money projectCost = project.getCost();
 
-			existing = this.repository.findOneContractByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors(ClientContractPublishService.budget)) {
-			Money budgt = object.getBudget();
-			Project project = object.getProject();
-
-			super.state(budgt.getAmount() >= 0, ClientContractPublishService.budget, "client.contract.form.error.negative-budget");
-
-			if (project != null) {
-				Money projectCost = project.getCost();
-
-				if (!budgt.getCurrency().equals(projectCost.getCurrency()))
-					super.state(false, ClientContractPublishService.budget, "client.contract.form.error.different-currency");
-
-				if (budgt.getAmount() > projectCost.getAmount())
-					super.state(false, ClientContractPublishService.budget, "client.contract.form.error.budget-exceeds-project-cost");
-
+		if (!super.getBuffer().getErrors().hasErrors("budget"))
+			if (budgt == null)
+				super.state(false, "budget", "client.contract.form.error.budget-cannot-be-null");
+			else {
 				Double existingCombinedBudget = this.repository.combinedBudgetByContract(project.getId());
 				double totalCombinedBudget = (existingCombinedBudget != null ? existingCombinedBudget : 0.0) + budgt.getAmount();
 				double projectTotalCost = projectCost.getAmount();
 
 				super.state(totalCombinedBudget <= projectTotalCost, "*", "client.contract.form.error.bad-combined-budget");
+				this.validateCurrency(object);
+				if (!super.getBuffer().getErrors().hasErrors(ClientContractPublishService.budget)) {
+
+					super.state(budgt.getAmount() >= 0, ClientContractPublishService.budget, "client.contract.form.error.negative-budget");
+
+					if (!budgt.getCurrency().equals(projectCost.getCurrency()))
+						super.state(false, ClientContractPublishService.budget, "client.contract.form.error.different-currency");
+
+					if (budgt.getAmount() > projectCost.getAmount())
+						super.state(false, ClientContractPublishService.budget, "client.contract.form.error.budget-exceeds-project-cost");
+
+				}
 			}
-		}
 	}
 
 	@Override
 	public void perform(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
+		assert object != null;
+
+		Contract contract;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		contract = this.repository.findContractById(id);
+
+		object.setCode(contract.getCode());
 
 		object.setDraftMode(false);
 		this.repository.save(object);
@@ -116,8 +120,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractPublishService.invalidObject + object);
+		assert object != null;
 
 		int clientId;
 		Collection<Project> projects;
@@ -128,11 +131,20 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		projects = this.repository.findManyProjectsByClientId(clientId);
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractPublishService.budget, "draftMode");
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", ClientContractPublishService.budget, "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
 		super.getResponse().addData(dataset);
+	}
+
+	// Ancillary methods ------------------------------------------------------
+
+	private void validateCurrency(final Contract object) {
+		Money b = object.getBudget();
+		Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
+		if (!validCurrencies.contains(b.getCurrency()))
+			super.state(false, "budget", "client.contract.form.error.invalid-currency");
 	}
 
 }

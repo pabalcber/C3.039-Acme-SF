@@ -1,0 +1,24 @@
+# messages-es.i18n
+
+any.contract.list.title = Lista de Contratos
+
+any.contract.form.title = Contrato
+
+any.contract.list.label.code = Código
+any.contract.form.label.project = Proyecto
+any.contract.list.label.providerName = Proveedor
+any.contract.list.label.customerName = Cliente
+any.contract.list.label.budget = Presupuesto
+any.contract.list.label.project = Proyecto
+
+any.contract.form.label.code = Código
+any.contract.form.label.instantiationMoment = Fecha de Creación
+any.contract.form.label.providerName = Proveedor
+any.contract.form.label.customerName = Cliente
+any.contract.form.label.goals = Metas
+any.contract.form.label.budget = Presupuesto
+any.contract.form.label.draftMode = ¿Borrador? 
+
+any.contract.list.button.create = Crear
+
+any.contract.form.button.progress-log = Registros de Progreso

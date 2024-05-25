@@ -56,16 +56,14 @@ public class AuthenticatedClientCreateService extends AbstractService<Authentica
 
 	@Override
 	public void bind(final Client object) {
-		if (object == null)
-			throw new IllegalArgumentException(AuthenticatedClientCreateService.invalidObject + object);
+		assert object != null;
 
 		super.bind(object, AuthenticatedClientCreateService.identification, "companyName", "email", "furtherInformation", "type");
 	}
 
 	@Override
 	public void validate(final Client object) {
-		if (object == null)
-			throw new IllegalArgumentException(AuthenticatedClientCreateService.invalidObject + object);
+		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors(AuthenticatedClientCreateService.identification)) {
 			Client existing;
@@ -77,16 +75,14 @@ public class AuthenticatedClientCreateService extends AbstractService<Authentica
 
 	@Override
 	public void perform(final Client object) {
-		if (object == null)
-			throw new IllegalArgumentException(AuthenticatedClientCreateService.invalidObject + object);
+		assert object != null;
 
 		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final Client object) {
-		if (object == null)
-			throw new IllegalArgumentException(AuthenticatedClientCreateService.invalidObject + object);
+		assert object != null;
 
 		SelectChoices choices;
 		Dataset dataset;

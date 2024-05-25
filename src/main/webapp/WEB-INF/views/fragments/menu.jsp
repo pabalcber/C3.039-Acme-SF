@@ -42,9 +42,7 @@
 			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.risk.list" action="/authenticated/risk/list"/>			
-			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.authenticated.contract.list" action="/authenticated/contract/list-all"/>
-		</acme:menu-option>
+			</acme:menu-option>
 		
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -72,12 +70,8 @@
       		<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list"/>	
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.any.claims" action="/any/claim/list"/>				
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.contract.list" action="/authenticated/contract/list-all"/>
 			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.authenticated.notice.list-recent" action="/authenticated/notice/list-recent"/>
+			<acme:menu-suboption code="master.menu.any.contract.list" action="/any/contract/list-all"/>				
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
@@ -91,7 +85,6 @@
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
 			<acme:menu-suboption code="master.menu.client.my-contracts" action="/client/contract/list"/>
-			<acme:menu-suboption code="master.menu.client.published-contracts" action="/client/contract/list-all"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.client.client-dashboard" action="/client/client-dashboard/show"/>
 		</acme:menu-option>

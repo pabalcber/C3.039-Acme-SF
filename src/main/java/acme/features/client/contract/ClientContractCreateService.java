@@ -3,6 +3,7 @@ package acme.features.client.contract;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,32 +58,36 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void bind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
+		assert object != null;
 
 		int projectId;
 		Project project;
+		Date moment;
 
+		moment = MomentHelper.getCurrentMoment();
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractCreateService.budget);
+		super.bind(object, "code", "providerName", "customerName", "goals", ClientContractCreateService.budget);
 		object.setProject(project);
+		object.setInstantiationMoment(moment);
 	}
 
 	@Override
 	public void validate(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
+		assert object != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Project project = object.getProject();
+			super.state(!project.isDraftMode(), "project", "client.contract.form.error.non-pblished-project");
+		}
 		this.validateUniqueCode(object);
 		this.validateBudget(object);
 	}
 
 	@Override
 	public void perform(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
+		assert object != null;
 
 		Date moment;
 
@@ -95,8 +100,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void unbind(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException(ClientContractCreateService.invalidObject + object);
+		assert object != null;
 
 		Collection<Project> projects;
 		SelectChoices choices;
@@ -105,7 +109,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		projects = this.repository.findManyProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", ClientContractCreateService.budget, "draftMode");
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", ClientContractCreateService.budget, "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
@@ -125,6 +129,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		if (!super.getBuffer().getErrors().hasErrors(ClientContractCreateService.budget)) {
 			Money b = object.getBudget();
 			Project project = object.getProject();
+			Set<String> validCurrencies = Set.of("USD", "EUR", "GBP");
 
 			if (b == null) {
 				super.state(false, ClientContractCreateService.budget, "client.contract.form.error.budget-cannot-be-null");
@@ -135,6 +140,8 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 			if (project != null) {
 				Money projectCost = project.getCost();
+				if (!validCurrencies.contains(b.getCurrency()))
+					super.state(false, "budget", "client.contract.form.error.invalid-currency");
 
 				if (!b.getCurrency().equals(projectCost.getCurrency()))
 					super.state(false, ClientContractCreateService.budget, "client.contract.form.error.different-currency");

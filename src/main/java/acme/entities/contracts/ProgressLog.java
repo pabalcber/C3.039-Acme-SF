@@ -41,7 +41,7 @@ public class ProgressLog extends AbstractEntity {
 	private String				recordId;
 
 	@Positive
-	@Max(100)
+	@Max(1)
 	private double				completeness;
 
 	@NotBlank

@@ -27,9 +27,12 @@ client.contract.form.button.delete = Eliminar
 client.contract.form.button.publish = Publicar
 client.contract.form.button.create = Crear
 
+client.contract.form.error.non-pblished-project = Este proyecto no esta publicado
+client.contract.form.error.invalid-currency = No existe este tipo de moneda o no se puede usar en nuestra página
 client.contract.form.error.duplicated = El código ya está en uso
 client.contract.form.error.negative-budget = El presupuesto debe ser positivo
 client.contract.form.error.budget-exceeds-project-cost =  El presupuesto no puede superior al coste del proyecto
 client.contract.form.error.different-currency = El presupuesto no puede tener un tipo de moneda diferente a la del coste del presupuesto
 client.contract.form.error.bad-combined-budget = El presupuesto combinado de este contrato y de todos los contratos publicados para este proyecto no puede superar el costo del proyecto
 client.contract.form.error.budget-cannot-be-null = No puedes crear un contrato sin presupuesto
+client.contract.form.error.null-project = El proyecto no puede ser nulo
