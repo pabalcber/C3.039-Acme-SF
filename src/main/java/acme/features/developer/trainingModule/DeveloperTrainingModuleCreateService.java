@@ -1,6 +1,7 @@
 
 package acme.features.developer.trainingModule;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,6 +83,30 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "developer.training-module.form.error.project");
+
+		Date minimumDate;
+		Date maximumDate;
+
+		minimumDate = MomentHelper.parse("2000-01-01 00:00", "yyyy-MM-dd HH:mm");
+		maximumDate = MomentHelper.parse("2200-12-31 23:59", "yyyy-MM-dd HH:mm");
+
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
+			super.state(MomentHelper.isAfterOrEqual(object.getCreationMoment(), minimumDate), "creationMoment", "developer.training-module.form.error.before-min-date");
+
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
+			super.state(MomentHelper.isBeforeOrEqual(object.getCreationMoment(), maximumDate), "creationMoment", "developer.training-module.form.error.after-max-date");
+
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
+			super.state(MomentHelper.isBeforeOrEqual(object.getCreationMoment(), MomentHelper.deltaFromMoment(maximumDate, -14, ChronoUnit.DAYS)), "creationMoment", "developer.training-module.form.error.no-room-for-period");
+
+		Date updateMoment = object.getUpdateMoment();
+		if (updateMoment != null) {
+			if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
+				super.state(MomentHelper.isAfterOrEqual(object.getUpdateMoment(), minimumDate), "updateMoment", "developer.training-module.form.error.before-min-date");
+
+			if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
+				super.state(MomentHelper.isBeforeOrEqual(object.getUpdateMoment(), maximumDate), "updateMoment", "developer.training-module.form.error.after-max-date");
+		}
 	}
 
 	@Override
@@ -99,7 +124,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		SelectChoices projectChoices;
 
 		difficultyChoices = SelectChoices.from(DifficultyLevel.class, object.getDifficulty());
-		projectChoices = SelectChoices.from(this.repository.findPublishedProjects(), "code", null);
+		projectChoices = SelectChoices.from(this.repository.findPublishedProjects(), "title", null);
 
 		Dataset dataset;
 

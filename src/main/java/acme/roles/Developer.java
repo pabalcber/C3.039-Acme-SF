@@ -40,6 +40,11 @@ public class Developer extends AbstractRole {
 	@Email
 	private String				email;
 
+	@Length(max = 255)
 	@URL
 	private String				link;
+
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
 }
