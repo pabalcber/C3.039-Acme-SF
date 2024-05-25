@@ -41,7 +41,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 		authClientId = this.repository.findClientByAccountId(accountId).getId();
 		isMyContract = authClientId == clientContractId;
 
-		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
+		status =  contract.isDraftMode() ;
 
 		super.getResponse().setAuthorised(status && isMyContract);
 	}
@@ -56,10 +56,6 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 		super.getBuffer().addData(object);
 	}
-
-
-	private static String invalidObject = "Invalid object: ";
-
 
 	@Override
 	public void bind(final ProgressLog object) {
@@ -86,15 +82,16 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 	@Override
 	public void unbind(final ProgressLog object) {
-
 		assert object != null;
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", ClientProgressLogUpdateService.responsiblePerson);
-		dataset.put("masterId", object.getContract().getId());
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "responsiblePerson");
+		dataset.put("id", super.getRequest().getData("id", int.class));
 		dataset.put("draftMode", object.getContract().isDraftMode());
 		dataset.put("contract", object.getContract().getCode());
+
+		super.getResponse().addData(dataset);
 	}
 
 }

@@ -39,9 +39,7 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 		authClientId = this.repository.findClientByAccountId(accountId).getId();
 		isMyContract = authClientId == clientContractId;
 
-		status = !contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient());
-
-		super.getResponse().setAuthorised(status && isMyContract);
+		super.getResponse().setAuthorised(isMyContract);
 	}
 
 	@Override
