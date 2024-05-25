@@ -99,7 +99,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		SelectChoices projectChoices;
 
 		difficultyChoices = SelectChoices.from(DifficultyLevel.class, object.getDifficulty());
-		projectChoices = SelectChoices.from(this.repository.findPublishedProjects(), "title", null);
+		projectChoices = SelectChoices.from(this.repository.findPublishedProjects(), "code", null);
 
 		Dataset dataset;
 
