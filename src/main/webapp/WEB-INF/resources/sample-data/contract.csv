@@ -74,9 +74,9 @@ contract-72,VWX-089,2022/04/30 16:00,Provider89,Customer89,Goal89,USD 0.50,true,
 contract-73,YZA-090,2022/05/31 17:00,Provider90,Customer90,Goal90,GBP 0.50,true,client-01,project-04
 contract-74,BCD-091,2022/06/01 18:00,Provider91,Customer91,Goal91,GBP 0.50,true,client-01,project-03
 contract-75,EFG-092,2022/01/02 19:00,Provider92,Customer92,Goal92,GBP 1.00,true,client-01,project-02
-contract-76,HIJ-093,2022/02/03 20:00,Provider93,Customer93,Goal93,USD 1.00,true,client-01,project-04
-contract-77,KLM-094,2022/03/04 21:00,Provider94,Customer94,Goal94,EUR 1.00,true,client-01,project-03
-contract-78,NOP-095,2022/04/05 22:00,Provider95,Customer95,Goal95,USD 1.00,true,client-01,project-02
-contract-79,QRS-096,2022/05/06 23:00,Provider96,Customer96,Goal96,GBP 1.00,true,client-01,project-04
-contract-80,TUV-097,2022/06/07 17:00,Provider97,Customer97,Goal97,GBP 1.00,true,client-01,project-03
-contract-81,VWX-098,2022/01/08 18:00,Provider98,Customer98,Goal98,USD 1.00,true,client-31,project-02
+contract-76,HIJ-093,2022/02/03 20:00,국민경제의 발전을,Customer93,Goal93,USD 1.00,true,client-01,project-04
+contract-77,KLM-094,2022/03/04 21:00,Provider94,국민경제의 발전을,Goal94,EUR 1.00,true,client-01,project-03
+contract-78,NOP-095,2022/04/05 22:00,Provider95,Customer95,국민경제의 발전을,USD 1.00,true,client-01,project-02
+contract-79,QRS-096,2022/05/06 23:00,Provider96,Customer96,العظمى واعتلاء,GBP 1.00,true,client-01,project-04
+contract-80,TUV-097,2022/06/07 17:00,Provider97,العظمى واعتلاء,Goal97,GBP 1.00,true,client-01,project-03
+contract-81,VWX-098,2022/01/08 18:00,العظمى واعتلاء,Customer98,Goal98,USD 1.00,true,client-31,project-02

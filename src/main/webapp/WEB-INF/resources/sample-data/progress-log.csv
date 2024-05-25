@@ -1,6 +1,6 @@
 key,record-id,completeness,comment,registration-moment,responsible-person,key:contract
 progress-log-01,PG-A-0001,00.1,Initial progress update,2000/01/01 00:00,John Doe,contract-01
-progress-log-02,PG-B-0002,00.1,Just started,2000/01/01 00:01,Jane Smith,contract-01
+progress-log-02,PG-B-0002,00.01,Just started,2000/01/01 00:01,Jane Smith,contract-01
 progress-log-03,PG-C-0003,00.034,Just started,2000/01/01 13:28,Michael Johnson,contract-02
 progress-log-04,PG-D-0004,00.058,Just started,2000/02/18 00:00,Susan Brown,contract-03
 progress-log-05,PG-E-0005,00.097,Just started,2000/02/18 10:23,David Lee,contract-51
@@ -64,9 +64,9 @@ progress-log-63,PG-J-0063,0.70,Continuing forward,2011/03/16 00:00,Michael Johns
 progress-log-64,PG-K-0064,0.80,Almost there,2011/04/03 10:14,Susan Brown,contract-01
 progress-log-65,PG-L-0065,0.90,Nearing completion,2011/05/07 21:21,David Lee,contract-01
 progress-log-66,PG-M-0066,1,Completed,2011/03/12 23:59,Chris Taylor,contract-51
-progress-log-67,PG-O-0067,0.55,Progress update,2011/03/28 08:30,Olivia Johnson,contract-01
+progress-log-67,PG-O-0067,0.01,Progress update,2011/03/28 08:30,Olivia Johnson,contract-01
 progress-log-68,PG-P-0068,0.65,Continuing efforts,2011/04/19 10:15,Liam Williams,contract-01
-progress-log-69,PG-Q-0069,0.75,Reaching milestones,2022/07/29 23:30,Sophia Davis,contract-51
-progress-log-70,PG-R-0070,0.85,Pushing forward,2022/07/29 23:45,Noah Brown,contract-01
-progress-log-71,PG-S-0071,0.95,Nearing completion,2022/07/29 23:59,Isabella Miller,contract-01
-progress-log-72,PG-T-0072,0.99,Final touches,2022/07/29 23:59,William Taylor,contract-51
+progress-log-69,PG-Q-0069,0.75,العظمى واعتلاء,2022/07/29 23:30,Sophia Davis,contract-51
+progress-log-70,PG-R-0070,0.85,Almost Done,2022/07/29 23:45,العظمى واعتلاء,contract-01
+progress-log-71,PG-S-0071,0.95,Nearing completion,2022/07/29 23:59,국민경제의 발전을,contract-01
+progress-log-72,PG-T-0072,0.99,국민경제의 발전을,2022/07/29 23:59,William Taylor,contract-51
