@@ -1,0 +1,7 @@
+key,code,title,abstractPj,fatalErrors,cost,optionalLink,draftMode,key:manager
+project-01,ABC-1234,A,A,false,EUR 0,,false,manager-01
+project-02,ZZZ-9999,estoesunacadenade75caracteres1234567890123456789012345678901234567890123456,Z,false,EUR 99,,false,manager-02
+project-03,FKJ-7806,Titulo,Abstracto,false,EUR 777,,false,manager-02
+project-04,XJY-5555,Title,Esto es una cadena de 100 caracteres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,false,EUR 6,,false,manager-01
+project-05,LLL-0000,T,A,true,EUR 47,http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,true,manager-01
+project-06,LRL-0010,T,A,false,"EUR 999,999,842.99",http://www.company-kurbfw843tp0h34fÓ4IHFó83g2rÓKFGWIEUFIWUEBFJEALUYVFEKvZesDWEUBGFUKFHYRBGERIUEYFHDHBVOPERIUiusdkjwpieouapusdyWYTEVWAEFRGTJsadfsrtgkaeyrbfñaetrpuarybcfueygfuLVCLUyvcLUYVClVVVVVVVVDYSIUDAKUBFRTYVKSTDVCLYVSDLUTVDTDHKESRTsDTVEYBFWEYFGWEQQ.com,false,manager-01

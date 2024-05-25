@@ -1,0 +1,28 @@
+# messages-en.i18n
+
+
+manager.project.list.button.create = Create Project
+manager.project.list.title = My projects
+manager.project.list.label.code = Code
+manager.project.list.label.title = Title
+manager.project.list.label.cost = Cost
+
+manager.project.form.title = Project form
+
+manager.project.form.label.code = Code
+manager.project.form.label.title = Title
+manager.project.form.label.abstractPj = Abstract
+manager.project.form.label.fatalErrors = Fatal Errors
+manager.project.form.label.cost = Cost
+manager.project.form.label.optionalLink = Link
+manager.project.form.button.projects = Projects
+
+manager.project.form.button.create = Create Project
+manager.project.form.button.update = Update Project
+manager.project.form.button.delete = Delete Project
+manager.project.form.button.publish = Publish Project
+
+manager.project.form.error.duplicated= Duplicated Code
+manager.project.form.error.negative-cost = Cost can't be negative
+manager.project.form.error.cant-publish-fatal-errors-project = Can't publish projects with fatal errors
+manager.project.form.error.no-user-story-in-project = Can't publish projects without user stories

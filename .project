@@ -34,11 +34,4 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>acme-framework-24.4.0</name>
-			<type>2</type>
-			<location>D:/Workspace-24/Frameworks/Acme-Framework-24.4.0/target/classes</location>
-		</link>
-	</linkedResources>
 </projectDescription>
