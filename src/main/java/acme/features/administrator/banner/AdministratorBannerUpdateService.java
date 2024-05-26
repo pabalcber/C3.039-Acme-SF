@@ -61,7 +61,7 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 	public void validate(final Banner object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("bannerStartTime") && object.getBannerStartTime() != null) {
+		if (!super.getBuffer().getErrors().hasErrors("bannerStartTime")) {
 			Date bannerStartTime;
 			Date instantiationMoment;
 			bannerStartTime = object.getBannerStartTime();
@@ -71,7 +71,7 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 				super.state(bannerStartTime.after(instantiationMoment), "bannerStartTime", "administrator.banner.form.error.banner-start-time");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("bannerEndTime") && object.getBannerEndTime() != null) {
+		if (!super.getBuffer().getErrors().hasErrors("bannerEndTime")) {
 			Date bannerStartTime;
 			Date bannerEndTime;
 
@@ -80,6 +80,18 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 
 			if (bannerStartTime != null && bannerEndTime != null)
 				super.state(MomentHelper.isLongEnough(bannerStartTime, bannerEndTime, 1, ChronoUnit.WEEKS) && bannerEndTime.after(bannerStartTime), "bannerEndTime", "administrator.banner.form.error.banner-end-time");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("picture")) {
+			String picture = object.getPicture();
+			if (picture.length() > 255)
+				super.state(false, "picture", "administrator.banner.form.error.picture-length");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("link")) {
+			String link = object.getLink();
+			if (link.length() > 255)
+				super.state(false, "link", "administrator.banner.form.error.link-length");
 		}
 	}
 
