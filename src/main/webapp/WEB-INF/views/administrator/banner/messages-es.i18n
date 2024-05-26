@@ -20,5 +20,7 @@ administrator.banner.form.button.create = Crear
 administrator.banner.form.button.delete = Borrar
 administrator.banner.form.button.update = Actualizar
 
+administrator.banner.form.error.picture-length = La imagen no puede ser tan larga
+administrator.banner.form.error.link-length = La URL no puede ser tan larga
 administrator.banner.form.error.banner-start-time = Fecha de comienzo del cartel debe estar en el futuro
 administrator.banner.form.error.banner-end-time = Fecha de final del cartel debe estar después de la fecha de final del cartel y tienen que tener al menos una semana de diferencia 
