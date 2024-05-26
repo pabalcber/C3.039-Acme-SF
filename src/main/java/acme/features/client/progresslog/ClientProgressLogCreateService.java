@@ -26,7 +26,6 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	private static String				responsiblePerson	= "responsiblePerson";
 	private static String				recordId			= "recordId";
 	private static String				id					= "masterId";
-	private static String				invalidObject		= "Invalid object: ";
 
 
 	@Override

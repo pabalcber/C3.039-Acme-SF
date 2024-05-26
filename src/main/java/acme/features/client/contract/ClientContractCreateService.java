@@ -52,10 +52,6 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		super.getBuffer().addData(object);
 	}
 
-
-	private static String invalidObject = "Invalid object: ";
-
-
 	@Override
 	public void bind(final Contract object) {
 		assert object != null;

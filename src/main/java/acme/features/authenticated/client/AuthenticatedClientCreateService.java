@@ -25,7 +25,6 @@ public class AuthenticatedClientCreateService extends AbstractService<Authentica
 	// AbstractService<Authenticated, Client> ---------------------------
 
 	private static String					identification	= "identification";
-	private static String					invalidObject	= "Invalid object: ";
 
 
 	@Override

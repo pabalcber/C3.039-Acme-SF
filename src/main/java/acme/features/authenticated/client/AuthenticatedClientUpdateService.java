@@ -18,11 +18,9 @@ public class AuthenticatedClientUpdateService extends AbstractService<Authentica
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedClientRepository	repository;
+	private AuthenticatedClientRepository repository;
 
 	// AbstractService<Authenticated, Client> ---------------------------
-
-	private static String					invalidObject	= "Invalid object: ";
 
 
 	@Override
