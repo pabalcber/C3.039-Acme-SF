@@ -1,0 +1,23 @@
+key,reference,identificationDate,impact,probability,description,optionalLink,key:admin,key:project
+risk-01,R-001,2000/01/01 00:00,0,0.00,Descripción de riesgo 1,ftp://,administrator-01,project-05
+risk-02,R-002,2000/01/01 00:00,1,0.01,Descripción de riesgo 2,ftp://a,administrator-01,project-05
+risk-03,R-003,2000/01/01 00:00,100,0.99,Descripción de riesgo 3,ftp://a.b,administrator-01,project-05
+risk-04,R-004,2000/01/01 00:00,99,1.00,Descripción de riesgo 3,http://www.lorem-ipsum.org/dolor/sit/amet/consectetur/adipiscing/elit/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/,administrator-01,project-05
+risk-05,R-005,2000/01/01 00:00,3,0.19,Descripción de riesgo 4,http://www.lorem-ipsum.org,administrator-01,project-05
+risk-06,R-006,2000/01/01 00:00,6,0.45,Descripción de riesgo 5,http://www.lorem-ipsum.org/dolor/sit.html,administrator-01,project-05
+risk-07,R-007,2000/01/01 00:00,2,0.50,Descripción de riesgo 6,,administrator-01,project-05
+risk-08,R-008,2000/01/01 00:01,5,0.87,Descripción de riesgo 7,http://www.lorem-ipsum.org/dolor/sit.html#dolor,administrator-01,project-05
+risk-09,R-009,2022/07/29 23:59,0,0.71,Descripción de riesgo 8,http://www.lorem-ipsum.org?a=1&b=2,administrator-01,project-05
+risk-10,R-010,2022/07/29 23:30,1,0.50,Descripción de riesgo 9,http://www.lorem-ipsum.org?,administrator-01,project-05
+risk-11,R-011,2022/07/29 23:00,19,0.60,Descripción de riesgo 10,http://www.lorem-ipsum.org?a,administrator-01,project-05
+risk-12,R-012,2014/09/26 17:00,3,0.50,D,http://www.lorem-ipsum.org?a&b,administrator-01,project-05
+risk-13,R-013,2013/06/25 17:00,50,0.50,Descripción exacta de 100 caracteres - - - - - - - - - - - - - - - - - - - - - - - - - -,http://www.lorem-ipsum.org/,administrator-01,project-05
+risk-14,R-014,2012/05/24 17:00,43,0.50,Descripción exacta de 99 caracteres - - - - - - - - - - - - - - - - - - - - - - - - -,http://www.lorem-ipsum.org/a,administrator-01,project-05
+risk-15,R-015,2011/02/22 17:00,30,0.50,Descripción de 50 caracteres - - - - -,http://www.lorem-ipsum.org/a/b,administrator-01,project-05
+risk-16,R-016,2010/03/23 17:00,23,0.50,Descripción técnica,http://www.lorem-ipsum.org/a/b?,administrator-01,project-05
+risk-17,R-017,2021/03/21 17:00,4,0.50,Descripción de riesgo 11,http://www.lorem-ipsum.org/a/b?a&b,administrator-01,project-05
+risk-18,R-018,2012/10/08 05:49,1,0.39,Resumen práctico,http://a,administrator-01,project-05
+risk-19,R-019,2003/07/01 17:00,3,0.50,Descripción de saludo,http://a.b,administrator-01,project-05
+risk-20,R-020,2002/08/29 17:00,89,0.50,Descripción de riesgo 12,http://www.lorem-ipsum.org/dolor/sit/amet/consectetur/adipiscing/elit/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/XY,administrator-01,project-05
+risk-21,R-021,2002/08/29 17:00,71,0.50,Descripción de riesgo 13,http://www.lorem-ipsum.org/dolor/sit/amet/consectetur/adipiscing/elit/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X,administrator-01,project-05
+risk-22,R-022,2002/08/29 17:00,66,0.50,Descripción de riesgo 13,ftp://www.lorem-ipsum.org,administrator-01,project-05
