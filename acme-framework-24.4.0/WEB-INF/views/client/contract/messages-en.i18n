@@ -1,0 +1,34 @@
+# messages-en.i18n
+client.contract.list.title = Contracts' List
+
+client.contract.form.title = Contract
+
+client.contract.list.label.code = Code
+client.contract.list.label.providerName = Provider
+client.contract.list.label.customerName = Customer
+client.contract.list.label.budget = Budget
+client.contract.list.label.project = Project
+
+client.contract.form.label.code = Code
+client.contract.form.label.project = Project
+client.contract.form.label.instantiationMoment = Instantiation Moment
+client.contract.form.label.providerName = Provider
+client.contract.form.label.customerName = Customer
+client.contract.form.label.goals = Goals
+client.contract.form.label.budget = Budget
+client.contract.form.label.draftMode = Is it a Draft?
+
+client.contract.list.button.create = Create
+
+client.contract.form.button.progress-log = Progress Logs
+client.contract.form.button.update = Update
+client.contract.form.button.delete = Delete
+client.contract.form.button.publish = Publish
+client.contract.form.button.create = Create
+
+client.contract.form.error.duplicated = This code is taken
+client.contract.form.error.negative-budget = The budget must be positive
+client.contract.form.error.budget-exceeds-project-cost =  The budget cannot be higher than the project's cost
+client.contract.form.error.different-currency = The budget cannot have a different currency than the one of the project
+client.contract.form.error.bad-combined-budget = The budget amount of this contract added to the contracts already published cannot be higher than the project's cost
+client.contract.form.error.budget-cannot-be-null = You must introduce a budget
