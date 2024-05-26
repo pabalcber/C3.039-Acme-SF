@@ -55,10 +55,6 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 		super.getBuffer().addData(object);
 	}
 
-
-	private static String invalidObject = "Invalid object: ";
-
-
 	@Override
 	public void bind(final ProgressLog object) {
 		assert object != null;
