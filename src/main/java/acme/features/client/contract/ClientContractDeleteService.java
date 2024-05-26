@@ -19,11 +19,9 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientContractRepository	repository;
+	private ClientContractRepository repository;
 
 	// AbstractService interface ----------------------------------------------
-
-	private static String				invalidObject	= "Invalid object: ";
 
 
 	@Override
