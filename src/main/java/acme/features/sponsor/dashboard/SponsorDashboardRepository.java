@@ -24,4 +24,16 @@ public interface SponsorDashboardRepository extends AbstractRepository {
 	@Query("select i.quantity from Invoice i where i.sponsor.id=:sponsorId and i.draftMode=false")
 	Collection<Money> invoiceQuantity(int sponsorId);
 
+	@Query("select s.amount.currency from Sponsorship s where s.sponsor.id= :sponsorId and s.draftMode=false")
+	Collection<String> allCurrenciesInPublishedSponsorships(int sponsorId);
+
+	@Query("select s.amount from Sponsorship s where s.draftMode=false and  s.sponsor.id= :id")
+	Collection<Money> findAllAmountsFromSponsor(int id);
+
+	@Query("select i.quantity.currency from Invoice i where i.sponsor.id= :sponsorId and i.draftMode=false")
+	Collection<String> allCurrenciesInPublishedInvoices(int sponsorId);
+
+	@Query("select i.quantity from Invoice i where i.draftMode=false and  i.sponsor.id= :id")
+	Collection<Money> findAllQuantitiesFromSponsor(int id);
+
 }
