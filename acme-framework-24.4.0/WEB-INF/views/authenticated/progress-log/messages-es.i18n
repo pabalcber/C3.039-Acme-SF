@@ -1,0 +1,16 @@
+# messages-es.i18n
+
+authenticated.progress-log.list.title = Lista de Registro de Progreso
+
+authenticated.progress-log.form.title = Registro de Progreso
+
+authenticated.progressLog.list.label.recordId = Nombre
+authenticated.progressLog.list.label.responsiblePerson = Responsable
+authenticated.progressLog.list.label.completeness = Completitud
+
+authenticated.progressLog.form.label.recordId = Nombre
+authenticated.progressLog.form.label.completeness = Completitud
+authenticated.progressLog.form.label.comment = Commentario
+authenticated.progressLog.form.label.registrationMoment = Registro
+authenticated.progressLog.form.label.responsiblePerson = Responsable
+authenticated.progressLog.form.label.contract = Contrato

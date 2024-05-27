@@ -75,18 +75,41 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 				super.state(projectSameCode.getId() == object.getId(), "code", "sponsor.invoice.form.error.code");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("registrationTime")) {
+
+			Date registrationTime = object.getRegistrationTime();
+			Date minimumDate = MomentHelper.parse("1969-12-31 23:59", "yyyy-MM-dd HH:mm");
+			Date maximumDate = MomentHelper.parse("2200-12-31 23:59", "yyyy-MM-dd HH:mm");
+
+			if (registrationTime != null) {
+				Boolean isAfter = registrationTime.after(minimumDate) && registrationTime.before(maximumDate);
+				super.state(isAfter, "registrationTime", "sponsor.invoice.form.error.registration-time");
+			}
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("registrationTime")) {
+			Date registrationTime;
+			Date moment;
+
+			registrationTime = object.getRegistrationTime();
+			moment = object.getSponsorship().getMoment();
+
+			if (registrationTime != null)
+				super.state(registrationTime.after(moment), "registrationTime", "sponsor.invoice.form.error.registration-time-bis");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
 			Date registrationTime;
 			Date dueDate;
 
 			registrationTime = object.getRegistrationTime();
 			dueDate = object.getDueDate();
+			Date minimumDate = MomentHelper.parse("1969-12-31 23:59", "yyyy-MM-dd HH:mm");
+			Date maximumDate = MomentHelper.parse("2200-12-31 23:59", "yyyy-MM-dd HH:mm");
 
-			super.state(MomentHelper.isLongEnough(registrationTime, dueDate, 1, ChronoUnit.MONTHS) && dueDate.after(registrationTime), "dueDate", "sponsor.invoice.form.error.dueDate");
+			if (registrationTime != null && dueDate != null)
+				super.state(MomentHelper.isLongEnough(registrationTime, dueDate, 1, ChronoUnit.MONTHS) && dueDate.after(registrationTime) && dueDate.after(minimumDate) && dueDate.before(maximumDate), "dueDate", "sponsor.invoice.form.error.dueDate");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getAmount() >= 0, "quantity", "sponsor.invoice.form.error.quantity");
 
 		if (!super.getBuffer().getErrors().hasErrors("publishedSponsorship"))
 			super.state(object.getSponsorship().isDraftMode(), "*", "sponsor.invoice.form.error.published-sponsorship");
