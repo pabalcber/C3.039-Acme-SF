@@ -21,6 +21,7 @@ master.menu.any = Cualquiera
 master.menu.any.claims = Reclamaciones
 master.menu.any.training-modules =Módulos de entrenamiento
 master.menu.any.contract.list = Contratos Publicados
+master.menu.any.training-module = Listas de módulos de entrenamiento publicados
 
 # master.menu.authenticated #######################################################
 
@@ -93,11 +94,10 @@ master.menu.manager.dashboard = Ver mi dashboard
 master.menu.any = Principal
 master.menu.any.projects = Proyectos publicados
 
-# master.menu.developer ##########################################################
-
+# master.menu.developer ###################################################
 master.menu.developer = Desarrollador
-master.menu.developer.training-module.list = Listar tus módulos de entrenamiento
-master.menu.developer.dashboard = Dashboard de desarrollador
+master.menu.developer.training-module.list = listas de módulos de entrenamiento
+master.menu.developer.dashboard = Dashboard de desarrollado
 
 
 # master.menu.client ########################################################

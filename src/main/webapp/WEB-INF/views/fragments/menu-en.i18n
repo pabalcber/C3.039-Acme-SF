@@ -21,6 +21,7 @@ master.menu.any = Any
 master.menu.any.claims = Claims
 master.menu.any.training-modules = List training modules
 master.menu.any.contract.list = Published Contracts List
+master.menu.any.training-module = Published Training Module list
 
 # master.menu.authenticated #######################################################
 
@@ -90,7 +91,7 @@ master.menu.sponsor.dashboard = Sponsor dashboard
 
 # master.menu.developer ###################################################
 master.menu.developer = Developer
-master.menu.developer.training-module.list = List Your Training Modules
+master.menu.developer.training-module.list =Training Modules List
 master.menu.developer.dashboard = Developer Dashboard
 
 # master.menu.manager ########################################################

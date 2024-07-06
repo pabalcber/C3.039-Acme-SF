@@ -69,7 +69,8 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.any.claims" action="/any/claim/list"/>				
 			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.any.contract.list" action="/any/contract/list-all"/>				
+			<acme:menu-suboption code="master.menu.any.contract.list" action="/any/contract/list-all"/>
+			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>				
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
