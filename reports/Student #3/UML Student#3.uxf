@@ -13,9 +13,9 @@
 &lt;&lt;Enum&gt;&gt;
 difficultyLevel
 --
-+ BASIC
-+ INTERMEDIATE
-+ ADVANCEDSIC
+BASIC
+INTERMEDIATE
+ADVANCEDSIC
 bg=green
 </panel_attributes>
     <additional_attributes/>
@@ -33,14 +33,14 @@ transparency=80
 &lt;&lt;Entity&gt;&gt;
 TrainingSession
 --
-- code: String {NotBlank,Unique, Pattern(“[A-Z]{1,3}-[0-9]{3}”)}
-- periodStart: Date {NotNull,Temporal(TIMESTAMP)}
-- periodEnd: Date {NotNull,Temporal(TIMESTAMP)}
-- location: String {NotBlank,Length(max = 75)}
-- instructor: String {NotBlank,Length(max = 75))}
-- contactEmail: String {NotBlank,Email}
-- link: String {URL}
--published: boolean</panel_attributes>
++ code : String {Unique, NotBlank, Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}")}
++ periodStart: Date {NotNull, Temporal(TIMESTAMP)}
++ periodEnd: Date {NotNull, Temporal(TIMESTAMP)}
++ location: String {NotBlank, Length(max = 75)}
++ instructor: String {NotBlank, Length(max = 75)}
++ contactEmail: String {Email}
+- link: String {URL, Length(max = 255)}
+- published: boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -55,11 +55,11 @@ TrainingSession
 &lt;&lt;Role&gt;&gt;
 Developer
 --
--degree: String {NotBlank,Length(max = 75)}
--specialisation: String {NotBlank,Length(max = 100)}
--skills: String {NotBlank,Length(max = 100)}
--email: String {NotNull,Email)}
--link: String {URL}
++ degree: String {NotBlank, Length(max = 75)}
++ specialisation: String {NotBlank, Length(max = 100)}
++ skills: String {NotBlank, Length(max = 100)}
++ email: String {NotBlank, Email}
+- link: String {URL, Length(max = 255)}
 
 bg=green
 </panel_attributes>
@@ -77,12 +77,12 @@ bg=green
 &lt;&lt;Form&gt;&gt;
 DeveloperDashboard
 --
--totalTrainingModulesWithUpdateMoment;
--totalTrainingSessionsWithLink;
--trainingModulesAverageTime;
--trainingModulesDeviationTime;
--trainingModulesMinimumTime;
--trainingModulesMaximumTime;
++ totalTrainingModulesWithUpdateMoment: int
++ totalTrainingSessionsWithLink: int
++ trainingModulesAverageTime: Double
++ trainingModuleDeviationTime: Double
++ trainingModuleMinimumTime: Integer
++ trainingModuleMaximumTime: Integer
 
 bg=green
 </panel_attributes>
@@ -101,13 +101,13 @@ transparency=80
 &lt;&lt;Entity&gt;&gt;
 TrainingModule
 --
-- code: String {NotBlank,NotNull,Length(max = 255),Unique, Pattern(“[A-Z]{1,3}-[0-9]{3}”)}
-- creationMoment: Date {NotNull,Past,Temporal(TIMESTAMP)}
-- details: String {NotBlank,NotNull,Length(max = 100)}
-- difficultyLevel: difficultyLevelType {NotNull}
-- updateMoment: Date {NotNull,Past,Temporal(TIMESTAMP)}
-- link: String {URL,Length(max = 255)}
-- totalTime: int {NotNull}
++ code : String {Unique, NotBlank, Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")}
++ creationMoment: Date {NotNull , Past, Temporal(TIMESTAMP)}
+- updateMoment: Date {Past, Temporal(TIMESTAMP)}
++ details: String {NotBlank, Length(max = 100)}
++ difficulty: TrainingModuleDifficulty {NotNull}
+- link: String {URL, Length(max = 255)}
++ totalTime: Integer {NotNull, Min(1), Max(10000}
 - published: boolean</panel_attributes>
     <additional_attributes/>
   </element>
