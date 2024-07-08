@@ -8,4 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-- Pablo Alcántara Bernal (pabalcber@alum.us.es)
+- Alcántara Bernal,Pablo(pabalcber@alum.us.es) ->1 Call
+-Ávila Maqueda,María del Mar(maravimaq@alum.us.es) ->1 Call
+-Chen,Sheng(sheche1@alum.us.es)->1 and 2 Call
+-Yao,Jun(junyao@alum.us.es)->1 and 2 Call
+-Barrancos Márquez, María(marbarmar16@alum.us.es)->1 Call
