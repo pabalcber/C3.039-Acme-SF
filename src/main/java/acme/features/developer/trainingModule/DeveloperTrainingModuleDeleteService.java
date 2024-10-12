@@ -1,21 +1,22 @@
 
 package acme.features.developer.trainingModule;
 
-import java.util.Date;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.trainingModule.DifficultyLevel;
 import acme.entities.trainingModule.TrainingModule;
+import acme.entities.trainingModule.TrainingSession;
 import acme.roles.Developer;
 
 @Service
 public class DeveloperTrainingModuleDeleteService extends AbstractService<Developer, TrainingModule> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -26,17 +27,28 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		int developerId;
+		TrainingModule trainingModule;
+
+		id = super.getRequest().getData("id", int.class);
+		trainingModule = this.repository.findOneTrainingModuleById(id);
+
+		developerId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		status = developerId == trainingModule.getDeveloper().getId() && !trainingModule.isPublished();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		TrainingModule object;
+		Integer id;
 
-		object = new TrainingModule();
-		Integer developerId = super.getRequest().getPrincipal().getActiveRoleId();
-		Developer developer = this.repository.findOneDeveloperById(developerId);
-		object.setDeveloper(developer);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneTrainingModuleById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -45,50 +57,28 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		super.bind(object, "code", "creationMoment", "updateMoment", "difficulty", "details", "totalTime", "link", "project");
-
-		Date currentMoment;
-		Date creationMoment;
-
-		currentMoment = MomentHelper.getCurrentMoment();
-		creationMoment = new Date(currentMoment.getTime() - 2000); //Substracts two seconds to ensure the moment is in the past and before the update moment
-		object.setCreationMoment(creationMoment);
-
-		object.setPublished(false);
+		super.bind(object, "code", "creationMoment", "updateMoment", "difficulty", "details", "totalTime", "link", "published", "project");
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
+		Collection<TrainingSession> publishedSessions;
 
-			TrainingModule trainingModuleSameCode = this.repository.findOneTrainingModuleByCode(object.getCode());
-
-			if (trainingModuleSameCode != null)
-				super.state(trainingModuleSameCode.getId() == object.getId(), "code", "developer.training-module.form.error.code");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("updateMoment")) {
-			Date creationMoment;
-			Date updateMoment;
-
-			creationMoment = object.getCreationMoment();
-			updateMoment = object.getUpdateMoment();
-
-			if (updateMoment != null)
-				super.state(updateMoment.after(creationMoment), "updateMoment", "developer.training-module.form.error.update-moment");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(!object.getProject().isDraftMode(), "project", "developer.training-module.form.error.project");
+		publishedSessions = this.repository.findPublishedTrainingSessionsByTrainingModuleId(object.getId());
+		super.state(publishedSessions.isEmpty(), "*", "developer.training-module.form.error.published-sessions");
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
 
-		this.repository.save(object);
+		Collection<TrainingSession> trainingSessions = this.repository.findTrainingSessionsByTrainingModuleId(object.getId());
+
+		this.repository.deleteAll(trainingSessions);
+
+		this.repository.delete(object);
 	}
 
 	@Override
@@ -99,7 +89,7 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		SelectChoices projectChoices;
 
 		difficultyChoices = SelectChoices.from(DifficultyLevel.class, object.getDifficulty());
-		projectChoices = SelectChoices.from(this.repository.findPublishedProjects(), "title", null);
+		projectChoices = SelectChoices.from(this.repository.findPublishedProjects(), "title", object.getProject());
 
 		Dataset dataset;
 
