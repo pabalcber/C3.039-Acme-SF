@@ -105,6 +105,8 @@ master.menu.manager.dashboard = See my dashboard
 
 master.menu.any = Principal
 master.menu.any.projects = Published projects
+master.menu.any.training-module = Training Module list
+master.menu.any.sponsorship = Sponsorship list
 
 
 # master.menu.client ########################################################

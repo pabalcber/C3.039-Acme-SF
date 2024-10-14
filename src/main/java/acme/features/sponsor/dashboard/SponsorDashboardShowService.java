@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.SystemConfigurationRepository;
 import acme.forms.SponsorDashboard;
 import acme.roles.Sponsor;
 
@@ -24,7 +25,10 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorDashboardRepository repository;
+	private SponsorDashboardRepository		repository;
+
+	@Autowired
+	private SystemConfigurationRepository	systemConfigurationRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -63,7 +67,8 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 
 		for (String currency : sponsorshipCurrencies) {
 
-			Collection<Money> sponsorshipsAmounts = this.repository.findAllAmountsFromSponsor(sponsorId).stream().collect(Collectors.toCollection(ArrayList<Money>::new));
+			Collection<Money> sponsorshipsAmounts = this.repository.findAllAmountsFromSponsor(sponsorId).stream().map(m -> this.systemConfigurationRepository.convertFromCurrencyToAnother(m, currency))
+				.collect(Collectors.toCollection(ArrayList<Money>::new));
 
 			minimumAmount = sponsorshipsAmounts.stream().mapToDouble(Money::getAmount).min().orElse(Double.NaN);
 			maximumAmount = sponsorshipsAmounts.stream().mapToDouble(Money::getAmount).max().orElse(Double.NaN);
@@ -84,7 +89,7 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 
 		for (String currency : invoicesCurrencies) {
 
-			Collection<Money> invoicesAmounts = this.repository.findAllQuantitiesFromSponsor(sponsorId).stream().collect(Collectors.toCollection(ArrayList<Money>::new));
+			Collection<Money> invoicesAmounts = this.repository.findAllQuantitiesFromSponsor(sponsorId).stream().map(m -> this.systemConfigurationRepository.convertFromCurrencyToAnother(m, currency)).collect(Collectors.toCollection(ArrayList<Money>::new));
 
 			invoicesMinimumQuantity = invoicesAmounts.stream().mapToDouble(Money::getAmount).min().orElse(Double.NaN);
 			invoicesMaximumQuantity = invoicesAmounts.stream().mapToDouble(Money::getAmount).max().orElse(Double.NaN);

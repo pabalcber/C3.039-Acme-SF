@@ -2,6 +2,7 @@
 package acme.features.sponsor.invoice;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.components.SystemConfigurationRepository;
 import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
@@ -20,7 +22,10 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorInvoiceRepository repository;
+	private SponsorInvoiceRepository		repository;
+
+	@Autowired
+	private SystemConfigurationRepository	systemConfigurationRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -74,12 +79,15 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void validate(final Invoice object) {
 		assert object != null;
 
+		Collection<Invoice> allInvoices;
+
+		allInvoices = this.repository.findAllInvoicesBySponsorshipId(object.getSponsorship().getId());
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 
 			Invoice projectSameCode = this.repository.findOneInvoiceByCode(object.getCode());
 
-			if (projectSameCode != null)
-				super.state(projectSameCode.getId() == object.getId(), "code", "sponsor.invoice.form.error.code");
+			super.state(projectSameCode == null, "code", "sponsor.invoice.form.error.code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("registrationTime")) {
@@ -118,6 +126,15 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 				super.state(MomentHelper.isLongEnough(registrationTime, dueDate, 1, ChronoUnit.MONTHS) && dueDate.after(registrationTime) && dueDate.after(minimumDate) && dueDate.before(maximumDate), "dueDate", "sponsor.invoice.form.error.dueDate");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("quantity") && this.systemConfigurationRepository.existsCurrency(object.getQuantity().getCurrency()))
+			super.state(object.getQuantity().getAmount() >= 0 && object.getQuantity().getAmount() <= 1000000, "quantity", "sponsor.invoice.form.error.quantity");
+
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			String symbol = object.getQuantity().getCurrency();
+			boolean existsCurrency = this.systemConfigurationRepository.existsCurrency(symbol);
+			super.state(existsCurrency, "quantity", "sponsor.invoice.form.error.acceptedCurrency");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("publishedSponsorship")) {
 			Integer sponsorshipId;
 			Sponsorship sponsorship;
@@ -126,6 +143,15 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			sponsorship = this.repository.findOneSponsorshipById(sponsorshipId);
 
 			super.state(sponsorship.isDraftMode(), "*", "sponsor.invoice.form.error.published-sponsorship");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors()) {
+			double sumaNueva = this.systemConfigurationRepository.convertToUsd(object.totalAmount()).getAmount();
+			for (Invoice i : allInvoices)
+				sumaNueva += this.systemConfigurationRepository.convertToUsd(i.totalAmount()).getAmount();
+
+			if (this.systemConfigurationRepository.existsCurrency(object.getQuantity().getCurrency()))
+				super.state(sumaNueva <= this.systemConfigurationRepository.convertToUsd(object.getSponsorship().getAmount()).getAmount(), "*", "sponsor.invoice.form.error.incorrect-sum");
 		}
 
 	}

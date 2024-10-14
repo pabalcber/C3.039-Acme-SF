@@ -10,6 +10,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.roles.Sponsor;
 
 @Repository
@@ -38,6 +39,9 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 
 	@Query("select i from Invoice i where i.sponsorship.id=:id")
 	Collection<Invoice> findInvoicesOfASponsorship(int id);
+
+	@Query("select sc from SystemConfiguration sc")
+	SystemConfiguration findSystemConfiguration();
 
 	@Query("select i from Invoice i where (i.sponsorship.id = :id and i.draftMode = true)")
 	Collection<Invoice> findUnpublishedInvoicesBySponsorshipId(int id);

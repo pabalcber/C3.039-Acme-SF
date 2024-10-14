@@ -93,6 +93,8 @@ master.menu.manager.dashboard = Ver mi dashboard
 
 master.menu.any = Principal
 master.menu.any.projects = Proyectos publicados
+master.menu.any.sponsorship = Lista de patrocinios
+master.menu.any.training-module = Lista de módulos de entrenamiento
 
 # master.menu.developer ###################################################
 master.menu.developer = Desarrollador

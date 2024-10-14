@@ -8,11 +8,11 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.SystemConfigurationRepository;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
@@ -25,7 +25,10 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipRepository repository;
+	private SponsorSponsorshipRepository	repository;
+
+	@Autowired
+	private SystemConfigurationRepository	systemConfigurationRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -69,6 +72,10 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
+		Collection<Invoice> allInvoices;
+
+		allInvoices = this.repository.findInvoicesOfASponsorship(object.getId());
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 
 			Sponsorship projectSameCode = this.repository.findOneSponsorshipByCode(object.getCode());
@@ -77,12 +84,14 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 				super.state(projectSameCode.getId() == object.getId(), "code", "sponsor.sponsorship.form.error.code");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("totalAmount")) {
-			Collection<Invoice> invoices = this.repository.findInvoicesOfASponsorship(object.getId());
+		if (!super.getBuffer().getErrors().hasErrors("totalAmount") && object.getAmount() != null && this.systemConfigurationRepository.existsCurrency(object.getAmount().getCurrency())) {
+			double sumaAmount = 0.0;
+			for (Invoice i : allInvoices)
+				sumaAmount += this.systemConfigurationRepository.convertToUsd(i.totalAmount()).getAmount();
 
-			double invoiceTotAmount = invoices.stream().mapToDouble(i -> this.currencyTransformerUsd(i.getQuantity(), i.totalAmount().getAmount()).getAmount()).sum();
-			if (object.getAmount() != null)
-				super.state(invoiceTotAmount == this.currencyTransformerUsd(object.getAmount(), object.getAmount().getAmount()).getAmount(), "*", "sponsor.sponsorship.form.error.invalidTotalAmount");
+			//if (object.getAmount() != null)
+
+			super.state(sumaAmount == this.systemConfigurationRepository.convertToUsd(object.getAmount()).getAmount(), "*", "sponsor.sponsorship.form.error.invalidTotalAmount");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("moment")) {
@@ -138,6 +147,15 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 					"sponsor.sponsorship.form.error.durationEndTime");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("amount") && this.systemConfigurationRepository.existsCurrency(object.getAmount().getCurrency()))
+			super.state(object.getAmount().getAmount() >= 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorship.form.error.amount");
+
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			String symbol = object.getAmount().getCurrency();
+			boolean existsCurrency = this.systemConfigurationRepository.existsCurrency(symbol);
+			super.state(existsCurrency, "amount", "sponsor.sponsorship.form.error.acceptedCurrency");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("unpublishedInvoices")) {
 
 			Collection<Invoice> unpublishedInvoices;
@@ -150,22 +168,15 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "sponsor.sponsorship.form.error.project-not-published");
 
-	}
+		if (object.getAmount() != null) {
+			double sumaAmount = 0.0;
+			for (Invoice i : allInvoices)
+				sumaAmount += this.systemConfigurationRepository.convertToUsd(i.totalAmount()).getAmount();
 
-	private Money currencyTransformerUsd(final Money currency, final Double amount) {
-		Money res = new Money();
-		res.setCurrency("USD");
+			if (this.systemConfigurationRepository.existsCurrency(object.getAmount().getCurrency()))
+				super.state(this.systemConfigurationRepository.convertToUsd(object.getAmount()).getAmount() >= sumaAmount, "amount", "sponsor.sponsorship.form.error.amount-less-sum-invoices");
+		}
 
-		if (currency.getCurrency().equals("USD"))
-			res.setAmount(amount);
-
-		else if (currency.getCurrency().equals("EUR"))
-			res.setAmount(amount * 1.07);
-
-		else
-			res.setAmount(amount * 1.25);
-
-		return res;
 	}
 
 	@Override

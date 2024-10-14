@@ -12,6 +12,7 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.SystemConfigurationRepository;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
 import acme.entities.sponsorships.SponsorshipType;
@@ -23,7 +24,10 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipRepository repository;
+	private SponsorSponsorshipRepository	repository;
+
+	@Autowired
+	private SystemConfigurationRepository	systemConfigurationRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -100,6 +104,15 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			if (durationStartTime != null && durationEndTime != null)
 				super.state(MomentHelper.isLongEnough(durationStartTime, durationEndTime, 1, ChronoUnit.MONTHS) && durationEndTime.after(durationStartTime) && durationEndTime.before(maximumDate), "durationEndTime",
 					"sponsor.sponsorship.form.error.durationEndTime");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("amount") && this.systemConfigurationRepository.existsCurrency(object.getAmount().getCurrency()))
+			super.state(object.getAmount().getAmount() >= 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorship.form.error.amount");
+
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			String symbol = object.getAmount().getCurrency();
+			boolean existsCurrency = this.systemConfigurationRepository.existsCurrency(symbol);
+			super.state(existsCurrency, "amount", "sponsor.sponsorship.form.error.acceptedCurrency");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
